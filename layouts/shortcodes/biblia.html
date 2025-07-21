@@ -1,0 +1,13 @@
+<blockquote class="biblia{{ with .Get "class" }} {{ . }}{{ end }}">
+  {{ with .Get "ref" }}
+    <h4 class="biblia-ref">{{ . }}</h4>
+  {{ end }}
+  <div class="biblia-inner">
+    {{/* 1) Procesa todo Markdown */}}
+    {{ $md := .Inner | markdownify }}
+    {{/* 2) Des‐escapa cualquier etiqueta HTML que aún esté en forma &lt;tag&gt; */}}
+    {{ $un := $md | htmlUnescape }}
+    {{/* 3) Asegura que no se vuelva a escapar el HTML residual */}}
+    {{ $un | safeHTML }}
+  </div>
+</blockquote>

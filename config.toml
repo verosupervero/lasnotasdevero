@@ -1,0 +1,13 @@
+baseURL = 'https://example.org/'
+languageCode = 'es'
+title = 'Las notas de Vero'
+theme = 'vero'
+
+[markup]
+  defaultMarkdownHandler = "goldmark"
+
+  [markup.goldmark]
+    [markup.goldmark.parser]
+      attribute = true     # ¡ojo aquí!
+    [markup.goldmark.renderer]
+      unsafe    = true     # para que acepte HTML

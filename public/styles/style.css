@@ -1,0 +1,509 @@
+.list-item {
+  list-style: none;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: 10px;
+  padding: 0 5px;
+}
+html, body {
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
+}
+
+nav {
+}
+
+/* ————————————————————————————————————————
+   Estilo para todos los h2, secciones: texto + línea de acento
+   ———————————————————————————————————————— */
+h2 {
+  position: relative;
+  padding-bottom: 0.25em;     /* espacio para la línea */
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+  line-height: 1.2em
+}
+
+/* Línea de acento que abarca todo el ancho del texto */
+h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;                /* 100% del ancho del h2 */
+  height: 2px;                /* grosor un poco mayor */
+  background-color: #3498db;  /* color de acento */
+  border-radius: 2px;
+}
+
+
+/* ————————————————————————————————————————
+   Estilo para banner titulo del articulo
+   ———————————————————————————————————————— */
+
+.titulo-principal {
+  position: relative;
+  overflow: hidden;
+  margin: 1rem 0;
+  padding: 2rem 1.2rem 0.5rem;
+  padding-right: 12rem; /* Espacio reservado para la fecha */
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 30%, #3b4f66 100%);
+  color: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 8px 25px rgba(44, 62, 80, 0.3), 0 3px 15px rgba(52, 73, 94, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Efectos sutiles sin animación */
+.titulo-principal::before {
+  content: "";
+  position: absolute;
+  top: -30%;
+  left: -30%;
+  width: 160%;
+  height: 160%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.03) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.titulo-principal::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, 
+    transparent 0%, 
+    rgba(26, 188, 156, 0.1) 50%, 
+    transparent 100%);
+  pointer-events: none;
+}
+
+/* Título principal */
+.titulo-principal h1 {
+  position: relative;
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  line-height: 100%;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  margin: 1rem 0rem 1rem;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+  color: #fff;
+  line-height: 1.2em;
+}
+
+/* Subrayado con color complementario */
+.titulo-principal h1::after {
+  content: "";
+  display: block;
+  width: 100%;                /* 100% del ancho del h2 */
+  height: 3px;                /* grosor un poco mayor */
+  background: linear-gradient(90deg, #1abc9c 0%, #16a085 100%);
+  margin: 1rem auto 0;
+  border-radius: 2px;
+  box-shadow: 0 2px 6px rgba(26, 188, 156, 0.4);
+}
+
+/* Autor */
+.titulo-principal .autor {
+  display: block;
+  font-size: clamp(0.85rem, 1.8vw, 0.95rem);
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 0.8rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Fecha con mejor posicionamiento */
+.titulo-principal .fecha {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  font-size: clamp(0.75rem, 1.4vw, 0.85rem);
+  color: #fff;
+  background: rgba(26, 188, 156, 0.25);
+  padding: 0.4rem 0.8rem;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(26, 188, 156, 0.4);
+  font-weight: 500;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Tags más visibles y atractivos */
+.titulo-principal .tags {
+  margin-top: 0.8rem;
+  font-size: clamp(0.8rem, 1.4vw, 0.85rem);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.titulo-principal .tags a {
+  color: #fff;
+  text-decoration: none;
+  margin-right: 0.7rem;
+  margin-bottom: 0.4rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #1abc9c 0%, #16a085 100%);
+  border: 1px solid rgba(26, 188, 156, 0.3);
+  transition: all 0.3s ease;
+  display: inline-block;
+  font-size: clamp(0.75rem, 1.3vw, 0.8rem);
+  font-weight: 500;
+  box-shadow: 0 2px 6px rgba(26, 188, 156, 0.2);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.titulo-principal .tags a:hover {
+  background: linear-gradient(135deg, #16a085 0%, #1abc9c 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(26, 188, 156, 0.4);
+  border-color: rgba(26, 188, 156, 0.5);
+}
+
+/* Media queries para mejor control en diferentes pantallas */
+@media (max-width: 768px) {
+  .titulo-principal {
+    margin: 1rem 0;
+    padding: 1.5rem 1rem;
+    padding-right: 1rem; /* En móviles quitamos el espacio extra */
+    padding-top: 3rem; /* Más espacio arriba para la fecha */
+  }
+  
+  .titulo-principal .fecha {
+    top: 0.8rem;
+    right: 1rem;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .titulo-principal {
+    padding: 1.2rem 0.8rem;
+    padding-right: 0.8rem;
+    padding-top: 2.8rem;
+  }
+  
+  .titulo-principal .fecha {
+    top: 0.6rem;
+    right: 0.8rem;
+    font-size: 0.75rem;
+    padding: 0.3rem 0.6rem;
+  }
+  
+  .titulo-principal h1 {
+    margin-bottom: 0.4rem;
+  }
+  
+  .titulo-principal .autor {
+    margin-bottom: 0.6rem;
+  }
+  
+  .titulo-principal .tags a {
+    margin-right: 0.5rem;
+    margin-bottom: 0.4rem;
+    padding: 0.25rem 0.6rem;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+.logo {
+	width: 60px;
+	height: 60px;
+	margin-right: 15px;
+	border-radius: 5px;
+}
+
+.header-content {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.brand-area {
+	display: flex;
+	align-items: center;
+}
+
+.brand-text {
+	font-size: 1.5em;
+	font-weight: bold;
+	color: #343a40;
+}
+.paralelo {
+	background-color: #f8f9fa;
+	border-left: 4px solid #007bff;
+	padding: 20px;
+	margin: 20px 0;
+	position: relative;
+	border-radius: 8px;
+	box-shadow: 0 2px 8px rgba(0,123,255,0.1);
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.paralelo:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 4px 15px rgba(0,123,255,0.15);
+}
+
+.juicio {
+	border-left-color: #dc3545;
+	background: linear-gradient(135deg, #fdf2f2 0%, #fff5f5 100%);
+	box-shadow: 0 2px 8px rgba(220,53,69,0.1);
+}
+.juicio:hover {
+	box-shadow: 0 4px 15px rgba(220,53,69,0.15);
+}
+
+.encarnacion { 
+	border-left-color: #a119d2;  
+	background: linear-gradient(135deg, #d8a3ff 0%, #e6ccff 100%);
+	box-shadow: 0 2px 8px rgba(161,25,210,0.1);
+}
+.encarnacion:hover {
+	box-shadow: 0 4px 15px rgba(161,25,210,0.15);
+}
+
+.restauracion {
+	border-left-color: #28a745;
+	background: linear-gradient(135deg, #f2fdf4 0%, #f8fff9 100%);
+	box-shadow: 0 2px 8px rgba(40,167,69,0.1);
+}
+.restauracion:hover {
+	box-shadow: 0 4px 15px rgba(40,167,69,0.15);
+}
+
+/* ————————————————————————————————————————
+   WRAPPER EXTERNO: borde y fondo suave, con padding
+   ———————————————————————————————————————— */
+blockquote.biblia {
+  margin: 20px 0;                         /* separación arriba/abajo */
+  padding: 20px;                          /* ← ahora 20px para dejar margen tintado */
+  border-left: 4px solid transparent;     /* ancho de borde fijo, color en variaciones */
+  background: rgba(0, 0, 0, 0.02);        /* fondo muy suave */
+  border-radius: 8px;                     /* esquinas redondeadas exteriores */
+  position: relative;
+}
+
+/* ————————————————————————————————————————
+   CAJA INTERIOR: fondo blanco, padding y sombra
+   ———————————————————————————————————————— */
+blockquote.biblia .biblia-inner {
+  background: #fff;
+  padding: 20px;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* ————————————————————————————————————————
+   VARIACIONES DE COLOR (borde + fondo suave exterior)
+   ———————————————————————————————————————— */
+blockquote.biblia.paralelo {
+  border-left-color: #007bff;
+  background: rgba(0, 123, 255, 0.05);
+}
+blockquote.biblia.juicio {
+  border-left-color: #dc3545;
+  background: rgba(220, 53, 69, 0.05);
+}
+blockquote.biblia.encarnacion {
+  border-left-color: #a119d2;
+  background: rgba(161, 25, 210, 0.05);
+}
+blockquote.biblia.restauracion {
+  border-left-color: #28a745;
+  background: rgba(40, 167, 69, 0.05);
+}
+/* …añade aquí tus otras clases de color… */
+
+/* ————————————————————————————————————————
+   PIE DE CITA: referencia alineada a la derecha
+   ———————————————————————————————————————— */
+/* TÍTULO DE LA CITA */
+.biblia-ref {
+  display: block;
+  margin: 0 0 0.75em;    /* espacio abajo del título */
+  font-size: 1em;
+  font-weight: 600;
+  color: #444;
+}
+
+/* Asegurar que el título del versículo sea negrita y normal (no cursiva) */
+blockquote.biblia > .biblia-ref {
+  font-style: normal !important;   /* quita la cursiva heredada */
+  font-weight: bold !important;    /* fuerza negrita */
+  margin: 0 0 10px;
+  font-size: 1.1em;
+  color: #444;
+}
+
+/* ————————————————————————————————————————
+   CITAS GENÉRICAS (sin clases): caja blanca con sombra
+   ———————————————————————————————————————— */
+blockquote {
+  /* — Fondo con degradado de blanco a casi blanco */
+  background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
+
+  /* — Borde ligero alrededor de la caja */
+  border: 1px solid #e0e0e0;
+
+  /* — Espaciado: top, right, bottom, left */
+  padding: 25px 25px 25px 45px;
+
+  /* — Separación vertical entre citas */
+  margin: 15px 0;
+
+  /* — Esquinas redondeadas */
+  border-radius: 10px;
+
+  /* — Sombra suave debajo */
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+
+  /* — Texto en cursiva para estilo de cita */
+  font-style: italic;
+
+  /* — Tamaño y altura de línea legibles */
+  font-size: 16px;
+  line-height: 1.7;
+
+  /* — Necesario para posicionar los ::before y ::after */
+  position: relative;
+
+  /* — Transiciones suaves al hacer hover */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+blockquote:hover {
+  /* — Levantar ligeramente la caja y sombra al pasar el cursor */
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(0,0,0,0.12);
+}
+
+
+
+/* 3) (Opcional) Si tu cita incluye una línea de referencia al final, la alineas */
+blockquote > p + p {
+  margin-top: 1em;
+  margin-bottom: 0;
+  text-align: right;
+  font-size: 0.9em;
+  color: #666;
+  background: none;     /* quita fondo en la segunda línea */
+  box-shadow: none;     /* quita sombra ahí también */
+  padding: 0;
+}
+
+/* Solo blockquotes SIN la clase .biblia reciben las comillas */
+blockquote:not(.biblia)::before {
+  content: "“";
+  position: absolute;
+  left: 15px;
+  top: 10px;
+  font-size: 2.5em;
+  color: #d0d0d0;
+  font-family: serif;
+  z-index: 1;
+}
+
+blockquote:not(.biblia)::after {
+  content: "”";
+  position: absolute;
+  right: 15px;
+  bottom: 10px;
+  font-size: 2.5em;
+  color: #d0d0d0;
+  font-family: serif;
+  z-index: 1;
+}
+
+
+/* ————————————————————————————————————————
+   Cita que concluye
+   ———————————————————————————————————————— */
+   
+   
+.conclusion {
+	background: linear-gradient(135deg, #e8f5e8 0%, #f1f8f1 100%);
+	border: 2px solid #4caf50;
+	padding: 25px;
+	border-radius: 12px;
+	margin-top: 20px;
+	text-align: center;
+	font-weight: bold;
+	color: #2e7d32;
+	box-shadow: 0 4px 15px rgba(76,175,80,0.2);
+	position: relative;
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.conclusion:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 6px 20px rgba(76,175,80,0.25);
+}
+.conclusion::before {
+	content: "✨";
+	position: absolute;
+	left: 20px;
+	top: 50%;
+	transform: translateY(-50%);
+	font-size: 1.5em;
+}
+.conclusion::after {
+	content: "✨";
+	position: absolute;
+	right: 20px;
+	top: 50%;
+	transform: translateY(-50%);
+	font-size: 1.5em;
+}
+
+
+/* ————————————————————————————————————————
+   Observaciones
+   ———————————————————————————————————————— */
+   
+   
+.observacion {
+	background: linear-gradient(135deg, #f0f8ff 0%, #f8fbff 100%);
+	border-left: 4px solid #4a90e2;
+	padding: 20px;
+	margin: 20px 0;
+	border-radius: 8px;
+	box-shadow: 0 2px 8px rgba(74,144,226,0.1);
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.observacion:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 4px 15px rgba(74,144,226,0.15);
+}
+/* ————————————————————————————————————————
+   subrayado
+   ———————————————————————————————————————— */
+   
+
+/* Resaltado tipo “subrayado” */
+.subrayado {
+  /* línea debajo en lugar de background, o combina ambos */
+  text-decoration: underline;
+  text-decoration-color: #f1c40f;
+  text-decoration-thickness: 2px;
+
+  /* opcional: un ligero fondo amarillo pastel */
+  background-color: rgba(241, 196, 15, 0.2);
+
+  /* mejora el contraste si quieres */
+  /* color: #b7950b; */
+}
+
+
+

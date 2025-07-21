@@ -1,0 +1,18 @@
+<li class="list-item">
+{{ if .PublishDate }}
+    <p>{{ .PublishDate | time.Format ":date_medium"  }}</p>
+  {{ end }}
+  <h4>
+    <a href="{{ .RelPermalink }}">
+      {{ .Title }}
+    </a>
+  </h4>
+  {{ if .Summary }}
+    <p>{{ .Summary }}</p>
+  {{ end }}
+  
+  {{ if .Params.Tags }}
+    <p>Tags: {{ partial "tags.html" . -}}</p>
+  {{ end }}
+
+</li>

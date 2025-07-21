@@ -1,0 +1,245 @@
+
+        
+        .paralelo {
+            background-color: #f8f9fa;
+            border-left: 4px solid #007bff;
+            padding: 20px;
+            margin: 20px 0;
+            position: relative;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,123,255,0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .paralelo:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,123,255,0.15);
+        }
+        
+        .juicio {
+            border-left-color: #dc3545;
+            background: linear-gradient(135deg, #fdf2f2 0%, #fff5f5 100%);
+            box-shadow: 0 2px 8px rgba(220,53,69,0.1);
+        }
+        .juicio:hover {
+            box-shadow: 0 4px 15px rgba(220,53,69,0.15);
+        }
+        
+        .encarnacion { 
+            border-left-color: #a119d2;  
+            background: linear-gradient(135deg, #d8a3ff 0%, #e6ccff 100%);
+            box-shadow: 0 2px 8px rgba(161,25,210,0.1);
+        }
+        .encarnacion:hover {
+            box-shadow: 0 4px 15px rgba(161,25,210,0.15);
+        }
+        
+        .restauracion {
+            border-left-color: #28a745;
+            background: linear-gradient(135deg, #f2fdf4 0%, #f8fff9 100%);
+            box-shadow: 0 2px 8px rgba(40,167,69,0.1);
+        }
+        .restauracion:hover {
+            box-shadow: 0 4px 15px rgba(40,167,69,0.15);
+        }
+        
+        .titulo-principal {
+            text-align: center;
+            margin: 30px 0;
+            padding: 30px;
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 50%, #2c3e50 100%);
+            color: white;
+            border-radius: 15px;
+            border: 1px solid #34495e;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        .titulo-principal h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            color: white !important;
+        }
+        .titulo-principal .autor {
+            font-size: 1.2em;
+            font-style: italic;
+        }
+        .titulo-principal .fecha {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 0.9em;
+            color: #ecf0f1;
+            opacity: 0.8;
+            margin: -5px;
+        }
+        
+        .logo {
+            width: 60px;
+            height: 60px;
+            margin-right: 15px;
+            border-radius: 5px;
+        }
+        
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .brand-area {
+            display: flex;
+            align-items: center;
+        }
+        
+        .brand-text {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #343a40;
+        }
+        
+        .observacion {
+            background: linear-gradient(135deg, #f0f8ff 0%, #f8fbff 100%);
+            border-left: 4px solid #4a90e2;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(74,144,226,0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .observacion:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(74,144,226,0.15);
+        }
+        
+        .comentario {
+            background: linear-gradient(135deg, #e9ecef 0%, #f1f3f4 100%);
+            border: 1px solid #ced4da;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+            font-size: 0.9em;
+            color: #495057;
+            position: relative;
+            box-shadow: 0 2px 8px rgba(206,212,218,0.2);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+      .comentario {
+        background-color: #e9ecef;
+        border: 1px solid #ced4da;
+        border-radius: 5px;
+        padding: 15px;
+        margin: 15px 0;
+        font-size: 0.9em;
+        color: #495057;
+        position: relative;
+      }
+      .comentario::before {
+        content: "💬 ";
+        position: absolute;
+        left: -15px;
+        top: -15px;
+        padding: 15px;
+        border-radius: 10%;
+      }
+        
+        h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+        
+        h3 {
+            color: #34495e;
+            margin-top: 25px;
+        }
+        
+        .versiculo {
+            background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
+            border: 1px solid #e0e0e0;
+            padding: 25px 25px 25px 45px;
+            margin: 15px 0;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            font-style: italic;
+            font-size: 16px;
+            line-height: 1.7;
+            position: relative;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .versiculo:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.12);
+        }
+        .versiculo::before {
+            content: '"';
+            position: absolute;
+            left: 15px;
+            top: 10px;
+            font-size: 2.5em;
+            color: #d0d0d0;
+            font-family: serif;
+            z-index: 1;
+        }
+        
+        .enfasis {
+            background: linear-gradient(135deg, #fff3cd 0%, #fff8dc 100%);
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+            box-shadow: 0 1px 3px rgba(255,193,7,0.2);
+        }
+        
+        .subrayado {
+            background: linear-gradient(135deg, #fff3cd 0%, #fff8dc 100%);
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-weight: bold;
+            text-decoration: underline;
+            text-decoration-color: #ffc107;
+        }
+        
+        .cita-biblica {
+            color: #666;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        p {
+            text-align: justify;
+            margin: 15px 0;
+        }
+        
+        .conclusion-final {
+            background: linear-gradient(135deg, #e8f5e8 0%, #f1f8f1 100%);
+            border: 2px solid #4caf50;
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 20px;
+            text-align: center;
+            font-weight: bold;
+            color: #2e7d32;
+            box-shadow: 0 4px 15px rgba(76,175,80,0.2);
+            position: relative;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .conclusion-final:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(76,175,80,0.25);
+        }
+        .conclusion-final::before {
+            content: "✨";
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5em;
+        }
+        .conclusion-final::after {
+            content: "✨";
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5em;
+        }

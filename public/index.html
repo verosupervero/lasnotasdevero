@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html><head>
+	<meta name="generator" content="Hugo 0.148.1"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=57469&amp;path=livereload" data-no-instant defer></script>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="http://localhost:57469/styles/main.css">
+  <link rel="stylesheet" type="text/css" href="http://localhost:57469/styles/style.css">
+  <link rel="stylesheet" type="text/css" href="http://localhost:57469/styles/print.css" media="print">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <title>Las notas de Vero</title>
+  
+  <script>
+	var refTagger = {
+		settings: {
+			bibleVersion: "LBLA95"			
+		}
+	};
+	(function(d, t) {
+		var n=d.querySelector("[nonce]");
+		refTagger.settings.nonce = n && (n.nonce||n.getAttribute("nonce"));
+		var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
+		g.src = "https://api.reftagger.com/v2/RefTagger.es.js";
+		g.nonce = refTagger.settings.nonce;
+		s.parentNode.insertBefore(g, s);
+	}(document, "script"));
+</script>
+
+</head>
+
+<body class="left-sidebar"><div id="page-wrapper">
+
+<div id="header-wrapper">
+	<header id="header" class="container">
+	  <div class="header-content">
+		<div class="brand-area">
+		  <img src="http://localhost:57469/images/chibivero.png" alt="Las Notas de Vero Logo" class="logo">
+		  <div class="brand-text">Las Notas de Vero</div>
+		</div>
+		<nav id="nav">
+		  <ul>
+			<li><a href="/">Home</a></li>
+			<li><a href="/posts">Posts</a></li>
+			<li><a href="/tags">Tags</a></li>
+			<li><a href="sobre_mi.html">Acerca de</a></li>
+		  </ul>
+		</nav>
+	  </div>
+	</header>
+</div>
+      
+     
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+        }
+
+         
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        .logo h2 {
+            color: #2C3E50;
+            font-size: 1.2em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #666;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #7B68EE;
+        }
+
+         
+		.banner-hero {
+		  position: relative;
+		  min-height: 500px;
+		 background: linear-gradient(90deg, #1abc9c 0%, #16a085 100%) !important;
+		  background-image: 
+			radial-gradient(circle at 20% 80%, rgba(255,255,255,0.1) 0%, transparent 50%),
+			radial-gradient(circle at 80% 20%, rgba(255,255,255,0.1) 0%, transparent 50%);
+		  display: flex;
+		  align-items: center;
+		  justify-content: center;
+		  overflow: hidden;
+		  margin-bottom: 0;
+		  box-shadow: 0 2px 6px rgba(26, 188, 156, 0.4);
+		}
+
+         
+        .salmo-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 600px;
+            margin: 0 20px;
+            box-shadow: 
+                0 20px 40px rgba(0,0,0,0.1),
+                0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid rgba(255,255,255,0.8);
+            position: relative;
+            z-index: 2;
+        }
+
+        .salmo-content h1 {
+            font-size: 2.2em;
+            color: #2C3E50;
+            margin-bottom: 10px;
+            font-weight: 300;
+            line-height: 1.2;
+            text-align: center;
+        }
+
+        .salmo-content .autor {
+            display: block;
+            font-size: 1.1em;
+            color: #7B68EE;
+            font-weight: 500;
+            margin-bottom: 25px;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .salmo-content .intro-text {
+            font-size: 1em;
+            line-height: 1.6;
+            color: #555;
+            text-align: center;
+            margin: 0;
+        }
+
+         
+        .cafe-machine {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 1;
+        }
+
+        .cafe-machine-placeholder {
+            width: 180px;
+            height: 200px;
+            background: linear-gradient(145deg, #8B4513, #A0522D);
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.8em;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .cafe-cup {
+            position: absolute;
+            bottom: -30px;
+            left: 20px;
+            z-index: 1;
+        }
+
+        .cafe-cup-placeholder {
+            width: 140px;
+            height: 140px;
+            background: linear-gradient(145deg, #D2691E, #CD853F);
+            border-radius: 50%;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            border: 3px solid rgba(255,255,255,0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.8em;
+            text-align: center;
+            font-weight: bold;
+        }
+
+         
+        .main-content {
+            background: linear-gradient(to bottom, #f8f9fa 0%, #ffffff 100%);
+            min-height: 60vh;
+        }
+
+        .content-section {
+            padding: 80px 20px 60px;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .content-card {
+            background: white;
+            padding: 35px 25px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #7B68EE, #9370DB);
+            border-radius: 20px 20px 0 0;
+        }
+
+        .content-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+        }
+
+        .card-icon {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .content-card h3 {
+            font-size: 1.4em;
+            color: #2C3E50;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .content-card p {
+            color: #666;
+            line-height: 1.6;
+            margin: 0;
+            font-size: 0.95em;
+        }
+
+         
+        .cita-final {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 60px 20px;
+            margin-top: 40px;
+        }
+
+        .cita-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .cita-final blockquote {
+            background: rgba(255,255,255,0.95);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            border: none;
+            margin: 0;
+        }
+
+        .cita-final .biblia-ref {
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #7B68EE;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .cita-final blockquote p {
+            font-size: 1.1em;
+            line-height: 1.7;
+            color: #2C3E50;
+            margin: 0;
+            font-style: italic;
+        }
+
+         
+        .footer {
+            background: #2C3E50;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 50px;
+        }
+
+        .footer p {
+            margin: 0;
+            opacity: 0.8;
+        }
+
+         
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .banner-hero {
+                min-height: 400px;
+                padding: 20px;
+            }
+            
+            .salmo-card {
+                padding: 30px 25px;
+                margin: 0 10px;
+            }
+            
+            .salmo-content h1 {
+                font-size: 1.8em;
+            }
+            
+            .cafe-machine-placeholder {
+                width: 120px;
+                height: 140px;
+                font-size: 0.7em;
+            }
+            
+            .cafe-cup-placeholder {
+                width: 100px;
+                height: 100px;
+                font-size: 0.7em;
+            }
+            
+            .cafe-machine {
+                top: 15px;
+                right: 15px;
+            }
+            
+            .cafe-cup {
+                bottom: -20px;
+                left: 15px;
+            }
+            
+            .content-section {
+                padding: 60px 15px 40px;
+            }
+            
+            .content-grid {
+                gap: 20px;
+            }
+            
+            .content-card {
+                padding: 25px 20px;
+            }
+            
+            .cita-final {
+                padding: 40px 15px;
+            }
+            
+            .cita-container blockquote {
+                padding: 30px 25px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .salmo-content h1 {
+                font-size: 1.5em;
+            }
+            
+            .salmo-content .intro-text {
+                font-size: 0.9em;
+            }
+            
+            .cafe-machine-placeholder {
+                width: 100px;
+                height: 120px;
+            }
+            
+            .cafe-cup-placeholder {
+                width: 80px;
+                height: 80px;
+            }
+        }
+    </style>
+	
+	
+	 
+    <div class="banner-hero">
+        
+        <div class="salmo-card">
+            <div class="salmo-content">
+                <h1>Los cielos cuentan la gloria de Dios, y el firmamento anuncia la obra de sus manos.</h1>
+                <span class="autor">Salmo 19:1</span>
+                <div class="intro-text">
+                    Esta página está pensada para compartir con ustedes diferentes artículos, usando las cualidades y dones que el Señor me ha permitido tener.
+                </div>
+            </div>
+        </div>
+        
+        
+        <div class="cafe-machine">
+            <div class="cafe-machine-placeholder">
+                ☕<br>Máquina<br>de Café
+            </div>
+        </div>
+        
+        
+        <div class="cafe-cup">
+            <div class="cafe-cup-placeholder">
+                ☕<br>Café<br>Latte
+            </div>
+        </div>
+    </div>
+
+    
+    <main class="main-content">
+        
+        <section class="content-section">
+            <div class="content-grid">
+                
+                <div class="content-card fe-card">
+                    <div class="card-icon">✝️</div>
+                    <h3>Seguidora de Jesús</h3>
+                    <p>Buscando aprender y compartir lo que voy aprendiendo de él, creciendo en fe y conocimiento de Su palabra.</p>
+                </div>
+                
+                
+                <div class="content-card conocimiento-card">
+                    <div class="card-icon">🎓</div>
+                    <h3>Ingeniería Electrónica</h3>
+                    <p>Estudiante de Ing. Electrónica (UBA) -eq MSc, realizando Tesis en el área de IA (Machine Vision, Machine Learning).</p>
+                </div>
+                
+                
+                <div class="content-card servicio-card">
+                    <div class="card-icon">💞</div>
+                    <h3>Un equipo</h3>
+                    <p>Servimos al Señor con mi esposo, combinando nuestros dones con la carrera técnica que pudimos cursar.</p>
+                </div>
+            </div>
+        </section>
+
+        
+        <section class="cita-final">
+            <div class="cita-container">
+                <blockquote>
+                    <div class="biblia-ref">Colosenses 3:23-24</div>
+                    <p>"Y todo lo que hagáis, hacedlo de corazón, como para el Señor y no para los hombres; sabiendo que del Señor recibiréis la recompensa de la herencia, porque a Cristo el Señor servís."</p>
+                </blockquote>
+            </div>
+        </section>
+    </main>
+	
+
+      <div id="footer-wrapper">
+        <footer id="footer" class="container">
+          <div class="row">
+            <div class="12u">
+              <div id="copyright">
+				© Verónica Bustamante. Todos los derechos reservados
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div></body>
+</html>

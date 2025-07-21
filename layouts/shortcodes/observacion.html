@@ -1,0 +1,8 @@
+<div class="observacion">
+    {{/* 1) Procesa todo Markdown */}}
+    {{ $md := .Inner | markdownify }}
+    {{/* 2) Des‐escapa cualquier etiqueta HTML que aún esté en forma &lt;tag&gt; */}}
+    {{ $un := $md | htmlUnescape }}
+    {{/* 3) Asegura que no se vuelva a escapar el HTML residual */}}
+    {{ $un | safeHTML }}
+</div>

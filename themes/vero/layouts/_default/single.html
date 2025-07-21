@@ -1,0 +1,57 @@
+{{ define "main" }}
+ <!-- Título Principal -->
+<div class="container">
+	<div class="titulo-principal">
+	  <div class="fecha">Publicado: {{ .PublishDate | time.Format ":date_medium" }}</div>
+	  <h1>{{ .Title }}</h1>
+	  {{ if .Params.Author }}
+	  <div class="autor">Por {{ .Params.Author }}</div>
+	  {{ end }}
+	  {{ if .Params.Tags }}
+		<div class="tags">Tags: {{ partial "tags.html" . -}}</div>
+	  {{ end }}
+	</div>
+</div>
+
+<!-- Main -->
+<div id="main-wrapper">
+	<div class="container">
+	  <div class="row 200%">
+		<div class="4u 12u$(medium)">
+		  <div id="sidebar">
+			<!-- Sidebar -->
+
+			{{ if .TableOfContents }}
+			<section>
+			  <h2>Índice</h2>
+			  {{ .TableOfContents }}
+			</section>
+			{{ end }}
+
+			{{ with .Params.relacionados }}
+			<section>
+			  <h3>Artículos e ideas relacionadas:</h3>
+			  <ul class="style2">
+				{{ range . }}
+				  <li><a href="{{ .url }}">{{ .titulo }}</a></li>
+				{{ end }}
+			  </ul>
+			</section>
+			{{ end }}
+
+		  </div>
+		</div>
+		
+		
+		<div class="8u 12u$(medium) important(medium)">
+			<div id="content">
+				<!-- Content -->
+				{{ .Content }}
+			</div>
+		</div>
+	  </div>
+	</div>
+</div>
+{{ end }}
+
+
