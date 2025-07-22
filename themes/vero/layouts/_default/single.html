@@ -16,7 +16,13 @@
 <!-- Main -->
 <div id="main-wrapper">
 	<div class="container">
-	  <div class="row 200%">
+	  <div class="row 200%">		
+		<div class="8u 12u$(medium) important(small)">
+			<div id="content">
+				<!-- Content -->
+				{{ .Content }}
+			</div>
+		</div>
 		<div class="4u 12u$(medium)">
 		  <div id="sidebar">
 			<!-- Sidebar -->
@@ -40,14 +46,6 @@
 			{{ end }}
 
 		  </div>
-		</div>
-		
-		
-		<div class="8u 12u$(medium) important(small)">
-			<div id="content">
-				<!-- Content -->
-				{{ .Content }}
-			</div>
 		</div>
 	  </div>
 	</div>

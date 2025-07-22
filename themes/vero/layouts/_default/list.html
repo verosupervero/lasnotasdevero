@@ -9,7 +9,30 @@
 <!-- Main -->
 <div id="main-wrapper">
 	<div class="container">
-	  <div class="row 200%">
+	  <div class="row 200%">		
+		<div class="8u 12u$(medium) important(small)">
+			<div id="content">
+				<!-- Content -->
+				<ul>
+				{{ $paginator := .Paginate (.Pages.ByPublishDate.Reverse) 20 }}
+				{{ range $paginator.Pages }}
+					{{- partial "listitem.html" . -}}
+				{{ end }}
+				</ul>
+
+				<nav class="pagination">
+				{{ if $paginator.HasPrev }}
+					<a href="{{ $paginator.Prev.URL }}">Anterior</a>
+				{{ end }}
+				{{ range $paginator.Pagers }}
+					<a href="{{ .URL }}"{{ if eq . $paginator }} class="active"{{ end }}>{{ .PageNumber }}</a>
+				{{ end }}
+				{{ if $paginator.HasNext }}
+					<a href="{{ $paginator.Next.URL }}">Siguiente</a>
+				{{ end }}
+				</nav>
+			</div>
+		</div>
 		<div class="4u 12u$(medium)">
 		  <div id="sidebar">
 			<!-- Sidebar -->
@@ -27,31 +50,6 @@
 			</section>
 			{{ end }}
 		  </div>
-		</div>
-		
-		
-		<div class="8u 12u$(medium) important(small)">
-			<div id="content">
-				<!-- Content -->
-				<ul>
-          {{ $paginator := .Paginate (.Pages.ByPublishDate.Reverse) 20 }}
-          {{ range $paginator.Pages }}
-            {{- partial "listitem.html" . -}}
-          {{ end }}
-        </ul>
-
-        <nav class="pagination">
-          {{ if $paginator.HasPrev }}
-            <a href="{{ $paginator.Prev.URL }}">Anterior</a>
-          {{ end }}
-          {{ range $paginator.Pagers }}
-            <a href="{{ .URL }}"{{ if eq . $paginator }} class="active"{{ end }}>{{ .PageNumber }}</a>
-          {{ end }}
-          {{ if $paginator.HasNext }}
-            <a href="{{ $paginator.Next.URL }}">Siguiente</a>
-          {{ end }}
-        </nav>
-			</div>
 		</div>
 	  </div>
 	</div>
