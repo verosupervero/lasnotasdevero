@@ -72,11 +72,10 @@
             opacity: 0.8;
             margin: -5px;
         }
-      
+        
         .logo {
-            height: 100%;
-            width: auto;
-            max-height: 120px; /* o lo que quieras */
+            width: 60px;
+            height: 60px;
             margin-right: 15px;
             border-radius: 5px;
         }
@@ -87,11 +86,10 @@
             justify-content: space-between;
         }
         
-        brand-area {
-    height: 120px;
-    display: flex;
-    align-items: center;
-}
+        .brand-area {
+            display: flex;
+            align-items: center;
+        }
         
         .brand-text {
             font-size: 1.5em;

@@ -2,45 +2,45 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Las notas de Vero</title>
-    <link>http://localhost:57469/tags/</link>
+    <link>http://localhost:1313/tags/</link>
     <description>Recent content in Tags on Las notas de Vero</description>
     <generator>Hugo</generator>
     <language>es</language>
     <lastBuildDate>Sun, 20 Jul 2025 21:32:41 -0300</lastBuildDate>
-    <atom:link href="http://localhost:57469/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Evangelios</title>
-      <link>http://localhost:57469/tags/evangelios/</link>
+      <link>http://localhost:1313/tags/evangelios/</link>
       <pubDate>Sun, 20 Jul 2025 21:32:41 -0300</pubDate>
-      <guid>http://localhost:57469/tags/evangelios/</guid>
+      <guid>http://localhost:1313/tags/evangelios/</guid>
       <description></description>
     </item>
     <item>
       <title>Exodo</title>
-      <link>http://localhost:57469/tags/exodo/</link>
+      <link>http://localhost:1313/tags/exodo/</link>
       <pubDate>Sun, 20 Jul 2025 21:32:41 -0300</pubDate>
-      <guid>http://localhost:57469/tags/exodo/</guid>
+      <guid>http://localhost:1313/tags/exodo/</guid>
       <description></description>
     </item>
     <item>
       <title>Apocalipsis</title>
-      <link>http://localhost:57469/tags/apocalipsis/</link>
+      <link>http://localhost:1313/tags/apocalipsis/</link>
       <pubDate>Sun, 20 Jul 2025 21:11:54 -0300</pubDate>
-      <guid>http://localhost:57469/tags/apocalipsis/</guid>
+      <guid>http://localhost:1313/tags/apocalipsis/</guid>
       <description></description>
     </item>
     <item>
       <title>Genesis</title>
-      <link>http://localhost:57469/tags/genesis/</link>
+      <link>http://localhost:1313/tags/genesis/</link>
       <pubDate>Sun, 20 Jul 2025 21:11:54 -0300</pubDate>
-      <guid>http://localhost:57469/tags/genesis/</guid>
+      <guid>http://localhost:1313/tags/genesis/</guid>
       <description></description>
     </item>
     <item>
       <title>Redencion</title>
-      <link>http://localhost:57469/tags/redencion/</link>
+      <link>http://localhost:1313/tags/redencion/</link>
       <pubDate>Sun, 20 Jul 2025 21:11:54 -0300</pubDate>
-      <guid>http://localhost:57469/tags/redencion/</guid>
+      <guid>http://localhost:1313/tags/redencion/</guid>
       <description></description>
     </item>
   </channel>
