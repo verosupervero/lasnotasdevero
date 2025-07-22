@@ -7,7 +7,7 @@ tags = ["Reforma", "Historia", "Mujeres", "Teología"]
 author = "Vero"
 +++
 
-# Una mujer hablando de teología en plena ¡Reforma! ¡Imposible! 🏰📜
+Una mujer hablando de teología en plena ¡Reforma! ¡Imposible! 🏰📜
 
 Eso pensaban muchos académicos bávaros… hasta que **Argula von Grumbach** se les plantó con su Biblia sobre la mesa.
 
