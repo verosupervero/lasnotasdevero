@@ -1,0 +1,27 @@
+# Hugo files to ignore
+
+# Generated public site
+/public/
+/resources/_gen/
+
+# Temporary files
+.DS_Store
+Thumbs.db
+
+# Node modules (if you use npm/yarn in your Hugo project)
+/node_modules/
+/package-lock.json
+/yarn.lock
+
+# Hugo cache and temp
+.hugo_build.lock
+
+# OS and IDE junk
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Backup files
+*~
+*.bak
