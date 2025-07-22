@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Estudio-Biblico on Las Notas de Vero</title>
+    <link>http://localhost:1313/tags/estudio-biblico/</link>
+    <description>Recent content in Estudio-Biblico on Las Notas de Vero</description>
+    <generator>Hugo</generator>
+    <language>es</language>
+    <lastBuildDate>Sun, 20 Jul 2025 21:11:54 -0300</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/estudio-biblico/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>El juicio y la redención de los elementos del libro de Génesis en Apocalipsis</title>
+      <link>http://localhost:1313/posts/ap16y22/</link>
+      <pubDate>Sun, 20 Jul 2025 21:11:54 -0300</pubDate>
+      <guid>http://localhost:1313/posts/ap16y22/</guid>
+      <description>Una mirada a cómo el Apocalipsis retoma los elementos del Génesis.</description>
+    </item>
+  </channel>
+</rss>
