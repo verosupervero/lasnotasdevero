@@ -75,9 +75,8 @@ Dejaré algunas imágenes porque me parece necesario mostrar que esto está hist
 <img src="/images/pabloytecla.jpg" 
      alt="Icono bizantino: Pablo y Tecla"
      style="float: left; margin-right: 2em; margin-bottom: 1em; max-width: 320px; width: 38%; height: auto; border-radius: 18px; box-shadow: 0 2px 14px rgba(0,0,0,0.12);" />
-La figura de la imagen al lado de Pablo es Tecla de los _Hechos de Pablo y Tecla_ (siglo II). En este texto, ella es una joven convertida por Pablo, que predica, bautiza y sufre persecución por su fe. Tecla fue recordada en la iconografía como santa, mártir y “apóstol”, sobre todo en Oriente. Existe variado arte bizantino de ella como una figura real. Sin embargo, no hay pruebas históricas directas sobre su existencia, se debate si se trató de una persona real o un personaje literario-simbólico. Sin embargo, su reconocimiento es un hecho arqueológico y espiritual: para las comunidades cristianas antiguas, Tecla fue ejemplo de liderazgo y ministerio femenino legítimo.
-Respecto a la imagen
-Se observa cómo ella tiene las mismas expresiones que el apóstol. Incluso se ve cómo intentaron borrarle su dedo (símbolo del orador, persona que habla)[^mano].
+La figura de la imagen al lado de Pablo es Tecla de los _Hechos de Pablo y Tecla_ (siglo II). En este texto, ella es una joven convertida por Pablo, que predica, bautiza y sufre persecución por su fe. Tecla fue recordada en la iconografía como santa, mártir y “apóstol”, sobre todo en Oriente. Existe variado arte bizantino de ella como una figura real. Sin embargo, no hay pruebas históricas directas sobre su existencia, se debate si se trató de una persona real o un personaje literario-simbólico. 
+Respecto a la imagen se observa cómo ella tiene las mismas expresiones que el apóstol. Incluso se ve cómo intentaron borrarle su dedo (símbolo del orador, persona que habla)[^mano].
 
 <br clear="all" />
 
@@ -100,9 +99,7 @@ Se puede observar el staff (báculo) que lleva ella. Se entiende como un sello t
 <img src="/images/cerula_catacumba.jpg"  
      alt="Catacumba de Nápoles: retrato de Cerula"  
      style="float: left; margin-right: 2em; margin-bottom: 1em; max-width: 320px; width: 38%; height: auto; border-radius: 18px; box-shadow: 0 2px 14px rgba(0,0,0,0.12);" />  
-En las catacumbas de Nápoles se hallan pinturas funerarias del siglo IV-V donde aparecen mujeres como **Cerula** y **Bitalia** representadas en actitud de oración o bendición, con los brazos levantados, rodeadas de símbolos cristianos como el alfa y la omega y el crismón sobre sus cabezas. Ambas visten una túnica litúrgica llamada _pænula_, similar a una casulla sacerdotal. No llevan joyas, lo que subraya su función religiosa y austera.  
-Estas imágenes sugieren que en la iglesia cristiana primitiva algunas mujeres ejercían roles de liderazgo y eran reconocidas públicamente por la comunidad[^cerula].
-
+En las catacumbas de Nápoles se hallan pinturas funerarias del siglo IV-V donde aparecen mujeres como **Cerula** y **Bitalia** representadas en actitud de oración o bendición, con los brazos levantados, rodeadas de símbolos cristianos como el alfa y la omega y el crismón sobre sus cabezas. Ambas visten una túnica litúrgica llamada _pænula_, similar a una casulla sacerdotal. No llevan joyas, lo que subraya su función religiosa y austera.
 <br clear="all" />
 
 
@@ -116,7 +113,6 @@ La idea es fomentar la investigación de este asunto, he encontrado figuras hist
 [^báculo2]: Véase [Pastoral Staff, Encyclopaedia Britannica (1911)](https://en.wikisource.org/wiki/1911_Encyclop%C3%A6dia_Britannica/Pastoral_Staff)
 [^abadesa]: Véase [Abadesa – Wikipedia](https://es.wikipedia.org/wiki/Abadesa)
 [^mano]: Véase [Marisol Román. “La mano en la iconografía cristiana”](https://www.marisolroman.com/hablemos-de-arte/la-mano-en-la-iconografa-cristiana)
-[^cerula]: Véase Ally Kateusz, *Mary and Early Christian Women: Hidden Leadership*, Palgrave Macmillan, 2019, p. 157. [Disponible gratis aquí](https://link.springer.com/book/10.1007/978-3-030-11111-3)
 [^hildergarda]: Véase [Pastoral Staff, Encyclopaedia Britannica (1911)](https://es.wikipedia.org/wiki/Hildegarda_de_Bingen)
 [^beth_barr]: Véase [Página de la autora](https://bethallisonbarr.com)
 [^drmsh]: Véase [Página de la autor](https://drmsh.com/)
