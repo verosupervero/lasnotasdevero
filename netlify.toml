@@ -3,4 +3,4 @@
   command = "hugo --minify"
 
 [context.production.environment]
-  HUGO_VERSION = "0.124.1"  # o la versión que quieras, chequeá la última en https://github.com/gohugoio/hugo/releases
+  HUGO_VERSION = "0.124.1"
