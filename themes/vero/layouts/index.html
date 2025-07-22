@@ -64,21 +64,22 @@
             color: #7B68EE;
         }
 
-        /* Banner principal inspirado en la imagen */
-		.banner-hero {
-		  position: relative;
-		  min-height: 500px;
-		 background: linear-gradient(90deg, #1abc9c 0%, #16a085 100%) !important;
-		  background-image: 
-			radial-gradient(circle at 20% 80%, rgba(255,255,255,0.1) 0%, transparent 50%),
-			radial-gradient(circle at 80% 20%, rgba(255,255,255,0.1) 0%, transparent 50%);
-		  display: flex;
-		  align-items: center;
-		  justify-content: center;
-		  overflow: hidden;
-		  margin-bottom: 0;
-		  box-shadow: 0 2px 6px rgba(26, 188, 156, 0.4);
-		}
+        .banner-hero {
+        position: relative;
+        min-height: 500px;
+        /* Capas de background: primero la imagen, después el degradado */
+        background:
+            url('/images/casita.jpg') center center/cover no-repeat,
+            linear-gradient(90deg, #1abc9c 0%, #16a085 100%);
+        /* Si la imagen falla, se verá el degradado */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        margin-bottom: 0;
+        box-shadow: 0 2px 6px rgba(26, 188, 156, 0.4);
+        }
+
 
         /* Tarjeta blanca central para el salmo */
         .salmo-card {
@@ -386,17 +387,13 @@
         </div>
         
         <!-- Placeholder para máquina de café -->
-        <div class="cafe-machine">
-            <div class="cafe-machine-placeholder">
-                ☕<br>Máquina<br>de Café
-            </div>
-        </div>
-        
-        <!-- Placeholder para taza de café -->
-        <div class="cafe-cup">
-            <div class="cafe-cup-placeholder">
-                ☕<br>Café<br>Latte
-            </div>
+       <div class="cafe-machine">
+    <img src="/images/maquinacafe.jpg" alt="Máquina de café" style="width:180px;height:200px;object-fit:cover;border-radius:15px;box-shadow:0 10px 25px rgba(0,0,0,0.2);">
+</div>
+
+<div class="cafe-cup">
+    <img src="/images/cafelatte.jpg" alt="Café Latte" style="width:140px;height:140px;object-fit:cover;border-radius:50%;box-shadow:0 15px 30px rgba(0,0,0,0.2);border:3px solid rgba(255,255,255,0.8);">
+</div>
         </div>
     </div>
 
