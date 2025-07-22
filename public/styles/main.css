@@ -2106,6 +2106,7 @@ line-height: 1;
   list-style: none;
   margin: 0;
   padding: 0;
+  flex-wrap: wrap;
 }
 
 #nav ul li {
@@ -2199,6 +2200,26 @@ line-height: 1;
 				z-index: 1;
 			}
 
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    align-items: stretch; /* Estira al 100% */
+  }
+  #nav {
+    margin-left: 0;
+    width: 100%;
+    margin-top: 0.5em;
+    display: flex;
+    justify-content: center;
+  }
+  #nav ul {
+    justify-content: center;
+    width: auto;
+    flex-wrap: wrap;
+  }
+}
+
+
 /* Banner */
 
 	#banner {
@@ -2283,9 +2304,9 @@ line-height: 1;
 
 /* Medium */
 
-	#navPanel, #navToggle {
+	/* #navPanel, #navToggle {
 		display: none;
-	}
+	} */
 
 	@media screen and (max-width: 980px) {
 
@@ -2422,9 +2443,9 @@ line-height: 1;
 
 		/* Nav */
 
-			#nav {
+			/* #nav {
 				display: none;
-			}
+			} */
 
 		/* Banner */
 
