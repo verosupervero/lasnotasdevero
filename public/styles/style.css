@@ -210,38 +210,6 @@ h2::after {
   }
 }
 
-
-
-
-
-
-
-
-
-
-.logo {
-	width: 60px;
-	height: 60px;
-	margin-right: 15px;
-	border-radius: 5px;
-}
-
-.header-content {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-}
-
-.brand-area {
-	display: flex;
-	align-items: center;
-}
-
-.brand-text {
-	font-size: 1.5em;
-	font-weight: bold;
-	color: #343a40;
-}
 .paralelo {
 	background-color: #f8f9fa;
 	border-left: 4px solid #007bff;

@@ -290,7 +290,30 @@ border: 2px solid  #60f659 ;
 		}
 
 	}
+	.brand-area {
+display: flex;
+align-items: center;
+height: 100px; /* debe coincidir con la altura del logo */
+}
+.logo {
+height: 100%;
+margin-right: 15px;
+border-radius: 5px;
+}
 
+.header-content {
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
+
+.brand-text {
+font-size: 1.5em;
+font-weight: bold;
+color: #343a40;
+font-family: Poppins;
+line-height: 1;
+}
 	@media screen and (max-width: 980px) {
 #sidebar ul li {
   position: relative;
@@ -1271,6 +1294,31 @@ border: 2px solid  #60f659 ;
 	}
 
 	@media screen and (max-width: 736px) {
+	
+		.brand-area {
+	display: flex;
+	align-items: center;
+	height: 50px !important; /* debe coincidir con la altura del logo */
+	}
+	.logo {
+	height: 100%;
+	margin-right: 15px;
+	border-radius: 5px;
+	}
+
+	.header-content {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	}
+
+	.brand-text {
+	font-size: 1.5em;
+	font-weight: bold;
+	color: #343a40;
+	font-family: Poppins;
+	line-height: 1;
+	}
 
 		.row > * {
 			padding: 20px 0 0 20px;
@@ -1538,6 +1586,7 @@ border: 2px solid  #60f659 ;
 	h1, h2, h3, h4, h5, h6 {
 		color: #444;
 		font-weight: 800;
+		font-family: Poppins;
 	}
 
 		h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
@@ -2038,48 +2087,30 @@ border: 2px solid  #60f659 ;
 		position: relative;
 	}
 
-/* Logo */
 
-	#logo {
-		display: inline-block;
-	}
-
-		#logo h1 {
-			background: #ff4486;
-			color: #fff;
-			border-radius: 6px;
-			font-family: 'Poppins', serif;
-			font-weight: 400;
-			padding: 0.25em 0.2em 0.25em 0.2em;
-			font-size: 3.25em;
-			letter-spacing: 0.05em;
-			display: inline-block;
-			vertical-align: middle;
-		}
-
-		#logo span {
-			font-weight: 800;
-			line-height: 4.5em;
-			letter-spacing: 0.025em;
-			font-size: 0.9em;
-			vertical-align: middle;
-			margin: 0 0 0 1.25em;
-		}
 
 /* Nav */
 
-	#nav {
-		position: absolute;
-		right: 0;
-		top: 0;
-		font-size: 0.9em;
-	}
+#nav {
+  display: flex;
+  align-items: center;
+  font-size: 0.9em;
+  margin-left: auto;
+}
 
-		#nav ul li {
-			float: left;
-			line-height: 4.5em;
-			padding-left: 1.5em;
-		}
+
+#nav ul {
+  display: flex;
+  align-items: center;
+  gap: 1.5em;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#nav ul li {
+  line-height: 1;
+}
 
 			#nav ul li a, #nav ul li span {
 				-moz-transition: background-color .25s ease-in-out;
@@ -2090,6 +2121,7 @@ border: 2px solid  #60f659 ;
 				letter-spacing: 0.025em;
 				color: #696969;
 				text-decoration: none;
+				font-family: Poppins;
 				border-radius: 6px;
 				padding: 0.5em 1em 0.5em 1em;
 			}
@@ -2257,6 +2289,36 @@ border: 2px solid  #60f659 ;
 
 	@media screen and (max-width: 980px) {
 
+		.brand-area {
+	display: flex;
+	align-items: center;
+	height: 80px ; /* debe coincidir con la altura del logo */
+	}
+	.logo {
+	height: 100%;
+	margin-right: 15px;
+	border-radius: 5px;
+	}
+
+	.header-content {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	}
+
+	.brand-text {
+	font-size: 1.5em;
+	font-weight: bold;
+	color: #343a40;
+	font-family: Poppins;
+	line-height: 1;
+	}
+
+
+  #nav ul {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
 		/* Basic */
 
 			html, body {
@@ -2337,13 +2399,13 @@ border: 2px solid  #60f659 ;
 		/* Wrappers */
 
 			#header-wrapper {
-				padding: 3em 0 1em 0;
-				text-align: center;
+			padding: 0.5em 0;
 			}
 
 			#footer-wrapper {
-				padding: 4em 0 4em 0;
+				padding: 2em 0 2em 0;
 			}
+
 
 		/* Header */
 
@@ -2571,7 +2633,7 @@ border: 2px solid  #60f659 ;
 
 			h2, h3, h4, h5, h6 {
 				font-size: 13pt;
-				margin: 0 0 0.75em 0;
+				margin: 0 0 0.2em 0;
 			}
 
 		/* Section/Article */
@@ -2692,11 +2754,11 @@ border: 2px solid  #60f659 ;
 		/* Wrappers */
 
 			#header-wrapper {
-				padding: 3em 0 1.5em 0;
+				padding: 0.2em 0 0.5em 0;
 			}
 
 			#banner-wrapper {
-				padding: 0 15px 0 15px;
+				padding: 0 5px 0 5px;
 			}
 
 			#features-wrapper {
@@ -2704,7 +2766,7 @@ border: 2px solid  #60f659 ;
 			}
 
 			#main-wrapper, #footer-wrapper {
-				padding: 40px 30px 40px 30px;
+				padding: 10px 10px 10px 10px;
 			}
 
 		/* Logo */
@@ -2715,8 +2777,9 @@ border: 2px solid  #60f659 ;
 			}
 
 			#logo span {
-				line-height: 3em;
+				line-height: 1em;
 			}
+			
 
 		/* Banner */
 
@@ -2728,7 +2791,7 @@ border: 2px solid  #60f659 ;
 
 				#banner h2 {
 					font-size: 2em;
-					margin: 0.75em 0 0.5em 0;
+					margin: 0.2em 0 0.5em 0;
 				}
 
 				#banner p {
@@ -2924,5 +2987,6 @@ a.footnote-ref:active {
   background: yellow !important;
   transition: background 0.3s;
 }
+
 
 
