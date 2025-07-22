@@ -2,7 +2,7 @@
 title = "Reflexión sobre las mujeres pastoras, reuniones mixtas y liderazgo femenino en general"
 date = '2025-07-14T01:17:14-03:00'
 draft = false
-tags = ["Mujeres", "Ministerio", "biblia", "reflexión"]
+tags = ["Mujeres", "Ministerio", "estudio-biblico","exégesis","reflexión"]
 summary= "Acerca de las reuniones mixtas y el ministerio pastoral femenino"
 author = "Vero"
 +++
