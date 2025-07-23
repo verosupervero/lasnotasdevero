@@ -1,7 +1,7 @@
 
 +++
 title = "Devocional: El Reino del Revés🐑🙏"
-date = 2025-07-22
+date = 2025-07-13
 tags = ["reino", "jesús", "devocional", "bienaventuranzas"]
 categories = ["reflexión"]
 summary = "El Reino de los cielos no se conquista con armas, sino con mansedumbre, misericordia y humildad, como enseñó Jesús en Mateo 5."
