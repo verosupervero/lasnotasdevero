@@ -6,16 +6,6 @@ tags = ["Animo", "Desaliento", "devocional","Tristeza","reflexión","ministerio"
 summary = "Aliento bíblico frente a las personas que nos tratan de desalentar del ministerio o de las cosas que nos da el Señor para servir"
 +++
 
-<img src="/images/pray.jpg" 
-     alt="Oracion"
-     style="float: right; 
-            margin-right: 2em; 
-            margin-bottom: 1em; 
-            max-width: 320px; 
-            width: 38%; 
-            height: auto; 
-            border-radius: 18px; 
-            box-shadow: 0 2px 14px rgba(0,0,0,0.12);" />
 
 📖 **Mateo 23:1–15 (RVR1960)**
 
@@ -35,7 +25,17 @@ summary = "Aliento bíblico frente a las personas que nos tratan de desalentar d
 > 14 ¡Ay de vosotros, escribas y fariseos, hipócritas! porque devoráis las casas de las viudas, y como pretexto hacéis largas oraciones; por esto recibiréis mayor condenación.  
 > 15 ¡Ay de vosotros, escribas y fariseos, hipócritas! porque recorréis mar y tierra para hacer un prosélito, y una vez hecho, le hacéis dos veces más hijo del infierno que vosotros.
 
----
+
+<img src="/images/pray.png" 
+     alt="Oracion"
+     style="float: right; 
+            margin-right: 2em; 
+            margin-bottom: 1em; 
+            max-width: 320px; 
+            width: 38%; 
+            height: auto; 
+            border-radius: 18px; 
+            box-shadow: 0 2px 14px rgba(0,0,0,0.12);" />
 
 Los que quieren ser los primeros en ser vistos, o se creen más que otros, o piensan que tienen autoridad para decir qué está bien y qué no… primero deberían inspeccionarse a sí mismos.
 
