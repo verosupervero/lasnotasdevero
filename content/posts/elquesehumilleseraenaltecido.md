@@ -29,7 +29,7 @@ summary = "Aliento bíblico frente a las personas que nos tratan de desalentar d
 <img src="/images/pray.png" 
      alt="Oracion"
      style="float: right; 
-            margin-right: 2em; 
+            margin-left: 2em; 
             margin-bottom: 1em; 
             max-width: 320px; 
             width: 38%; 
