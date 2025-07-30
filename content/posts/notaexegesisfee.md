@@ -3,6 +3,7 @@ title = "¿Terminaste tu investigación bíblica? Consejos de Gordon Fee"
 tags = [ "Ministerio", "estudio-biblico","exégesis"]
 date = '2025-07-13T01:17:13-03:00'
 summary = "Resumen práctico sobre los pasos finales en el estudio bíblico, basado en Fee (Exégesis del NT, Vida, págs. 40-41)."
+image = "/images/exegesisfee.jpg"
 +++
 
 

@@ -5,6 +5,7 @@ title = "Reflexión poética: El fin de una vida"
 summary= "Una reflexión poética sobre los rastros que deja la vida humana y el testimonio silencioso de las obras de Dios en la historia."
 tags = ["Vida", "Esperanza", "Poesía", "Reflexión"]
 author = "Vero"
+image = "/images/fin-de-una-vida.jpg"
 +++
 
 <img src="/images/fin-de-una-vida.jpg" 

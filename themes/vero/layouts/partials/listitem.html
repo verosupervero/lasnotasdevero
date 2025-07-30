@@ -1,18 +1,31 @@
-<li class="list-item">
-{{ if .PublishDate }}
-    <p>{{ .PublishDate | time.Format ":date_medium"  }}</p>
-  {{ end }}
-  <h4>
-    <a href="{{ .RelPermalink }}">
-      {{ .Title }}
-    </a>
-  </h4>
-  {{ if .Summary }}
-    <p>{{ .Summary }}</p>
-  {{ end }}
-  
-  {{ if .Params.Tags }}
-    <p>Tags: {{ partial "tags.html" . -}}</p>
-  {{ end }}
+{{ $isTermPage := eq .item.Kind "term" }}
 
+<li class="list-item horizontal-card">
+  <div class="card-thumb">
+    <a href="{{ .item.RelPermalink }}">
+      {{ if .item.Params.image }}
+        <img src="{{ .item.Params.image | absURL }}" alt="{{ .item.Title }}">
+      {{ else if not $isTermPage }}
+        <img src="{{ "images/default.jpg" | absURL }}" alt="{{ .item.Title }}">
+      {{ end }}
+    </a>
+  </div>
+
+  <div class="card-body">
+    {{ if .item.PublishDate }}
+      <p>{{ .item.PublishDate | time.Format ":date_medium" }}</p>
+    {{ end }}
+
+    <h4>
+      <a href="{{ .item.RelPermalink }}">{{ .item.Title }}</a>
+    </h4>
+
+    {{ if .item.Summary }}
+      <p>{{ .item.Summary }}</p>
+    {{ end }}
+
+    {{ if .item.Params.tags }}
+      <p>Tags: {{ partial "tags.html" .item }}</p>
+    {{ end }}
+  </div>
 </li>

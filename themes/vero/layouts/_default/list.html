@@ -1,57 +1,57 @@
 {{ define "main" }}
 <!-- Título Principal -->
 <div class="container">
-	<div class="titulo-principal">
-	  <h1>Mostrando: {{ replace .Title "-" " " }}</h1>
-	</div>
+  <div class="titulo-principal">
+    <h1>Mostrando: {{ replace .Title "-" " " }}</h1>
+  </div>
 </div>
 
 <!-- Main -->
 <div id="main-wrapper">
-	<div class="container">
-	  <div class="row 200%">		
-		<div class="8u 12u$(medium) important(small)">
-			<div id="content">
-				<!-- Content -->
-				<ul>
-				{{ $paginator := .Paginate (.Pages.ByPublishDate.Reverse) 20 }}
-				{{ range $paginator.Pages }}
-					{{- partial "listitem.html" . -}}
-				{{ end }}
-				</ul>
+  <div class="container">
+    <div class="row 200%">
+      <div class="8u 12u$(medium) important(small)">
+        <div id="content">
+          <!-- Content -->
+          <ul>
+            {{ $paginator := .Paginate (.Pages.ByPublishDate.Reverse) }}
+            {{ range $paginator.Pages }}
+              {{ partial "listitem.html" (dict "item" . "page" $.Page) }}
+            {{ end }}
+          </ul>
 
-				<nav class="pagination">
-				{{ if $paginator.HasPrev }}
-					<a href="{{ $paginator.Prev.URL }}">Anterior</a>
-				{{ end }}
-				{{ range $paginator.Pagers }}
-					<a href="{{ .URL }}"{{ if eq . $paginator }} class="active"{{ end }}>{{ .PageNumber }}</a>
-				{{ end }}
-				{{ if $paginator.HasNext }}
-					<a href="{{ $paginator.Next.URL }}">Siguiente</a>
-				{{ end }}
-				</nav>
-			</div>
-		</div>
-		<div class="4u 12u$(medium)">
-		  <div id="sidebar">
-			<!-- Sidebar -->
+          <nav class="pagination">
+            {{ if $paginator.HasPrev }}
+              <a href="{{ $paginator.Prev.URL }}">Anterior</a>
+            {{ end }}
+            {{ range $paginator.Pagers }}
+              <a href="{{ .URL }}"{{ if eq . $paginator }} class="active"{{ end }}>{{ .PageNumber }}</a>
+            {{ end }}
+            {{ if $paginator.HasNext }}
+              <a href="{{ $paginator.Next.URL }}">Siguiente</a>
+            {{ end }}
+          </nav>
+        </div>
+      </div>
 
-			{{ if .TableOfContents }}
-			<section>
-			  <h2>Otros Temas</h2>
-			    <ul>
-            {{ range $name, $taxonomy := site.Taxonomies.tags }}
+      <div class="4u 12u$(medium)">
+        <div id="sidebar">
+          <!-- Sidebar -->
+          {{ if .TableOfContents }}
+          <section>
+            <h2>Otros Temas</h2>
+            <ul>
+              {{ range $name, $taxonomy := site.Taxonomies.tags }}
               <li>
                 <a href="{{ "/tags/" | relLangURL }}{{ $name | urlize }}">{{ $name }}</a> ({{ len $taxonomy }})
               </li>
-            {{ end }}
-          </ul>
-			</section>
-			{{ end }}
-		  </div>
-		</div>
-	  </div>
-	</div>
+              {{ end }}
+            </ul>
+          </section>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 {{ end }}

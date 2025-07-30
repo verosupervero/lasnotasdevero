@@ -2,6 +2,7 @@
 title = "Devocional: Cuando nos hablan feo y nos desalientan en el servicio a Dios"
 date = '2025-07-23'
 tags = ["Animo", "Desaliento", "devocional","Tristeza","reflexión","ministerio"]
+image = "/images/pray.png"
 
 summary = "Aliento bíblico frente a las personas que nos tratan de desalentar del ministerio o de las cosas que nos da el Señor para servir"
 +++

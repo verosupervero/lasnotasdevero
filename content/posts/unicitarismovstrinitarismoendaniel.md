@@ -4,6 +4,7 @@ date = "2025-07-12"
 featured_image = "/images/unicitarismovstrinitarismo.jpg"
 tags = ["trinidad", "doctrina", "apologetica","exégesis"]
 summary = "Reflexión el Hijo del Hombre y el Anciano de Dias en Daniel 7"
+image = "/images/unicitarismovstrinitarismo.jpg"
 +++
 
 

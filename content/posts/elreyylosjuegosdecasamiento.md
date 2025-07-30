@@ -1,9 +1,10 @@
 +++
 title = "👑 La historia del Rey y los juegos de casamiento"
-date = "2025-07-5"
+date = "2025-07-05"
 tags = ["devocional", "Iglesia", "Novia", "sabiduría","cuento","Reino","ministerio"]
 categories = ["devocional"]
 summary = "Una parábola sobre el valor de la Iglesia y la perspectiva del Rey hacia su amada Esposa."
+image = "/images/rey1.jpg"
 +++
 
 <div style="display: flex; flex-wrap: wrap; gap: 1em; justify-content: center;">

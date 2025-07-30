@@ -1,8 +1,9 @@
 +++
 title = "El valor de lo pequeño"
-date = "2025-07-6"
+date = "2025-07-06"
 tags = ["devocional", "Reino", "evangelios", "vida cristiana"]
 summary = "Una reflexión sobre el valor de lo pequeño y lo costoso en el Reino de Dios."
+image = "/images/gallinareino.jpg"
 +++
 
 > “Muchos son los llamados, pero pocos los escogidos.”  

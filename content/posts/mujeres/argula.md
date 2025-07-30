@@ -5,12 +5,22 @@ title = "Argula von Grumbach: Una mujer hablando de teología en plena Reforma"
 summary = "La noble alemana Argula von Grumbach desafió a la universidad y a la tradición, defendiendo la Reforma y la autoridad de la Escritura en una época en la que las mujeres no tenían voz."
 tags = ["Reforma", "Historia", "Mujeres", "Teología"]
 author = "Vero"
+image = "/images/argula.png"
 +++
 
 Una mujer hablando de teología en plena ¡Reforma! ¡Imposible! 🏰📜
 
 Eso pensaban muchos académicos bávaros… hasta que **Argula von Grumbach** se les plantó con su Biblia sobre la mesa.
-
+<img src="/images/argula.png" 
+     alt="Oracion"
+     style="float: right; 
+            margin-left: 2em; 
+            margin-bottom: 1em; 
+            max-width: 320px; 
+            width: 38%; 
+            height: auto; 
+            border-radius: 18px; 
+            box-shadow: 0 2px 14px rgba(0,0,0,0.12);" />
 ## Los primeros años
 
 - **1492** — mientras Cristóbal Colón ponía rumbo al "Nuevo Mundo", en Baviera nacía una joven noble destinada a sacudir los cimientos de una universidad.

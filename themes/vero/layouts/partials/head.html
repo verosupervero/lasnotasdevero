@@ -1,28 +1,47 @@
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Estilos -->
   <link rel="stylesheet" type="text/css" href="{{ absURL `styles/main.css` }}">
   <link rel="stylesheet" type="text/css" href="{{ absURL `styles/style.css` }}">
   <link rel="stylesheet" type="text/css" href="{{ absURL `styles/print.css` }}" media="print">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
-  <title>Las notas de Vero</title>
-  
+  <!-- Título dinámico -->
+  <title>{{ if .Title }}{{ .Title }} | Las Notas de Vero{{ else }}Las Notas de Vero{{ end }}</title>
+
+  <!-- Meta description con fallback -->
+  <meta name="description" content="{{ with .Params.description }}{{ . }}{{ else }}Reflexiones cristianas, devocionales y estudios bíblicos en un lenguaje cercano.{{ end }}">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="{{ .Title }}">
+  <meta property="og:description" content="{{ with .Params.description }}{{ . }}{{ else }}Reflexiones cristianas, devocionales y estudios bíblicos en un lenguaje cercano.{{ end }}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ .Permalink }}">
+  <meta property="og:image" content="{{ with .Params.image }}{{ . | absURL }}{{ else }}{{ "images/default-og.jpg" | absURL }}{{ end }}">
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ .Title }}">
+  <meta name="twitter:description" content="{{ with .Params.description }}{{ . }}{{ else }}Reflexiones cristianas, devocionales y estudios bíblicos en un lenguaje cercano.{{ end }}">
+  <meta name="twitter:image" content="{{ with .Params.image }}{{ . | absURL }}{{ else }}{{ "images/default-og.jpg" | absURL }}{{ end }}">
+  <meta name="twitter:url" content="{{ .Permalink }}">
+
+  <!-- RefTagger -->
   <script>
 	var refTagger = {
 		settings: {
-			bibleVersion: "LBLA95"			
+			bibleVersion: "LBLA95"
 		}
 	};
 	(function(d, t) {
-		var n=d.querySelector("[nonce]");
-		refTagger.settings.nonce = n && (n.nonce||n.getAttribute("nonce"));
+		var n = d.querySelector("[nonce]");
+		refTagger.settings.nonce = n && (n.nonce || n.getAttribute("nonce"));
 		var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
 		g.src = "https://api.reftagger.com/v2/RefTagger.es.js";
 		g.nonce = refTagger.settings.nonce;
 		s.parentNode.insertBefore(g, s);
 	}(document, "script"));
-</script>
-
+  </script>
 </head>
-

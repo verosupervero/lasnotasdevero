@@ -3,6 +3,7 @@ title = "Devocional: Cuidar lo que el Señor nos confía (Romanos 16) 🐑✝️
 date = 2025-07-29
 tags = ["devocional", "servicio", "Romanos", "iglesia"]
 summary = "En Romanos 16, Pablo resalta el valor del servicio fiel al Señor y los hermanos, recordándonos la importancia de cuidar y valorar aquello que el Señor nos ha confiado: justamente los hermanos y el anuncio del Reino."
+image = "/images/cuidar.png"
 +++
 
 

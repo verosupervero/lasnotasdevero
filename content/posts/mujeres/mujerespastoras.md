@@ -5,6 +5,7 @@ draft = false
 tags = ["Mujeres", "Ministerio", "estudio-biblico","exégesis","reflexión"]
 summary= "Acerca de las reuniones mixtas y el ministerio pastoral femenino"
 author = "Vero"
+image = "/images/vonbora.jpg"
 +++
 
 Hoy en día se empezaron a popularizar los llamados cultos femeninos donde mujeres:  
