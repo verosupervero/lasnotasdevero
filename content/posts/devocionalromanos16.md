@@ -5,20 +5,19 @@ tags = ["devocional", "servicio", "Romanos", "iglesia"]
 summary = "En Romanos 16, Pablo resalta el valor del servicio fiel al Señor y los hermanos, recordándonos la importancia de cuidar y valorar aquello que el Señor nos ha confiado: justamente los hermanos y el anuncio del Reino."
 +++
 
-<img src="/images/cuidar.png" 
-     alt="Oracion"
-     style="float: right; 
-            margin-left: 2em; 
-            margin-bottom: 1em; 
-            max-width: 320px; 
-            width: 38%; 
-            height: auto; 
-            border-radius: 18px; 
-            box-shadow: 0 2px 14px rgba(0,0,0,0.12);" />
+<div style="display: flex; align-items: flex-start; gap: 2em; flex-wrap: wrap;">
 
-{{< biblia ref="Romanos 16:1–2 (LBLA)" class="paralelo restauracion" >}}
-Os recomiendo a nuestra hermana Febe, diaconisa de la iglesia en Cencrea; que la recibáis en el Señor de una manera digna de los santos, y que la ayudéis en cualquier asunto en que ella necesite de vosotros, porque ella también ha ayudado a muchos y aun a mí mismo.
-{{< /biblia >}}
+  <img src="/images/cuidar.png" 
+       alt="Oración"
+       style="max-width: 320px; width: 38%; min-width: 180px; height: auto; border-radius: 18px; box-shadow: 0 2px 14px rgba(0,0,0,0.12); flex-shrink: 0; margin-bottom: 1em;" />
+
+  <div style="flex: 1 1 300px; min-width: 260px;">
+    {{< biblia ref="Romanos 16:1–2 (LBLA)" class="paralelo restauracion" >}}
+    Os recomiendo a nuestra hermana Febe, diaconisa de la iglesia en Cencrea; que la recibáis en el Señor de una manera digna de los santos, y que la ayudéis en cualquier asunto en que ella necesite de vosotros, porque ella también ha ayudado a muchos y aun a mí mismo.
+    {{< /biblia >}}
+  </div>
+</div>
+
 
 Buenas noches ✨ ¡Aquí va un nuevo devocional! 🐑
 
