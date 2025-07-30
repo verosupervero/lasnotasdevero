@@ -17,7 +17,7 @@ Os recomiendo a nuestra hermana Febe, diaconisa de la iglesia en Cencrea; que la
             margin-left: 2em; 
             margin-bottom: 1em; 
             max-width: 320px; 
-            width: 38%; 
+            width: 50%; 
             height: auto; 
             border-radius: 18px; 
             box-shadow: 0 2px 14px rgba(0,0,0,0.12);" />
