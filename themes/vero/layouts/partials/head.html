@@ -1,11 +1,11 @@
 <head>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Estilos -->
-  <link rel="stylesheet" type="text/css" href="{{ absURL `styles/main.css` }}">
-  <link rel="stylesheet" type="text/css" href="{{ absURL `styles/style.css` }}">
-  <link rel="stylesheet" type="text/css" href="{{ absURL `styles/print.css` }}" media="print">
+  <link rel="stylesheet" href="{{ absURL `styles/main.css` }}">
+  <link rel="stylesheet" href="{{ absURL `styles/style.css` }}">
+  <link rel="stylesheet" href="{{ absURL `styles/print.css` }}" media="print">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
   <!-- Título dinámico -->
@@ -14,15 +14,16 @@
   <!-- Meta description con fallback -->
   <meta name="description" content="{{ with .Params.description }}{{ . }}{{ else }}Reflexiones cristianas, devocionales y estudios bíblicos en un lenguaje cercano.{{ end }}">
 
+  <!-- Asignar imagen con fallback -->
+  {{ $image := .Params.image | default "images/default.jpg" }}
+
   <!-- Open Graph -->
   <meta property="og:title" content="{{ .Title }}">
   <meta property="og:description" content="{{ with .Params.description }}{{ . }}{{ else }}Reflexiones cristianas, devocionales y estudios bíblicos en un lenguaje cercano.{{ end }}">
   <meta property="og:type" content="website">
   <meta property="og:url" content="{{ .Permalink }}">
-  {{ $image := .Params.image | default "images/default.jpg" }}
   <meta property="og:image" content="{{ $image | absURL }}">
   <meta property="fb:app_id" content="1258505475753258">
-
 
   <!-- Twitter Cards -->
   <meta name="twitter:card" content="summary_large_image">
@@ -33,18 +34,18 @@
 
   <!-- RefTagger -->
   <script>
-	var refTagger = {
-		settings: {
-			bibleVersion: "LBLA95"
-		}
-	};
-	(function(d, t) {
-		var n = d.querySelector("[nonce]");
-		refTagger.settings.nonce = n && (n.nonce || n.getAttribute("nonce"));
-		var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
-		g.src = "https://api.reftagger.com/v2/RefTagger.es.js";
-		g.nonce = refTagger.settings.nonce;
-		s.parentNode.insertBefore(g, s);
-	}(document, "script"));
+    var refTagger = {
+      settings: {
+        bibleVersion: "LBLA95"
+      }
+    };
+    (function(d, t) {
+      var n = d.querySelector("[nonce]");
+      refTagger.settings.nonce = n && (n.nonce || n.getAttribute("nonce"));
+      var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
+      g.src = "https://api.reftagger.com/v2/RefTagger.es.js";
+      g.nonce = refTagger.settings.nonce;
+      s.parentNode.insertBefore(g, s);
+    }(document, "script"));
   </script>
 </head>
