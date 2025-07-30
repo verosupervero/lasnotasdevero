@@ -7,6 +7,8 @@
   <link rel="stylesheet" href="{{ absURL `styles/style.css` }}">
   <link rel="stylesheet" href="{{ absURL `styles/print.css` }}" media="print">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="canonical" href="{{ .Permalink | replace "https://lasnotasdevero.com" "https://www.lasnotasdevero.com" }}">
+
 
   <!-- Título dinámico -->
   <title>{{ if .Title }}{{ .Title }} | Las Notas de Vero{{ else }}Las Notas de Vero{{ end }}</title>
@@ -30,7 +32,7 @@
   <meta name="twitter:title" content="{{ .Title }}">
   <meta name="twitter:description" content="{{ with .Params.description }}{{ . }}{{ else }}Reflexiones cristianas, devocionales y estudios bíblicos en un lenguaje cercano.{{ end }}">
   <meta name="twitter:image" content="{{ $image | absURL }}">
-  <meta name="twitter:url" content="{{ .Permalink }}">
+  <meta name="twitter:url" href="{{ .Permalink | replace "https://lasnotasdevero.com" "https://www.lasnotasdevero.com" }}">
 
   <!-- RefTagger -->
   <script>
