@@ -25,8 +25,8 @@ En este pasaje, el apóstol Pedro confronta a ambos esposos por separado (no jun
 
 ## 🤔 Posibles interpretaciones
 
-1 - **Co-autoría:** Safira fue co-responsable activa del engaño — ambos "convinieron" implica acuerdo mutuo, no complicidad pasiva.
-2 - **Complicidad:** Ananías fue el actor principal porque dice primero su nombre. Safira solo "sabía" del plan y lo acompañó, pero no lo impidió. Misma consecuencia no necesariamente implica misma responsabilidad.
+1. **Co-autoría:** Safira fue co-responsable activa del engaño — ambos "convinieron" implica acuerdo mutuo, no complicidad pasiva.
+2. **Complicidad:** Ananías fue el actor principal porque dice primero su nombre. Safira solo "sabía" del plan y lo acompañó, pero no lo impidió. Misma consecuencia no necesariamente implica misma responsabilidad.
 
 Si me preguntan a mí, yo veo más factible el primer caso dado que menciona el acuerdo explícitamente.
 

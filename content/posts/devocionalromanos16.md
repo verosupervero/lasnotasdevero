@@ -90,8 +90,9 @@ Los miembros del cuerpo de Cristo son personas que aman a los demás miembros de
 
 {{< observacion >}}
 ## Preguntas para reflexionar:
-1 - ¿Qué te está confiando el Señor hoy?
-2 - ¿Cómo podes tomar estos ejemplos de servicio en tu contexto?
-{{</ observacion >}}
+
+1. ¿Qué te está confiando el Señor hoy?  
+2. ¿Cómo podes tomar estos ejemplos de servicio en tu contexto?
+{{< /observacion >}}
 
 A Él sea la gloria para siempre. Amén. 🙌✝️
