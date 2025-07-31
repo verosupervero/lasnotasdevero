@@ -7,7 +7,7 @@ summary = "Los peces también tienen hambre. ¿Estamos cuidando lo que el Señor
 +++
 
 {{< biblia ref="Juan 21:15–17 (RVR60)" class="paralelo encarnacion" >}}
-> Cuando hubieron comido, Jesús dijo a Simón Pedro: Simón, hijo de Jonás, ¿me amas más que estos? Le respondió: Sí, Señor; tú sabes que te amo. Él le dijo: Apacienta mis corderos. 16 Volvió a decirle la segunda vez: Simón, hijo de Jonás, ¿me amas? Pedro le respondió: Sí, Señor; tú sabes que te amo. Le dijo: Pastorea mis ovejas. 17 Le dijo la tercera vez: Simón, hijo de Jonás, ¿me amas? Pedro se entristeció de que le dijese la tercera vez: ¿Me amas? y le respondió: Señor, tú lo sabes todo; tú sabes que te amo. Jesús le dijo: Apacienta mis ovejas.
+> Cuando hubieron comido, Jesús dijo a Simón Pedro: Simón, hijo de Jonás, ¿me amas más que estos? Le respondió: Sí, Señor; tú sabes que te amo. Él le dijo: Apacienta mis corderos. Volvió a decirle la segunda vez: Simón, hijo de Jonás, ¿me amas? Pedro le respondió: Sí, Señor; tú sabes que te amo. Le dijo: Pastorea mis ovejas. Le dijo la tercera vez: Simón, hijo de Jonás, ¿me amas? Pedro se entristeció de que le dijese la tercera vez: ¿Me amas? y le respondió: Señor, tú lo sabes todo; tú sabes que te amo. Jesús le dijo: Apacienta mis ovejas.
 {{< /biblia >}}
 
 Entré a una casa, y en el living vi una pecera grande, con peces de distintos colores y especies.
