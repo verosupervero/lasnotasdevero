@@ -36,8 +36,11 @@ Cerrando el paréntesis y volviendo a la historia, Dios usa a quien quiere, incl
 
 {{< observacion >}}
 ## Preguntas para reflexionar:
+
 1. ¿Qué te encargó el Señor a vos?
 2. ¿Estás apacentando sus corderos?
 {{< /observacion >}}
+
+
 ---
 [^1]:Véase [Historia de sucesión de eventos que llevaron a la conversión de Billy Graham](https://www.travisagnew.org/2013/07/22/the-chain-of-events-for-billy-grahams-conversion/)
