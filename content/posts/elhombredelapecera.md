@@ -1,5 +1,5 @@
 +++
-title = "Devocional: Cuidar lo que el Señor nos confía (II): El hombre que descuidó su pecera"
+title = " 🌿🐟 Devocional: Cuidar lo que el Señor nos confía (II). El hombre que descuidó su pecera 🐑✝️🌷"
 date = 2025-07-31T00:00:00Z
 tags = ["devocional", "servicio", "iglesia", "cuidado", "gran comisión"]
 image = "/images/pecera.png"
