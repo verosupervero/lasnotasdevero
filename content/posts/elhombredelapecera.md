@@ -3,7 +3,7 @@ title = "Devocional: Cuidar lo que el Señor nos confía (II). El hombre de la g
 date = 2025-07-31T00:00:00Z
 tags = ["devocional", "servicio","iglesia","cuidado", "gran comisión"]
 image = "/images/pecera.png"
-summary = "¿Qué pasa cuando priorizamos lo importante sobre lo urgente en el cuidado de las ovejas?"
+summary = "¿Qué pasa cuando priorizamos lo importante sobre lo más importante en el cuidado de las ovejas?"
 +++
 
 
@@ -30,7 +30,7 @@ Al volver el familiar al living busca entre la alacena la comida para los peces,
             border-radius: 18px; 
             box-shadow: 0 2px 14px rgba(0,0,0,0.12);" />
 
-Esta historia nos muestra cómo Dios nos puede encargar cosas y, por atender otros asuntos que son importantes, nos desviamos de los asuntos que son urgentes. En la labor de cuidar personas y de llevar la palabra, esto también puede suceder entre las múltiples actividades que llevamos a cabo. Sin embargo, cuando Jesús le encarga tareas a Pedro le dice que vaya y pesque personas (Mateo 4:19) y más adelante le dice que apaciente sus corderos (Juan 21:15-17). Es decir, le encarga ir y predicarles y luego cuidarlas. Esto es algo que no podemos descuidar: cuando nosotros predicamos a personas debemos estar dispuestos a poder discipularlas, forma parte de la Gran Comisión el hacerlo (Mateo 28:19-20).
+Esta historia nos muestra cómo Dios nos puede encargar cosas y, por atender otros asuntos que son importantes, nos desviamos de los asuntos que son aún más importantes. En la labor de cuidar personas y de llevar la palabra, esto también puede suceder entre las múltiples actividades que llevamos a cabo. Sin embargo, cuando Jesús le encarga tareas a Pedro le dice que vaya y pesque personas (Mateo 4:19) y más adelante le dice que apaciente sus corderos (Juan 21:15-17). Es decir, le encarga ir y predicarles y luego cuidarlas. Esto es algo que no podemos descuidar: cuando nosotros predicamos a personas debemos estar dispuestos a poder discipularlas, forma parte de la Gran Comisión el hacerlo (Mateo 28:19-20).
 
 Es una tarea que lleva mucho tiempo y esfuerzo y muchas veces pasa a ser invisible, pero eternamente es recompensada. Escuché una vez la historia de Billy Graham, si la buscan hay una cadena de acontecimientos que ocurrieron para que llegara a predicar el evangelio [^1]. En este sentido, el ir y hacer discípulos debería importarnos más. Dice Jesús que el Reino de los cielos es como una semilla de mostaza: "es la más pequeña de todas las semillas; pero cuando ha crecido, es la mayor de las hortalizas, y se hace árbol" (Mateo 13:31-32). Hoy en día puedes estar formando a una sola persona, pero no sabes cómo eso impactará eternamente.
 
