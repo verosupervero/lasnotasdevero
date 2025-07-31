@@ -114,7 +114,7 @@ La idea es fomentar la investigación de este asunto, he encontrado figuras hist
 [^báculo2]: Véase [Pastoral Staff, Encyclopaedia Britannica (1911)](https://en.wikisource.org/wiki/1911_Encyclop%C3%A6dia_Britannica/Pastoral_Staff)
 [^abadesa]: Véase [Abadesa – Wikipedia](https://es.wikipedia.org/wiki/Abadesa)
 [^mano]: Véase [Marisol Román. “La mano en la iconografía cristiana”](https://www.marisolroman.com/hablemos-de-arte/la-mano-en-la-iconografa-cristiana)
-[^hildergarda]: Véase [Pastoral Staff, Encyclopaedia Britannica (1911)](https://es.wikipedia.org/wiki/Hildegarda_de_Bingen)
+[^hildergarda]: Véase [Biografía de Hildergarda](https://es.wikipedia.org/wiki/Hildegarda_de_Bingen)
 [^beth_barr]: Véase [Página de la autora](https://bethallisonbarr.com)
 [^drmsh]: Véase [Página de la autor](https://drmsh.com/)
 [^ntwright]: Véase [Página de la autor](https://ntwrightpage.com/)
