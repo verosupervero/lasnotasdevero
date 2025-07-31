@@ -1,7 +1,7 @@
 +++
 title = "Devocional: Cuidar lo que el Señor nos confía (II). El hombre de la gran pecera y su baño en reparación"
 date = 2025-07-31T00:00:00Z
-tags = ["devocional", "cuidado", "gran comisión"]
+tags = ["devocional", "servicio","iglesia","cuidado", "gran comisión"]
 image = "/images/pecera.png"
 summary = "¿Qué pasa cuando priorizamos lo importante sobre lo urgente en el cuidado de las ovejas?"
 +++
