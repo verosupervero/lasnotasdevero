@@ -10,19 +10,21 @@ summary = "Los peces también tienen hambre. ¿Estamos cuidando lo que el Señor
 > Cuando hubieron comido, Jesús dijo a Simón Pedro: Simón, hijo de Jonás, ¿me amas más que estos? Le respondió: Sí, Señor; tú sabes que te amo. Él le dijo: Apacienta mis corderos. 16 Volvió a decirle la segunda vez: Simón, hijo de Jonás, ¿me amas? Pedro le respondió: Sí, Señor; tú sabes que te amo. Le dijo: Pastorea mis ovejas. 17 Le dijo la tercera vez: Simón, hijo de Jonás, ¿me amas? Pedro se entristeció de que le dijese la tercera vez: ¿Me amas? y le respondió: Señor, tú lo sabes todo; tú sabes que te amo. Jesús le dijo: Apacienta mis ovejas.
 {{< /biblia >}}
 
-Había una casa que estaba siendo reparada. En ella había un hombre encargado de cuidarla. Era una casa amplia y linda. En el living había una pecera grande, con peces de distintos colores y especies, nadando en silencio.
+Entré a una casa, y en el living vi una pecera grande, con peces de distintos colores y especies.
+El dueño estaba ocupado remodelando el baño: había instalado una jabonera nueva y todavía quedaba cemento fresco en algunos sectores.
 
-El dueño estaba remodelando el baño. Había instalado una jabonera en la pared nueva y todavía quedaba cemento fresco en algunos sectores.
+Me acerqué a ver la pecera y noté cómo los peces subían a la superficie.
+Se movían con rapidez y giraban sus pequeños ojos hacia mí, como si me estuvieran pidiendo comida.
 
-Un familiar que había ido de visita se acercó a ver la pecera. Notó cómo los peces subían a la superficie y se movían, girando sus pequeños ojos hacia él, como si le estuvieran pidiendo comida.
-
-Fue a preguntarle al dueño:
+Fui a preguntarle al dueño:
 
 —¿Y los peces? ¿No les diste de comer? Me están pidiendo comida a mí.
 
-—Ah, no te preocupes —respondió—. Lo importante ahora es terminar el baño. Los peces se la aguantan.
+—Ah, no te preocupes —respondió—. Los peces aguantan.
 
-El familiar volvió al living. Abrió una alacena, encontró un poco de comida para peces y decidió darles de comer. No era el encargado, pero ante la necesidad, lo hizo igual. Los peces ya estaban débiles, casi inmóviles, a punto de morir.
+Volví al living. Abrí una alacena, encontré un poco de comida y decidí darles.
+No era mi tarea, pero ante la necesidad, lo hice igual.
+Ya estaban muy débiles, casi inmóviles, como si estuvieran a punto de morir.
 
 <img src="/images/pecera.png" 
      alt="Peces pidiendo comida"
