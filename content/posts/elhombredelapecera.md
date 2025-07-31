@@ -14,7 +14,9 @@ Un familiar que había ido a visitar la casa se acerca a ver la pecera y nota c�
 
 
 —¿Y los peces? ¿No les diste de comer? Me están pidiendo comida a mí.
+
 —Ah, no te preocupes —dijo el dueño—, lo importante ahora es terminar el baño, los peces se la aguantan.
+
 Al volver el familiar al living busca entre la alacena la comida para los peces, nota que había poca pero decide darles de comer él, que no era el dueño de ellos, pero ante la necesidad lo hace. Los peces lamentablemente ya estaban medio tirados y a punto de perecer.
 
 <img src="/images/pecera.png" 
