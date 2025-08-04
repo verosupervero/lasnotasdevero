@@ -3,7 +3,7 @@ date = '2025-07-18T01:17:14-03:00'
 draft = false
 title = "Argula von Grumbach: Una mujer hablando de teología en plena Reforma"
 summary = "La noble alemana Argula von Grumbach desafió a la universidad y a la tradición, defendiendo la Reforma y la autoridad de la Escritura en una época en la que las mujeres no tenían voz."
-tags = ["Reforma", "Historia", "Mujeres", "Teología"]
+tags = ["Reforma", "Historia", "Mujeres", "Teología","Ministerio"]
 author = "Vero"
 image = "/images/argula.png"
 +++
