@@ -11,6 +11,9 @@ image = "/images/argula.png"
 Una mujer hablando de teología en plena ¡Reforma! ¡Imposible! 🏰📜
 
 Eso pensaban muchos académicos bávaros… hasta que **Argula von Grumbach** se les plantó con su Biblia sobre la mesa.
+
+## Los primeros años
+
 <img src="/images/argula.png" 
      alt="Oracion"
      style="float: right; 
@@ -21,7 +24,6 @@ Eso pensaban muchos académicos bávaros… hasta que **Argula von Grumbach** se
             height: auto; 
             border-radius: 18px; 
             box-shadow: 0 2px 14px rgba(0,0,0,0.12);" />
-## Los primeros años
 
 - **1492** — mientras Cristóbal Colón ponía rumbo al "Nuevo Mundo", en Baviera nacía una joven noble destinada a sacudir los cimientos de una universidad.
 - A los 10 años su padre le regaló una Biblia en alemán; desde entonces se volvió una estudiosa incansable de las Escrituras.
