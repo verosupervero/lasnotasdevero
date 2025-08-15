@@ -5,7 +5,7 @@ title = "Devocional: El Señor me ayuda en mi debilidad (Romanos 8)  🌷✨🙏
 summary = "Romanos 8 y una reflexión sobre la glorificación, la adopción y cómo el Espíritu nos ayuda en la debilidad."
 tags = ["Devocional", "Biblia", "Romanos", "Espíritu Santo", "Esperanza", "Glorificación", "Testimonio", "Oración"]
 author = "Vero"
-image = "/images/plantita.jpg"
+image = "/images/plantita.png"
 +++
 
 
