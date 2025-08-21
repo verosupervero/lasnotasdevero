@@ -35,13 +35,11 @@ Empecemos.
             border-radius: 18px; 
             box-shadow: 0 2px 14px rgba(0,0,0,0.12);" />
 
-Habíamos visto que en otro momento Pablo había sido abrazado con mucho amor y besos por parte de otros hermanos en otra iglesia (Hechos 20:37). Ese pasado ya había quedado atrás. Ahora estaba solo. Solisimo, Soli Deo, como dice el título.
+Habíamos visto que, en otro momento, Pablo había sido abrazado con mucho amor y besos por parte de otros hermanos en otra iglesia (Hechos 20:37). Ese pasado ya había quedado atrás. Ahora estaba solo.
 
-Me puedo imaginar un poco la soledad que sentía, el frío, el hecho de estar esperando la muerte, y aun así:
+Me puedo imaginar un poco la soledad que sentía, el frío, el hecho de estar esperando la muerte… y, aun así, Pablo, con un cariño especial, le escribe una carta a Timoteo. Le pide que venga pronto y que le traiga un abrigo (2 Timoteo 4:13). Estaba preso, y sin embargo lo amaba verdaderamente como a un hijo, porque se acordaba de él en oración todos los días, de día y de noche (2 Timoteo 1:3).
 
-Pablo con un cariño especial le manda carta a Timoteo. Pidiéndole que venga pronto y le dé un abrigo (2 Timoteo 4:13). Estaba preso y lo amaba verdaderamente como a un hijo porque se acordaba de él en oración todos los días, de día y de noche (2 Timoteo 1:3).
-
-No solo lo recuerda, sino que lo anima a poner en marcha su ministerio, le da consejos para ser un buen cristiano y cuidar la iglesia. También le recuerda que su familia lo ayudó a ser quien es (2 Timoteo 1:5).
+No solo lo recuerda: también lo anima a poner en marcha su ministerio, le da consejos para ser un buen cristiano y para cuidar de la iglesia. Además, le recuerda que su familia lo ayudó a ser quien es (2 Timoteo 1:5).
 
 ## 💪 EL ÁNIMO A PESAR DE TODO
 
