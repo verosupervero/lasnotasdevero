@@ -1,6 +1,6 @@
 +++
 title = "✨ Devocional: Proverbios 29"
-date = 2025-08-20
+date = 2025-08-18
 summary = "En este devocional de Proverbios 29 reflexionamos sobre el carácter personal, la justicia y la tensión entre amar a las personas pero rechazar la injusticia."
 tags = ["Devocional", "Proverbios", "Justicia", "Carácter", "Reflexión"]
 categories = ["Biblia", "Sabiduría", "Antiguo Testamento"]
