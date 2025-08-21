@@ -1,5 +1,6 @@
 +++
 title = "Reflexión: Hospitalidad, servicio y cuidado en la iglesia"
+date = 2025-08-20
 summary = "Una reflexión sobre la importancia de recibir y acompañar a los hermanos, con un recordatorio especial para pastores y diáconos."
 tags = ["devocional", "hospitalidad", "iglesia", "discipulado","reflexion"]
 image = "/images/HOSPITALIDAD.png"

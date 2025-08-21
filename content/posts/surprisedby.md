@@ -1,5 +1,6 @@
 +++
 title = "ESCATOLOGIA PRACTICA: ¿Cómo la esperanza futura transforma el presente? 🤔"
+date = 2025-08-19
 summary = "Breve presentación de 'Surprised by Hope' de N. T. Wright y por qué recuperar la esperanza bíblica (resurrección, cielos nuevos y tierra nueva) transforma nuestro presente."
 tags = ["N.T. Wright", "escatología", "esperanza", "resurrección", "teología", "vida cristiana","redencion", "apocalipsis", "genesis"]
 image = "/images/resurreccion.jpg"
