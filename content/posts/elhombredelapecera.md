@@ -3,6 +3,7 @@ title = " 🌿🐟 Devocional: Cuidar lo que el Señor nos confía (II). El homb
 date = 2025-07-31T00:00:00Z
 tags = ["devocional", "servicio", "iglesia", "cuidado", "gran comisión"]
 image = "/images/pecera.png"
+author = "Vero"
 summary = "Los peces también tienen hambre. ¿Estamos cuidando lo que el Señor nos confió?"
 +++
 

@@ -1,8 +1,9 @@
 +++
 title = "Pablo y sus colaboradores"
 date = "2025-06-30"
-tags = ["devocional", "Pablo", "colaboradores", "ministerio", "Filemón"]
+tags = ["devocional", "Pablo", "colaboradores", "ministerio", "Filemón","reflexion"]
 summary = "Reflexión sobre los colaboradores de Pablo según Filemón 1 y otros pasajes."
+author = "Vero"
 +++
 
 ## Pablo y sus colaboradores

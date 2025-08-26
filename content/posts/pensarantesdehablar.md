@@ -1,8 +1,9 @@
 +++
 title = "Pensar antes de hablar (Hechos 23:1-9)"
 date = "2025-06-25"
-tags = ["devocional", "prudencia", "Pablo", "Hechos"]
+tags = ["devocional", "prudencia", "Pablo", "Hechos","reflexion"]
 summary = "Aplicaciones prácticas del discurso de Pablo en Hechos 23:1-9 sobre la prudencia y el respeto al hablar."
+author = "Vero"
 +++
 
 ## Devocional: Pensar antes de hablar  

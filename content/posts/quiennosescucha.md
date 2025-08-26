@@ -4,6 +4,7 @@ date = "2025-07-25"
 tags = ["Animo", "Desaliento","devocional", "oración","Tristeza","Desánimo"]
 summary = "Solo Dios entiende a fondo nuestras necesidades. Presentá tus peticiones a Él, porque nadie puede ocupar el lugar de Dios en tu corazón. Él escucha, entiende y sana."
 image = "/images/jesusabrazando.png"
+author = "Vero"
 +++
 
 > "Por nada estén afanosos, sino sean conocidas sus peticiones delante de Dios en toda oración y ruego…"  
