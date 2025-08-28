@@ -1,5 +1,5 @@
 +++
-title = "Jesús: no solo un Mesías nacional, sino el Salvador del mundo"
+title = "Jesús: el Salvador de todas las naciones"
 date = 2025-08-28
 summary = "Jesús no vino solo para Israel. Desde el Antiguo Testamento, el plan divino siempre fue universal: cumplir las promesas a Israel y abrir el Reino a todas las naciones."
 tags = ["estudio-biblico", "redencion", "apocalipsis", "genesis","Jesús", "Mesías", "Biblia", "Salvación","Escatología"]
