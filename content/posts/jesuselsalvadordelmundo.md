@@ -246,9 +246,6 @@ En un momento, en un abrir y cerrar de ojos, a la final trompeta; porque se toca
 
 ## Conclusión
 
-Jesús NO fue un mesías nacional al que sus discípulos le inventaron una secta.  
-Desde el Antiguo Testamento, el plan siempre fue universal.  
-
 <img src="/images/jesusarbolagua.jpg" 
      alt="Oracion"
      style="float: right; 
@@ -259,6 +256,10 @@ Desde el Antiguo Testamento, el plan siempre fue universal.
             height: auto; 
             border-radius: 18px; 
             box-shadow: 0 2px 14px rgba(0,0,0,0.12);" />
+
+Jesús NO fue un mesías nacional al que sus discípulos le inventaron una secta.  
+Desde el Antiguo Testamento, el plan siempre fue universal.  
+
 Jesús vino a:  
 
 - Cumplir las promesas hechas a Israel  
