@@ -249,14 +249,6 @@ En un momento, en un abrir y cerrar de ojos, a la final trompeta; porque se toca
 Jesús NO fue un mesías nacional al que sus discípulos le inventaron una secta.  
 Desde el Antiguo Testamento, el plan siempre fue universal.  
 
-Jesús vino a:  
-
-- Cumplir las promesas hechas a Israel  
-- Establecer el fundamento mesiánico  
-- Llevar el reino a todas las naciones  
-
-Él no es solo un mesías para Israel, sino el **Salvador del mundo** 🌎✝️
-
 <img src="/images/jesusarbolagua.jpg" 
      alt="Oracion"
      style="float: right; 
@@ -267,6 +259,14 @@ Jesús vino a:
             height: auto; 
             border-radius: 18px; 
             box-shadow: 0 2px 14px rgba(0,0,0,0.12);" />
+Jesús vino a:  
+
+- Cumplir las promesas hechas a Israel  
+- Establecer el fundamento mesiánico  
+- Llevar el reino a todas las naciones  
+
+Él no es solo un mesías para Israel, sino el **Salvador del mundo** 🌎✝️
+
 
 {{< biblia ref="Romanos 1:16 - Reina-Valera 1960" class="paralelo restauracion" >}}
 Porque no me avergüenzo del evangelio, porque es poder de Dios para salvación a todo aquel que cree; al judío primeramente, y también al griego.
