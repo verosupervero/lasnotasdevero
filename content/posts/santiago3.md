@@ -55,7 +55,7 @@ Lo que escribimos o decimos tiene peso **delante de Dios**, aunque algunos lo to
             box-shadow: 0 2px 14px rgba(0,0,0,0.12);" />
 Algunos ejemplos:
 - Profesores insultados por reclamar un salario justo, tildados de “zurdos”.  
-- Personas atacadas por su etnia (esto se ve un montón, es gravísimo)
+- Personas atacadas por su etnia (esto se ve un montón, es gravísimo).
 - Mujeres a las cuales se le niega el diálogo solo por ser mujeres, como si eso las hiciera menos.
 - Separar en derecha o izquierda por hablar de temas como el preocuparse por los extranjeros, los jubilados, los pobres, la gente que no llega a fin de mes.
 - Generalizar en grupos y no darse cuenta de que el que escribe es una persona, no un grupo. Tiene identidad propia.
@@ -95,12 +95,12 @@ Recordá que **el Juez nos juzgará conforme a lo que digamos, en las redes o en
 
 ## ❓ Preguntas para reflexionar
 
-1. ¿Estoy tratando a las personas en internet como trato a una IA? (A veces hasta saludo cordialmente a ChatGPT… ¿y a las personas? Es hasta irónico)  
+1. ¿Estoy tratando a las personas en internet como trato a una IA? —A veces hasta saludo cordialmente a ChatGPT... ¿y a las personas? Es hasta irónico—.  
 2. ¿Soy consciente de que delante del Señor voy a dar cuenta de cada palabra que digo o escribo?  
 3. ¿Reconozco la importancia de las personas con las que me comunico en internet, o las considero menos importantes por estar detrás de una pantalla?  
 
 {{< observacion >}}
-No traten mejor a la IA que a las personas. Si algún día nos destruye Ultron, no le va a importar si lo trataron bien, que eso te quede clarísimo. Pero a los seres humanos sí: cada palabra puede sanar o herir.”
+No traten mejor a la IA que a las personas. Si algún día nos destruye Ultron, no le va a importar si lo trataron bien —que eso te quede clarísimo—. Pero a los seres humanos sí: cada palabra puede sanar o herir.
 {{< /observacion >}}
 
 
