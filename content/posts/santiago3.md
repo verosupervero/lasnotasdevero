@@ -43,7 +43,16 @@ Lo que escribimos o decimos tiene peso **delante de Dios**, aunque algunos lo to
 ## Ejemplo real
 
 👀 *Como moderadora de varios canales y grupos en redes, he visto con tristeza cómo la falta de cuidado en las palabras causa mucho daño.*  
-
+<img src="/images/santiago3.png" 
+     alt="la lengua"
+     style="float: right; 
+            margin-left: 2em; 
+            margin-bottom: 1em; 
+            max-width: 500px; 
+            width: 50%; 
+            height: auto; 
+            border-radius: 18px; 
+            box-shadow: 0 2px 14px rgba(0,0,0,0.12);" />
 Algunos ejemplos:
 - Profesores insultados por reclamar un salario justo, tildados de “zurdos”.  
 - Personas atacadas por su etnia (esto se ve un montón, es gravísimo)
@@ -75,16 +84,7 @@ Ya no hay judío ni griego; no hay esclavo ni libre; no hay varón ni mujer; por
 
 El Señor nos llama a usar nuestras palabras para **edificar, dar gracia y reflejar su amor sin distinción**.  
 
-<img src="/images/santiago3.png" 
-     alt="la lengua"
-     style="float: right; 
-            margin-left: 2em; 
-            margin-bottom: 1em; 
-            max-width: 500px; 
-            width: 50%; 
-            height: auto; 
-            border-radius: 18px; 
-            box-shadow: 0 2px 14px rgba(0,0,0,0.12);" />
+
 
 La próxima vez que estés a punto de comentar algo, pensalo dos veces:  
 ¿Lo dirías en persona? ¿Edifica lo que vas a escribir?  
