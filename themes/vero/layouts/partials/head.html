@@ -12,27 +12,40 @@
 
   <!-- Título dinámico -->
   <title>{{ if .Title }}{{ .Title }} | Las Notas de Vero{{ else }}Las Notas de Vero{{ end }}</title>
+<!-- Descripción -->
+<meta name="description" content="{{ with .Params.description }}{{ . }}{{ else }}Reflexiones cristianas, devocionales y estudios bíblicos en un lenguaje cercano.{{ end }}">
 
-  <!-- Meta description con fallback -->
-  <meta name="description" content="{{ with .Params.description }}{{ . }}{{ else }}Reflexiones cristianas, devocionales y estudios bíblicos en un lenguaje cercano.{{ end }}">
+<!-- Canonical -->
+<link rel="canonical" href="{{ .Permalink }}"/>
 
-  <!-- Asignar imagen con fallback -->
-  {{ $image := .Params.image | default "images/default.jpg" }}
+{{/* Imagen destacada con fallback absoluto */}}
+{{ $image := .Params.image | default "/images/default.jpg" }}
+{{ $absImage := $image | absURL }}
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="{{ .Title }}">
-  <meta property="og:description" content="{{ with .Params.description }}{{ . }}{{ else }}Reflexiones cristianas, devocionales y estudios bíblicos en un lenguaje cercano.{{ end }}">
-  <meta property="og:type" content="website">
-<meta property="og:url" content="{{ .Permalink | replace "https://lasnotasdevero.com" "https://www.lasnotasdevero.com" }}">
-  <meta property="og:image" content="{{ $image | absURL }}">
-  <meta property="fb:app_id" content="1258505475753258">
+<!-- Open Graph -->
+<meta property="og:site_name" content="Las Notas de Vero">
+<meta property="og:title" content="{{ .Title }}">
+<meta property="og:description" content="{{ with .Params.description }}{{ . }}{{ else }}Reflexiones cristianas, devocionales y estudios bíblicos en un lenguaje cercano.{{ end }}">
+<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:image" content="{{ $absImage }}">
+<meta property="og:image:alt" content="{{ .Params.og_image_alt | default .Title }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 
-  <!-- Twitter Cards -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{{ .Title }}">
-  <meta name="twitter:description" content="{{ with .Params.description }}{{ . }}{{ else }}Reflexiones cristianas, devocionales y estudios bíblicos en un lenguaje cercano.{{ end }}">
-  <meta name="twitter:image" content="{{ $image | absURL }}">
-  <meta name="twitter:url" href="{{ .Permalink | replace "https://lasnotasdevero.com" "https://www.lasnotasdevero.com" }}">
+{{ if .IsPage }}
+  <meta property="article:published_time" content="{{ .PublishDate.UTC.Format "2006-01-02T15:04:05Z07:00" }}">
+  {{ with .Lastmod }}<meta property="article:modified_time" content="{{ .UTC.Format "2006-01-02T15:04:05Z07:00" }}">{{ end }}
+{{ end }}
+
+{{ with site.Params.facebookAppID }}<meta property="fb:app_id" content="{{ . }}">{{ end }}
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ .Title }}">
+<meta name="twitter:description" content="{{ with .Params.description }}{{ . }}{{ else }}Reflexiones cristianas, devocionales y estudios bíblicos en un lenguaje cercano.{{ end }}">
+<meta name="twitter:image" content="{{ $absImage }}">
+<meta name="twitter:url" content="{{ .Permalink }}">
 
   <!-- RefTagger -->
   <script>
