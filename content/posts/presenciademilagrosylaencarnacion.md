@@ -26,17 +26,25 @@ Por tanto, la llegada del Reino de Dios fue tan importante que tuvo que ser tang
 
 Esta dimensión comunitaria es prioritaria porque enfatiza que Jesús es el Salvador del mundo (Juan 4:42, 1 Juan 4:14), más allá del trato individual con las personas. Y el empoderamiento del Espíritu Santo de sus discípulos por medio de señales y milagros confirma radicalmente el mensaje de Jesucristo. Las apariciones contemporáneas a musulmanes, sumadas a los dones del primer cristianismo, forman un patrón coherente: Dios sigue validando sobrenaturalmente que Jesús es quien dijo ser. Significativamente, estos testimonios logran convencer a musulmanes precisamente porque presentan a Cristo crucificado y resucitado - doctrinas que el Islam rechaza pero que las apariciones confirman como verdaderas, superando barreras doctrinales mediante encuentros directos.
 
-[^1]: Libro en Amazon [A Wind in the House of Islam](https://www.amazon.com/Wind-House-Islam-drawing-Muslims-ebook/dp/B00L2XVJS6)  
+[^1]: Libro en Amazon [A Wind in the House of Islam](https://www.amazon.com/Wind-House-Islam-drawing-Muslims-ebook/dp/B00L2XVJS6)
+
 [^2]: Libro en Amazon [Dreams and Visions](https://www.amazon.com/-/es/Tom-Doyle-ebook/dp/B0078FAA3M/)
-[^doyle]: **Tom Doyle** – Graduado de **Biola College** (1979) y **Dallas Theological Seminary** (1983), sirvió como pastor por 20 años en Colorado, Texas y Nuevo México.  
-Desde 2001 ha trabajado a tiempo completo en el Medio Oriente, guiando más de 80 viajes a Israel y cofundando **Uncharted Ministries**.  
-Autor de *Dreams and Visions: Is Jesus Awakening the Muslim World?*, *Killing Christians* y *Standing in the Fire*.  
-🔗 [unchartedministries.com](https://unchartedministries.com)
 
-[^garrison]: **David Garrison** – B.A. en **Ouachita Baptist University**, M.Div. en **Golden Gate Baptist Theological Seminary**, Ph.D. en **University of Chicago Divinity School**.  
-Ha servido por 25 años en la **International Mission Board** de los Bautistas del Sur, en roles de liderazgo global.  
-Ha enseñado en seminarios como *Fuller* y *Southwestern* y vivido en Egipto, Túnez, India y Hong Kong.  
-Autor de *Church Planting Movements* y *A Wind in the House of Islam*.
+[^doyle]: **Tom Doyle**  
+    Graduado de **Biola College** (1979) y **Dallas Theological Seminary** (1983).  
+    Sirvió como pastor por 20 años en Colorado, Texas y Nuevo México antes de dedicarse de lleno al ministerio en Medio Oriente en 2001.  
+    Es guía licenciado del Estado de Israel con más de 80 viajes dirigidos a Tierra Santa.  
+    Junto a su esposa JoAnn fundó **Uncharted Ministries**, donde ella dirige el ministerio *Not Forgotten* para mujeres en el Medio Oriente.
+    Su pasión es compartir historias reales de cristianos que arriesgan todo por seguir a Jesús en los lugares más peligrosos para la fe cristiana.  
+    🔗 [unchartedministries.com](https://unchartedministries.com)
 
-</div>
+[^garrison]: **David Garrison**  
+    Misionero con 25 años de servicio en la **International Mission Board** de los Bautistas del Sur, donde fue Vicepresidente Asociado de Estrategia Global y Líder Regional para Asia del Sur, África del Norte y Medio Oriente.  
+    Dirigió el programa Cooperative Services International, que abrió ministerio en 40 pueblos previamente no alcanzados.  
+    Ha estudiado una docena de idiomas y ha visitado más de 80 países, sirviendo en Hong Kong, Alemania, Francia, Inglaterra, Egipto, Túnez e India.  
+    Es B.A. en **Ouachita Baptist University** (1979), M.Div. en **Golden Gate Baptist Theological Seminary** (1982) y Ph.D. en **University of Chicago Divinity School** (1988).  
+    Ha enseñado en **Hong Kong Baptist University**, **Fuller Seminary**, **Southwestern Baptist Theological Seminary**, y otros.  
+    Actualmente vive en Colorado con su esposa Sonia, y continúa sirviendo como estratega global y conferencista internacional.
+
+
 
