@@ -28,12 +28,12 @@ Esta dimensión comunitaria es prioritaria porque enfatiza que Jesús es el Salv
 
 [^1]: Libro en Amazon [A Wind in the House of Islam](https://www.amazon.com/Wind-House-Islam-drawing-Muslims-ebook/dp/B00L2XVJS6)  
 [^2]: Libro en Amazon [Dreams and Visions](https://www.amazon.com/-/es/Tom-Doyle-ebook/dp/B0078FAA3M/)
-[^doyle] **Tom Doyle** – Graduado de **Biola College** (1979) y **Dallas Theological Seminary** (1983), sirvió como pastor por 20 años en Colorado, Texas y Nuevo México.  
+[^doyle]: **Tom Doyle** – Graduado de **Biola College** (1979) y **Dallas Theological Seminary** (1983), sirvió como pastor por 20 años en Colorado, Texas y Nuevo México.  
 Desde 2001 ha trabajado a tiempo completo en el Medio Oriente, guiando más de 80 viajes a Israel y cofundando **Uncharted Ministries**.  
 Autor de *Dreams and Visions: Is Jesus Awakening the Muslim World?*, *Killing Christians* y *Standing in the Fire*.  
 🔗 [unchartedministries.com](https://unchartedministries.com)
 
-[^garrison] **David Garrison** – B.A. en **Ouachita Baptist University**, M.Div. en **Golden Gate Baptist Theological Seminary**, Ph.D. en **University of Chicago Divinity School**.  
+[^garrison]: **David Garrison** – B.A. en **Ouachita Baptist University**, M.Div. en **Golden Gate Baptist Theological Seminary**, Ph.D. en **University of Chicago Divinity School**.  
 Ha servido por 25 años en la **International Mission Board** de los Bautistas del Sur, en roles de liderazgo global.  
 Ha enseñado en seminarios como *Fuller* y *Southwestern* y vivido en Egipto, Túnez, India y Hong Kong.  
 Autor de *Church Planting Movements* y *A Wind in the House of Islam*.
