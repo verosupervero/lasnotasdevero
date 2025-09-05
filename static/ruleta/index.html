@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+     <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Oleo+Script:400|Open+Sans:300,300italic,600,600italic,800" rel="stylesheet">
+
+  <!-- Font Awesome desde CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- Tu CSS personalizado -->
+  <link rel="stylesheet" href="/css/style.css">
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ruleta de Cápsulas de Teología</title>
+<br></br>
+ 
+<style>
+
+  /* ===== Base ===== */
+  :root{
+    --gold:#FFD700; --crimson:#DC143C; --dark:#8B0000;
+  }
+  *{box-sizing:border-box}
+  body{
+    font-family: Arial;
+    display:flex; flex-direction:column; align-items:center;
+    margin:0; color:#fff; padding:12px;
+    background:linear-gradient(135deg,#8B0000 0%,#DC143C 50%,#B22222 100%);
+    min-height: 100vh;
+  }
+
+  /* ===== Banner ===== */
+  .logo-space{
+    width:100%; display:flex; align-items:center; justify-content:center; gap:30px; flex-wrap:wrap;
+    background:#fff; color:#333; padding:16px 20px; margin-bottom:16px; box-shadow:0 2px 8px rgba(0,0,0,.1);
+  }
+  .logo-img{max-height:120px;border-radius:10px}
+  .logo-space h1{background:#000;color:#fff;padding:6px 14px;border-radius:6px;margin:0 0 8px 0;font-size:20px}
+  .social-info a{color:#8B0000;font-weight:700;text-decoration:none}
+  .social-info a:hover{text-decoration:underline}
+
+  /* ===== Container & layout ===== */
+  .container{
+    width:100%; max-width:1400px; position:relative; overflow:visible;
+    background:rgba(139,0,0,.15); border:2px solid rgba(255,215,0,.3);
+    border-radius:24px; padding:30px; text-align:center; 
+    backdrop-filter:blur(15px);
+    box-shadow:0 12px 40px rgba(0,0,0,.5), 0 0 0 1px rgba(255,215,0,.1);
+    margin-bottom: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .container::before{
+    content:"";position:absolute;inset:-3px;border-radius:27px;z-index:-1;opacity:.4;
+    background:linear-gradient(45deg,#FFD700 0%, #FFA500 25%, #FF6347 50%, #DC143C 75%, #FFD700 100%);
+    background-size: 300% 300%;
+    animation: gradientShift 6s ease infinite;
+  }
+  @keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+  
+  .main-layout{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start;flex:1}
+  .left-panel{display:flex;flex-direction:column;align-items:center;height:100%}
+  .right-panel{display:flex;flex-direction:column;gap:24px;height:100%}
+  h1{margin:6px 0 10px;color:var(--gold);text-shadow:2px 2px 4px rgba(0,0,0,.8)}
+
+  /* ===== Wheel ===== */
+  .wheel-container{position:relative;display:inline-block;margin:10px 0 0;flex:1;display:flex;align-items:center;justify-content:center}
+  .wheel{
+    width:min(80vmin,800px); height:min(80vmin,800px); border-radius:50%;
+    border:6px solid var(--gold); box-shadow:0 0 40px rgba(0,0,0,.8), inset 0 0 20px rgba(255,215,0,.2);
+    transition:transform 4s cubic-bezier(.2,.8,.7,.99); overflow:hidden; position:relative;
+  }
+  .wheel.empty{display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:18px;
+    border:4px dashed rgba(255,215,0,.5); background:rgba(44,44,44,.3)}
+  .segment-label{
+    position:absolute; left:50%; top:50%; transform-origin:center center; pointer-events:none;
+    color:#fff; font-weight:700; text-shadow:0 0 4px rgba(0,0,0,.6);
+    background:transparent; padding:0; width:auto; font-size:clamp(10px,2vmin,16px)
+  }
+  .wheel-center{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+    width:clamp(28px,6vmin,60px); height:clamp(28px,6vmin,60px);
+    background:linear-gradient(45deg,#FFD700,#FFA500); border:3px solid #fff;border-radius:50%;z-index:10}
+  /* Pointer (abajo) */
+  .pointer{
+    position:absolute; top:-42px; left:50%; transform:translateX(-50%);
+    width:0;height:0; border-left:25px solid transparent; border-right:25px solid transparent;
+    border-top:40px solid #FFD700; z-index:50; filter:drop-shadow(0 4px 8px rgba(0,0,0,.8));
+  }
+  .pointer::after{content:""; position:absolute; bottom:8px; left:-15px; width:0; height:0;
+    border-left:15px solid transparent; border-right:15px solid transparent; border-top:25px solid #FFA500}
+  /* Spin button in-center */
+  .spin-overlay{
+    position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); z-index:100;
+    background:linear-gradient(45deg,#DC143C,#8B0000); color:#fff; border:none; cursor:pointer;
+    padding:clamp(12px,2.5vmin,20px) clamp(18px,3.5vmin,30px); border-radius:999px; font-weight:800;
+    letter-spacing:.5px; box-shadow:0 8px 22px rgba(0,0,0,.35);
+    transition:all .2s ease;
+  }
+  .spin-overlay:hover{
+    background:linear-gradient(45deg,#FF1443,#DC143C);
+    transform:translate(-50%,-50%) scale(1.05);
+    box-shadow:0 12px 28px rgba(0,0,0,.45);
+  }
+  .spin-overlay:disabled{opacity:.6;cursor:not-allowed;transform:translate(-50%,-50%) scale(1);}
+
+  .result{margin-top:30px;font-size:24px;color:var(--gold);min-height:30px;font-weight:bold}
+  .options-count{margin:4px 0 0;font-weight:bold;color:var(--gold)}
+
+  /* ===== Right-side controls ===== */
+  .book-config{
+    display:grid;grid-template-columns:1fr 1fr;gap:16px;
+    background:rgba(255,255,255,.08); border:2px solid rgba(255,215,0,.2);
+    border-radius:20px; padding:20px; backdrop-filter:blur(10px);
+  }
+  .book-field{display:flex;flex-direction:column;align-items:center;gap:8px}
+  .book-field label{font-weight:700;color:var(--gold);margin:0;text-align:center}
+  .book-field input{
+    width:100%;padding:12px 16px;border-radius:15px;border:2px solid rgba(255,215,0,.3);
+    background:rgba(255,255,255,.1); color:#fff; text-align:center;
+    transition:all .3s ease;
+  }
+  .book-field input:focus{
+    outline:none; border-color:var(--gold); background:rgba(255,255,255,.15);
+    box-shadow:0 0 0 3px rgba(255,215,0,.2);
+  }
+  
+  .current-book-selector{
+    display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;
+    background:rgba(255,255,255,.08); border:2px solid rgba(255,215,0,.2);
+    border-radius:20px; padding:16px; backdrop-filter:blur(10px);
+  }
+  .current-book-selector label{font-weight:700;color:var(--gold)}
+  .current-book-selector select{
+    padding:10px 16px;border-radius:15px;background:rgba(255,255,255,.1);
+    color:#fff;border:2px solid rgba(255,215,0,.3);min-width:150px;
+    transition:all .3s ease;
+  }
+  .current-book-selector select:focus{
+    outline:none; border-color:var(--gold); background:rgba(255,255,255,.15);
+  }
+  .current-book-selector option{background:#8B0000;color:#fff}
+
+  .import-section{
+    background:rgba(255,255,255,.08); border:2px solid rgba(255,215,0,.2);
+    border-radius:20px; padding:20px; text-align:left; backdrop-filter:blur(10px);
+    flex:1;
+  }
+  .import-textarea{
+    width:100%; min-height:200px;
+    padding:16px; border:2px solid rgba(255,215,0,.3); border-radius:15px;
+    background:rgba(0,0,0,.25); color:#fff; font-size:15px; resize:vertical;
+    transition:all .3s ease;
+  }
+  .import-textarea:focus{
+    outline:none; border-color:var(--gold); background:rgba(0,0,0,.35);
+    box-shadow:0 0 0 3px rgba(255,215,0,.2);
+  }
+  .import-controls{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:16px}
+  
+  /* ===== Botones mejorados ===== */
+  .btn{
+    border:none; color:#fff; padding:14px 24px; border-radius:20px; 
+    font-weight:700; cursor:pointer; font-size:14px;
+    box-shadow:0 6px 20px rgba(0,0,0,.25); 
+    transition:all .3s cubic-bezier(.4,0,.2,1); 
+    letter-spacing:.4px; position:relative; overflow:hidden;
+    min-width:140px; text-align:center;
+  }
+  .btn::before{
+    content:''; position:absolute; inset:0; 
+    background:linear-gradient(45deg, rgba(255,255,255,.1), transparent);
+    opacity:0; transition:opacity .3s ease;
+  }
+  .btn:hover::before{opacity:1}
+  .btn:hover{
+    transform:translateY(-3px); 
+    box-shadow:0 12px 28px rgba(0,0,0,.35);
+  }
+  .btn:active{
+    transform:translateY(-1px);
+    box-shadow:0 6px 16px rgba(0,0,0,.4);
+  }
+  
+  .btn-green{
+    background:linear-gradient(135deg,#2ECC71,#27AE60);
+    border:2px solid rgba(46,204,113,.3);
+  }
+  .btn-green:hover{
+    background:linear-gradient(135deg,#58D68D,#2ECC71);
+    border-color:rgba(46,204,113,.6);
+  }
+  
+  .btn-blue{
+    background:linear-gradient(135deg,#3498DB,#2980B9);
+    border:2px solid rgba(52,152,219,.3);
+  }
+  .btn-blue:hover{
+    background:linear-gradient(135deg,#5DADE2,#3498DB);
+    border-color:rgba(52,152,219,.6);
+  }
+  
+  .btn-red{
+    background:linear-gradient(135deg,#E74C3C,#C0392B);
+    border:2px solid rgba(231,76,60,.3);
+  }
+  .btn-red:hover{
+    background:linear-gradient(135deg,#EC7063,#E74C3C);
+    border-color:rgba(231,76,60,.6);
+  }
+  
+  .btn-dark{
+    background:linear-gradient(135deg,#34495E,#2C3E50);
+    border:2px solid rgba(52,73,94,.3);
+  }
+  .btn-dark:hover{
+    background:linear-gradient(135deg,#5D6D7E,#34495E);
+    border-color:rgba(52,73,94,.6);
+  }
+
+  /* Winners (blanco/negro) */
+  .winners-section{
+    background:rgba(255,255,255,.95);color:#111;
+    border:2px solid rgba(255,215,0,.3);border-radius:20px;padding:22px;
+    backdrop-filter:blur(10px); box-shadow:0 8px 25px rgba(0,0,0,.1);
+  }
+  .winners-title{color:#111;margin:0 0 16px; font-size:18px}
+  .winner-item{
+    display:grid;grid-template-columns:50px 1fr auto auto;gap:12px;align-items:center;
+    background:rgba(248,249,250,.8);border-left:4px solid #2C3E50;
+    border-radius:12px;padding:12px;margin:12px 0;
+    transition:all .3s ease;
+  }
+  .winner-item:hover{
+    background:rgba(235,237,240,.9);
+    transform:translateX(5px);
+    box-shadow:0 4px 12px rgba(0,0,0,.1);
+  }
+  .winner-name{color:#111;font-weight:700}
+  .book-input{
+    width:130px;background:#fff;color:#111;border:2px solid #ddd;
+    border-radius:10px;padding:8px 12px;transition:all .3s ease;
+  }
+  .book-input:focus{
+    outline:none;border-color:#3498DB;box-shadow:0 0 0 3px rgba(52,152,219,.2);
+  }
+  .attendance-checkbox{transform:scale(1.3);accent-color:#27AE60}
+  .attendance-label{color:#27AE60;font-weight:700;margin-left:8px}
+  
+  .export-controls{text-align:center;margin-top:16px}
+
+  .footer{margin-top:20px;opacity:.8;font-style:italic}
+
+  /* Modal ganador + confetti canvas */
+  .modal{
+    position:fixed; inset:0; display:none; align-items:center; justify-content:center;
+    background:rgba(0,0,0,.6); z-index:2000; padding:16px; backdrop-filter:blur(5px);
+  }
+  .modal.show{display:flex}
+  .modal-card{
+    background:#fff; color:#111; border-radius:20px; padding:30px 25px; text-align:center;
+    min-width:min(90vw,520px); box-shadow:0 25px 60px rgba(0,0,0,.4); position:relative;
+    border:3px solid var(--gold);
+  }
+  .modal-title{font-size:24px;margin:0 0 8px}
+  .modal-name{font-size:32px;font-weight:900;margin:0 0 20px;color:var(--dark)}
+  .modal .btn-close{
+    position:absolute; right:15px; top:12px; background:#E74C3C; color:#fff;
+    width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    padding:0; min-width:auto;
+  }
+  #confettiCanvas{position:fixed; inset:0; pointer-events:none; z-index:1800}
+
+  /* Responsive */
+  @media (max-width:900px){
+    .main-layout{grid-template-columns:1fr;gap:24px}
+    .winner-item{grid-template-columns:1fr;text-align:center;gap:8px}
+    .book-config{grid-template-columns:1fr;gap:12px}
+    .current-book-selector{flex-direction:column;gap:12px}
+    .import-controls{flex-direction:column;align-items:center}
+    .btn{min-width:200px}
+  }
+  
+  @media (max-width:600px){
+    .container{padding:20px;margin:8px}
+    .wheel{width:min(90vmin,600px); height:min(90vmin,600px)}
+  }
+</style>
+</head>
+<body>
+  <!-- Banner compacto horizontal -->
+  <div class="logo-space">
+    <img src="/ruleta/capsulas.jpg" alt="Cápsulas de Teología" class="logo-img">
+    <div class="main-title">
+      <h1>Teología y café</h1>
+      <strong>📲 Síguenos en redes sociales</strong>
+    </div>
+    <div class="social-info">
+      📘 <a href="https://facebook.com/JairoRolandoMendozamendoza" target="_blank">Facebook</a><br>
+      📸 <a href="https://instagram.com/capsulasdeteologia" target="_blank">Instagram</a><br>
+      🐦 <a href="https://twitter.com/capteologia" target="_blank">Twitter/X</a><br>
+      🎵 <a href="https://tiktok.com/@capsulasdeteologia" target="_blank">TikTok</a><br>
+      📧 <a href="mailto:soldamedz@hotmail.com">Contacto</a>
+    </div>
+    <div class="vero-credits">
+      <span>Hecho por <a href="https://www.lasnotasdevero.com" target="_blank"> <img src="/ruleta/chibivero.png" width='20' height='20' font-family='Poppins' font-weight='bold' font-size='12'%3EV%3C/text%3E%3C/svg%3E" alt="Las Notas de Vero" class="vero-logo">
+       Las Notas de Vero</a></span>
+    </div>
+  </div>
+
+  <!-- Confetti canvas -->
+  <canvas id="confettiCanvas"></canvas>
+
+  <div class="container">
+    <div class="main-layout">
+      <!-- Left: wheel -->
+      <div class="left-panel">
+        <h1>🎯 Ruleta de Cápsulas de Teología</h1>
+        <h1></h1>
+        <BR></BR>
+        <div class="wheel-container">
+          <div class="pointer"></div>
+          <div class="wheel" id="wheel"><div class="empty-state">Agrega opciones para comenzar</div></div>
+          <div class="wheel-center"></div>
+          <button class="spin-overlay" id="spinOverlay">¡GIRAR!</button>
+        </div>
+        <div class="result" id="result"></div>
+        <div class="options-count" id="optionsCount">📊 Total de opciones: 0</div>
+      </div>
+
+      <!-- Right: panel -->
+      <div class="right-panel">
+        <div class="book-config">
+          <div class="book-field">
+            <label for="book1Name">📖 Nombre Libro 1:</label>
+            <input type="text" id="book1Name" placeholder="Ej: Teología Sistemática">
+          </div>
+          <div class="book-field">
+            <label for="book2Name">📚 Nombre Libro 2:</label>
+            <input type="text" id="book2Name" placeholder="Ej: Doctrinas de la Gracia">
+          </div>
+        </div>
+
+        <div class="current-book-selector">
+          <label for="currentBook">📖 Sorteando ahora:</label>
+          <select id="currentBook">
+            <option value="">Seleccionar libro</option>
+            <option value="libro1">Libro 1</option>
+            <option value="libro2">Libro 2</option>
+          </select>
+        </div>
+
+        <div class="import-section">
+          <h3 style="text-align:center;color:#FFD700;margin-top:0">📝 Agregar opciones a la ruleta:</h3>
+          <textarea class="import-textarea" id="textImport" placeholder="Escribe una opción por línea..."></textarea>
+          <div class="import-controls">
+            <button class="btn btn-green" id="importBtn">📥 Agregar a la Ruleta</button>
+            <button class="btn btn-blue" id="presetBtn">📖 Ejemplo: Teología</button>
+            <button class="btn btn-red" id="clearBtn">🗑️ Limpiar Todo</button>
+          </div>
+        </div>
+
+        <div class="winners-section">
+          <h3 class="winners-title">🏆 Historial de Ganadores</h3>
+          <div id="winnersList" class="empty-state">Los ganadores aparecerán aquí...</div>
+          <div class="export-controls">
+            <button class="btn btn-dark" id="exportBtn">📊 Descargar CSV</button>
+            <button class="btn btn-red" id="clearWinnersBtn">🗑️ Limpiar Historial</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">⭐ Creado especialmente para sorteos de Cápsulas de Teología ⭐</div>
+  </div>
+
+  <!-- Modal ganador -->
+  <div class="modal" id="winnerModal" aria-hidden="true">
+    <div class="modal-card">
+      <button class="btn btn-red btn-close" id="modalClose">✖</button>
+      <div class="modal-title">🎉 ¡Ganador/a!</div>
+      <div class="modal-name" id="modalWinnerName">Nombre</div>
+      <button class="btn btn-green" id="modalOk">Aceptar</button>
+    </div>
+  </div>
+
+<script>
+/* ===== Estado ===== */
+let options = [];
+let winners = [];
+let isSpinning = false;
+let winnerCounter = 1;
+let currentRotation = 0;
+
+/* ===== Colores ===== */
+const colors = [
+  '#DC143C','#FF4500','#FF6347','#FF1493','#DA70D6','#9370DB','#4169E1','#1E90FF',
+  '#00BFFF','#00CED1','#20B2AA','#32CD32','#9ACD32','#FFD700','#FFA500','#FF8C00',
+  '#CD853F','#D2691E','#A0522D','#8B4513'
+];
+
+/* ===== Cookies helpers (también usamos localStorage) ===== */
+function setCookie(name, value, days=365){
+  const d = new Date(); d.setTime(d.getTime()+days*24*60*60*1000);
+  document.cookie = `${encodeURIComponent(name)}=${encodeURIComponent(value)};expires=${d.toUTCString()};path=/`;
+}
+function getCookie(name){
+  const key=encodeURIComponent(name)+"=";
+  return document.cookie.split('; ').reduce((acc,c)=>{
+    if(c.indexOf(key)===0){acc=decodeURIComponent(c.substring(key.length));}
+    return acc;
+  },"");
+}
+function persist(key, obj){
+  const val = JSON.stringify(obj);
+  localStorage.setItem(key, val);
+  setCookie(key, val);
+}
+function restore(key){
+  const ls = localStorage.getItem(key);
+  if(ls) return JSON.parse(ls);
+  const ck = getCookie(key);
+  if(ck) try{return JSON.parse(ck);}catch(e){return null}
+  return null;
+}
+
+/* ===== UI helpers ===== */
+function updateOptionsDisplay(){
+  document.getElementById('optionsCount').textContent = `📊 Total de opciones: ${options.length}`;
+}
+
+
+function rebuildWheel(){
+  const wheel = document.getElementById('wheel');
+  wheel.innerHTML = '';
+  
+  if(options.length === 0){
+    wheel.className = 'wheel empty';
+    wheel.style.background = 'rgba(44,44,44,.3)';
+    wheel.style.transform = 'rotate(0deg)';
+    wheel.insertAdjacentHTML('beforeend','<div class="empty-state">Agrega opciones para comenzar</div>');
+    return;
+  }
+
+  wheel.className = 'wheel';
+  const segmentAngle = 360 / options.length;
+  
+  // Crear el fondo de la ruleta con gradiente cónico
+  const stops = options.map((_, i) => {
+    const color = colors[i % colors.length];
+    return `${color} ${i * segmentAngle}deg ${(i + 1) * segmentAngle}deg`;
+  }).join(', ');
+  
+  wheel.style.background = `
+    radial-gradient(circle at center, #FFD700 0%, #FFA500 2%, transparent 4%),
+    conic-gradient(${stops})
+  `;
+
+  // Obtener el tamaño real de la rueda
+  const wheelSize = Math.min(window.innerWidth * 0.8, window.innerHeight * 0.8, 800);
+  const radius = wheelSize * 0.35; // 35% del tamaño de la rueda para posicionar las etiquetas
+
+  // Crear las etiquetas
+  options.forEach((opt, i) => {
+    const label = document.createElement('div');
+    label.className = 'segment-label';
+    
+    // Truncar texto si es muy largo
+    const maxLen = options.length > 20 ? 12 : options.length > 10 ? 16 : 20;
+    label.textContent = opt.length > maxLen ? opt.slice(0, maxLen - 1) + '…' : opt;
+    
+    // Calcular ángulo del centro del segmento
+    const centerAngle = i * segmentAngle + segmentAngle / 2;
+    
+    // Convertir a radianes para cálculos trigonométricos
+    const angleInRadians = (centerAngle * Math.PI) / 180;
+    
+    // Calcular posición
+    const x = Math.cos(angleInRadians - Math.PI/2) * radius;
+    const y = Math.sin(angleInRadians - Math.PI/2) * radius;
+    
+    // Determinar rotación del texto
+    let textRotation = centerAngle+ 90;
+    
+    // Si el texto estaría al revés (entre 90° y 270°), rotarlo 180° adicionales
+    if (centerAngle > 90 && centerAngle < 270) {
+      textRotation -= 180;
+    }
+    
+    // Aplicar transformaciones
+    label.style.transform = `
+      translate(-50%, -50%) 
+      translate(${x}px, ${y}px) 
+      rotate(${textRotation}deg)
+    `;
+    
+    wheel.appendChild(label);
+  });
+}
+
+/* ===== Ganadores UI ===== */
+function updateWinnersList(){
+  const list=document.getElementById('winnersList');
+  if(winners.length===0){
+    list.innerHTML='<div class="empty-state">Los ganadores aparecerán aquí...</div>';
+    return;
+  }
+  list.innerHTML = winners.map((w,i)=>`
+    <div class="winner-item">
+      <span class="winner-number">#${w.number}</span>
+      <span class="winner-name">${w.name}</span>
+      <input class="book-input" value="${w.book||''}" placeholder="Libro"
+             onchange="winners[${i}].book=this.value; persist('winners', winners)">
+      <label>
+        <input type="checkbox" class="attendance-checkbox" ${w.present?'checked':''}
+               onchange="winners[${i}].present=this.checked; persist('winners', winners)">
+        <span class="attendance-label">Presente</span>
+      </label>
+    </div>
+  `).join('');
+}
+
+/* ===== Confetti sencillo (vanilla) ===== */
+const confettiCanvas = document.getElementById('confettiCanvas');
+const ctx = confettiCanvas.getContext('2d');
+function resizeConfetti(){ confettiCanvas.width=window.innerWidth; confettiCanvas.height=window.innerHeight; }
+window.addEventListener('resize', resizeConfetti); resizeConfetti();
+
+function runConfetti(durationMs=2500){
+  const colors = ['#f94144','#f3722c','#f9c74f','#90be6d','#43aa8b','#577590','#f8961e','#f72585'];
+  const N = 200;
+  const parts = Array.from({length:N},()=>({
+    x: confettiCanvas.width/2, y: confettiCanvas.height/2,
+    vx: (Math.random()-0.5)*8, vy: (Math.random()*-8-3),
+    g: 0.15 + Math.random()*0.15,
+    s: 6+Math.random()*6,
+    c: colors[Math.floor(Math.random()*colors.length)],
+    r: Math.random()*Math.PI
+  }));
+  let t0=null;
+  function tick(ts){
+    if(!t0) t0=ts;
+    const dt = 16;
+    ctx.clearRect(0,0,confettiCanvas.width,confettiCanvas.height);
+    parts.forEach(p=>{
+      p.vy += p.g;
+      p.x  += p.vx;
+      p.y  += p.vy;
+      p.r  += 0.1;
+      ctx.save();
+      ctx.translate(p.x,p.y);
+      ctx.rotate(p.r);
+      ctx.fillStyle=p.c;
+      ctx.fillRect(-p.s/2,-p.s/2,p.s,p.s);
+      ctx.restore();
+    });
+    if(ts - t0 < durationMs) requestAnimationFrame(tick);
+    else ctx.clearRect(0,0,confettiCanvas.width,confettiCanvas.height);
+  }
+  requestAnimationFrame(tick);
+}
+
+/* ===== Modal ganador ===== */
+const modal = document.getElementById('winnerModal');
+const modalName = document.getElementById('modalWinnerName');
+document.getElementById('modalClose').onclick = closeModal;
+document.getElementById('modalOk').onclick = closeModal;
+function showWinnerModal(name){
+  modalName.textContent = name;
+  modal.classList.add('show');
+  runConfetti();
+}
+function closeModal(){ modal.classList.remove('show'); }
+
+/* ===== Spin ===== */
+function spin(){
+  if(isSpinning || options.length===0) return;
+  isSpinning=true;
+  document.getElementById('spinOverlay').disabled=true;
+  const wheel=document.getElementById('wheel');
+  const segmentAngle=360/options.length;
+  const spins=5+Math.random()*3;
+  const finalAngle=Math.random()*360;
+  const totalRotation = currentRotation + spins*360 + finalAngle;
+  wheel.style.transform = `rotate(${totalRotation}deg)`;
+
+  setTimeout(()=>{
+    const angleMod=((totalRotation%360)+360)%360;
+    const adjusted=(360-angleMod)%360; // flecha arriba apuntando abajo
+    const index = Math.floor(adjusted/segmentAngle)%options.length;
+    const result = options[index];
+
+    document.getElementById('result').innerHTML = `🎉 <strong>${result}</strong> 🎉`;
+    addWinner(result);
+
+    options.splice(index,1);
+    persist('options', options);
+    updateOptionsDisplay();
+    rebuildWheel();
+
+    currentRotation = totalRotation;
+    document.getElementById('spinOverlay').disabled=false;
+    isSpinning=false;
+
+    showWinnerModal(result);
+  },4000);
+}
+
+/* ===== Winners logic ===== */
+function addWinner(name){
+  const sel = document.getElementById('currentBook').value;
+  const b1 = document.getElementById('book1Name').value;
+  const b2 = document.getElementById('book2Name').value;
+  let book='';
+  if(sel==='libro1' && b1) book=b1; else if(sel==='libro2' && b2) book=b2;
+  else if(sel==='libro1') book='Libro 1'; else if(sel==='libro2') book='Libro 2';
+  winners.push({number:winnerCounter++, name, present:false, book, timestamp:new Date()});
+  persist('winners', winners);
+  persist('winnerCounter', winnerCounter);
+  updateWinnersList();
+}
+
+/* ===== Export / clear ===== */
+function exportCSV(){
+  if(winners.length===0) return;
+  let csv='Orden,Nombre,Presente,Libro,Fecha,Hora\n';
+  winners.forEach(w=>{
+    const d=new Date(w.timestamp);
+    csv += `${w.number},"${w.name}",${w.present?'Sí':'No'},"${w.book||''}",${d.toLocaleDateString()},${d.toLocaleTimeString()}\n`;
+  });
+  const blob = new Blob([csv], {type:'text/csv;charset=utf-8;'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `ganadores_${new Date().toISOString().split('T')[0]}.csv`;
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+}
+function clearWinners(){
+  if(!confirm('¿Limpiar historial de ganadores?')) return;
+  winners=[]; winnerCounter=1;
+  persist('winners', winners); persist('winnerCounter', winnerCounter);
+  updateWinnersList();
+}
+
+/* ===== Presets ===== */
+const PRESET_TEO = [
+  "La Trinidad","Cristo","Espíritu Santo","Salvación por gracia","Justificación por la fe",
+  "Santificación","Dones espirituales","La Iglesia","Segunda venida","Juicio final","Vida eterna",
+  "Ángeles","Guerra espiritual","Oración","Ayuno","Sacramentos","Disciplina eclesiástica",
+  "Autoridad de las Escrituras","Hermenéutica","Pactos"
+];
+
+/* ===== Persist book fields & selection ===== */
+function persistBooks(){
+  persist('book1', document.getElementById('book1Name').value);
+  persist('book2', document.getElementById('book2Name').value);
+  persist('currentBook', document.getElementById('currentBook').value);
+}
+
+/* ===== Listeners ===== */
+document.addEventListener('DOMContentLoaded',()=>{
+  // Restores
+  const savedOptions = restore('options'); if(savedOptions){options=savedOptions;}
+  const savedWinners = restore('winners'); if(savedWinners){winners=savedWinners;}
+  const savedCounter = restore('winnerCounter'); if(savedCounter){winnerCounter=savedCounter;}
+  const b1 = restore('book1'); if(b1!==null) document.getElementById('book1Name').value=b1;
+  const b2 = restore('book2'); if(b2!==null) document.getElementById('book2Name').value=b2;
+  const cb = restore('currentBook'); if(cb!==null) document.getElementById('currentBook').value=cb;
+
+  // Build UI
+  updateOptionsDisplay(); rebuildWheel(); updateWinnersList();
+
+  // Spin
+  document.getElementById('spinOverlay').addEventListener('click', spin);
+
+  // Import
+  document.getElementById('importBtn').addEventListener('click', ()=>{
+    const lines = document.getElementById('textImport').value.split('\n').map(s=>s.trim()).filter(Boolean);
+    if(lines.length<2) return alert('Ingresa al menos 2 opciones (una por línea).');
+    options = lines; currentRotation=0;
+    persist('options', options);
+    rebuildWheel(); updateOptionsDisplay();
+    document.getElementById('textImport').value='';
+  });
+  document.getElementById('presetBtn').addEventListener('click', ()=>{
+    document.getElementById('textImport').value = PRESET_TEO.join('\n');
+  });
+  document.getElementById('clearBtn').addEventListener('click', ()=>{
+    if(!confirm('¿Eliminar todas las opciones?')) return;
+    options=[]; currentRotation=0; persist('options', options);
+    rebuildWheel(); updateOptionsDisplay();
+  });
+
+  // Export / clear winners
+  document.getElementById('exportBtn').addEventListener('click', exportCSV);
+  document.getElementById('clearWinnersBtn').addEventListener('click', clearWinners);
+
+  // Persist book fields
+  document.getElementById('book1Name').addEventListener('input', persistBooks);
+  document.getElementById('book2Name').addEventListener('input', persistBooks);
+  document.getElementById('currentBook').addEventListener('change', persistBooks);
+});
+</script>
+</body>
+</html>
