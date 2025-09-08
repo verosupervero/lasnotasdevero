@@ -1,13 +1,13 @@
 +++
 title = "Los apóstoles del Espíritu"
 summary = "Conexión entre apariciones de Cristo, envío del Espíritu y plantación de iglesias, mostrando que el patrón bíblico sigue vigente hoy."
-tags = ["Hechos", "apóstoles del Espíritu", "misión", "Junia", "Bernabé", "plantación de iglesias", "Didaché", "Efesios 4", "Misioneros","estudio-biblico","apariciones", "cristología", "misiones", "espíritu santo", "testimonio", "encarnación","reflexiones"]
+tags = []
 date = 2025-09-08
 +++
 
 ## Los apóstoles del Espíritu 
 
-Ayer hablando sobre las apariciones de Cristo a musulmanes con casos documentados y cómo esto valida el cristianismo bíblico, citando toda la evidencia de Garrison, Doyle, Puertas Abiertas y Vom tal vez me faltó LA conexión más importante desde el punto de vista bíblico:
+Ayer hablando sobre las apariciones de Cristo a musulmanes con casos documentados [] y cómo esto valida el cristianismo bíblico, citando toda la evidencia de Garrison, Doyle, Puertas Abiertas y La Voz de los Mártires tal vez me faltó la conexión más importante desde el punto de vista bíblico:
 
 **Tendría que haber hablado de los apóstoles del Espíritu.**
 
