@@ -1,7 +1,7 @@
 +++
 title = "Metodología en investigación teológica"
 description = "Reflexión sobre cómo abordar la investigación teológica con rigor académico y equilibrio bíblico."
-tags = ["metodología", "investigación", "teología", "hermenéutica", "bibliografía"]
+tags = ["metodología", "investigación", "teología", "hermenéutica", "bibliografía","reflexiones"]
 date = 2025-09-07
 +++
 
