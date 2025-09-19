@@ -1,9 +1,9 @@
 +++
 title = "Estudios Bíblicos"
-description = "Para pasar tiempo con el Señor y leyendo las Escrituras"
+description = "Para profundizar leyendo las Escrituras con una buena exégesis bíblica"
 layout = "recursos"
 
-filter_tag = "estudios-biblicos"
+filter_tag = "estudio-biblico"
 filter_section = "posts"
 items_per_page = 10
 
