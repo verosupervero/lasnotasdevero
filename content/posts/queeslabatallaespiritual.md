@@ -7,7 +7,19 @@ date = 2025-09-13
 image = "/images/batallaespiritual.png"
 +++
 
-# Introducción
+# Explicación formato audiovisual
+
+En este video explico punto por punto de lo desarrollado en este artículo con mayor detalle y con los comentarios bíblicos, en el pie de esta página dejo la bibliografía consultada:
+
+{{< youtube a6SnzhEVd2g >}}
+
+## Presentación
+
+Acceso a la presentación en: [Google Drive](https://drive.google.com/file/d/1MdN78RZPnYTEUCPhghXb9BbluNMytrg4/view?usp=sharing)
+
+# ¿Qué es la batalla espiritual?
+
+## Introducción
 
 Quiero presentar el tema introduciéndome con un fragmento de la carta de 2 Timoteo:
 
@@ -100,3 +112,24 @@ Seamos conscientes entonces que nuestra situación espiritual se refleja en la v
 Espero que esto sirva para mostrar que la realidad espiritual tiene varias capas pero que podemos verlas en la aplicación diaria.
 
 Bendiciones.
+
+
+# Bibliografía
+
+- Fee, G. D. (2008). *Comentario de las epístolas a 1ª y 2ª de Timoteo y Tito.* (Trad. P. L. Gómez Flores). Editorial CLIE. ISBN 978-84-8267-521-3.  
+- Carson, D. A., & Moo, D. J. (2005). *Una introducción al Nuevo Testamento.* Editorial CLIE, Colección Teológica Contemporánea. ISBN 978-84-8267-544-2.  
+- Ropero, A. (1999). *Obras escogidas de los Padres Apostólicos.* Editorial CLIE. ISBN 978-84-8454-465-4.  
+- Mounce, R. H. (2007). *Comentario al Libro del Apocalipsis.* Editorial CLIE, Colección Teológica Contemporánea. ISBN 978-84-8267-665-4.  
+
+## Fuentes antiguas y extrabíblicas
+
+- *1 Enoc.* Texto judío intertestamentario, citado en Judas 14–15.  
+- *Pastor de Hermas* (s. II). Obra cristiana primitiva.  
+- Ignacio de Antioquía. *Carta a los Trallanos.*  
+- Ireneo de Lyon. *Contra las herejías* (4.20.2).  
+- *Libro de Tobit* (deuterocanónico).  
+
+## Recursos  en línea
+
+- Karpars, O. (s.f.). *The Divine Council: Seeing the “Gods” Through Christian Eyes.* Desiring God. Disponible en: <https://www.desiringgod.org/articles/the-divine-council>  
+- Intertextual.bible. *Referencias al Shepherd of Hermas y Irenaeus Against Heresies.* Disponible en: <https://intertextual.bible/text/shepherd-of-hermas-26.2-irenaeus-against-heresies-book-4-20.2>  

@@ -7,6 +7,18 @@ author = "Vero"
 image = "/images/misioneros.png"
 +++
 
+## Explicación en formato audiovisual 
+
+En este video explico punto por punto de lo desarrollado en este artículo con mayor detalle y con los comentarios bíblicos, en el pie de esta página dejo la bibliografía:
+
+{{< youtube Qp5XC_HX92E >}}
+
+## Presentación
+
+Acceso a la presentación en: [Google Drive](https://drive.google.com/file/d/1WXgvzkwPjKVDhWnfMQ0u26DYbDO5ikzO/view?usp=sharing)
+
+# Breve explicación en formato artículo
+
 <img src="/images/misioneros.png" 
      alt="Oracion"
      style="float: right; 
