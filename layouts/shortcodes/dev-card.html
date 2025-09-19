@@ -1,0 +1,29 @@
+{{ $url      := .Get "url" }}
+{{ $title    := default "Recursos" (.Get "title") }}
+{{ $subtitle := .Get "subtitle" }}
+{{ if not $subtitle }}{{ $subtitle = (.Inner | plainify | trim " \n\r\t") }}{{ end }}
+
+{{ $iconL   := lower (default "bible" (.Get "icon_left")) }}
+{{ $iconR   := lower (default "drive" (.Get "icon_right")) }}
+{{ $variant := lower (default "card"  (.Get "variant")) }}
+{{ $size    := lower (default "md"    (.Get "size")) }}
+{{ $newtab  := lower (default "true"  (.Get "newtab")) }}
+{{ $class   := .Get "class" }}
+
+{{ $target := "_self" }}
+{{ $rel := "" }}
+{{ if eq $newtab "true" }}{{ $target = "_blank" }}{{ $rel = "noopener" }}{{ end }}
+
+{{ $ctx := dict
+  "url"        $url
+  "title"      $title
+  "subtitle"   $subtitle
+  "icon_left"  $iconL
+  "icon_right" $iconR
+  "variant"    $variant
+  "size"       $size
+  "newtab"     (eq $target "_blank")
+  "class"      $class
+}}
+
+{{ partial "dev-card.html" $ctx }}

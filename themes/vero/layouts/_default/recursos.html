@@ -1,0 +1,166 @@
+{{ define "main" }}
+  <div class="container">
+    <div class="titulo-principal">
+      <h1>{{ replace .Title "-" " " }}</h1>
+      {{ with .Params.description }}<p>{{ . }}</p>{{ end }}
+    </div>
+  </div>
+
+  <div id="main-wrapper">
+    <div class="container">
+      <div class="row 200%">
+        <div class="8u 12u$(medium) important(small)">
+          <div id="content">
+            <ul>
+              {{/* Parámetros de filtro/paginación */}}
+              {{ $tag := lower (default "devocional" .Params.filter_tag) }}
+              {{ $section := default "posts" .Params.filter_section }}
+              {{ $perPage := .Params.items_per_page }}
+
+              {{ $all := .Site.RegularPages }}
+              {{ if $section }} {{ $all = where $all "Section" $section }} {{ end }}
+              {{ $variants := slice $tag (title $tag) (upper $tag) }}
+              {{ $filtered := where $all "Params.tags" "intersect" $variants }}
+
+              {{ $sorted := $filtered.ByPublishDate.Reverse }}
+              {{ $paginator := cond (gt (int (default 0 $perPage)) 0) (.Paginate $sorted $perPage) (.Paginate $sorted) }}
+
+              {{ range $paginator.Pages }}
+                {{ partial "listitem.html" (dict "item" . "page" $.Page) }}
+              {{ end }}
+            </ul>
+
+            <nav class="pagination">
+              {{ if $paginator.HasPrev }}<a href="{{ $paginator.Prev.URL }}">Anterior</a>{{ end }}
+              {{ range $paginator.Pagers }}
+                <a href="{{ .URL }}"{{ if eq . $paginator }} class="active"{{ end }}>{{ .PageNumber }}</a>
+              {{ end }}
+              {{ if $paginator.HasNext }}<a href="{{ $paginator.Next.URL }}">Siguiente</a>{{ end }}
+            </nav>
+          </div>
+        </div>
+
+        {{/* ======== SIDEBAR OPCIONAL CON IMÁGENES Y VIDEOS ======== */}}
+        {{ $showSidebar := default true .Params.show_sidebar }}
+        {{ if $showSidebar }}
+          <div class="4u 12u$(medium)">
+            <div id="sidebar">
+
+              {{/* ---- Imagen 1 opcional ---- */}}
+              {{ with .Params.side_image1 }}
+                <section class="sidebar-image">
+                  {{ $href := $.Params.side_image1_link }}
+                  {{ if $href }}<a href="{{ $href }}">{{ end }}
+                    <img src="{{ . | relURL }}" alt="{{ $.Params.side_image1_alt | default $.Title }}">
+                  {{ if $href }}</a>{{ end }}
+                  {{ with $.Params.side_image1_caption }}
+                    <figcaption class="image-caption">{{ . }}</figcaption>
+                  {{ end }}
+                </section>
+              {{ end }}
+
+              {{/* ---- Imagen 2 opcional ---- */}}
+              {{ with .Params.side_image2 }}
+                <section class="sidebar-image">
+                  {{ $href := $.Params.side_image2_link }}
+                  {{ if $href }}<a href="{{ $href }}">{{ end }}
+                    <img src="{{ . | relURL }}" alt="{{ $.Params.side_image2_alt | default $.Title }}">
+                  {{ if $href }}</a>{{ end }}
+                  {{ with $.Params.side_image2_caption }}
+                    <figcaption class="image-caption">{{ . }}</figcaption>
+                  {{ end }}
+                </section>
+              {{ end }}
+
+              {{/* ---- Video 1 opcional (YouTube/Vimeo) ---- */}}
+              {{ with .Params.video1 }}
+                {{ $url := . | safeURL }}
+                {{ $s := newScratch }}{{ $s.Set "src" $url }}
+                {{ if in $url "youtube.com" }}
+                  {{ $s.Set "src" (replace $url "watch?v=" "embed/") }}
+                {{ else if in $url "youtu.be/" }}
+                  {{ $id := replaceRE `^https?://youtu\.be/([^?]+).*` `$1` $url }}
+                  {{ $s.Set "src" (printf "https://www.youtube.com/embed/%s" $id) }}
+                {{ else if in $url "vimeo.com" }}
+                  {{ $id := replaceRE `vimeo\.com/(?:video/)?([0-9]+)` `$1` $url }}
+                  {{ $s.Set "src" (printf "https://player.vimeo.com/video/%s" $id) }}
+                {{ end }}
+                {{ $src := $s.Get "src" }}
+                <section class="sidebar-video">
+                  {{ with $.Params.video1_title }}<h3>{{ . }}</h3>{{ end }}
+                  <div class="video-responsive">
+                    <iframe src="{{ $src }}"
+                            loading="lazy"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen></iframe>
+                  </div>
+                </section>
+              {{ end }}
+
+              {{/* ---- Tarjeta opcional desde front matter [dev_card] ---- */}}
+              {{ with .Params.dev_card }}
+                {{ if or .enabled .enable }}
+                  {{ partial "dev-card.html" (dict
+                    "url"        .url
+                    "title"      .title
+                    "subtitle"   .subtitle
+                    "icon_left"  .icon_left
+                    "icon_right" .icon_right
+                    "variant"    .variant
+                    "size"       .size
+                    "newtab"     .newtab
+                    "class"      .class
+                  ) }}
+                {{ end }}
+              {{ end }}
+
+
+              {{/* ---- Video 2 opcional (YouTube/Vimeo) ---- */}}
+              {{ with .Params.video2 }}
+                {{ $url := . | safeURL }}
+                {{ $s := newScratch }}{{ $s.Set "src" $url }}
+                {{ if in $url "youtube.com" }}
+                  {{ $s.Set "src" (replace $url "watch?v=" "embed/") }}
+                {{ else if in $url "youtu.be/" }}
+                  {{ $id := replaceRE `^https?://youtu\.be/([^?]+).*` `$1` $url }}
+                  {{ $s.Set "src" (printf "https://www.youtube.com/embed/%s" $id) }}
+                {{ else if in $url "vimeo.com" }}
+                  {{ $id := replaceRE `vimeo\.com/(?:video/)?([0-9]+)` `$1` $url }}
+                  {{ $s.Set "src" (printf "https://player.vimeo.com/video/%s" $id) }}
+                {{ end }}
+                {{ $src := $s.Get "src" }}
+                <section class="sidebar-video">
+                  {{ with $.Params.video2_title }}<h3>{{ . }}</h3>{{ end }}
+                  <div class="video-responsive">
+                    <iframe src="{{ $src }}"
+                            loading="lazy"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen></iframe>
+                  </div>
+                </section>
+              {{ end }}
+
+              {{/* ---- Bloque de tags opcional ---- */}}
+              {{ if (default true .Params.show_sidebar_tags) }}
+                <section>
+                  <h2>{{ default "Otros Temas" .Params.sidebar_title }}</h2>
+                  <ul>
+                    {{ range $name, $taxonomy := site.Taxonomies.tags }}
+                      <li>
+                        <a href="{{ "/tags/" | relLangURL }}{{ $name | urlize }}">{{ $name }}</a> ({{ len $taxonomy }})
+                      </li>
+                    {{ end }}
+                  </ul>
+                </section>
+              {{ end }}
+
+            </div>
+          </div>
+        {{ end }}
+
+      </div>
+    </div>
+  </div>
+{{ end }}

@@ -1,6 +1,18 @@
 @import url("font-awesome.min.css");
 @import url("https://fonts.googleapis.com/css?family=Oleo+Script:400|Open+Sans:300,300italic,600,600italic,800");
 
+
+
+.sidebar-image img { width: 100%; height: auto; display: block; border-radius: 8px; }
+.image-caption { font-size: .9rem; opacity: .75; margin-top: .5rem; }
+
+.video-responsive {
+  position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px;
+}
+.video-responsive iframe {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+}
+
 /*
 	Verti by HTML5 UP
 	html5up.net | @ajlkn
@@ -3020,4 +3032,64 @@ a.footnote-ref:active {
 }
 
 
+.dev-card{
+  --bg: linear-gradient(135deg,#f4f9ff 0%, #e9f3ff 60%, #f7fbff 100%);
+  --txt:#11324d; --ring:#beddff; --shadow:0 6px 18px rgba(17,50,77,.12);
 
+  /* variables de tamaño (podés ajustarlas por inline-style si querés) */
+  --ico: 32px;   /* ícono izquierdo/base */
+  --icoR: 30px;  /* ícono derecho (Drive) un toque menor para balance óptico */
+
+  display:flex; align-items:center; gap:.9rem; width:100%;
+  padding:1rem 1.1rem; background:var(--bg); color:var(--txt);
+  border-radius:14px; text-decoration:none; box-shadow:var(--shadow);
+  outline:2px solid transparent; transition:.18s ease;
+}
+.dev-card:hover{ transform:translateY(-1px); box-shadow:0 10px 24px rgba(17,50,77,.16); }
+.dev-card:focus-visible{ outline-color:var(--ring); }
+
+/* centrado vertical de los extremos */
+.dev-card__left, .dev-card__right{ flex:0 0 auto; display:flex; align-items:center; }
+.dev-card__right{ margin-left:auto; }
+
+.dev-card__content{ display:flex; flex-direction:column; line-height:1.15; }
+.dev-card__title{ font-weight:800; font-size:1.28rem; letter-spacing:.2px; }
+.dev-card__subtitle{ font-size:1rem; opacity:.88; margin-top:.2rem; }
+
+/* tamaños de iconos */
+.dev-ico{ width:var(--ico); height:var(--ico); display:block; object-fit:contain; }
+.dev-ico--bible,.dev-ico--book{ width:var(--ico); height:var(--ico); color:#173b5a; opacity:.95; }
+.dev-ico--drive{ width:var(--icoR); height:var(--icoR); }
+
+/* Tamaños responsivos */
+.dev-sm .dev-card__title{ font-size:1.05rem; }
+.dev-sm .dev-card__subtitle{ font-size:.9rem; }
+.dev-sm .dev-ico--bible,.dev-sm .dev-ico--book{ width:30px; height:30px }
+.dev-sm .dev-ico--drive{ width:50px; height:50px }
+
+.dev-lg{ padding:1.15rem 1.25rem }
+.dev-lg .dev-card__title{ font-size:1.45rem }
+.dev-lg .dev-ico--bible{ width:50px; height:50px }
+.dev-lg .dev-ico--drive{ width:50px; height:50px }
+
+/* Variante “button” (más compacto) */
+.dev-card--button{ padding:.85rem 1rem; border-radius:12px; }
+.dev-card--button .dev-card__subtitle{ display:none; }
+
+/* Responsive */
+@media (max-width:640px){
+  .dev-card{ gap:.75rem; padding:.9rem .95rem }
+  .dev-card__title{ font-size:1.15rem }
+  .dev-card__subtitle{ font-size:.95rem }
+  .dev-ico--bible,.dev-ico--book{ width:30px; height:30px }
+  .dev-ico--drive{ width:50px; height:50px }
+}
+
+/* Dark mode opcional */
+@media (prefers-color-scheme: dark){
+  .dev-card{
+    --bg: linear-gradient(135deg,#0f2233 0%, #0b1a28 60%, #0f2233 100%);
+    --txt:#e8f2ff; --ring:#2f78ff; --shadow:0 6px 18px rgba(0,0,0,.35);
+  }
+  .dev-ico--bible,.dev-ico--book{ color:#cfe6ff; opacity:1; }
+}
