@@ -1,0 +1,36 @@
++++
+title = "Devocionales"
+description = "Lecturas devocionales seleccionadas"
+layout = "devocionales"
+
+# Filtros / paginación
+filter_tag = "devocional"
+filter_section = "posts"
+items_per_page = 10
+
+# Sidebar toggles
+show_sidebar = true
+show_sidebar_tags = true
+sidebar_title = "Otros Temas"
+
+# --- Medios opcionales (hasta 2 imágenes y 2 videos) ---
+# Imagen 1
+side_image1 = "/images/devocionales-1.jpg"
+side_image1_link = "https://lasnotasdevero.com/posts/alguno/"
+side_image1_alt = "Serie devocional 1"
+side_image1_caption = "Lecturas recomendadas"
+
+# Imagen 2
+side_image2 = "/images/devocionales-2.jpg"
+side_image2_link = "https://lasnotasdevero.com/posts/otro/"
+side_image2_alt = "Serie devocional 2"
+side_image2_caption = "Nueva serie"
+
+# Video 1 (YouTube o Vimeo: pegá la URL normal)
+video1 = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+video1_title = "Playlist devocional"
+
+# Video 2
+video2 = "https://vimeo.com/76979871"
+video2_title = "Mensaje destacado"
++++
