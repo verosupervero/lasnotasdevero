@@ -15,9 +15,13 @@ Traducción al español por **Vero Bustamante Danko**, con permiso del autor.
 
 En un principio, los miembros de la iglesia primitiva no se identificaban como “cristianos”, en contraste con los judíos y los paganos.
 En general, se referían a sí mismos como seguidores del Camino (Hechos 9:2; 19:9, 23; 22:4), discípulos (Hechos 6:1, 7), creyentes (Hechos 1:15; 2:44) o la iglesia de Dios (Hechos 9:31; 1 Corintios 1:2).
+
 Los líderes de Jerusalén los catalogaban como la secta de los nazarenos, y las autoridades civiles del oriente como cristianos, por considerarlos una rama mesiánica dentro del judaísmo (Hechos 24:5; 11:26).
+
 No fue sino hasta Ignacio de Antioquía, en el primer cuarto del siglo II, que los seguidores de Jesús comenzaron a identificarse como cristianos y a concebir el cristianismo como algo separado del judaísmo y de la cultura grecorromana.
+
 En Judea, los seguidores de Jesús eran considerados una secta mesiánica judía que se había desviado del mismo judaísmo, por su creencia de que Dios había traído liberación e inaugurado el Reino en la vida, crucifixión y resurrección de Jesús de Nazaret, el Mesías elegido de Israel.
+
 En los orígenes de la historia del movimiento de Jesús, las iglesias primitivas eran un movimiento claramente asociado con las comunidades judías, tanto en Judea como en la Diáspora; pero también ganó un número grande de convertidos gentiles, que rápidamente empezaron a cambiar la constitución étnica y el ethos de sus asambleas. 
 Dicho esto, sin embargo, de manera muy temprana comenzaron a verse las primeras fisuras que, con el tiempo, conducirían a la separación de caminos entre el cristianismo y el judaísmo, en los años posteriores al 70 d.C.
 Pablo podía identificarse como un seguidor del Mesías judío, aun reconociendo la distinción entre la iglesia de Dios, los judíos y los gentiles (1 Corintios 10:32).
