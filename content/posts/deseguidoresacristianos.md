@@ -26,17 +26,18 @@ Pablo podía identificarse como un seguidor del Mesías judío, aun reconociendo
   <img 
     src="/images/Jesus-Christ-from-Hagia-Sophia.jpg" 
     alt="Jesús"
-    style="
-      width: 100%;
-      height: auto;
-      max-width: 450px;
-      border-radius: 18px;
-      box-shadow: 0 2px 14px rgba(0,0,0,0.12);
-      margin: 0 auto;
-      display: block;
-    "
-  />
-  <figcaption style="font-size: 0.85em; color: #555; margin-top: 0.5em;">
+     style="float: right; 
+            margin-left: 2em; 
+            margin-bottom: 1em; 
+            max-width: 500px; 
+            width: 100%; 
+            height: auto; 
+            border-radius: 18px; 
+            box-shadow: 0 2px 14px rgba(0,0,0,0.12);" />
+  <figcaption style="font-size: 0.85em; color: #555; margin-top: 0.5em; float: right; 
+            margin-left: 2em; 
+            margin-bottom: 1em; 
+            max-width: 500px; ">
     Foto: Petar Milošević, “Jesus Christ from Hagia Sophia”, Wikimedia Commons (CC BY-SA 4.0).
   </figcaption>
 </figure>
