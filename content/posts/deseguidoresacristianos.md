@@ -22,18 +22,24 @@ En los orígenes de la historia del movimiento de Jesús, las iglesias primitiva
 Dicho esto, sin embargo, de manera muy temprana comenzaron a verse las primeras fisuras que, con el tiempo, conducirían a la separación de caminos entre el cristianismo y el judaísmo, en los años posteriores al 70 d.C.
 Pablo podía identificarse como un seguidor del Mesías judío, aun reconociendo la distinción entre la iglesia de Dios, los judíos y los gentiles (1 Corintios 10:32).
 
-<img src="/images/Jesus-Christ-from-Hagia-Sophia.jpg" 
-     alt="jesus"
-     style="float: right; 
-            margin-left: 2em; 
-            margin-bottom: 1em; 
-            max-width: 500px; 
-            width: 50%; 
-            height: auto; 
-            border-radius: 18px; 
-            box-shadow: 0 2px 14px rgba(0,0,0,0.12);" />
-_Foto: Petar Milošević, “Jesus Christ from Hagia Sophia”, Wikimedia Commons (CC BY-SA 4.0)._
-            
+<figure style="margin: 1em 0; text-align: center;">
+  <img 
+    src="/images/Jesus-Christ-from-Hagia-Sophia.jpg" 
+    alt="Jesús"
+    style="
+      width: 100%;
+      height: auto;
+      max-width: 450px;
+      border-radius: 18px;
+      box-shadow: 0 2px 14px rgba(0,0,0,0.12);
+      margin: 0 auto;
+      display: block;
+    "
+  />
+  <figcaption style="font-size: 0.85em; color: #555; margin-top: 0.5em;">
+    Foto: Petar Milošević, “Jesus Christ from Hagia Sophia”, Wikimedia Commons (CC BY-SA 4.0).
+  </figcaption>
+</figure>
 
 Cuando los seguidores de Jesús llegaron a Roma, inicialmente fueron identificados junto con las comunidades judías de la ciudad.
 Consecuentemente, se dio la expulsión de los judíos seguidores de Jesús, ordenada por el emperador Claudio en el año 49 d.C., la cual fue considerada como la expulsión de ciertos judíos de la ciudad, a causa de disputas sobre un tal Chrestus —un latinismo que significa Cristo.
