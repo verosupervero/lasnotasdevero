@@ -1,5 +1,5 @@
 +++
-title = "De "seguidores de Jesús" a "cristianos": la historia no contada"
+title = "De \"seguidores de Jesús\" a \"cristianos\": la historia no contada"
 date = 2025-10-24
 summary = "La iglesia primitiva no se autodenominaba cristiana. Este artículo recorre cómo los primeros seguidores de Jesús, enraizados en el judaísmo, fueron poco a poco desarrollando una identidad propia hasta ser reconocidos como cristianos en el Imperio romano."
 tags = ["iglesia primitiva", "historia", "teologia", "cristianismo", "judaismo", "hechos", "Michael Bird", "identidad cristiana","traducciones"]
