@@ -54,5 +54,7 @@ Es precisamente esta matriz judía de la iglesia primitiva que explica los vario
 
 En cierta forma particular los seguidores de Jesús no eran ni judíos ni paganos, sino algo distinto, una “tercera raza” en el lenguaje de Arístides en el segundo siglo.
 El autor pagano Cecilio llamó a los cristianos una “sociedad oscura”, en referencia tanto a su status como outsiders como a la extraña forma de vida que llevaban, adoptando elementos de la tradición judía pero también interactuando con el mundo helenístico. 
+
 Los seguidores de Jesús no empezaron como cristianos, pero se convirtieron en cristianos a medida que desarrollaban un ethos y una forma de vivir propios, y a medida que el tiempo pasaba representaron una mutación mesiánica de la tradición judía así como un rechazo a la cultura religiosa del orden imperial.
+
 Y de esta forma fue como los seguidores de Jesús, desde Galilea y Judea, eventualmente se convirtieron en cristianos a lo largo del Imperio romano. 
