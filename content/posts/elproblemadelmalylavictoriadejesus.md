@@ -70,10 +70,34 @@ Sigamos hacia la meta: el llamamiento supremo de Cristo Jesús (Filipenses 3:14)
 
 
 ## Conclusión
+<figure style="margin: 1em 0; text-align: center;">
+  <img 
+    src="/images/Jesus-Christ-from-Hagia-Sophia.jpg" 
+    alt="Jesús"
+     style="float: right; 
+            margin-left: 2em; 
+            margin-bottom: 1em; 
+            max-width: 500px; 
+            width: 100%; 
+            height: auto; 
+            border-radius: 18px; 
+            box-shadow: 0 2px 14px rgba(0,0,0,0.12);" />
+  <figcaption style="font-size: 0.85em; color: #555; margin-top: 0.5em; float: right; 
+            margin-left: 2em; 
+            margin-bottom: 1em; 
+            max-width: 500px; ">
+    Foto: Petar Milošević, “Jesus Christ from Hagia Sophia”, Wikimedia Commons (CC BY-SA 4.0).
+  </figcaption>
+</figure>
 
 Dios no se olvida de nosotros. En medio de un mundo caído y lleno de maldad, Él sigue siendo soberano. Su providencia obra incluso en las circunstancias más dolorosas. Y si experimentamos sufrimiento hoy, recordemos que nuestro Señor también sufrió, y que su resurrección es la garantía de nuestra esperanza futura.
 
 **Toda la gloria sea a Él.**
 El Señor es bueno.
+Dios nos amó, nos ama y nos amará por siempre como sus hijos y en él podemos tener refugio seguro.
+
+Te dejo una canción que yo hice, para alabar al Señor.
+
+{{< youtube i2ZPXG1d6xA >}}
 
 
