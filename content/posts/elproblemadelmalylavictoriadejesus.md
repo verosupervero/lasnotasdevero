@@ -68,6 +68,19 @@ Debemos mirar hacia adelante, sin dejarnos definir únicamente por lo que sucedi
 
 Sigamos hacia la meta: el llamamiento supremo de Cristo Jesús (Filipenses 3:14).
 
+## La invitación de Jesús
+Vengan a mí todos los que están cansados y llevan cargas pesadas, y yo les daré descanso. (Mateo 11:28)
+
+Vemos que Dios no se quedó ajeno a la necesidad y el sufrimiento del ser humano, tanto así que él mismo descendió del cielo: nació de una mujer, María,  
+
+
+<!-- # Lideando con el dolor hoy
+
+Luego de la crucifixion jesus les dio la situientes instruccion a sus discipulos
+Toda autoridad me es dada bautizandolos y he aqui yo estoy con ustedes
+Esperamos qe un dia jesus vuelva y arregle todas las cosas pero no solamente es un lindo pensamiento sobre el futuro, asi como jesus resucito entre los muertos librado del dolor de la muerte, asi el hace nacer de nuevo, es decir, les da una nueva vida a todo aquel que lo siga y ponga su confianza en el. Y jesus prometio no dejarnos solos sino estar con nostros durante el transcurso de nuestra vida hasta que finalmente podamos verlo cara a cara. 
+-->
+
 
 ## Conclusión
 <figure style="margin: 1em 0; text-align: center;">

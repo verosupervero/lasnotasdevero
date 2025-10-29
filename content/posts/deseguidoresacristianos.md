@@ -8,7 +8,7 @@ image = "/images/Jesus-Christ-from-Hagia-Sophia.jpg"
 +++
 
 {{< observacion >}}
-Adaptado de Michael F. Bird, *“From ‘Jesus-Followers’ to ‘Christians’: The Untold Story”*, publicado en [Substack](https://michaelfbird.substack.com) el 16 de octubre de 2025.  
+Adaptado de Michael F. Bird, *“From ‘Jesus-Followers’ to ‘Christians’: The Untold Story”*, publicado en su [Substack](https://michaelfbird.substack.com/p/from-jesus-followers-to-christians) el 16 de octubre de 2025. Suscríbanse a su Substack. 
 Traducción al español por **Vero Bustamante Danko**, con permiso del autor.
 {{< /observacion >}}
 
