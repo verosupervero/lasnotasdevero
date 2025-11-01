@@ -251,6 +251,76 @@
   .attendance-checkbox{transform:scale(1.3);accent-color:#27AE60}
   .attendance-label{color:#27AE60;font-weight:700;margin-left:8px}
   
+.btn-back {
+  background: linear-gradient(135deg, #3498DB, #2980B9);
+  color: #fff;
+  border: 2px solid rgba(52, 152, 219, 0.3);
+  padding: 10px 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  min-width: 160px;
+}
+
+.remove-book-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: #E74C3C;
+  color: #fff;
+  border: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+.remove-book-btn:hover {
+  background: #C0392B;
+  transform: scale(1.1);
+}
+.book-field {
+  position: relative;
+}
+
+
+.returned-badge {
+  color: #3498DB;
+  font-weight: 700;
+  font-size: 20px;
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.returned-badge::before {
+  content: '✓';
+  margin-right: 4px;
+  font-size: 15px;
+  font-weight: 900;
+}
+
+
+.btn-back:hover {
+  background: linear-gradient(135deg, #5DADE2, #3498DB);
+  border-color: rgba(52, 152, 219, 0.6);
+  transform: scale(1.05);
+}
+
+@media (max-width:900px){
+  /* ... tus estilos existentes ... */
+  .winner-item{grid-template-columns:1fr auto;text-align:center;gap:8px}
+}
+
   .export-controls{text-align:center;margin-top:16px}
 
   .footer{margin-top:20px;opacity:.8;font-style:italic}
@@ -334,16 +404,19 @@
 
       <!-- Right: panel -->
       <div class="right-panel">
-        <div class="book-config">
-          <div class="book-field">
-            <label for="book1Name">📖 Nombre Libro 1:</label>
-            <input type="text" id="book1Name" placeholder="Ej: Teología Sistemática">
+          <div class="book-config" id="bookConfig">
+            <div class="book-field" data-book-id="1">
+              <label for="book1Name">📖 Nombre Libro 1:</label>
+              <input type="text" id="book1Name" placeholder="Ej: Teología Sistemática">
+            </div>
+            <div class="book-field" data-book-id="2">
+              <label for="book2Name">📚 Nombre Libro 2:</label>
+              <input type="text" id="book2Name" placeholder="Ej: Doctrinas de la Gracia">
+            </div>
           </div>
-          <div class="book-field">
-            <label for="book2Name">📚 Nombre Libro 2:</label>
-            <input type="text" id="book2Name" placeholder="Ej: Doctrinas de la Gracia">
+          <div style="text-align:center;margin-top:12px">
+            <button class="btn btn-green" id="addBookBtn" style="min-width:200px">➕ Agregar Libro</button>
           </div>
-        </div>
 
         <div class="current-book-selector">
           <label for="currentBook">📖 Sorteando ahora:</label>
@@ -520,9 +593,15 @@ function updateWinnersList(){
                onchange="winners[${i}].present=this.checked; persist('winners', winners)">
         <span class="attendance-label">Presente</span>
       </label>
+      ${w.returnedToWheel 
+        ? '<span class="returned-badge">En ruleta</span>'
+        : `<button class="btn-back" onclick="returnToWheel(${i})">🔄 Regresar a la ruleta</button>`
+      }
     </div>
   `).join('');
 }
+
+
 
 /* ===== Confetti sencillo (vanilla) ===== */
 const confettiCanvas = document.getElementById('confettiCanvas');
@@ -613,16 +692,67 @@ function spin(){
 /* ===== Winners logic ===== */
 function addWinner(name){
   const sel = document.getElementById('currentBook').value;
-  const b1 = document.getElementById('book1Name').value;
-  const b2 = document.getElementById('book2Name').value;
-  let book='';
-  if(sel==='libro1' && b1) book=b1; else if(sel==='libro2' && b2) book=b2;
-  else if(sel==='libro1') book='Libro 1'; else if(sel==='libro2') book='Libro 2';
-  winners.push({number:winnerCounter++, name, present:false, book, timestamp:new Date()});
+  let book = '';
+  
+  if(sel){
+    // Extraer el número del libro (libro1 -> 1, libro2 -> 2, etc)
+    const bookId = sel.replace('libro', '');
+    const bookInput = document.getElementById(`book${bookId}Name`);
+    book = bookInput ? bookInput.value : `Libro ${bookId}`;
+  }
+  
+  winners.push({
+    number: winnerCounter++, 
+    name, 
+    present: false, 
+    book, 
+    timestamp: new Date(),
+    returnedToWheel: false
+  });
+  
   persist('winners', winners);
   persist('winnerCounter', winnerCounter);
   updateWinnersList();
 }
+
+
+
+/* ===== Regresar ganador a la ruleta ===== */
+function returnToWheel(index){
+  if(index < 0 || index >= winners.length) return;
+  
+  const winner = winners[index];
+  
+  // Verificar si ya fue regresado
+  if(winner.returnedToWheel){
+    alert(`"${winner.name}" ya fue agregado a la ruleta anteriormente.`);
+    return;
+  }
+  
+  const confirmMsg = `¿Agregar nuevamente a "${winner.name}" a la ruleta?\n\n(Se mantendrá en el historial y solo podrá agregarse una vez)`;
+  
+  if(!confirm(confirmMsg)) return;
+  
+  // Agregar de vuelta a las opciones
+  options.push(winner.name);
+  persist('options', options);
+  
+  // Marcar como regresado
+  winners[index].returnedToWheel = true;
+  persist('winners', winners);
+  
+  // Actualizar UI
+  rebuildWheel();
+  updateOptionsDisplay();
+  updateWinnersList();
+  
+  // Mensaje de confirmación
+  document.getElementById('result').innerHTML = `✅ <strong>${winner.name}</strong> agregado nuevamente a la ruleta`;
+  setTimeout(() => {
+    document.getElementById('result').innerHTML = '';
+  }, 3000);
+}
+
 
 /* ===== Export / clear ===== */
 function exportCSV(){
@@ -660,6 +790,69 @@ function persistBooks(){
   persist('currentBook', document.getElementById('currentBook').value);
 }
 
+
+/* ===== Gestión dinámica de libros ===== */
+let bookCounter = 3; // Empezamos desde 3 porque ya hay libro1 y libro2
+
+function addBookField(){
+  const bookConfig = document.getElementById('bookConfig');
+  const bookId = bookCounter++;
+  
+  const bookField = document.createElement('div');
+  bookField.className = 'book-field';
+  bookField.setAttribute('data-book-id', bookId);
+  bookField.innerHTML = `
+    <button class="remove-book-btn" onclick="removeBookField(${bookId})" title="Eliminar libro">✖</button>
+    <label for="book${bookId}Name">📚 Nombre Libro ${bookId}:</label>
+    <input type="text" id="book${bookId}Name" placeholder="Ej: Libro ${bookId}" 
+           oninput="persistBook(${bookId}, this.value)">
+  `;
+  
+  bookConfig.appendChild(bookField);
+  updateCurrentBookSelector();
+  persist('bookCounter', bookCounter);
+}
+
+function removeBookField(bookId){
+  if(!confirm('¿Eliminar este libro?')) return;
+  
+  const bookField = document.querySelector(`[data-book-id="${bookId}"]`);
+  if(bookField) bookField.remove();
+  
+  // Limpiar del localStorage
+  localStorage.removeItem(`book${bookId}`);
+  updateCurrentBookSelector();
+}
+
+function persistBook(bookId, value){
+  persist(`book${bookId}`, value);
+}
+
+function updateCurrentBookSelector(){
+  const select = document.getElementById('currentBook');
+  const currentValue = select.value;
+  
+  // Limpiar opciones excepto la primera
+  select.innerHTML = '<option value="">Seleccionar libro</option>';
+  
+  // Agregar opciones por cada campo de libro que existe
+  const bookFields = document.querySelectorAll('.book-field');
+  bookFields.forEach(field => {
+    const bookId = field.getAttribute('data-book-id');
+    const input = field.querySelector('input');
+    const bookName = input ? input.value : '';
+    const label = bookName || `Libro ${bookId}`;
+    
+    const option = document.createElement('option');
+    option.value = `libro${bookId}`;
+    option.textContent = label;
+    select.appendChild(option);
+  });
+  
+  // Restaurar valor seleccionado si aún existe
+  if(currentValue) select.value = currentValue;
+}
+
 /* ===== Listeners ===== */
 document.addEventListener('DOMContentLoaded',()=>{
   // Restores
@@ -670,8 +863,30 @@ document.addEventListener('DOMContentLoaded',()=>{
   const b2 = restore('book2'); if(b2!==null) document.getElementById('book2Name').value=b2;
   const cb = restore('currentBook'); if(cb!==null) document.getElementById('currentBook').value=cb;
 
+  // Restaurar libros adicionales
+  const savedBookCounter = restore('bookCounter');
+  if(savedBookCounter) bookCounter = savedBookCounter;
+
+  for(let i = 3; i < bookCounter; i++){
+    const savedBook = restore(`book${i}`);
+    if(savedBook !== null){
+      const bookConfig = document.getElementById('bookConfig');
+      const bookField = document.createElement('div');
+      bookField.className = 'book-field';
+      bookField.setAttribute('data-book-id', i);
+      bookField.innerHTML = `
+        <button class="remove-book-btn" onclick="removeBookField(${i})" title="Eliminar libro">✖</button>
+        <label for="book${i}Name">📚 Nombre Libro ${i}:</label>
+        <input type="text" id="book${i}Name" placeholder="Ej: Libro ${i}" value="${savedBook}"
+               oninput="persistBook(${i}, this.value)">
+      `;
+      bookConfig.appendChild(bookField);
+    }
+  }
+
   // Build UI
   updateOptionsDisplay(); rebuildWheel(); updateWinnersList();
+  updateCurrentBookSelector();
 
   // Spin
   document.getElementById('spinOverlay').addEventListener('click', spin);
@@ -698,11 +913,23 @@ document.addEventListener('DOMContentLoaded',()=>{
   document.getElementById('exportBtn').addEventListener('click', exportCSV);
   document.getElementById('clearWinnersBtn').addEventListener('click', clearWinners);
 
-  // Persist book fields
-  document.getElementById('book1Name').addEventListener('input', persistBooks);
-  document.getElementById('book2Name').addEventListener('input', persistBooks);
-  document.getElementById('currentBook').addEventListener('change', persistBooks);
+  // Agregar libro
+  document.getElementById('addBookBtn').addEventListener('click', addBookField);
+
+  // Persist book fields cuando cambian
+  document.getElementById('book1Name').addEventListener('input', ()=> {
+    persistBook(1, document.getElementById('book1Name').value);
+    updateCurrentBookSelector();
+  });
+  document.getElementById('book2Name').addEventListener('input', ()=> {
+    persistBook(2, document.getElementById('book2Name').value);
+    updateCurrentBookSelector();
+  });
+  document.getElementById('currentBook').addEventListener('change', ()=> {
+    persist('currentBook', document.getElementById('currentBook').value);
+  });
 });
+
 </script>
 </body>
 </html>
