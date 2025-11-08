@@ -308,7 +308,7 @@ align-items: center;
 height: 100px; /* debe coincidir con la altura del logo */
 }
 .logo {
-height: 100%;
+height: 80%;
 margin-right: 15px;
 border-radius: 5px;
 }
