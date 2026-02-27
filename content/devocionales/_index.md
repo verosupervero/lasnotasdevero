@@ -1,10 +1,6 @@
 +++
 title = "Devocionales"
 description = "Para pasar tiempo con el Señor y leyendo las Escrituras"
-layout = "recursos"
-
-filter_tag = "devocional"
-filter_section = "posts"
 items_per_page = 10
 
 show_sidebar = true
