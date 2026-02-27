@@ -12,18 +12,9 @@
         <div class="8u 12u$(medium) important(small)">
           <div id="content">
             <ul>
-              {{/* Parámetros de filtro/paginación */}}
-              {{ $tag := lower (default "devocional" .Params.filter_tag) }}
-              {{ $section := default "posts" .Params.filter_section }}
+              {{/* Parámetros de paginación */}}
               {{ $perPage := .Params.items_per_page }}
-
-              {{ $all := .Site.RegularPages }}
-              {{ if $section }} {{ $all = where $all "Section" $section }} {{ end }}
-              {{ $variants := slice $tag (title $tag) (upper $tag) }}
-              {{ $filtered := where $all "Params.tags" "intersect" $variants }}
-
-              {{ $sorted := $filtered.ByPublishDate.Reverse }}
-              {{ $paginator := cond (gt (int (default 0 $perPage)) 0) (.Paginate $sorted $perPage) (.Paginate $sorted) }}
+              {{ $paginator := cond (gt (int (default 0 $perPage)) 0) (.Paginate .Pages.ByPublishDate.Reverse $perPage) (.Paginate .Pages.ByPublishDate.Reverse) }}
 
               {{ range $paginator.Pages }}
                 {{ partial "listitem.html" (dict "item" . "page" $.Page) }}

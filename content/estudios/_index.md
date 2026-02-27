@@ -3,8 +3,6 @@ title = "Estudios Bíblicos"
 description = "Para profundizar leyendo las Escrituras con una buena exégesis bíblica"
 layout = "recursos"
 
-filter_tag = "estudio-biblico"
-filter_section = "posts"
 items_per_page = 10
 
 show_sidebar = true
