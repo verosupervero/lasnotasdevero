@@ -1,0 +1,2081 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Template Miniaturas</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;600;700&family=Archivo+Black&family=Inter:wght@400;500;600&display=swap');
+
+  :root{
+    --bg-panel:#15151a;
+    --bg-panel-2:#1d1d24;
+    --line:#2c2c35;
+    --ivory:#f2ede2;
+    --gold:#c9a24b;
+    --gold-2:#e6c874;
+    --text-dim:#8b8b96;
+    --accent:#7a3b3b;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:'Inter',sans-serif;
+    background:#0a0a0c;
+    color:var(--ivory);
+    display:flex;
+    min-height:100vh;
+    overflow:hidden;
+  }
+  #appShell{
+    display:grid;
+    grid-template-columns:84px minmax(0, 1fr) 360px;
+    flex:1;
+    min-height:100vh;
+    overflow:hidden;
+  }
+  @media (max-width: 1200px){
+    #appShell{grid-template-columns:76px minmax(0, 1fr) 320px;}
+  }
+  @media (max-width: 900px){
+    body{flex-direction:column;overflow:auto;}
+    #appShell{grid-template-columns:1fr;}
+    #leftRail{flex-direction:row;overflow-x:auto;border-right:none;border-bottom:1px solid var(--line);padding:10px 12px;}
+    #leftRail .rail-btn{white-space:nowrap;min-width:90px;}
+    #inspector{width:100%;max-height:none;border-left:none;border-top:1px solid var(--line);} 
+    #stageWrap{padding:16px;} 
+    #canvas{transform:scale(var(--canvas-scale, .58));transform-origin:center center;} 
+  }
+  @media (max-width: 700px){
+    .toolbar-row{flex-wrap:wrap;} 
+    .toolbar-row button{flex:1 1 calc(50% - 4px);} 
+    .preview-mini{max-width:none;height:120px;} 
+    #canvas{width:100%;height:auto;aspect-ratio:16/9;transform:scale(1);border:none;box-shadow:none;} 
+    #stageWrap{align-items:stretch;} 
+  }
+
+  /* ---------- LEFT RAIL ---------- */
+  #leftRail{
+    background:linear-gradient(180deg,#121218 0%,#0d0d12 100%);
+    border-right:1px solid var(--line);
+    padding:12px 8px;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    align-items:stretch;
+    overflow-y:auto;
+  }
+  .rail-btn{
+    border:1px solid rgba(230,200,116,.18);
+    background:#17171d;
+    color:var(--ivory);
+    border-radius:10px;
+    padding:10px 6px;
+    font-size:10.5px;
+    line-height:1.2;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    cursor:pointer;
+  }
+  .rail-btn:hover, .rail-btn.active{background:rgba(230,200,116,.16);border-color:rgba(230,200,116,.5);} 
+  .rail-btn strong{display:block;color:var(--gold-2);margin-bottom:2px;}
+  .group{
+    margin-bottom:14px;
+    padding-bottom:14px;
+    border-bottom:1px solid var(--line);
+  }
+  .group:last-child{border-bottom:none;}
+  .group h2{
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    color:var(--text-dim);
+    margin:0 0 10px;
+    font-weight:600;
+  }
+  label{
+    display:block;
+    font-size:12px;
+    color:var(--ivory);
+    margin:10px 0 5px;
+  }
+  input[type=text], select{
+    width:100%;
+    background:var(--bg-panel-2);
+    border:1px solid var(--line);
+    color:var(--ivory);
+    padding:8px 9px;
+    border-radius:5px;
+    font-size:13px;
+    font-family:'Inter',sans-serif;
+  }
+  input[type=range]{width:100%; accent-color:var(--gold);}
+  input[type=color]{
+    width:36px;height:28px;border:1px solid var(--line);border-radius:4px;
+    background:none;padding:0;cursor:pointer;
+  }
+  .row{display:flex;gap:8px;align-items:center;}
+  .row2{display:flex;gap:8px;}
+  .row2 > div{flex:1;}
+  .rangeval{font-size:11px;color:var(--text-dim); float:right;}
+  .filebtn{
+    display:block;
+    width:100%;
+    padding:9px;
+    background:var(--bg-panel-2);
+    border:1px dashed var(--line);
+    border-radius:5px;
+    text-align:center;
+    font-size:12px;
+    color:var(--gold-2);
+    cursor:pointer;
+  }
+  .filebtn input{display:none;}
+  .toggle{display:flex;align-items:center;justify-content:space-between;margin-top:10px;}
+  .toggle span{font-size:12px;}
+  .switch{position:relative;width:36px;height:20px;}
+  .switch input{opacity:0;width:0;height:0;}
+  .slider{position:absolute;inset:0;background:var(--line);border-radius:20px;transition:.2s;cursor:pointer;}
+  .slider:before{content:"";position:absolute;height:14px;width:14px;left:3px;top:3px;background:var(--ivory);border-radius:50%;transition:.2s;}
+  input:checked + .slider{background:var(--gold);}
+  input:checked + .slider:before{transform:translateX(16px);}
+  #exportBtn{
+    width:100%;
+    padding:13px;
+    background:linear-gradient(180deg,var(--gold-2),var(--gold));
+    color:#141414;
+    border:none;
+    border-radius:6px;
+    font-weight:700;
+    font-size:13px;
+    letter-spacing:.03em;
+    text-transform:uppercase;
+    cursor:pointer;
+    margin-top:6px;
+  }
+  #exportBtn:hover{filter:brightness(1.05);}
+  .hint{font-size:11px;color:var(--text-dim);margin-top:8px;line-height:1.5;}
+  .prompt-actions{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px;}
+  .prompt-btn{flex:1;min-width:110px;padding:8px 10px;border:1px solid var(--line);border-radius:6px;background:#24242d;color:var(--ivory);cursor:pointer;font-size:11px;text-transform:uppercase;letter-spacing:.08em;}
+  .prompt-btn.secondary{background:#1a1a22;}
+  .prompt-btn:hover{background:#2f2f37;}
+  .template-actions{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px;}
+  .template-btn{flex:1;min-width:110px;padding:8px 10px;border:1px solid var(--line);border-radius:6px;background:#24242d;color:var(--ivory);cursor:pointer;font-size:11px;text-transform:uppercase;letter-spacing:.08em;}
+  .template-btn.secondary{background:#1a1a22;}
+  .template-btn:hover{background:#2f2f37;}
+  #templateName{width:100%;padding:8px 9px;border:1px solid var(--line);border-radius:6px;background:#0f1116;color:var(--ivory);font-size:13px;}
+  #templateOutput{width:100%;min-height:120px;border:1px solid var(--line);border-radius:8px;background:#0f1116;color:var(--ivory);padding:10px;font:12px/1.5 'Inter',sans-serif;resize:vertical;}
+  #templateList{display:flex;flex-direction:column;gap:6px;margin-top:8px;}
+  .template-item{display:flex;justify-content:space-between;align-items:center;padding:8px 9px;border:1px solid var(--line);border-radius:6px;background:#1a1a22;color:var(--ivory);font-size:12px;}
+  .template-item button{border:none;background:#2a2a30;color:var(--ivory);padding:5px 7px;border-radius:4px;cursor:pointer;font-size:11px;}
+  #stageWrap{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    align-items:stretch;
+    justify-content:flex-start;
+    padding:12px 16px 20px;
+    gap:10px;
+    overflow:hidden;
+    background:linear-gradient(180deg,#0f1014 0%,#0a0a0c 100%);
+  }
+  .top-toolbar{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    padding:8px 10px;
+    border:1px solid rgba(230,200,116,.16);
+    border-radius:12px;
+    background:rgba(10,10,12,.92);
+    backdrop-filter:blur(10px);
+    position:sticky;
+    top:0;
+    z-index:20;
+    margin-bottom:6px;
+  }
+  .tool-chip{
+    border:1px solid var(--line);
+    background:#1b1b22;
+    color:var(--ivory);
+    border-radius:999px;
+    padding:7px 11px;
+    font-size:11px;
+    cursor:pointer;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+  }
+  .tool-chip:hover, .tool-chip.active{background:rgba(230,200,116,.16);border-color:rgba(230,200,116,.45);} 
+  .zoom-controls{display:flex;align-items:center;gap:6px;margin-left:auto;flex-wrap:wrap;}
+  .zoom-controls button{border:1px solid var(--line);background:#17171d;color:var(--ivory);padding:7px 9px;border-radius:999px;cursor:pointer;font-size:12px;min-width:32px;}
+  .zoom-controls button:hover{background:#23232b;}
+  .zoom-value{font-size:11px;color:var(--text-dim);min-width:46px;text-align:right;font-weight:600;}
+  #meta{
+    display:flex;
+    gap:24px;
+    font-size:11.5px;
+    color:var(--text-dim);
+    width:100%;
+    max-width:100%;
+    justify-content:space-between;
+    padding:0 2px;
+    margin-bottom:4px;
+  }
+  #meta b{color:var(--ivory);}
+
+  #canvasViewport{
+    flex:1;
+    min-height:0;
+    overflow:auto;
+    padding:16px;
+    position:relative;
+    background:radial-gradient(circle at top, rgba(255,255,255,.05), transparent 60%);
+    display:grid;
+    place-items:center;
+  }
+  #canvasStage{
+    position:relative;
+    width:calc(1920px * var(--canvas-scale, 1));
+    height:calc(1080px * var(--canvas-scale, 1));
+    display:grid;
+    place-items:center;
+    overflow:visible;
+  }
+  #canvas{
+    width:1920px;
+    height:1080px;
+    position:relative;
+    background:#111114;
+    overflow:hidden;
+    box-shadow:0 24px 70px rgba(0,0,0,.55);
+    transform-origin:center center;
+    transform:scale(var(--canvas-scale, 1));
+    border:1px solid rgba(230,200,116,.14);
+    flex-shrink:0;
+    margin:0;
+  }
+  #canvas.miniview{transform:scale(.22);}
+
+  .layer-img{
+    position:absolute;
+    object-fit:cover;
+    cursor:grab;
+    user-select:none;
+    -webkit-user-drag:none;
+  }
+  .layer-img:active{cursor:grabbing;}
+  .layer-selected{
+    outline:2px dashed rgba(230,200,116,.95);
+    outline-offset:6px;
+  }
+  .selection-box{
+    position:absolute;
+    border:2px dashed rgba(230,200,116,.95);
+    pointer-events:none;
+    z-index:40;
+  }
+  .selection-box .resize-handle{
+    position:absolute;
+    width:12px;
+    height:12px;
+    background:#fff;
+    border:2px solid var(--gold);
+    border-radius:2px;
+    pointer-events:auto;
+    cursor:nwse-resize;
+  }
+  .selection-box .handle-se{right:-6px; bottom:-6px; cursor:nwse-resize;}
+  .selection-box .handle-sw{left:-6px; bottom:-6px; cursor:nesw-resize;}
+  .selection-box .handle-ne{right:-6px; top:-6px; cursor:nesw-resize;}
+  .selection-box .handle-nw{left:-6px; top:-6px; cursor:nwse-resize;}
+  .effect-layer{position:absolute;pointer-events:none;border-radius:999px;opacity:0;transform:scale(1);filter:blur(20px);mix-blend-mode:screen;}
+  .layers-panel{margin-top:10px;padding:10px;border:1px solid var(--line);border-radius:8px;background:var(--bg-panel-2);} 
+  #inspector{
+    width:100%;
+    background:var(--bg-panel);
+    border-left:1px solid var(--line);
+    padding:14px;
+    overflow-y:auto;
+    max-height:100vh;
+    position:relative;
+  }
+  #inspector h1{
+    font-family:'Oswald',sans-serif;
+    font-size:15px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--gold-2);
+    margin:0 0 4px;
+  }
+  #inspector .sub{
+    font-size:11.5px;
+    color:var(--text-dim);
+    margin:0 0 16px;
+    line-height:1.5;
+  }
+  .layer-item{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:7px 8px;border-radius:6px;margin-bottom:6px;background:rgba(255,255,255,.03);font-size:12px;} 
+  .layer-item.active{outline:1px solid rgba(230,200,116,.5);background:rgba(230,200,116,.12);} 
+  .layer-actions{display:flex;gap:4px;} 
+  .layer-actions button{border:none;background:#2b2b33;color:var(--ivory);padding:4px 6px;border-radius:4px;cursor:pointer;font-size:11px;} 
+  .layer-actions button:hover{background:#383842;} 
+  .toolbar-row{display:flex;gap:8px;margin-top:8px;} 
+  .toolbar-row button{flex:1;padding:8px 6px;border-radius:6px;border:1px solid var(--line);background:#2a2a30;color:var(--ivory);cursor:pointer;font-size:11px;} 
+  .toolbar-row button:hover{background:#34343b;} 
+  .preview-pill{display:inline-flex;align-items:center;gap:6px;padding:6px 8px;border-radius:999px;background:rgba(230,200,116,.12);color:var(--gold-2);font-size:11px;border:1px solid rgba(230,200,116,.25);} 
+  .preview-mini{width:100%;max-width:260px;height:180px;border-radius:10px;border:1px solid rgba(230,200,116,.2);overflow:hidden;background:#0d0d11;display:flex;align-items:center;justify-content:center;margin-top:8px;position:relative;} 
+  .preview-mini img{width:100%;height:100%;object-fit:contain;background:#0d0d11;display:block;} 
+  .preview-controls{display:flex;gap:8px;align-items:center;margin-top:8px;padding:6px 0 0;}
+  .preview-controls button{border:1px solid var(--line);background:#1f2027;color:var(--ivory);padding:7px 9px;border-radius:6px;cursor:pointer;font-size:12px;min-width:32px;}
+  .preview-controls input[type=range]{flex:1;accent-color:var(--gold);min-width:0;} 
+  .preview-scale-label{font-size:11px;color:var(--text-dim);min-width:46px;text-align:right;font-weight:600;}
+  .layer-item.locked{opacity:.6;} 
+  .layer-item.locked .layer-actions button[data-action="lock"]{background:#6a3d1b;} 
+  .prompt-options{display:grid;gap:6px;margin:10px 0 8px;} 
+  .prompt-option{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-dim);} 
+  .prompt-option input{accent-color:var(--gold);} 
+  #bgImg{width:100%;height:100%;top:0;left:0;object-fit:cover;cursor:default;}
+  #bgPlaceholder{
+    position:absolute;inset:0;
+    display:flex;align-items:center;justify-content:center;
+    color:#3d3d45;font-size:22px;font-family:'Oswald',sans-serif;
+    text-transform:uppercase;letter-spacing:.1em;
+    background:repeating-linear-gradient(45deg,#111114,#111114 20px,#17171b 20px,#17171b 40px);
+  }
+
+  .guides{position:absolute;inset:0;pointer-events:none;}
+  .guides .third{position:absolute;background:rgba(230,200,116,.35);}
+  .guides .safe{position:absolute;border:1.5px dashed rgba(230,200,116,.55);}
+
+  #titleLayer{
+    position:absolute;
+    left:40px;
+    text-align:left;
+    line-height:.95;
+    text-shadow:0 3px 14px rgba(0,0,0,.55);
+  }
+  #line1{display:block;}
+  #line2{display:block;}
+  .title-text{
+    display:block;
+    position:relative;
+    background-image:var(--text-gradient, linear-gradient(135deg, #fff7d0 0%, #d3a13f 50%, #6a2a0a 100%));
+    background-size:180% 180%;
+    background-position:center;
+    background-clip:text;
+    -webkit-background-clip:text;
+    color:transparent;
+    -webkit-text-fill-color:transparent;
+    filter:brightness(var(--text-brightness, 1)) saturate(var(--text-saturation, 1.08));
+    text-shadow:
+      0px calc(-1 * var(--relief-top, 2px)) 0px var(--edge-light-color, rgba(255,255,255,.25)),
+      0px var(--shadow-y, 6px) var(--shadow-blur, 10px) var(--shadow-color, rgba(0,0,0,.75)),
+      var(--side-shadow-x, 0px) 0px var(--side-shadow-blur, 0px) var(--side-shadow-color, rgba(0,0,0,.16)),
+      0px 0px 1px rgba(255,255,255,.18);
+    -webkit-text-stroke:var(--stroke-width, 2px) var(--stroke-color, #0a0a0c);
+    will-change:transform, filter;
+  }
+</style>
+</head>
+<body>
+<div id="appShell">
+<div id="leftRail">
+  <button class="rail-btn active" data-action="fondo"><strong>Fondo</strong>Escena</button>
+  <button class="rail-btn" data-action="retrato"><strong>Retrato</strong>Imagen</button>
+  <button class="rail-btn" data-action="libro"><strong>Libro</strong>Objeto</button>
+  <button class="rail-btn" data-action="texto"><strong>Texto</strong>Tipografía</button>
+  <button class="rail-btn" data-action="capas"><strong>Capas</strong>Orden</button>
+  <button class="rail-btn" data-action="prompt"><strong>Prompt</strong>IA</button>
+</div>
+
+<div id="stageWrap">
+  <div class="top-toolbar">
+    <button class="tool-chip active" data-section="fondo">Fondo</button>
+    <button class="tool-chip" data-section="retrato">Retrato</button>
+    <button class="tool-chip" data-section="libro">Libro</button>
+    <button class="tool-chip" data-section="texto">Texto</button>
+    <button class="tool-chip" data-section="capas">Capas</button>
+    <button class="tool-chip" data-section="prompt">Prompt</button>
+    <div class="zoom-controls">
+      <button id="zoomOutBtn" type="button">−</button>
+      <button id="fitScreenBtn" type="button">Ajustar</button>
+      <button id="zoomInBtn" type="button">+</button>
+      <span class="zoom-value" id="zoomValue">100%</span>
+    </div>
+  </div>
+  <div id="meta"><span><b>1920 × 1080</b> px</span><span>Formato 16:9 · Full HD</span></div>
+  <div id="canvasViewport">
+    <div id="canvasStage">
+      <div id="canvas">
+        <div id="bgPlaceholder">Subí el fondo →</div>
+        <img id="bgImg" style="display:none;">
+
+        <img id="portraitImg" class="layer-img" style="display:none; width:520px; top:120px; left:700px; z-index:5;">
+        <img id="bookImg" class="layer-img" style="display:none; width:230px; top:430px; left:960px; z-index:6;">
+
+        <div id="titleLayer" style="z-index:10; left:40px; top:58%;">
+          <span id="line1" class="title-text" style="font-family:'Oswald',sans-serif; font-size:48px;">¿SOLO</span>
+          <span id="line2" class="title-text" style="font-family:'Oswald',sans-serif; font-size:150px; font-weight:700;">ISRAEL?</span>
+        </div>
+
+        <div class="selection-box" id="selectionBox" style="display:none;">
+          <div class="resize-handle handle-nw" data-handle="nw"></div>
+          <div class="resize-handle handle-ne" data-handle="ne"></div>
+          <div class="resize-handle handle-sw" data-handle="sw"></div>
+          <div class="resize-handle handle-se" data-handle="se"></div>
+        </div>
+
+        <div class="guides" id="guides" style="z-index:20;"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="inspector">
+  <h1>Template · Miniatura Teológica</h1>
+  <p class="sub">Fondo + retrato + libro + tipografía, con las reglas ya calibradas (tercios, zonas seguras, contraste). Cargá tus 3 piezas generadas/fotografiadas y ajustá.</p>
+
+  <div class="group" data-section="fondo">
+    <h2>1 · Fondo (escena)</h2>
+    <label class="filebtn">Subir fondo (1280×720 ideal)
+      <input type="file" id="bgUpload" accept="image/*">
+    </label>
+  </div>
+
+  <div class="group" data-section="retrato">
+    <h2>2 · Tu retrato (recortado, fondo transparente)</h2>
+    <label class="filebtn">Subir retrato PNG
+      <input type="file" id="portraitUpload" accept="image/*">
+    </label>
+    <label>Escala <span class="rangeval" id="pScaleVal">100%</span></label>
+    <input type="range" id="pScale" min="50" max="500" value="100">
+    <div class="hint">Arrastrá la imagen directo sobre el lienzo para posicionarla. Debe ocupar ~40% del ancho, tercio derecho.</div>
+  </div>
+
+  <div class="group" data-section="libro">
+    <h2>3 · Libro (foto real)</h2>
+    <label class="filebtn">Subir foto del libro
+      <input type="file" id="bookUpload" accept="image/*">
+    </label>
+    <label>Escala <span class="rangeval" id="bScaleVal">100%</span></label>
+    <input type="range" id="bScale" min="40" max="500" value="100">
+  </div>
+
+  <div class="group" data-section="texto">
+    <h2>4 · Tipografía</h2>
+    <label>Línea 1 (chica)</label>
+    <input type="text" id="line1Text" value="¿SOLO">
+    <label>Línea 2 (grande / ancla visual)</label>
+    <input type="text" id="line2Text" value="ISRAEL?">
+    <label>Fuente</label>
+    <select id="fontSelect">
+      <option value="'Bebas Neue',sans-serif">Bebas Neue — impacto directo</option>
+      <option value="'Oswald',sans-serif" selected>Oswald Bold — documental/serio</option>
+      <option value="'Archivo Black',sans-serif">Archivo Black — sólida, moderna</option>
+    </select>
+    <div class="row2">
+      <div>
+        <label>Color línea 1</label>
+        <input type="color" id="c1" value="#f2ede2">
+      </div>
+      <div>
+        <label>Color línea 2</label>
+        <input type="color" id="c2" value="#e6c874">
+      </div>
+      <div>
+        <label>Contorno</label>
+        <input type="color" id="cStroke" value="#0a0a0c">
+      </div>
+    </div>
+    <label>Tamaño línea 2 <span class="rangeval" id="sizeVal">150px</span></label>
+    <input type="range" id="line2Size" min="70" max="220" value="150">
+
+    <label>Color alto</label>
+    <input type="color" id="gradTop" value="#fff7d0">
+    <label>Color medio</label>
+    <input type="color" id="gradMid" value="#d3a13f">
+    <label>Color bajo</label>
+    <input type="color" id="gradBottom" value="#6a2a0a">
+    <label>Ángulo del degradado <span class="rangeval" id="gradAngleVal">135°</span></label>
+    <input type="range" id="gradAngle" min="0" max="360" value="135">
+
+    <label>Brillo <span class="rangeval" id="brightnessVal">100%</span></label>
+    <input type="range" id="brightness" min="70" max="180" value="100">
+    <label>Relieve <span class="rangeval" id="reliefVal">28%</span></label>
+    <input type="range" id="relief" min="0" max="100" value="28">
+
+    <label>Sombra abajo <span class="rangeval" id="shadowYVal">6px</span></label>
+    <input type="range" id="shadowY" min="0" max="40" value="6">
+    <label>Desenfoque sombra <span class="rangeval" id="shadowBlurVal">10px</span></label>
+    <input type="range" id="shadowBlur" min="0" max="40" value="10">
+    <label>Opacidad sombra <span class="rangeval" id="shadowOpacityVal">70%</span></label>
+    <input type="range" id="shadowOpacity" min="0" max="100" value="70">
+    <label>Color sombra</label>
+    <input type="color" id="shadowColor" value="#000000">
+
+    <label>Sombra de costado <span class="rangeval" id="sideShadowVal">6px</span></label>
+    <input type="range" id="sideShadow" min="-40" max="40" value="6">
+    <label>Opacidad costado <span class="rangeval" id="sideShadowOpacityVal">35%</span></label>
+    <input type="range" id="sideShadowOpacity" min="0" max="100" value="35">
+
+    <label>Luz de borde <span class="rangeval" id="edgeLightVal">25%</span></label>
+    <input type="range" id="edgeLight" min="0" max="100" value="25">
+    <label>Color luz borde</label>
+    <input type="color" id="edgeLightColor" value="#ffffff">
+
+    <label>Borde/contorno <span class="rangeval" id="strokeWidthVal">2px</span></label>
+    <input type="range" id="strokeWidth" min="0" max="10" value="2">
+    <label>Color contorno</label>
+    <input type="color" id="strokeColor" value="#0a0a0c">
+
+    <label>Posición vertical <span class="rangeval" id="topValLabel">58%</span></label>
+    <input type="range" id="titleTop" min="20" max="85" value="58">
+  </div>
+
+  <div class="group" data-section="guia">
+    <h2>5 · Guías</h2>
+    <div class="toggle">
+      <span>Grilla de tercios</span>
+      <label class="switch"><input type="checkbox" id="toggleThirds" checked><span class="slider"></span></label>
+    </div>
+    <div class="toggle">
+      <span>Vista al 10% (test CTR)</span>
+      <label class="switch"><input type="checkbox" id="toggleMini"><span class="slider"></span></label>
+    </div>
+  </div>
+
+  <div class="group" data-section="prompt">
+    <h2>6 · Prompt final para IA</h2>
+    <div class="prompt-actions">
+      <button type="button" id="generatePromptBtn" class="prompt-btn">Generar prompt</button>
+      <button type="button" id="copyPromptBtn" class="prompt-btn secondary">Copiar</button>
+    </div>
+    <div class="prompt-options">
+      <label class="prompt-option"><input type="checkbox" id="promptWarmLight"> Luz cálida direccional única (golden hour)</label>
+      <label class="prompt-option"><input type="checkbox" id="promptPortraitTemp"> Integrar temperatura de luz del retrato con la escena</label>
+      <label class="prompt-option"><input type="checkbox" id="promptRimLight"> Rim light dorado en cabello y bordes</label>
+      <label class="prompt-option"><input type="checkbox" id="promptNaturalSkin"> Piel natural, sin sobreexposición</label>
+      <label class="prompt-option"><input type="checkbox" id="promptCinematicContrast"> Contraste cinematográfico sin HDR ni look plástico</label>
+    </div>
+    <textarea id="promptOutput" spellcheck="false"></textarea>
+    <div class="hint">Se arma con el fondo, retrato, libro, texto y ajustes que vayas aplicando.</div>
+  </div>
+
+  <div class="group" data-section="template">
+    <h2>7 · Plantilla reutilizable</h2>
+    <label>Nombre de la plantilla</label>
+    <input type="text" id="templateName" value="Plantilla principal">
+    <div class="template-actions" style="margin-top:8px;">
+      <button type="button" id="saveTemplateBtn" class="template-btn">Guardar estilo</button>
+      <button type="button" id="loadTemplateBtn" class="template-btn secondary">Cargar última</button>
+    </div>
+    <textarea id="templateOutput" spellcheck="false" readonly></textarea>
+    <div class="hint">Guarda la base visual (fuentes, colores, posición del texto y marca), y deja el contenido del episodio para cambiarlo después.</div>
+    <div id="templateList"></div>
+  </div>
+
+  <div class="layers-panel" data-section="capas">
+    <div style="font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:var(--text-dim); margin-bottom:8px;">Capas</div>
+    <div id="layersList"></div>
+    <div class="toolbar-row">
+      <button id="duplicateBtn">Duplicar</button>
+      <button id="undoBtn">Deshacer</button>
+      <button id="redoBtn">Rehacer</button>
+    </div>
+    <div class="toolbar-row">
+      <button id="addImageBtn">Agregar imagen</button>
+      <button id="removeEffectBtn">Quitar efecto</button>
+    </div>
+    <div style="margin-top:8px;">
+      <label>Tipo de efecto</label>
+      <select id="effectType">
+        <option value="none">Sin efecto</option>
+        <option value="light">Luz</option>
+        <option value="shadow">Sombra</option>
+      </select>
+      <label>Brillo / intensidad <span class="rangeval" id="effectIntensityVal">60%</span></label>
+      <input type="range" id="effectIntensity" min="0" max="200" value="60">
+      <label>Dirección <span class="rangeval" id="effectAngleVal">45°</span></label>
+      <input type="range" id="effectAngle" min="0" max="360" value="45">
+      <label>Desenfoque <span class="rangeval" id="effectBlurVal">20px</span></label>
+      <input type="range" id="effectBlur" min="0" max="120" value="20">
+    </div>
+    <div class="toolbar-row">
+      <button id="frontBtn">Frente</button>
+      <button id="backBtn">Atrás</button>
+      <button id="lockBtn">Bloquear</button>
+    </div>
+    <div class="toolbar-row">
+      <button id="centerBtn">Centrar</button>
+      <button id="centerHBtn">Centro H</button>
+      <button id="centerVBtn">Centro V</button>
+      <button id="previewBtn">Vista</button>
+    </div>
+    <div class="preview-pill" style="margin-top:8px;">Vista previa final</div>
+    <div class="preview-controls">
+      <button id="zoomOutBtn" type="button">−</button>
+      <input type="range" id="previewZoom" min="40" max="140" value="100">
+      <button id="zoomInBtn" type="button">+</button>
+      <span class="preview-scale-label" id="previewScaleLabel">100%</span>
+    </div>
+    <div class="preview-mini" id="previewMini">
+      <img id="previewImg" alt="Vista previa" style="transform:none; transform-origin:center center;">
+    </div>
+    <label style="margin-top:8px;">Rotación <span class="rangeval" id="rotationVal">0°</span></label>
+    <input type="range" id="rotation" min="-180" max="180" value="0">
+    <label>Opacidad <span class="rangeval" id="opacityVal">100%</span></label>
+    <input type="range" id="opacity" min="0" max="100" value="100">
+  </div>
+  <button id="deleteSelectedBtn" style="width:100%; padding:11px; margin-top:10px; background:#2a2a30; color:var(--ivory); border:1px solid var(--line); border-radius:6px; cursor:pointer;">Borrar elemento seleccionado</button>
+  <button id="exportBtn">Descargar PNG (1920×1080)</button>
+  <p class="hint">Exporta en Full HD 16:9 para YouTube, redes o portada. Si algo se corta, revisá que retrato/libro estén dentro del lienzo antes de descargar.</p>
+</div>
+</div>
+<input type="file" id="extraImageUpload" accept="image/*" style="display:none;">
+
+<script>
+const canvas = document.getElementById('canvas');
+const canvasViewport = document.getElementById('canvasViewport');
+const canvasStage = document.getElementById('canvasStage');
+const guides = document.getElementById('guides');
+let currentCanvasScale = 1;
+
+function getFitScale(){
+  const viewportRect = canvasViewport.getBoundingClientRect();
+  const padding = 48;
+  const maxWidth = Math.max(320, viewportRect.width - padding);
+  const maxHeight = Math.max(220, viewportRect.height - padding);
+  return Math.max(0.25, Math.min(1, Math.min(maxWidth / 1920, maxHeight / 1080)));
+}
+
+function applyCanvasScale(scale){
+  const safeScale = Math.max(0.25, Math.min(2.4, scale));
+  currentCanvasScale = safeScale;
+  canvas.style.transformOrigin = 'center center';
+  canvas.style.transform = `scale(${safeScale})`;
+  canvasStage.style.setProperty('--canvas-scale', safeScale);
+  document.getElementById('zoomValue').textContent = `${Math.round(safeScale * 100)}%`;
+}
+
+function fitCanvasToScreen(){
+  applyCanvasScale(getFitScale());
+}
+
+function activateSection(section){
+  document.querySelectorAll('.tool-chip').forEach(btn => btn.classList.toggle('active', btn.dataset.section === section));
+  document.querySelectorAll('.rail-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.action === section));
+  const target = document.querySelector(`.group[data-section="${section}"], .layers-panel[data-section="${section}"]`);
+  if(target){
+    target.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+}
+
+document.querySelectorAll('.tool-chip').forEach(btn => {
+  btn.addEventListener('click', () => activateSection(btn.dataset.section));
+});
+
+document.getElementById('zoomInBtn').addEventListener('click', () => applyCanvasScale(currentCanvasScale * 1.15));
+document.getElementById('zoomOutBtn').addEventListener('click', () => applyCanvasScale(currentCanvasScale / 1.15));
+document.getElementById('fitScreenBtn').addEventListener('click', fitCanvasToScreen);
+window.addEventListener('resize', fitCanvasToScreen);
+
+setTimeout(fitCanvasToScreen, 50);
+
+document.querySelectorAll('.rail-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const action = btn.dataset.action;
+    if(action === 'fondo'){ document.getElementById('bgUpload').click(); }
+    else if(action === 'retrato'){ document.getElementById('portraitUpload').click(); }
+    else if(action === 'libro'){ document.getElementById('bookUpload').click(); }
+    else if(action === 'texto'){ activateSection('texto'); }
+    else if(action === 'capas'){ activateSection('capas'); }
+    else if(action === 'prompt'){ activateSection('prompt'); }
+  });
+});
+const portraitImg = document.getElementById('portraitImg');
+const bookImg = document.getElementById('bookImg');
+const titleLayer = document.getElementById('titleLayer');
+const selectionBox = document.getElementById('selectionBox');
+const deleteSelectedBtn = document.getElementById('deleteSelectedBtn');
+const extraImageUpload = document.getElementById('extraImageUpload');
+const extraLayers = [];
+const baseLayers = [portraitImg, bookImg, titleLayer];
+
+function isLayerElement(node){
+  if(!node || node.nodeType !== 1) return false;
+  if(node.id === 'selectionBox' || node.id === 'guides') return false;
+  if(node.id === 'bgImg' || node.id === 'portraitImg' || node.id === 'bookImg' || node.id === 'titleLayer') return true;
+  return node.classList.contains('layer-img');
+}
+
+function getAllLayers(){
+  return Array.from(canvas.children).filter(isLayerElement);
+}
+
+function refreshDesignState(){
+  updatePromptOutput();
+  updateLayersUI();
+  if(selectedLayer){
+    updateSelectionBox();
+    updateEffectLayer(selectedLayer);
+  }
+}
+
+function removeLayer(layer){
+  if(!layer) return;
+  const effectLayer = getEffectLayer(layer);
+  if(effectLayer) effectLayer.remove();
+
+  const idx = extraLayers.indexOf(layer);
+  if(idx >= 0) extraLayers.splice(idx, 1);
+  else {
+    const baseIdx = baseLayers.indexOf(layer);
+    if(baseIdx >= 0) baseLayers.splice(baseIdx, 1);
+  }
+
+  layer.remove();
+  if(selectedLayer === layer) clearSelection();
+  else refreshDesignState();
+}
+
+function moveLayer(layer, offset){
+  if(!layer) return;
+  const layers = getAllLayers();
+  const index = layers.indexOf(layer);
+  if(index < 0) return;
+  const targetIndex = index + offset;
+  if(targetIndex < 0 || targetIndex >= layers.length) return;
+  const targetLayer = layers[targetIndex];
+  if(offset > 0){
+    canvas.insertBefore(layer, targetLayer.nextSibling);
+  } else {
+    canvas.insertBefore(layer, targetLayer);
+  }
+  refreshDesignState();
+}
+
+function bringLayerToFront(layer){
+  if(!layer) return;
+  canvas.appendChild(layer);
+  refreshDesignState();
+}
+
+function sendLayerToBack(layer){
+  if(!layer) return;
+  const firstSibling = Array.from(canvas.children).find(el => isLayerElement(el));
+  if(firstSibling && firstSibling !== layer){
+    canvas.insertBefore(layer, firstSibling);
+  }
+  refreshDesignState();
+}
+
+
+/* ---------- image loaders ---------- */
+function loadImage(inputId, imgId, placeholderId){
+  document.getElementById(inputId).addEventListener('change', e=>{
+    const file = e.target.files[0];
+    if(!file) return;
+    const url = URL.createObjectURL(file);
+    const img = document.getElementById(imgId);
+    img.src = url;
+    img.style.display = 'block';
+    if(placeholderId) document.getElementById(placeholderId).style.display='none';
+    updatePromptOutput();
+  });
+}
+loadImage('bgUpload','bgImg','bgPlaceholder');
+loadImage('portraitUpload','portraitImg');
+loadImage('bookUpload','bookImg');
+
+/* CORREGIDO: antes esta función siempre devolvía un nombre de archivo
+   inventado ("libro realista", "retrato generado") aunque no hubiera
+   ningún archivo subido. Ahora devuelve null si no hay archivo, para
+   que buildPrompt() pueda saber con certeza si esa capa existe o no. */
+function getFileLabel(inputId){
+  const input = document.getElementById(inputId);
+  if(input.files && input.files[0]) return input.files[0].name;
+  if(inputId === 'bgUpload') return 'fondo conceptual';
+  return null;
+}
+
+function getIntensityLevel(value, min, max){
+  const num = parseFloat(value);
+  if(Number.isNaN(num)) return 'media';
+  const ratio = (num - min) / (max - min);
+  if(ratio < 0.33) return 'baja';
+  if(ratio < 0.66) return 'media';
+  return 'alta';
+}
+
+function describeScale(value){
+  const level = getIntensityLevel(value, 50, 500);
+  if(level === 'baja') return 'de tamaño discreto';
+  if(level === 'media') return 'de tamaño destacado';
+  return 'de tamaño muy prominente';
+}
+
+function describeTextSize(value){
+  const level = getIntensityLevel(value, 80, 220);
+  if(level === 'baja') return 'un texto de tamaño compacto';
+  if(level === 'media') return 'un texto de tamaño grande';
+  return 'un titular muy grande';
+}
+
+function describeVerticalPosition(value){
+  const num = parseInt(value, 10);
+  if(Number.isNaN(num)) return 'en una posición equilibrada';
+  if(num < 45) return 'más arriba en la composición';
+  if(num > 65) return 'más abajo en la composición';
+  return 'en una posición central y equilibrada';
+}
+
+function describeBrightness(value){
+  const level = getIntensityLevel(value, 70, 180);
+  if(level === 'baja') return 'un aspecto más sobrio y menos luminoso';
+  if(level === 'media') return 'un brillo suave y equilibrado';
+  return 'un brillo intenso y muy luminoso';
+}
+
+function describeRelief(value){
+  const level = getIntensityLevel(value, 0, 100);
+  if(level === 'baja') return 'letras con volumen muy sutil';
+  if(level === 'media') return 'letras con volumen y relieve moderado';
+  return 'letras con volumen y relieve tridimensional marcado';
+}
+
+function describeShadow(value, blur, opacity){
+  const level = getIntensityLevel(value, 0, 40);
+  const blurLevel = getIntensityLevel(blur, 0, 40);
+  const opacityLevel = getIntensityLevel(opacity, 0, 100);
+  if(level === 'baja' || opacityLevel === 'baja') return 'una sombra sutil y discreta';
+  if(level === 'media' || blurLevel === 'media') return 'una sombra suave y bien definida';
+  return 'una sombra proyectada hacia abajo, dando sensación de profundidad';
+}
+
+function describeSideShadow(value){
+  if(Math.abs(parseInt(value, 10)) < 2) return 'sin sombra lateral marcada';
+  if(parseInt(value, 10) > 0) return 'una sombra lateral hacia la derecha que aporta profundidad';
+  return 'una sombra lateral hacia la izquierda que aporta profundidad';
+}
+
+function describeEdgeLight(value){
+  const level = getIntensityLevel(value, 0, 100);
+  if(level === 'baja') return 'un ligero brillo de borde';
+  if(level === 'media') return 'un brillo de borde visible';
+  return 'un fino brillo cálido bordeando cada letra';
+}
+
+function describeStroke(value){
+  const level = getIntensityLevel(value, 0, 10);
+  if(level === 'baja') return 'sin contorno fuerte';
+  if(level === 'media') return 'con un contorno delicado y bien definido';
+  return 'con un contorno marcado y muy definido';
+}
+
+function describeGradientDirection(angle){
+  const value = parseInt(angle, 10);
+  if(Number.isNaN(value)) return 'con una dirección de iluminación equilibrada';
+  if(value < 45 || value >= 315) return 'con una iluminación que viene desde la izquierda';
+  if(value < 135) return 'con una iluminación que viene desde arriba';
+  if(value < 225) return 'con una iluminación que viene desde la derecha';
+  return 'con una iluminación que viene desde abajo';
+}
+
+function describeTextStyle(state){
+  const hasGoldenHour = state.lightingOptions.includes('Luz cálida direccional única (golden hour)');
+ 
+  const parts = [
+    `con ${describeBrightness(state.brightness)}`,
+    `y ${describeRelief(state.relief)}`,
+    `, ${describeShadow(state.shadowY, state.shadowBlur, state.shadowOpacity)}`,
+    `, ${describeSideShadow(state.sideShadow)}`,
+    `, ${describeEdgeLight(state.edgeLight)}`,
+    `y ${describeStroke(state.strokeWidth)}`
+  ];
+ 
+  // Solo agregamos la dirección de luz del degradado si NO hay ya
+  // una fuente de luz general definida (golden hour), para evitar
+  // que el prompt describa dos direcciones de luz distintas.
+  if(!hasGoldenHour){
+    parts.push(`, ${describeGradientDirection(state.gradAngle)}`);
+  }
+ 
+  return parts.join(' ');
+}
+
+function getDesignState(){
+  const visibleLayers = getAllLayers().filter(layer => layer && layer.style.display !== 'none' && layer.style.visibility !== 'hidden');
+  const layerSummary = visibleLayers.map((layer, index) => {
+    const width = layer.style.width || '';
+    const height = layer.style.height || '';
+    const left = layer.style.left || '';
+    const top = layer.style.top || '';
+    return {
+      id: layer.id,
+      name: getLayerName(layer),
+      index: index + 1,
+      width,
+      height,
+      left,
+      top,
+      opacity: layer.style.opacity || '1',
+      effect: layer.dataset.effectType || 'none'
+    };
+  });
+
+  const line1 = document.getElementById('line1Text').value.trim() || '¿SOLO';
+  const line2 = document.getElementById('line2Text').value.trim() || 'ISRAEL?';
+  const fontLabel = document.getElementById('fontSelect').selectedOptions[0]?.text || 'Oswald';
+  const fontName = fontLabel.split(' — ')[0];
+  const titleTop = document.getElementById('titleTop').value;
+  const pScale = document.getElementById('pScale').value;
+  const bScale = document.getElementById('bScale').value;
+  const line2Size = document.getElementById('line2Size').value;
+  const gradTop = document.getElementById('gradTop').value;
+  const gradMid = document.getElementById('gradMid').value;
+  const gradBottom = document.getElementById('gradBottom').value;
+  const gradAngle = document.getElementById('gradAngle').value;
+  const brightness = document.getElementById('brightness').value;
+  const relief = document.getElementById('relief').value;
+  const shadowY = document.getElementById('shadowY').value;
+  const shadowBlur = document.getElementById('shadowBlur').value;
+  const shadowOpacity = document.getElementById('shadowOpacity').value;
+  const sideShadow = document.getElementById('sideShadow').value;
+  const edgeLight = document.getElementById('edgeLight').value;
+  const strokeWidth = document.getElementById('strokeWidth').value;
+  const guidesOn = document.getElementById('toggleThirds').checked ? 'sí' : 'no';
+  const previewMode = document.getElementById('toggleMini').checked ? 'sí' : 'no';
+  const bgFile = getFileLabel('bgUpload');
+  const portraitFile = getFileLabel('portraitUpload');
+  const bookFile = getFileLabel('bookUpload');
+  const lightingOptions = [
+    document.getElementById('promptWarmLight').checked ? 'Luz cálida direccional única (golden hour)' : null,
+    document.getElementById('promptPortraitTemp').checked ? 'Integrar temperatura de luz del retrato con la escena' : null,
+    document.getElementById('promptRimLight').checked ? 'Rim light dorado en cabello y bordes' : null,
+    document.getElementById('promptNaturalSkin').checked ? 'Piel natural, sin sobreexposición' : null,
+    document.getElementById('promptCinematicContrast').checked ? 'Contraste cinematográfico sin HDR ni look plástico' : null
+  ].filter(Boolean);
+
+  return {
+    line1,
+    line2,
+    fontName,
+    titleTop,
+    pScale,
+    bScale,
+    line2Size,
+    gradTop,
+    gradMid,
+    gradBottom,
+    gradAngle,
+    brightness,
+    relief,
+    shadowY,
+    shadowBlur,
+    shadowOpacity,
+    sideShadow,
+    edgeLight,
+    strokeWidth,
+    guidesOn,
+    previewMode,
+    bgFile,
+    portraitFile,
+    bookFile,
+    lightingOptions,
+    layerSummary
+  };
+}
+
+/* CORREGIDO: portraitText y bookText ahora se arman por separado, cada
+   uno con su propio describeScale(), y solo existen en el prompt si
+   state.portraitFile / state.bookFile no son null. Antes una sola
+   variable "scaleDescription" se pegaba dos veces (bug de duplicación)
+   y el libro se mencionaba siempre, existiera o no (bug del libro
+   fantasma). */
+function buildPrompt(state = getDesignState()){
+  const layerNames = state.layerSummary.map(layer => layer.name).join(' → ');
+  const extraLayers = state.layerSummary.filter(layer => layer.id !== 'bgImg' && layer.id !== 'portraitImg' && layer.id !== 'bookImg' && layer.id !== 'titleLayer');
+  const extraText = extraLayers.length ? `Además, hay ${extraLayers.length} capa(s) adicional(es) en el lienzo: ${extraLayers.map(layer => layer.name).join(', ')}.` : '';
+  const layerPresence = [];
+  if(state.layerSummary.some(layer => layer.id === 'bgImg')) layerPresence.push('fondo');
+  if(state.layerSummary.some(layer => layer.id === 'portraitImg')) layerPresence.push('retrato');
+  if(state.layerSummary.some(layer => layer.id === 'bookImg')) layerPresence.push('libro');
+  if(state.layerSummary.some(layer => layer.id === 'titleLayer')) layerPresence.push('texto');
+  const presentLayersText = layerPresence.length ? `El diseño actual incluye ${layerPresence.join(', ')}.` : 'No hay capas base visibles en este momento.';
+  const lightingText = state.lightingOptions.length ? `Además, aplica estas condiciones de iluminación: ${state.lightingOptions.join('; ')}.` : '';
+  const textStyleDescription = describeTextStyle(state);
+  const sizeDescription = describeTextSize(state.line2Size);
+  const positionDescription = describeVerticalPosition(state.titleTop);
+ 
+  const portraitText = state.portraitFile
+    ? `Integra un retrato con archivo "${state.portraitFile}" ${describeScale(state.pScale)}.`
+    : '';
+  const bookText = state.bookFile
+    ? `Integra un libro con archivo "${state.bookFile}" ${describeScale(state.bScale)}.`
+    : '';
+ 
+  // Frase fija de encuadre/lente: se agrega siempre, no depende de
+  // ningún control del panel. Es la base técnica que ya habíamos
+  // definido en el prompt maestro original.
+  const cameraText = 'Fotografía profesional, lente 85mm, profundidad de campo reducida, grano de película sutil.';
+ 
+  return `Crea una miniatura de 1920x1080, estilo editorial cristiano y cinematográfico, con fondo basado en "${state.bgFile}". ${portraitText} ${bookText} Texto principal: "${state.line1}" y "${state.line2}". ${presentLayersText} El diseño actual incluye las capas visibles en este orden: ${layerNames}. ${extraText} ${lightingText} Usa la fuente ${state.fontName}, ${sizeDescription}, ${positionDescription}, con un degradado ${state.gradTop} → ${state.gradMid} → ${state.gradBottom} y ${textStyleDescription}. ${cameraText} Mantén composición equilibrada, contraste alto, profundidad visual y reglas de tercios ${state.guidesOn}; usa una vista previa reducida ${state.previewMode}. El resultado debe sentirse serio, impactante y apto para YouTube o redes.`;
+}
+
+function updatePromptOutput(){
+  const box = document.getElementById('promptOutput');
+  if(box) box.value = buildPrompt();
+}
+
+function copyPrompt(){
+  const text = document.getElementById('promptOutput').value;
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(()=>{
+      const btn = document.getElementById('copyPromptBtn');
+      if(btn){ btn.textContent = '¡Copiado!'; setTimeout(()=>btn.textContent='Copiar', 1400); }
+    });
+  } else {
+    const area = document.createElement('textarea');
+    area.value = text;
+    document.body.appendChild(area);
+    area.select();
+    document.execCommand('copy');
+    document.body.removeChild(area);
+  }
+}
+
+document.getElementById('generatePromptBtn').addEventListener('click', updatePromptOutput);
+document.getElementById('copyPromptBtn').addEventListener('click', copyPrompt);
+['promptWarmLight','promptPortraitTemp','promptRimLight','promptNaturalSkin','promptCinematicContrast'].forEach(id => {
+  document.getElementById(id).addEventListener('change', updatePromptOutput);
+  document.getElementById(id).addEventListener('input', updatePromptOutput);
+});
+
+
+/* ---------- reusable templates ---------- */
+function collectLayerSnapshot(layer){
+  if(!layer) return null;
+  const state = layerState[layer.id] || { scale: 1, rotation: 0 };
+  return {
+    id: layer.id,
+    left: layer.style.left || '',
+    top: layer.style.top || '',
+    width: layer.style.width || '',
+    height: layer.style.height || '',
+    opacity: layer.style.opacity || '1',
+    zIndex: layer.style.zIndex || '',
+    visibility: layer.style.visibility || 'visible',
+    display: layer.style.display || 'block',
+    locked: layer.dataset.locked || 'false',
+    scale: state.scale,
+    rotation: state.rotation,
+    effectType: layer.dataset.effectType || 'none',
+    effectIntensity: layer.dataset.effectIntensity || '60',
+    effectAngle: layer.dataset.effectAngle || '45',
+    effectBlur: layer.dataset.effectBlur || '20',
+    name: layer.dataset.name || ''
+  };
+}
+
+function restoreLayerSnapshot(layer, snapshot){
+  if(!layer || !snapshot) return;
+  if(snapshot.left !== '') layer.style.left = snapshot.left;
+  if(snapshot.top !== '') layer.style.top = snapshot.top;
+  if(snapshot.width !== '') layer.style.width = snapshot.width;
+  if(snapshot.height !== '') layer.style.height = snapshot.height;
+  layer.style.opacity = snapshot.opacity || '1';
+  if(snapshot.zIndex !== '') layer.style.zIndex = snapshot.zIndex;
+  layer.style.visibility = snapshot.visibility || 'visible';
+  layer.style.display = snapshot.display || 'block';
+  layer.dataset.locked = snapshot.locked || 'false';
+  layer.dataset.effectType = snapshot.effectType || 'none';
+  layer.dataset.effectIntensity = snapshot.effectIntensity || '60';
+  layer.dataset.effectAngle = snapshot.effectAngle || '45';
+  layer.dataset.effectBlur = snapshot.effectBlur || '20';
+  if(snapshot.name) layer.dataset.name = snapshot.name;
+  if(!layerState[layer.id]) layerState[layer.id] = { scale: 1, rotation: 0 };
+  layerState[layer.id].scale = snapshot.scale || 1;
+  layerState[layer.id].rotation = snapshot.rotation || 0;
+  applyLayerTransform(layer);
+  updateEffectLayer(layer);
+}
+
+function collectStyleState(){
+  const titleLayer = document.getElementById('titleLayer');
+  const portraitImg = document.getElementById('portraitImg');
+  const bookImg = document.getElementById('bookImg');
+  return {
+    name: document.getElementById('templateName').value || 'Plantilla principal',
+    text: {
+      line1: document.getElementById('line1Text').value,
+      line2: document.getElementById('line2Text').value,
+      font: document.getElementById('fontSelect').value,
+      line2Size: document.getElementById('line2Size').value,
+      top: document.getElementById('titleTop').value,
+      gradTop: document.getElementById('gradTop').value,
+      gradMid: document.getElementById('gradMid').value,
+      gradBottom: document.getElementById('gradBottom').value,
+      gradAngle: document.getElementById('gradAngle').value,
+      brightness: document.getElementById('brightness').value,
+      relief: document.getElementById('relief').value,
+      shadowY: document.getElementById('shadowY').value,
+      shadowBlur: document.getElementById('shadowBlur').value,
+      shadowOpacity: document.getElementById('shadowOpacity').value,
+      sideShadow: document.getElementById('sideShadow').value,
+      sideShadowOpacity: document.getElementById('sideShadowOpacity').value,
+      edgeLight: document.getElementById('edgeLight').value,
+      edgeLightColor: document.getElementById('edgeLightColor').value,
+      strokeWidth: document.getElementById('strokeWidth').value,
+      strokeColor: document.getElementById('strokeColor').value,
+      shadowColor: document.getElementById('shadowColor').value,
+      c1: document.getElementById('c1').value,
+      c2: document.getElementById('c2').value,
+      cStroke: document.getElementById('cStroke').value
+    },
+    layers: {
+      titleLayer: collectLayerSnapshot(titleLayer),
+      portraitImg: collectLayerSnapshot(portraitImg),
+      bookImg: collectLayerSnapshot(bookImg)
+    }
+  };
+}
+
+function applyStyleState(style){
+  document.getElementById('templateName').value = style.name || 'Plantilla principal';
+  document.getElementById('line1Text').value = style.text.line1 || '¿SOLO';
+  document.getElementById('line2Text').value = style.text.line2 || 'ISRAEL?';
+  document.getElementById('fontSelect').value = style.text.font || "'Oswald',sans-serif";
+  document.getElementById('line2Size').value = style.text.line2Size || 150;
+  document.getElementById('titleTop').value = style.text.top || 58;
+  document.getElementById('gradTop').value = style.text.gradTop || '#fff7d0';
+  document.getElementById('gradMid').value = style.text.gradMid || '#d3a13f';
+  document.getElementById('gradBottom').value = style.text.gradBottom || '#6a2a0a';
+  document.getElementById('gradAngle').value = style.text.gradAngle || 135;
+  document.getElementById('brightness').value = style.text.brightness || 100;
+  document.getElementById('relief').value = style.text.relief || 28;
+  document.getElementById('shadowY').value = style.text.shadowY || 6;
+  document.getElementById('shadowBlur').value = style.text.shadowBlur || 10;
+  document.getElementById('shadowOpacity').value = style.text.shadowOpacity || 70;
+  document.getElementById('sideShadow').value = style.text.sideShadow || 6;
+  document.getElementById('sideShadowOpacity').value = style.text.sideShadowOpacity || 35;
+  document.getElementById('edgeLight').value = style.text.edgeLight || 25;
+  document.getElementById('edgeLightColor').value = style.text.edgeLightColor || '#ffffff';
+  document.getElementById('strokeWidth').value = style.text.strokeWidth || 2;
+  document.getElementById('strokeColor').value = style.text.strokeColor || '#0a0a0c';
+  document.getElementById('shadowColor').value = style.text.shadowColor || '#000000';
+  document.getElementById('c1').value = style.text.c1 || '#f2ede2';
+  document.getElementById('c2').value = style.text.c2 || '#e6c874';
+  document.getElementById('cStroke').value = style.text.cStroke || '#0a0a0c';
+
+  const titleLayer = document.getElementById('titleLayer');
+  const portraitImg = document.getElementById('portraitImg');
+  const bookImg = document.getElementById('bookImg');
+  const titleSnapshot = style.layers?.titleLayer;
+  const portraitSnapshot = style.layers?.portraitImg;
+  const bookSnapshot = style.layers?.bookImg;
+  if(titleSnapshot){
+    restoreLayerSnapshot(titleLayer, titleSnapshot);
+    if(titleSnapshot.top && titleSnapshot.top.includes('px')){
+      const canvasHeight = canvas.clientHeight || 1080;
+      const topPercent = Math.round((parseFloat(titleSnapshot.top) / canvasHeight) * 100);
+      document.getElementById('titleTop').value = Math.max(0, Math.min(100, topPercent));
+    }
+  }
+  if(portraitSnapshot){
+    restoreLayerSnapshot(portraitImg, portraitSnapshot);
+    const width = parseFloat(portraitSnapshot.width || '780');
+    if(!Number.isNaN(width)){
+      const pScale = Math.max(50, Math.min(500, Math.round((width / 780) * 100)));
+      document.getElementById('pScale').value = pScale;
+      document.getElementById('pScaleVal').textContent = pScale + '%';
+    }
+  }
+  if(bookSnapshot){
+    restoreLayerSnapshot(bookImg, bookSnapshot);
+    const width = parseFloat(bookSnapshot.width || '420');
+    if(!Number.isNaN(width)){
+      const bScale = Math.max(50, Math.min(500, Math.round((width / 420) * 100)));
+      document.getElementById('bScale').value = bScale;
+      document.getElementById('bScaleVal').textContent = bScale + '%';
+    }
+  }
+
+  document.getElementById('line1Text').dispatchEvent(new Event('input'));
+  document.getElementById('line2Text').dispatchEvent(new Event('input'));
+  document.getElementById('fontSelect').dispatchEvent(new Event('change'));
+  document.getElementById('titleTop').dispatchEvent(new Event('input'));
+  document.getElementById('line2Size').dispatchEvent(new Event('input'));
+  Array.from(document.querySelectorAll('#gradTop, #gradMid, #gradBottom, #gradAngle, #brightness, #relief, #shadowY, #shadowBlur, #shadowOpacity, #sideShadow, #sideShadowOpacity, #edgeLight, #edgeLightColor, #strokeWidth, #strokeColor, #shadowColor, #c1, #c2, #cStroke')).forEach(el => el.dispatchEvent(new Event('input')));
+  updateSelectionBox();
+}
+
+function saveTemplate(){
+  const style = collectStyleState();
+  const templates = JSON.parse(localStorage.getItem('miniaturaTemplates') || '[]');
+  templates.push(style);
+  localStorage.setItem('miniaturaTemplates', JSON.stringify(templates));
+  renderTemplates();
+  document.getElementById('templateOutput').value = `Plantilla guardada: ${style.name}\n\nSe conservará el estilo base y dejará listo el 90% del diseño para futuros episodios.`;
+}
+
+function renderTemplates(){
+  const templates = JSON.parse(localStorage.getItem('miniaturaTemplates') || '[]');
+  const list = document.getElementById('templateList');
+  list.innerHTML = '';
+  templates.forEach((tpl, idx) => {
+    const item = document.createElement('div');
+    item.className = 'template-item';
+    item.innerHTML = `<span>${tpl.name}</span><div><button data-index="${idx}" data-action="load">Usar</button><button data-index="${idx}" data-action="delete">Borrar</button></div>`;
+    item.querySelector('[data-action="load"]').onclick = () => {
+      applyStyleState(tpl);
+      document.getElementById('templateOutput').value = `Plantilla cargada: ${tpl.name}\n\nAhora puedes cambiar solo el contenido del episodio.`;
+    };
+    item.querySelector('[data-action="delete"]').onclick = () => {
+      const all = JSON.parse(localStorage.getItem('miniaturaTemplates') || '[]');
+      all.splice(idx, 1);
+      localStorage.setItem('miniaturaTemplates', JSON.stringify(all));
+      renderTemplates();
+    };
+    list.appendChild(item);
+  });
+}
+
+document.getElementById('saveTemplateBtn').addEventListener('click', saveTemplate);
+document.getElementById('loadTemplateBtn').addEventListener('click', () => {
+  const templates = JSON.parse(localStorage.getItem('miniaturaTemplates') || '[]');
+  if(templates.length){
+    applyStyleState(templates[templates.length - 1]);
+    document.getElementById('templateOutput').value = `Plantilla cargada: ${templates[templates.length - 1].name}`;
+  }
+});
+renderTemplates();
+
+/* ---------- selectable layers ---------- */
+let selectedLayer = null;
+let isDragging = false;
+let isResizing = false;
+let dragState = null;
+let resizeState = null;
+let layers = [];
+let history = [];
+let historyIndex = -1;
+const layerState = {
+  portraitImg: { scale: 1, rotation: 0 },
+  bookImg: { scale: 1, rotation: 0 },
+  titleLayer: { scale: 1, rotation: 0 }
+};
+
+function getCanvasScale(){
+  const rect = canvas.getBoundingClientRect();
+  return rect.width / canvas.clientWidth;
+}
+
+function getLayerBounds(layer){
+  const rect = layer.getBoundingClientRect();
+  const canvasRect = canvas.getBoundingClientRect();
+  const scale = getCanvasScale();
+  return {
+    left: (rect.left - canvasRect.left) / scale,
+    top: (rect.top - canvasRect.top) / scale,
+    width: rect.width / scale,
+    height: rect.height / scale
+  };
+}
+
+function updateSelectionBox(){
+  if(!selectedLayer){
+    selectionBox.style.display='none';
+    return;
+  }
+  const bounds = getLayerBounds(selectedLayer);
+  selectionBox.style.display='block';
+  selectionBox.style.left = (bounds.left - 6) + 'px';
+  selectionBox.style.top = (bounds.top - 6) + 'px';
+  selectionBox.style.width = (bounds.width + 12) + 'px';
+  selectionBox.style.height = (bounds.height + 12) + 'px';
+}
+
+function clearSelection(){
+  if(selectedLayer){
+    selectedLayer.classList.remove('layer-selected');
+  }
+  selectedLayer = null;
+  selectionBox.style.display='none';
+  updateLayersUI();
+}
+
+function getEffectLayer(layer){
+  if(!layer) return null;
+  return layer.dataset.effectLayerId ? document.getElementById(layer.dataset.effectLayerId) : null;
+}
+
+function ensureEffectLayer(layer){
+  const existing = getEffectLayer(layer);
+  if(existing) return existing;
+  const overlay = document.createElement('div');
+  overlay.className = 'effect-layer';
+  overlay.id = `effect-${layer.id || 'layer'}-${Math.random().toString(16).slice(2)}`;
+  overlay.style.pointerEvents = 'none';
+  layer.parentNode.insertBefore(overlay, layer);
+  layer.dataset.effectLayerId = overlay.id;
+  return overlay;
+}
+
+function updateEffectLayer(layer){
+  if(!layer) return;
+  const overlay = ensureEffectLayer(layer);
+  const effectType = layer.dataset.effectType || 'none';
+  if(effectType === 'none'){
+    overlay.style.display = 'none';
+    return;
+  }
+  const intensity = parseInt(layer.dataset.effectIntensity || '60', 10) / 100;
+  const angle = parseInt(layer.dataset.effectAngle || '45', 10);
+  const blur = parseInt(layer.dataset.effectBlur || '20', 10);
+  const rect = layer.getBoundingClientRect();
+  const canvasRect = canvas.getBoundingClientRect();
+  const width = Math.max(80, rect.width);
+  const height = Math.max(80, rect.height);
+  overlay.style.display = 'block';
+  overlay.style.width = `${width}px`;
+  overlay.style.height = `${height}px`;
+  overlay.style.left = `${rect.left - canvasRect.left}px`;
+  overlay.style.top = `${rect.top - canvasRect.top}px`;
+  overlay.style.zIndex = `${parseInt(layer.style.zIndex || '0', 10) - 1}`;
+  overlay.style.transform = 'none';
+  const pointX = `${50 + Math.sin(angle * Math.PI / 180) * 30}%`;
+  const pointY = `${50 + Math.cos(angle * Math.PI / 180) * 30}%`;
+  if(effectType === 'light'){
+    overlay.style.background = `radial-gradient(circle at ${pointX} ${pointY}, rgba(255,255,255,${0.08 + intensity * 0.55}) 0%, rgba(255,255,255,${0.02 + intensity * 0.12}) 45%, transparent 70%)`;
+    overlay.style.filter = `blur(${blur}px)`;
+    overlay.style.opacity = `${Math.min(1, 0.3 + intensity * 0.45)}`;
+    overlay.style.mixBlendMode = 'screen';
+  } else {
+    overlay.style.background = `linear-gradient(${angle}deg, rgba(0,0,0,0) 0%, rgba(0,0,0,${0.1 + intensity * 0.35}) 100%)`;
+    overlay.style.filter = `blur(${blur}px)`;
+    overlay.style.opacity = `${Math.min(1, 0.22 + intensity * 0.35)}`;
+    overlay.style.mixBlendMode = 'multiply';
+  }
+}
+
+function syncEffectControls(layer){
+  if(!layer) return;
+  const effectType = document.getElementById('effectType');
+  const effectIntensity = document.getElementById('effectIntensity');
+  const effectAngle = document.getElementById('effectAngle');
+  const effectBlur = document.getElementById('effectBlur');
+  effectType.value = layer.dataset.effectType || 'none';
+  effectIntensity.value = layer.dataset.effectIntensity || '60';
+  effectAngle.value = layer.dataset.effectAngle || '45';
+  effectBlur.value = layer.dataset.effectBlur || '20';
+  document.getElementById('effectIntensityVal').textContent = `${effectIntensity.value}%`;
+  document.getElementById('effectAngleVal').textContent = `${effectAngle.value}°`;
+  document.getElementById('effectBlurVal').textContent = `${effectBlur.value}px`;
+}
+
+function applySelectedEffect(){
+  if(!selectedLayer) return;
+  selectedLayer.dataset.effectType = document.getElementById('effectType').value;
+  selectedLayer.dataset.effectIntensity = document.getElementById('effectIntensity').value;
+  selectedLayer.dataset.effectAngle = document.getElementById('effectAngle').value;
+  selectedLayer.dataset.effectBlur = document.getElementById('effectBlur').value;
+  updateEffectLayer(selectedLayer);
+}
+
+function selectLayer(layer){
+  if(!layer) return;
+  if(selectedLayer && selectedLayer !== layer){
+    selectedLayer.classList.remove('layer-selected');
+  }
+  selectedLayer = layer;
+  layer.classList.add('layer-selected');
+  syncEffectControls(layer);
+  updateSelectionBox();
+  updateLayersUI();
+  syncRotationControl();
+}
+
+function syncRotationControl(){
+  const rotationInput = document.getElementById('rotation');
+  const rotationVal = document.getElementById('rotationVal');
+  if(!selectedLayer) return;
+  const state = layerState[selectedLayer.id];
+  rotationInput.value = state ? state.rotation : 0;
+  rotationVal.textContent = rotationInput.value + '°';
+}
+
+function applyLayerTransform(layer){
+  const state = layerState[layer.id] || { scale: 1, rotation: 0 };
+  layer.style.transform = `rotate(${state.rotation}deg) scale(${state.scale})`;
+  layer.style.transformOrigin = 'top left';
+  updateEffectLayer(layer);
+}
+
+function setLayerRotation(layer, degrees){
+  if(!layerState[layer.id]) return;
+  layerState[layer.id].rotation = degrees;
+  applyLayerTransform(layer);
+}
+
+function setLayerScale(layer, scale){
+  if(!layerState[layer.id]) return;
+  layerState[layer.id].scale = scale;
+  applyLayerTransform(layer);
+}
+
+function saveHistory(){
+  const snapshot = {
+    selectedId: selectedLayer ? selectedLayer.id : null,
+    layers: getAllLayers().map(layer => ({
+      id: layer.id,
+      display: layer.style.display,
+      visibility: layer.style.visibility,
+      left: layer.style.left,
+      top: layer.style.top,
+      width: layer.style.width,
+      height: layer.style.height,
+      opacity: layer.style.opacity,
+      transform: layer.style.transform,
+      zIndex: layer.style.zIndex,
+      effectType: layer.dataset.effectType || 'none',
+      effectIntensity: layer.dataset.effectIntensity || '60',
+      effectAngle: layer.dataset.effectAngle || '45',
+      effectBlur: layer.dataset.effectBlur || '20'
+    }))
+  };
+  history = history.slice(0, historyIndex + 1);
+  history.push(snapshot);
+  historyIndex = history.length - 1;
+}
+
+function restoreHistory(){
+  if(historyIndex < 0) return;
+  const snapshot = history[historyIndex];
+  const layerElements = getAllLayers();
+  snapshot.layers.forEach((entry, index) => {
+    const layer = layerElements[index];
+    if(!layer) return;
+    layer.style.display = entry.display;
+    layer.style.visibility = entry.visibility;
+    layer.style.left = entry.left;
+    layer.style.top = entry.top;
+    layer.style.width = entry.width;
+    layer.style.height = entry.height;
+    layer.style.opacity = entry.opacity;
+    layer.style.transform = entry.transform;
+    layer.style.zIndex = entry.zIndex;
+    layer.dataset.effectType = entry.effectType || 'none';
+    layer.dataset.effectIntensity = entry.effectIntensity || '60';
+    layer.dataset.effectAngle = entry.effectAngle || '45';
+    layer.dataset.effectBlur = entry.effectBlur || '20';
+    if(entry.transform){
+      const state = layerState[layer.id];
+      if(state){
+        const match = entry.transform.match(/rotate\(([-\d.]+)deg\)/);
+        const scaleMatch = entry.transform.match(/scale\(([-\d.]+(?:\.\d+)?)\)/);
+        state.rotation = match ? parseFloat(match[1]) : 0;
+        state.scale = scaleMatch ? parseFloat(scaleMatch[1]) : 1;
+      }
+    }
+    updateEffectLayer(layer);
+  });
+  selectedLayer = snapshot.selectedId ? layerElements.find(layer => layer.id === snapshot.selectedId) || null : null;
+  if(selectedLayer){ selectedLayer.classList.add('layer-selected'); }
+  updateSelectionBox();
+  updateLayersUI();
+}
+
+function undo(){
+  if(historyIndex <= 0) return;
+  historyIndex -= 1;
+  restoreHistory();
+}
+
+function redo(){
+  if(historyIndex >= history.length - 1) return;
+  historyIndex += 1;
+  restoreHistory();
+}
+
+function setImageSize(img, width){
+  const ratio = img.naturalWidth && img.naturalHeight ? img.naturalHeight / img.naturalWidth : 1;
+  const height = width * ratio;
+  img.style.width = width + 'px';
+  img.style.height = height + 'px';
+  applyLayerTransform(img);
+}
+
+function syncScaleSlider(rangeId, valId, currentWidth, baseWidth){
+  const range = document.getElementById(rangeId);
+  const nextValue = Math.min(500, Math.max(50, Math.round((currentWidth / baseWidth) * 100)));
+  range.value = nextValue;
+  document.getElementById(valId).textContent = nextValue + '%';
+}
+
+function makeInteractive(layer){
+  layer.addEventListener('mousedown', e=>{
+    if(e.target.classList.contains('resize-handle')) return;
+    if(layer.dataset.locked === 'true') return;
+    selectLayer(layer);
+    isDragging = true;
+    const bounds = getLayerBounds(layer);
+    dragState = { startX:e.clientX, startY:e.clientY, startLeft: bounds.left, startTop: bounds.top };
+    e.preventDefault();
+    e.stopPropagation();
+  });
+  layer.addEventListener('click', ()=>{
+    selectLayer(layer);
+    refreshDesignState();
+  });
+}
+
+getAllLayers().forEach(makeInteractive);
+
+function getLayerName(layer){
+  if(layer.id === 'portraitImg') return 'Retrato';
+  if(layer.id === 'bookImg') return 'Libro';
+  if(layer.id === 'titleLayer') return 'Título';
+  return layer.dataset.name || 'Imagen extra';
+}
+
+function updateLayersUI(){
+  const layersList = document.getElementById('layersList');
+  layersList.innerHTML = '';
+  const layerElements = getAllLayers().filter(el => el && el.style.display !== 'none');
+  updatePromptOutput();
+  layerElements.forEach((layer) => {
+    const item = document.createElement('div');
+    const locked = layer.dataset.locked === 'true';
+    item.className = 'layer-item' + (selectedLayer === layer ? ' active' : '') + (locked ? ' locked' : '');
+    item.innerHTML = `<span>${getLayerName(layer)}</span><div class="layer-actions"><button data-action="down" title="Bajar">↓</button><button data-action="up" title="Subir">↑</button><button data-action="front" title="Traer al frente">⤴</button><button data-action="back" title="Enviar al fondo">⤵</button><button data-action="vis" title="Mostrar/Ocultar">${layer.style.visibility === 'hidden' ? '👁' : '👁‍🗨'}</button><button data-action="lock" title="Bloquear">${locked ? '🔒' : '🔓'}</button><button data-action="delete" title="Eliminar">✕</button></div>`;
+    item.querySelector('[data-action="down"]').onclick = (e) => { e.stopPropagation(); moveLayer(layer, 1); };
+    item.querySelector('[data-action="up"]').onclick = (e) => { e.stopPropagation(); moveLayer(layer, -1); };
+    item.querySelector('[data-action="front"]').onclick = (e) => { e.stopPropagation(); bringLayerToFront(layer); };
+    item.querySelector('[data-action="back"]').onclick = (e) => { e.stopPropagation(); sendLayerToBack(layer); };
+    item.querySelector('[data-action="vis"]').onclick = (e) => { e.stopPropagation(); layer.style.visibility = layer.style.visibility === 'hidden' ? 'visible' : 'hidden'; updateLayersUI(); };
+    item.querySelector('[data-action="lock"]').onclick = (e) => { e.stopPropagation(); layer.dataset.locked = layer.dataset.locked === 'true' ? 'false' : 'true'; updateLayersUI(); };
+    item.querySelector('[data-action="delete"]').onclick = (e) => { e.stopPropagation(); removeLayer(layer); };
+    item.onclick = () => selectLayer(layer);
+    layersList.appendChild(item);
+  });
+}
+
+function updateLayerOrder(){
+  const layerElements = getAllLayers();
+  const visible = layerElements.filter(el => el && el.style.display !== 'none');
+  visible.forEach((layer) => canvas.appendChild(layer));
+}
+
+saveHistory();
+updateLayersUI();
+
+selectionBox.querySelectorAll('.resize-handle').forEach(handle=>{
+  handle.addEventListener('mousedown', e=>{
+    if(!selectedLayer) return;
+    selectLayer(selectedLayer);
+    isResizing = true;
+    resizeState = {
+      startX:e.clientX,
+      startY:e.clientY,
+      startWidth: getLayerBounds(selectedLayer).width,
+      startHeight: getLayerBounds(selectedLayer).height,
+      handle: e.currentTarget.dataset.handle
+    };
+    e.preventDefault();
+    e.stopPropagation();
+  });
+});
+
+window.addEventListener('mousemove', e=>{
+  if(isDragging && dragState && selectedLayer){
+    const scale = getCanvasScale();
+    const dx = (e.clientX - dragState.startX) / scale;
+    const dy = (e.clientY - dragState.startY) / scale;
+    selectedLayer.style.left = (dragState.startLeft + dx) + 'px';
+    selectedLayer.style.top = (dragState.startTop + dy) + 'px';
+    updateSelectionBox();
+    updateEffectLayer(selectedLayer);
+    updatePromptOutput();
+  }
+
+  if(isResizing && resizeState && selectedLayer){
+    const scale = getCanvasScale();
+    const dx = (e.clientX - resizeState.startX) / scale;
+    const dy = (e.clientY - resizeState.startY) / scale;
+    const current = getLayerBounds(selectedLayer);
+
+    if(selectedLayer.id === 'portraitImg' || selectedLayer.id === 'bookImg'){
+      const baseWidth = resizeState.startWidth;
+      const baseHeight = resizeState.startHeight;
+      const width = Math.max(80, baseWidth + dx);
+      const height = Math.max(80, baseHeight + dy * 0.8);
+      setImageSize(selectedLayer, width);
+      if(selectedLayer.id === 'portraitImg'){
+        syncScaleSlider('pScale','pScaleVal', width, 780);
+      } else {
+        syncScaleSlider('bScale','bScaleVal', width, 420);
+      }
+    } else if(selectedLayer.id === 'titleLayer'){
+      const newWidth = Math.max(180, resizeState.startWidth + dx);
+      const scaleFactor = newWidth / Math.max(180, resizeState.startWidth);
+      setLayerScale(selectedLayer, scaleFactor);
+    }
+
+    updateSelectionBox();
+  }
+});
+
+window.addEventListener('mouseup', ()=>{
+  isDragging = false;
+  isResizing = false;
+  dragState = null;
+  resizeState = null;
+  updatePromptOutput();
+});
+
+canvas.addEventListener('mousedown', e=>{
+  if(e.target === canvas){
+    clearSelection();
+  }
+});
+
+deleteSelectedBtn.addEventListener('click', ()=>{
+  if(selectedLayer){
+    removeLayer(selectedLayer);
+  }
+});
+
+window.addEventListener('keydown', (e)=>{
+  const tag = document.activeElement?.tagName;
+  const isTyping = tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT';
+  if((e.key === 'Delete' || e.key === 'Backspace') && selectedLayer && !isTyping){
+    e.preventDefault();
+    removeLayer(selectedLayer);
+  }
+});
+
+document.getElementById('duplicateBtn').addEventListener('click', ()=>{
+  if(!selectedLayer) return;
+  const clone = selectedLayer.cloneNode(true);
+  clone.id = selectedLayer.id + '-copy';
+  clone.classList.remove('layer-selected');
+  clone.style.display = selectedLayer.style.display || 'block';
+  clone.style.visibility = selectedLayer.style.visibility || 'visible';
+  clone.style.left = selectedLayer.style.left;
+  clone.style.top = (parseFloat(selectedLayer.style.top) + 40) + 'px';
+  clone.style.opacity = selectedLayer.style.opacity || '1';
+  clone.style.zIndex = String((parseInt(selectedLayer.style.zIndex || '0', 10) + 1));
+  if(clone.classList.contains('layer-img') || selectedLayer.classList.contains('layer-img')){
+    clone.classList.add('layer-img');
+  }
+  clone.dataset.name = selectedLayer.dataset.name || 'Imagen extra';
+  clone.dataset.effectType = selectedLayer.dataset.effectType || 'none';
+  clone.dataset.effectIntensity = selectedLayer.dataset.effectIntensity || '60';
+  clone.dataset.effectAngle = selectedLayer.dataset.effectAngle || '45';
+  clone.dataset.effectBlur = selectedLayer.dataset.effectBlur || '20';
+  canvas.appendChild(clone);
+  if(selectedLayer.id === 'portraitImg' || selectedLayer.id === 'bookImg' || clone.classList.contains('layer-img')){
+    const state = layerState[selectedLayer.id] || { scale: 1, rotation: 0 };
+    layerState[clone.id] = { scale: state.scale, rotation: state.rotation };
+    applyLayerTransform(clone);
+    if(clone.classList.contains('layer-img')){
+      extraLayers.push(clone);
+      makeInteractive(clone);
+    }
+  }
+  selectLayer(clone);
+  updateLayersUI();
+});
+
+document.getElementById('undoBtn').addEventListener('click', undo);
+document.getElementById('redoBtn').addEventListener('click', redo);
+document.getElementById('centerBtn').addEventListener('click', ()=>{
+  if(!selectedLayer) return;
+  const bounds = getLayerBounds(selectedLayer);
+  selectedLayer.style.left = `${(canvas.clientWidth / 2) - (bounds.width / 2)}px`;
+  selectedLayer.style.top = `${(canvas.clientHeight / 2) - (bounds.height / 2)}px`;
+  updateSelectionBox();
+});
+document.getElementById('centerHBtn').addEventListener('click', ()=>{
+  if(!selectedLayer) return;
+  const bounds = getLayerBounds(selectedLayer);
+  selectedLayer.style.left = `${(canvas.clientWidth / 2) - (bounds.width / 2)}px`;
+  updateSelectionBox();
+});
+document.getElementById('centerVBtn').addEventListener('click', ()=>{
+  if(!selectedLayer) return;
+  const bounds = getLayerBounds(selectedLayer);
+  selectedLayer.style.top = `${(canvas.clientHeight / 2) - (bounds.height / 2)}px`;
+  updateSelectionBox();
+});
+document.getElementById('previewBtn').addEventListener('click', ()=>{
+  const previewImg = document.getElementById('previewImg');
+  const wasMini = canvas.classList.contains('miniview');
+  const zoom = parseInt(document.getElementById('previewZoom').value, 10) / 100;
+  canvas.classList.remove('miniview');
+  guides.style.display='none';
+  html2canvas(canvas, {width:1920, height:1080, scale:1, useCORS:true, backgroundColor:'#111114'}).then(c=>{
+    previewImg.src = c.toDataURL('image/png');
+    previewImg.style.transform = `scale(${zoom})`;
+    previewImg.style.transformOrigin = 'center center';
+    if(wasMini) canvas.classList.add('miniview');
+    guides.style.display = 'block';
+  });
+});
+
+document.getElementById('previewZoom').addEventListener('input', e=>{
+  const label = document.getElementById('previewScaleLabel');
+  const value = e.target.value;
+  label.textContent = value + '%';
+  const previewImg = document.getElementById('previewImg');
+  if(previewImg.src){
+    previewImg.style.transform = `scale(${parseInt(value,10)/100})`;
+    previewImg.style.transformOrigin = 'center center';
+  }
+});
+
+document.getElementById('zoomOutBtn').addEventListener('click', ()=>{
+  const range = document.getElementById('previewZoom');
+  range.value = Math.max(40, parseInt(range.value,10) - 10);
+  range.dispatchEvent(new Event('input'));
+});
+
+document.getElementById('zoomInBtn').addEventListener('click', ()=>{
+  const range = document.getElementById('previewZoom');
+  range.value = Math.min(140, parseInt(range.value,10) + 10);
+  range.dispatchEvent(new Event('input'));
+});
+document.getElementById('frontBtn').addEventListener('click', ()=>{
+  if(!selectedLayer) return;
+  canvas.appendChild(selectedLayer);
+  updateLayersUI();
+});
+document.getElementById('backBtn').addEventListener('click', ()=>{
+  if(!selectedLayer) return;
+  const siblings = Array.from(canvas.children).filter(el => el !== selectedLayer && el.id !== 'bgImg' && el.id !== 'bgPlaceholder' && el.id !== 'guides' && el.id !== 'selectionBox');
+  if(siblings.length){
+    canvas.insertBefore(selectedLayer, siblings[0]);
+  }
+  updateLayersUI();
+});
+
+document.getElementById('rotation').addEventListener('input', e=>{
+  document.getElementById('rotationVal').textContent = e.target.value + '°';
+  if(selectedLayer){
+    setLayerRotation(selectedLayer, parseInt(e.target.value, 10));
+    updateSelectionBox();
+  }
+});
+
+document.getElementById('opacity').addEventListener('input', e=>{
+  document.getElementById('opacityVal').textContent = e.target.value + '%';
+  if(selectedLayer){
+    selectedLayer.style.opacity = (parseInt(e.target.value, 10) / 100).toFixed(2);
+  }
+});
+
+[portraitImg, bookImg, titleLayer].forEach(layer => {
+  layer.addEventListener('load', () => {
+    applyLayerTransform(layer);
+    updateLayersUI();
+  });
+});
+
+applyLayerTransform(portraitImg);
+applyLayerTransform(bookImg);
+applyLayerTransform(titleLayer);
+
+/* ---------- scale sliders ---------- */
+function bindScale(rangeId, valId, layer, baseWidth){
+  const range = document.getElementById(rangeId);
+  const update = ()=>{
+    const value = parseInt(range.value, 10);
+    document.getElementById(valId).textContent = value+'%';
+    const width = baseWidth * value / 100;
+    const ratio = layer.naturalWidth && layer.naturalHeight ? layer.naturalHeight / layer.naturalWidth : 1;
+    const height = width * ratio;
+    layer.style.width = width + 'px';
+    layer.style.height = height + 'px';
+    applyLayerTransform(layer);
+    updateSelectionBox();
+    if(selectedLayer === layer){ updateEffectLayer(layer); }
+  };
+  range.addEventListener('input', () => { update(); updateScalePrompt(); });
+  update();
+}
+bindScale('pScale','pScaleVal',portraitImg,780);
+bindScale('bScale','bScaleVal',bookImg,420);
+
+function updateScalePrompt(){ updatePromptOutput(); }
+document.getElementById('pScale').addEventListener('input', updateScalePrompt);
+document.getElementById('bScale').addEventListener('input', updateScalePrompt);
+
+['effectType','effectIntensity','effectAngle','effectBlur'].forEach(id=>{
+  document.getElementById(id).addEventListener('input', ()=>{
+    document.getElementById('effectIntensityVal').textContent = `${document.getElementById('effectIntensity').value}%`;
+    document.getElementById('effectAngleVal').textContent = `${document.getElementById('effectAngle').value}°`;
+    document.getElementById('effectBlurVal').textContent = `${document.getElementById('effectBlur').value}px`;
+    applySelectedEffect();
+  });
+  document.getElementById(id).addEventListener('change', ()=>{
+    document.getElementById('effectIntensityVal').textContent = `${document.getElementById('effectIntensity').value}%`;
+    document.getElementById('effectAngleVal').textContent = `${document.getElementById('effectAngle').value}°`;
+    document.getElementById('effectBlurVal').textContent = `${document.getElementById('effectBlur').value}px`;
+    applySelectedEffect();
+  });
+});
+
+document.getElementById('removeEffectBtn').addEventListener('click', ()=>{
+  if(selectedLayer){
+    selectedLayer.dataset.effectType = 'none';
+    document.getElementById('effectType').value = 'none';
+    updateEffectLayer(selectedLayer);
+  }
+});
+
+document.getElementById('addImageBtn').addEventListener('click', ()=> extraImageUpload.click());
+extraImageUpload.addEventListener('change', e=>{
+  const file = e.target.files[0];
+  if(!file) return;
+  const url = URL.createObjectURL(file);
+  const img = document.createElement('img');
+  img.className = 'layer-img';
+  img.src = url;
+  img.dataset.name = file.name.replace(/\.[^.]+$/, '');
+  img.style.display = 'block';
+  img.style.width = '320px';
+  img.style.height = 'auto';
+  img.style.top = '280px';
+  img.style.left = '640px';
+  img.style.zIndex = `${7 + extraLayers.length}`;
+  img.dataset.effectType = 'none';
+  img.dataset.effectIntensity = '60';
+  img.dataset.effectAngle = '45';
+  img.dataset.effectBlur = '20';
+  canvas.appendChild(img);
+  extraLayers.push(img);
+  makeInteractive(img);
+  selectLayer(img);
+  img.addEventListener('load', ()=>{
+    applyLayerTransform(img);
+    updateEffectLayer(img);
+    updateLayersUI();
+  });
+  applyLayerTransform(img);
+  updateEffectLayer(img);
+  updatePromptOutput();
+  updateLayersUI();
+  e.target.value = '';
+});
+
+/* ---------- typography controls ---------- */
+const line1 = document.getElementById('line1');
+const line2 = document.getElementById('line2');
+document.getElementById('line1Text').addEventListener('input', e=>{ line1.textContent = e.target.value; updatePromptOutput(); });
+document.getElementById('line2Text').addEventListener('input', e=>{ line2.textContent = e.target.value; updatePromptOutput(); });
+document.getElementById('fontSelect').addEventListener('change', e=>{
+  line1.style.fontFamily = e.target.value;
+  line2.style.fontFamily = e.target.value;
+  updatePromptOutput();
+});
+document.getElementById('c1').addEventListener('input', e=> line1.style.color = e.target.value);
+document.getElementById('c2').addEventListener('input', e=> line2.style.color = e.target.value);
+document.getElementById('cStroke').addEventListener('input', e=>{
+  line1.style.webkitTextStroke = '2px '+e.target.value;
+  line2.style.webkitTextStroke = '4px '+e.target.value;
+});
+document.getElementById('line2Size').addEventListener('input', e=>{
+  document.getElementById('sizeVal').textContent = e.target.value+'px';
+  line2.style.fontSize = e.target.value+'px';
+  line1.style.fontSize = Math.round(e.target.value*0.32)+'px';
+  updatePromptOutput();
+});
+
+function hexToRgb(hex){
+  const clean = hex.replace('#','');
+  const full = clean.length === 3 ? clean.split('').map(c=>c+c).join('') : clean;
+  const num = parseInt(full,16);
+  return `${(num >> 16) & 255}, ${(num >> 8) & 255}, ${num & 255}`;
+}
+
+function applyTextStyle(){
+  const gradTop = document.getElementById('gradTop').value;
+  const gradMid = document.getElementById('gradMid').value;
+  const gradBottom = document.getElementById('gradBottom').value;
+  const gradAngle = document.getElementById('gradAngle').value;
+  const brightness = document.getElementById('brightness').value / 100;
+  const relief = document.getElementById('relief').value;
+  const shadowY = document.getElementById('shadowY').value;
+  const shadowBlur = document.getElementById('shadowBlur').value;
+  const shadowOpacity = document.getElementById('shadowOpacity').value / 100;
+  const shadowColor = document.getElementById('shadowColor').value;
+  const sideShadow = document.getElementById('sideShadow').value;
+  const sideShadowOpacity = document.getElementById('sideShadowOpacity').value / 100;
+  const edgeLight = document.getElementById('edgeLight').value / 100;
+  const edgeLightColor = document.getElementById('edgeLightColor').value;
+  const strokeWidth = document.getElementById('strokeWidth').value;
+  const strokeColor = document.getElementById('strokeColor').value;
+
+  document.getElementById('gradAngleVal').textContent = gradAngle+'°';
+  document.getElementById('brightnessVal').textContent = document.getElementById('brightness').value+'%';
+  document.getElementById('reliefVal').textContent = relief+'%';
+  document.getElementById('shadowYVal').textContent = shadowY+'px';
+  document.getElementById('shadowBlurVal').textContent = shadowBlur+'px';
+  document.getElementById('shadowOpacityVal').textContent = document.getElementById('shadowOpacity').value+'%';
+  document.getElementById('sideShadowVal').textContent = sideShadow+'px';
+  document.getElementById('sideShadowOpacityVal').textContent = document.getElementById('sideShadowOpacity').value+'%';
+  document.getElementById('edgeLightVal').textContent = document.getElementById('edgeLight').value+'%';
+  document.getElementById('strokeWidthVal').textContent = strokeWidth+'px';
+
+  updatePromptOutput();
+
+  [line1, line2].forEach(el=>{
+    el.style.setProperty('--text-gradient', `linear-gradient(${gradAngle}deg, ${gradTop} 0%, ${gradMid} 50%, ${gradBottom} 100%)`);
+    el.style.setProperty('--text-brightness', brightness.toFixed(2));
+    el.style.setProperty('--text-saturation', '1.08');
+    el.style.setProperty('--relief-top', `${Math.max(1, relief / 8)}px`);
+    el.style.setProperty('--shadow-y', `${shadowY}px`);
+    el.style.setProperty('--shadow-blur', `${shadowBlur}px`);
+    el.style.setProperty('--shadow-color', `rgba(${hexToRgb(shadowColor)}, ${shadowOpacity})`);
+    el.style.setProperty('--side-shadow-x', `${sideShadow}px`);
+    el.style.setProperty('--side-shadow-blur', `${Math.max(1, Math.abs(sideShadow) / 2)}px`);
+    el.style.setProperty('--side-shadow-color', `rgba(${hexToRgb(shadowColor)}, ${sideShadowOpacity})`);
+    el.style.setProperty('--edge-light-color', `rgba(${hexToRgb(edgeLightColor)}, ${edgeLight})`);
+    el.style.setProperty('--stroke-width', `${strokeWidth}px`);
+    el.style.setProperty('--stroke-color', strokeColor);
+  });
+}
+
+['gradTop','gradMid','gradBottom','gradAngle','brightness','relief','shadowY','shadowBlur','shadowOpacity','shadowColor','sideShadow','sideShadowOpacity','edgeLight','edgeLightColor','strokeWidth','strokeColor'].forEach(id=>{
+  document.getElementById(id).addEventListener('input', applyTextStyle);
+  document.getElementById(id).addEventListener('change', applyTextStyle);
+});
+
+applyTextStyle();
+updatePromptOutput();
+
+document.getElementById('titleTop').addEventListener('input', e=>{
+  document.getElementById('topValLabel').textContent = e.target.value+'%';
+  document.getElementById('titleLayer').style.top = e.target.value+'%';
+  updatePromptOutput();
+});
+document.getElementById('titleLayer').style.top = '58%';
+
+/* ---------- guides ---------- */
+function drawGuides(){
+  guides.innerHTML='';
+  const w=1920,h=1080;
+  // rule of thirds lines
+  [w/3, w*2/3].forEach(x=>{
+    const d=document.createElement('div');
+    d.className='third';
+    d.style.cssText=`left:${x}px; top:0; width:1px; height:${h}px;`;
+    guides.appendChild(d);
+  });
+  [h/3, h*2/3].forEach(y=>{
+    const d=document.createElement('div');
+    d.className='third';
+    d.style.cssText=`top:${y}px; left:0; height:1px; width:${w}px;`;
+    guides.appendChild(d);
+  });
+  // safe zone (avoid YouTube UI overlays: duration badge bottom-right, channel logo bottom-left area)
+  const safe=document.createElement('div');
+  safe.className='safe';
+  safe.style.cssText='left:24px; top:24px; right:24px; bottom:24px; position:absolute;';
+  guides.appendChild(safe);
+}
+drawGuides();
+document.getElementById('toggleThirds').addEventListener('change', e=>{
+  guides.style.display = e.target.checked ? 'block':'none';
+  updatePromptOutput();
+});
+
+/* ---------- mini preview (10% CTR test) ---------- */
+document.getElementById('toggleMini').addEventListener('change', e=>{
+  canvas.classList.toggle('miniview', e.target.checked);
+  updatePromptOutput();
+});
+
+/* ---------- export ---------- */
+/* ---------- export ---------- */
+document.getElementById('exportBtn').addEventListener('click', ()=>{
+  const exportBtn = document.getElementById('exportBtn');
+  const originalLabel = exportBtn.textContent;
+  exportBtn.disabled = true;
+  exportBtn.textContent = 'Generando...';
+
+  const wasMini = canvas.classList.contains('miniview');
+  const wasGuides = guides.style.display;
+  const wasScale = canvas.style.transform;
+  const wasScrollLeft = stageWrap.scrollLeft;
+  const wasScrollTop = stageWrap.scrollTop;
+
+  canvas.classList.remove('miniview');
+  canvas.style.transform = 'scale(1)';
+  guides.style.display = 'none';
+  // CLAVE: reseteamos el scroll del contenedor a 0,0. Con
+  // foreignObjectRendering (que sacamos abajo) esto era la otra mitad
+  // del problema: la captura respetaba la posición de scroll actual.
+  stageWrap.scrollLeft = 0;
+  stageWrap.scrollTop = 0;
+
+  // Esperamos dos frames para que el navegador termine de aplicar el
+  // reset de zoom/scroll ANTES de que html2canvas lea las dimensiones.
+  // Si se captura en el mismo tick, a veces agarra el estado viejo.
+  requestAnimationFrame(()=>{
+    requestAnimationFrame(()=>{
+      html2canvas(canvas, {
+        width:1920,
+        height:1080,
+        scale:2,
+        useCORS:true,
+        backgroundColor:'#111114',
+        logging:false,
+        allowTaint:false,
+        // CORREGIDO: esta opción en true era la causa del negro/recorte.
+        // foreignObjectRendering usa el motor nativo del navegador, que
+        // respeta el recorte y el scroll visible del contenedor en vez
+        // de renderizar el lienzo completo como un elemento aislado.
+        foreignObjectRendering:false
+      }).then(c=>{
+        const triggerDownload = (targetCanvas) => {
+          const mime = 'image/png';
+          const filename = 'miniatura-1920x1080.png';
+          const done = (url) => {
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = filename;
+            link.style.display = 'none';
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+            setTimeout(()=>URL.revokeObjectURL(url), 3000);
+          };
+
+          if(typeof targetCanvas.toBlob === 'function'){
+            targetCanvas.toBlob(blob => {
+              if(!blob) throw new Error('No se pudo crear el archivo PNG.');
+              done(URL.createObjectURL(blob));
+            }, mime);
+          } else {
+            done(targetCanvas.toDataURL(mime));
+          }
+        };
+
+        triggerDownload(c);
+      }).catch(err=>{
+        console.error('Export failed', err);
+        alert('No se pudo descargar la miniatura. Intenta recargar la página o usar una imagen más simple.');
+      }).finally(()=>{
+        canvas.style.transform = wasScale || 'scale(.58)';
+        if(wasMini) canvas.classList.add('miniview');
+        guides.style.display = wasGuides || 'block';
+        stageWrap.scrollLeft = wasScrollLeft;
+        stageWrap.scrollTop = wasScrollTop;
+        exportBtn.disabled = false;
+        exportBtn.textContent = originalLabel;
+      });
+    });
+  });
+});
+</script>
+</body>
+</html>

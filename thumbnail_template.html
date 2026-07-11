@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Template Miniaturas</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;600;700&family=Archivo+Black&family=Inter:wght@400;500;600&display=swap');
+
+  :root{
+    --bg-panel:#15151a;
+    --bg-panel-2:#1d1d24;
+    --line:#2c2c35;
+    --ivory:#f2ede2;
+    --gold:#c9a24b;
+    --gold-2:#e6c874;
+    --text-dim:#8b8b96;
+    --accent:#7a3b3b;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:'Inter',sans-serif;
+    background:#0a0a0c;
+    color:var(--ivory);
+    display:flex;
+    min-height:100vh;
+  }
+
+  /* ---------- LEFT PANEL ---------- */
+  #panel{
+    width:340px;
+    flex-shrink:0;
+    background:var(--bg-panel);
+    border-right:1px solid var(--line);
+    padding:20px;
+    overflow-y:auto;
+    max-height:100vh;
+  }
+  #panel h1{
+    font-family:'Oswald',sans-serif;
+    font-size:15px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--gold-2);
+    margin:0 0 4px;
+  }
+  #panel .sub{
+    font-size:11.5px;
+    color:var(--text-dim);
+    margin:0 0 20px;
+    line-height:1.5;
+  }
+  .group{
+    margin-bottom:18px;
+    padding-bottom:18px;
+    border-bottom:1px solid var(--line);
+  }
+  .group:last-child{border-bottom:none;}
+  .group h2{
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    color:var(--text-dim);
+    margin:0 0 10px;
+    font-weight:600;
+  }
+  label{
+    display:block;
+    font-size:12px;
+    color:var(--ivory);
+    margin:10px 0 5px;
+  }
+  input[type=text], select{
+    width:100%;
+    background:var(--bg-panel-2);
+    border:1px solid var(--line);
+    color:var(--ivory);
+    padding:8px 9px;
+    border-radius:5px;
+    font-size:13px;
+    font-family:'Inter',sans-serif;
+  }
+  input[type=range]{width:100%; accent-color:var(--gold);}
+  input[type=color]{
+    width:36px;height:28px;border:1px solid var(--line);border-radius:4px;
+    background:none;padding:0;cursor:pointer;
+  }
+  .row{display:flex;gap:8px;align-items:center;}
+  .row2{display:flex;gap:8px;}
+  .row2 > div{flex:1;}
+  .rangeval{font-size:11px;color:var(--text-dim); float:right;}
+  .filebtn{
+    display:block;
+    width:100%;
+    padding:9px;
+    background:var(--bg-panel-2);
+    border:1px dashed var(--line);
+    border-radius:5px;
+    text-align:center;
+    font-size:12px;
+    color:var(--gold-2);
+    cursor:pointer;
+  }
+  .filebtn input{display:none;}
+  .toggle{display:flex;align-items:center;justify-content:space-between;margin-top:10px;}
+  .toggle span{font-size:12px;}
+  .switch{position:relative;width:36px;height:20px;}
+  .switch input{opacity:0;width:0;height:0;}
+  .slider{position:absolute;inset:0;background:var(--line);border-radius:20px;transition:.2s;cursor:pointer;}
+  .slider:before{content:"";position:absolute;height:14px;width:14px;left:3px;top:3px;background:var(--ivory);border-radius:50%;transition:.2s;}
+  input:checked + .slider{background:var(--gold);}
+  input:checked + .slider:before{transform:translateX(16px);}
+  #exportBtn{
+    width:100%;
+    padding:13px;
+    background:linear-gradient(180deg,var(--gold-2),var(--gold));
+    color:#141414;
+    border:none;
+    border-radius:6px;
+    font-weight:700;
+    font-size:13px;
+    letter-spacing:.03em;
+    text-transform:uppercase;
+    cursor:pointer;
+    margin-top:6px;
+  }
+  #exportBtn:hover{filter:brightness(1.05);}
+  .hint{font-size:11px;color:var(--text-dim);margin-top:8px;line-height:1.5;}
+
+  /* ---------- RIGHT: STAGE ---------- */
+  #stageWrap{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:flex-start;
+    padding:30px;
+    gap:16px;
+    overflow:auto;
+  }
+  #meta{
+    display:flex;
+    gap:24px;
+    font-size:11.5px;
+    color:var(--text-dim);
+  }
+  #meta b{color:var(--ivory);}
+
+  #canvas{
+    width:1280px;
+    height:720px;
+    position:relative;
+    background:#111114;
+    overflow:hidden;
+    box-shadow:0 20px 60px rgba(0,0,0,.5);
+    transform-origin:top left;
+  }
+  #canvas.miniview{transform:scale(.22);}
+
+  .layer-img{
+    position:absolute;
+    object-fit:cover;
+    cursor:grab;
+    user-select:none;
+    -webkit-user-drag:none;
+  }
+  .layer-img:active{cursor:grabbing;}
+  #bgImg{width:100%;height:100%;top:0;left:0;object-fit:cover;cursor:default;}
+  #bgPlaceholder{
+    position:absolute;inset:0;
+    display:flex;align-items:center;justify-content:center;
+    color:#3d3d45;font-size:22px;font-family:'Oswald',sans-serif;
+    text-transform:uppercase;letter-spacing:.1em;
+    background:repeating-linear-gradient(45deg,#111114,#111114 20px,#17171b 20px,#17171b 40px);
+  }
+
+  .guides{position:absolute;inset:0;pointer-events:none;}
+  .guides .third{position:absolute;background:rgba(230,200,116,.35);}
+  .guides .safe{position:absolute;border:1.5px dashed rgba(230,200,116,.55);}
+
+  #titleLayer{
+    position:absolute;
+    left:40px;
+    text-align:left;
+    line-height:.95;
+    text-shadow:0 3px 14px rgba(0,0,0,.55);
+  }
+  #line1{display:block;}
+  #line2{display:block;}
+</style>
+</head>
+<body>
+
+<div id="panel">
+  <h1>Template · Miniatura Teológica</h1>
+  <p class="sub">Fondo + retrato + libro + tipografía, con las reglas ya calibradas (tercios, zonas seguras, contraste). Cargá tus 3 piezas generadas/fotografiadas y ajustá.</p>
+
+  <div class="group">
+    <h2>1 · Fondo (escena)</h2>
+    <label class="filebtn">Subir fondo (1280×720 ideal)
+      <input type="file" id="bgUpload" accept="image/*">
+    </label>
+  </div>
+
+  <div class="group">
+    <h2>2 · Tu retrato (recortado, fondo transparente)</h2>
+    <label class="filebtn">Subir retrato PNG
+      <input type="file" id="portraitUpload" accept="image/*">
+    </label>
+    <label>Escala <span class="rangeval" id="pScaleVal">100%</span></label>
+    <input type="range" id="pScale" min="50" max="180" value="100">
+    <div class="hint">Arrastrá la imagen directo sobre el lienzo para posicionarla. Debe ocupar ~40% del ancho, tercio derecho.</div>
+  </div>
+
+  <div class="group">
+    <h2>3 · Libro (foto real)</h2>
+    <label class="filebtn">Subir foto del libro
+      <input type="file" id="bookUpload" accept="image/*">
+    </label>
+    <label>Escala <span class="rangeval" id="bScaleVal">100%</span></label>
+    <input type="range" id="bScale" min="40" max="160" value="100">
+  </div>
+
+  <div class="group">
+    <h2>4 · Tipografía</h2>
+    <label>Línea 1 (chica)</label>
+    <input type="text" id="line1Text" value="¿SOLO">
+    <label>Línea 2 (grande / ancla visual)</label>
+    <input type="text" id="line2Text" value="ISRAEL?">
+    <label>Fuente</label>
+    <select id="fontSelect">
+      <option value="'Bebas Neue',sans-serif">Bebas Neue — impacto directo</option>
+      <option value="'Oswald',sans-serif" selected>Oswald Bold — documental/serio</option>
+      <option value="'Archivo Black',sans-serif">Archivo Black — sólida, moderna</option>
+    </select>
+    <div class="row2">
+      <div>
+        <label>Color línea 1</label>
+        <input type="color" id="c1" value="#f2ede2">
+      </div>
+      <div>
+        <label>Color línea 2</label>
+        <input type="color" id="c2" value="#e6c874">
+      </div>
+      <div>
+        <label>Contorno</label>
+        <input type="color" id="cStroke" value="#0a0a0c">
+      </div>
+    </div>
+    <label>Tamaño línea 2 <span class="rangeval" id="sizeVal">150px</span></label>
+    <input type="range" id="line2Size" min="70" max="220" value="150">
+    <label>Posición vertical <span class="rangeval" id="topValLabel">58%</span></label>
+    <input type="range" id="titleTop" min="20" max="85" value="58">
+  </div>
+
+  <div class="group">
+    <h2>5 · Guías</h2>
+    <div class="toggle">
+      <span>Grilla de tercios</span>
+      <label class="switch"><input type="checkbox" id="toggleThirds" checked><span class="slider"></span></label>
+    </div>
+    <div class="toggle">
+      <span>Vista al 10% (test CTR)</span>
+      <label class="switch"><input type="checkbox" id="toggleMini"><span class="slider"></span></label>
+    </div>
+  </div>
+
+  <button id="exportBtn">Descargar PNG (1280×720)</button>
+  <p class="hint">Exporta a resolución completa de YouTube. Si algo se corta, revisá que retrato/libro estén dentro del lienzo antes de descargar.</p>
+</div>
+
+<div id="stageWrap">
+  <div id="meta"><span><b>1280 × 720</b> px</span><span>YouTube thumbnail</span></div>
+
+  <div id="canvas">
+    <div id="bgPlaceholder">Subí el fondo →</div>
+    <img id="bgImg" style="display:none;">
+
+    <img id="portraitImg" class="layer-img" style="display:none; width:520px; top:120px; left:700px; z-index:5;">
+    <img id="bookImg" class="layer-img" style="display:none; width:230px; top:430px; left:960px; z-index:6;">
+
+    <div id="titleLayer" style="z-index:10;">
+      <span id="line1" style="font-family:'Oswald',sans-serif; color:#f2ede2; font-size:48px; -webkit-text-stroke:2px #0a0a0c;">¿SOLO</span>
+      <span id="line2" style="font-family:'Oswald',sans-serif; color:#e6c874; font-size:150px; font-weight:700; -webkit-text-stroke:4px #0a0a0c;">ISRAEL?</span>
+    </div>
+
+    <div class="guides" id="guides" style="z-index:20;"></div>
+  </div>
+</div>
+
+<script>
+const canvas = document.getElementById('canvas');
+const guides = document.getElementById('guides');
+
+/* ---------- image loaders ---------- */
+function loadImage(inputId, imgId, placeholderId){
+  document.getElementById(inputId).addEventListener('change', e=>{
+    const file = e.target.files[0];
+    if(!file) return;
+    const url = URL.createObjectURL(file);
+    const img = document.getElementById(imgId);
+    img.src = url;
+    img.style.display = 'block';
+    if(placeholderId) document.getElementById(placeholderId).style.display='none';
+  });
+}
+loadImage('bgUpload','bgImg','bgPlaceholder');
+loadImage('portraitUpload','portraitImg');
+loadImage('bookUpload','bookImg');
+
+/* ---------- draggable layers ---------- */
+function makeDraggable(el){
+  let dragging=false, startX,startY, elX,elY;
+  el.addEventListener('mousedown', e=>{
+    dragging=true;
+    startX=e.clientX; startY=e.clientY;
+    elX=parseInt(el.style.left)||0; elY=parseInt(el.style.top)||0;
+    e.preventDefault();
+  });
+  window.addEventListener('mousemove', e=>{
+    if(!dragging) return;
+    const scale = canvas.classList.contains('miniview') ? .22 : 1;
+    const dx=(e.clientX-startX)/scale, dy=(e.clientY-startY)/scale;
+    el.style.left = (elX+dx)+'px';
+    el.style.top = (elY+dy)+'px';
+  });
+  window.addEventListener('mouseup', ()=> dragging=false);
+}
+makeDraggable(document.getElementById('portraitImg'));
+makeDraggable(document.getElementById('bookImg'));
+
+/* ---------- scale sliders ---------- */
+function bindScale(rangeId, valId, imgId, baseWidth){
+  const range = document.getElementById(rangeId);
+  range.addEventListener('input', ()=>{
+    document.getElementById(valId).textContent = range.value+'%';
+    document.getElementById(imgId).style.width = (baseWidth*range.value/100)+'px';
+  });
+}
+bindScale('pScale','pScaleVal','portraitImg',520);
+bindScale('bScale','bScaleVal','bookImg',230);
+
+/* ---------- typography controls ---------- */
+const line1 = document.getElementById('line1');
+const line2 = document.getElementById('line2');
+document.getElementById('line1Text').addEventListener('input', e=> line1.textContent = e.target.value);
+document.getElementById('line2Text').addEventListener('input', e=> line2.textContent = e.target.value);
+document.getElementById('fontSelect').addEventListener('change', e=>{
+  line1.style.fontFamily = e.target.value;
+  line2.style.fontFamily = e.target.value;
+});
+document.getElementById('c1').addEventListener('input', e=> line1.style.color = e.target.value);
+document.getElementById('c2').addEventListener('input', e=> line2.style.color = e.target.value);
+document.getElementById('cStroke').addEventListener('input', e=>{
+  line1.style.webkitTextStroke = '2px '+e.target.value;
+  line2.style.webkitTextStroke = '4px '+e.target.value;
+});
+document.getElementById('line2Size').addEventListener('input', e=>{
+  document.getElementById('sizeVal').textContent = e.target.value+'px';
+  line2.style.fontSize = e.target.value+'px';
+  line1.style.fontSize = Math.round(e.target.value*0.32)+'px';
+});
+document.getElementById('titleTop').addEventListener('input', e=>{
+  document.getElementById('topValLabel').textContent = e.target.value+'%';
+  document.getElementById('titleLayer').style.top = e.target.value+'%';
+});
+document.getElementById('titleLayer').style.top = '58%';
+
+/* ---------- guides ---------- */
+function drawGuides(){
+  guides.innerHTML='';
+  const w=1280,h=720;
+  // rule of thirds lines
+  [w/3, w*2/3].forEach(x=>{
+    const d=document.createElement('div');
+    d.className='third';
+    d.style.cssText=`left:${x}px; top:0; width:1px; height:${h}px;`;
+    guides.appendChild(d);
+  });
+  [h/3, h*2/3].forEach(y=>{
+    const d=document.createElement('div');
+    d.className='third';
+    d.style.cssText=`top:${y}px; left:0; height:1px; width:${w}px;`;
+    guides.appendChild(d);
+  });
+  // safe zone (avoid YouTube UI overlays: duration badge bottom-right, channel logo bottom-left area)
+  const safe=document.createElement('div');
+  safe.className='safe';
+  safe.style.cssText='left:24px; top:24px; right:24px; bottom:24px; position:absolute;';
+  guides.appendChild(safe);
+}
+drawGuides();
+document.getElementById('toggleThirds').addEventListener('change', e=>{
+  guides.style.display = e.target.checked ? 'block':'none';
+});
+
+/* ---------- mini preview (10% CTR test) ---------- */
+document.getElementById('toggleMini').addEventListener('change', e=>{
+  canvas.classList.toggle('miniview', e.target.checked);
+});
+
+/* ---------- export ---------- */
+document.getElementById('exportBtn').addEventListener('click', ()=>{
+  const wasMini = canvas.classList.contains('miniview');
+  const wasGuides = guides.style.display;
+  canvas.classList.remove('miniview');
+  guides.style.display='none';
+  html2canvas(canvas, {width:1280, height:720, scale:1, useCORS:true}).then(c=>{
+    if(wasMini) canvas.classList.add('miniview');
+    guides.style.display = wasGuides || 'block';
+    const link = document.createElement('a');
+    link.download = 'miniatura.png';
+    link.href = c.toDataURL('image/png');
+    link.click();
+  });
+});
+</script>
+</body>
+</html>
