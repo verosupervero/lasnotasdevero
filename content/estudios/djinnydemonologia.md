@@ -16,9 +16,9 @@ En este video vamos a investigar qué hay detrás de ciertas tradiciones sobre s
 
 {{< youtube iXi8VRB2mnw >}}
 
-## Presentación
+## Recursos descargables
 
-Acceso a la presentación: [Descarga ⬇️](/presentaciones/2026-09-13-demonologiadjinn.pdf)
+ - [⬇️ Presentación](/presentaciones/2026-09-13-demonologiadjinn.pdf)
 
 
 # Bibliografía
