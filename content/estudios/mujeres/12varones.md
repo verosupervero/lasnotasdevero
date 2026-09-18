@@ -198,4 +198,7 @@ Pero viendo el panorama más amplio podemos entender mejor cuál es la misión c
 
 Y así podemos entender lo simbólico de cada grupo.
 
-_Si te gustó mi artículo te pido que me ayudes suscribiéndote a [mi canal de Youtube](https://www.youtube.com/@LasNotasDeVero), allí explico en más detalle en mi estudio bíblico de Lucas todos estos temas y muchos más. Estoy haciendo una serie donde voy explicando en detalle cada tema desde distintos enfoques y con mucho rigor de detalle._
+{{< observacion >}}
+Si te gustó mi artículo te pido que me ayudes suscribiéndote a [mi canal de Youtube](https://www.youtube.com/@LasNotasDeVero), allí explico en más detalle en mi estudio bíblico de Lucas todos estos temas y muchos más. Estoy haciendo una serie donde voy explicando en detalle cada tema desde distintos enfoques y con mucho rigor de detalle.
+{{< /observacion >}}
+
