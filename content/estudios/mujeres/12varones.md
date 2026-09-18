@@ -14,6 +14,16 @@ image = "/images/lucasymujeres.png"
 
 +++
 
+<img src="/images/lucasymujeres.png" 
+     alt="lucas"
+     style="float: center; 
+            margin-left: 2em; 
+            margin-bottom: 1em; 
+            max-width: 700px; 
+            width: 80%; 
+            height: auto; 
+            border-radius: 18px; 
+            box-shadow: 0 2px 14px rgba(0,0,0,0.12);" />
 
 ## Introducción
 
