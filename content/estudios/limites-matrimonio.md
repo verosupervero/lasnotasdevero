@@ -114,8 +114,7 @@ Así que una de las ideas que usamos para leer la carta es esta:
 
 **el evangelio redefine identidad, pertenencia, relaciones y poder alrededor de Cristo.**
 
-Esas cuatro dimensiones aparecen expresamente en la presentación utilizada en el vivo. :chatgpt-content-reference{index="3"}
-
+Esas cuatro dimensiones aparecen expresamente en la presentación utilizada en el vivo.
 
 # El código doméstico
 
