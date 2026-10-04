@@ -7,7 +7,7 @@ tags = ["Efesios", "critica-textual", "teologia-paulina", "estudio-biblico", "he
 categories = ["Estudio bíblico"]
 summary = "¿A quién fue dirigida realmente la carta a los Efesios? Daniel, de La Verdad de la Biblia, analiza la ausencia de «en Éfeso» en algunos de los manuscritos más antiguos y las distintas posibilidades que plantea la evidencia."
 draft = false
-image = "/images/papiro46efesios.jpeg"
+image = "/images/papiro46efesios.jpg"
 +++
 
 {{< youtube Pub00SIQbEY >}}
