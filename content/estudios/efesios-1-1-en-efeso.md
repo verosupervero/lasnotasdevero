@@ -2,7 +2,8 @@
 title = "¿Efesios no fue escrita a Éfeso? | Lo que revelan los manuscritos"
 date = 2026-10-03
 author = "Vero"
-tags = ["Efesios", "Crítica textual", "Manuscritos", "Nuevo Testamento", "Pablo"]
+
+tags = ["Efesios", "critica-textual", "teologia-paulina", "estudio-biblico", "hermenéutica", "manuscritos", "nuevo-testamento"]
 categories = ["Estudio bíblico"]
 summary = "¿A quién fue dirigida realmente la carta a los Efesios? Daniel, de La Verdad de la Biblia, analiza la ausencia de «en Éfeso» en algunos de los manuscritos más antiguos y las distintas posibilidades que plantea la evidencia."
 draft = false
