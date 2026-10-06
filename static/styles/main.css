@@ -77,7 +77,7 @@ font-size: 16px;
 
 font-weight: 400;
 
-text-align: center;
+text-align: left;
 
 background: #beeaff ;
 
@@ -87,13 +87,13 @@ overflow: hidden;
 
 padding: 20px;
 
-border-radius: 35px 0px 35px 0px;
+border-radius: 6px;
 
--moz-border-radius: 35px 0px 35px 0px;
+-moz-border-radius: 6px;
 
--webkit-border-radius: 35px 0px 35px 0px;
+-webkit-border-radius: 6px;
 
-border: 2px solid  #89daff ;
+border: 1px solid  #89daff ;
 
 }
 
@@ -105,7 +105,7 @@ font-size: 14px;
 
 font-weight: 400;
 
-text-align: center;
+text-align: left;
 
 background: #DAF7A6  ;
 
@@ -115,13 +115,13 @@ overflow: hidden;
 
 padding: 20px;
 
-border-radius: 35px 0px 35px 0px;
+border-radius: 6px;
 
--moz-border-radius: 35px 0px 35px 0px;
+-moz-border-radius: 6px;
 
--webkit-border-radius: 35px 0px 35px 0px;
+-webkit-border-radius: 6px;
 
-border: 2px solid  #60f659 ;
+border: 1px solid  #60f659 ;
 
 }
 

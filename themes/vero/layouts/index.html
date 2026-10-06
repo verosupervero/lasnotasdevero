@@ -7,7 +7,7 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: inherit;
             line-height: 1.6;
         }
 
@@ -180,60 +180,124 @@
             padding: 80px 20px 60px;
         }
 
-        .content-grid {
+        .about-layout {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: minmax(0, 1fr) minmax(240px, 320px);
+            align-items: start;
+            gap: clamp(2rem, 5vw, 4.5rem);
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        .content-card {
-            background: white;
-            padding: 35px 25px;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            border: 1px solid rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
+        .about-eyebrow {
+            color: #16a085;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            margin-bottom: 0.65rem;
+            text-transform: uppercase;
         }
 
-        .content-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #7B68EE, #9370DB);
-            border-radius: 20px 20px 0 0;
+        .about-title {
+            color: #2c3e50;
+            font-size: clamp(2rem, 3.2vw, 2.75rem);
+            line-height: 1.15;
+            margin: 0 0 1.25rem;
         }
 
-        .content-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+        .about-title::after {
+            background-color: #f1c40f;
         }
 
-        .card-icon {
-            font-size: 2.5em;
-            margin-bottom: 15px;
-            display: block;
+        .about-copy > p:not(.about-eyebrow) {
+            color: #4b5560;
+            font-size: 1rem;
+            line-height: 1.8;
+            margin: 0 0 1rem;
         }
 
-        .content-card h3 {
-            font-size: 1.4em;
-            color: #2C3E50;
-            margin-bottom: 15px;
+        .about-note {
+            border-left: 3px solid #7b68ee;
+            margin: 1.75rem 0 1.5rem;
+            padding: 0.1rem 0 0.1rem 1.1rem;
+        }
+
+        .about-note p {
+            color: #59616b;
+            font-size: 0.94rem;
+            line-height: 1.75;
+            margin: 0 0 0.75rem;
+        }
+
+        .about-note .about-education {
+            color: #6a7078;
+            font-size: 0.88rem;
+            margin-bottom: 0;
+        }
+
+        .about-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            list-style: none;
+            margin: 1.5rem 0;
+            padding: 0;
+        }
+
+        .about-tags li {
+            background: rgba(26, 188, 156, 0.08);
+            border: 1px solid rgba(22, 160, 133, 0.2);
+            border-radius: 4px;
+            color: #35645c;
+            font-size: 0.78rem;
+            line-height: 1.4;
+            padding: 0.3rem 0.55rem;
+        }
+
+        .about-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .about-links a {
+            color: #087f6a;
+            font-size: 0.9rem;
             font-weight: 600;
+            text-decoration-color: rgba(8, 127, 106, 0.4);
+            text-underline-offset: 0.2em;
         }
 
-        .content-card p {
-            color: #666;
-            line-height: 1.6;
+        .about-links a:last-child {
+            color: #6654c0;
+            text-decoration-color: rgba(102, 84, 192, 0.4);
+        }
+
+        .about-links a:hover {
+            text-decoration-thickness: 2px;
+        }
+
+        .about-portrait {
             margin: 0;
-            font-size: 0.95em;
+        }
+
+        .about-portrait img {
+            aspect-ratio: 4 / 5;
+            border: 1px solid rgba(44, 62, 80, 0.12);
+            border-radius: 8px;
+            display: block;
+            height: auto;
+            object-fit: cover;
+            object-position: center 38%;
+            width: 100%;
+        }
+
+        .about-portrait figcaption {
+            color: #737982;
+            font-size: 0.8rem;
+            margin-top: 0.65rem;
+            text-align: center;
         }
 
         /* Cita bíblica final */
@@ -334,12 +398,15 @@
                 padding: 60px 15px 40px;
             }
             
-            .content-grid {
-                gap: 20px;
+            .about-layout {
+                grid-template-columns: 1fr;
+                gap: 2rem;
             }
-            
-            .content-card {
-                padding: 25px 20px;
+
+            .about-portrait {
+                justify-self: center;
+                max-width: 320px;
+                width: 100%;
             }
             
             .cita-final {
@@ -381,7 +448,7 @@
                 <h1>Los cielos cuentan la gloria de Dios, y el firmamento anuncia la obra de sus manos.</h1>
                 <span class="autor">Salmo 19:1</span>
                 <div class="intro-text">
-                    Esta página está pensada para compartir con ustedes diferentes artículos, usando las cualidades y dones que el Señor me ha permitido tener.
+                    Un espacio de teología bíblica y ciencias bíblicas, entre la investigación, la iglesia y quienes leen la Biblia hoy.
                 </div>
             </div>
         </div>
@@ -399,29 +466,43 @@
 
     <!-- Contenido principal -->
     <main class="main-content">
-        <!-- Sección de contenido destacado -->
-        <section class="content-section">
-            <div class="content-grid">
-                <!-- Fe -->
-                <div class="content-card fe-card">
-                    <div class="card-icon">✝️</div>
-                    <h3>Seguidora de Jesús</h3>
-                    <p>Buscando aprender y compartir lo que voy aprendiendo de él, creciendo en fe y conocimiento de Su palabra.</p>
+        <section class="content-section about-section" aria-labelledby="about-title">
+            <div class="about-layout">
+                <div class="about-copy">
+                    <p class="about-eyebrow">Acerca de</p>
+                    <h2 class="about-title" id="about-title">Las Notas de Vero</h2>
+
+                    <p>Las Notas de Vero es un espacio de teología bíblica y divulgación de las ciencias bíblicas.</p>
+                    <p>Acá hablamos de Biblia, exégesis, contexto histórico y cultural, mundo antiguo, judaísmo del Segundo Templo, Nuevo Testamento, cristianismo primitivo, manuscritos y de las preguntas que aparecen cuando textos de hace dos mil años son leídos por personas del siglo XXI.</p>
+                    <p>Me interesa acercar libros, investigaciones y conversaciones que muchas veces quedan dentro del ámbito académico a la iglesia y al público general, sin dejar la fe en la puerta.</p>
+                    <p>El canal también incluye entrevistas con especialistas, estudios bíblicos, reseñas, historia, arqueología y recursos para seguir investigando.</p>
+
+                    <div class="about-note">
+                        <p>Soy Vero, discípula de Jesús y creadora de Las Notas de Vero. Formo parte de una congregación cristiana evangélica y estoy casada con Fernando. Me gusta estudiar, hacer preguntas y compartir lo que voy aprendiendo. No hice este espacio porque tenga todas las respuestas, sino porque creo que vale la pena aprender a hacer mejores preguntas y volver una y otra vez al texto.</p>
+                        <p class="about-education">También estoy terminando Ingeniería Electrónica en la Universidad de Buenos Aires. Parece otro mundo, pero probablemente tenga bastante que ver con mi manera de encarar las cosas: investigar, revisar supuestos y tratar de entender cómo encajan las piezas.</p>
+                    </div>
+
+                    <ul class="about-tags" aria-label="Temas del canal">
+                        <li>Teología bíblica</li>
+                        <li>Ciencias bíblicas</li>
+                        <li>Nuevo Testamento</li>
+                        <li>Exégesis</li>
+                        <li>Contexto histórico</li>
+                        <li>Cristianismo primitivo</li>
+                        <li>Manuscritos</li>
+                        <li>Arqueología bíblica</li>
+                    </ul>
+
+                    <nav class="about-links" aria-label="Más de Las Notas de Vero">
+                        <a href="/estudios/">Ver estudios y recursos</a>
+                        <a href="https://www.youtube.com/@LasNotasdeVero" target="_blank" rel="noopener noreferrer">Conocer el canal de YouTube</a>
+                    </nav>
                 </div>
-                
-                <!-- Conocimiento -->
-                <div class="content-card conocimiento-card">
-                    <div class="card-icon">🎓</div>
-                    <h3>Ingeniería Electrónica</h3>
-                    <p>Estudiante de Ing. Electrónica (UBA) -eq MSc, realizando Tesis en el área de IA (Machine Vision, Machine Learning).</p>
-                </div>
-                
-                <!-- Servicio -->
-                <div class="content-card servicio-card">
-                    <div class="card-icon">💞</div>
-                    <h3>Un equipo</h3>
-                    <p>Servimos al Señor con mi esposo, combinando nuestros dones con la carrera técnica que pudimos cursar.</p>
-                </div>
+
+                <figure class="about-portrait">
+                    <img src="/images/vero.jpg" alt="Vero, creadora de Las Notas de Vero" loading="lazy">
+                    <figcaption>Vero</figcaption>
+                </figure>
             </div>
         </section>
 
