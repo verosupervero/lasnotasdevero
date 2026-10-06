@@ -18,7 +18,7 @@ Daniel empezó aclarando algo importante: él no es crítico textual. Pero hoy t
 
 > «Entonces dije: bueno, voy a mirar esto [...] mirando las diferentes posibilidades y el por qué pudiera estar o el por qué no pudiera estar».
 
-📄 **[Ver la presentación completa en PDF](EFESIOS%201.1%20A%20QUIEN%20FUE%20ESCRITO.pdf)**
+📄 **[Ver la presentación completa en PDF](2026-09-28-sumision-efesios.pdf)**
 
 ## Conocé más del trabajo de Daniel
 
@@ -26,8 +26,8 @@ Daniel forma parte del ministerio **La Verdad de la Biblia**, dedicado al estudi
 
 Podés encontrar más de su trabajo acá:
 
-🌐 **[La Verdad de la Biblia](https://laverdadelabiblia.org/)**  
-▶️ **[Canal de YouTube de Daniel](https://www.youtube.com/@Daniel_La-Verdad-de-la-Biblia/videos)**
+🌐 **[La Verdad de la Biblia](https://laverdaddelabiblia.org/)**  
+▶️ **[Canal de YouTube de Daniel](https://www.youtube.com/@Daniel_La-Verdad-de-la-Biblia/)**
 
 
 ## El problema de Efesios 1:1
