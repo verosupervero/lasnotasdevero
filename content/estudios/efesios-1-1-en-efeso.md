@@ -18,7 +18,7 @@ Daniel empezó aclarando algo importante: él no es crítico textual. Pero hoy t
 
 > «Entonces dije: bueno, voy a mirar esto [...] mirando las diferentes posibilidades y el por qué pudiera estar o el por qué no pudiera estar».
 
-📄 **[Ver la presentación completa en PDF](2026-09-28-sumision-efesios.pdf)**
+📄 **[Ver la presentación completa en PDF](/presentaciones/2026-09-28-sumision-efesios.pdf)**
 
 ## Conocé más del trabajo de Daniel
 
