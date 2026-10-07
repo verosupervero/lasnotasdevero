@@ -5,6 +5,7 @@ author = "Vero"
 tags = ["efesios-5", "matrimonio-cristiano", "teologia-paulina", "estudio-biblico", "hermenéutica", "relaciones-sanas", "nuevo-testamento"]
 date = 2026-09-28
 image = "/images/efesios5-matrimonio.png"
+featured = 2
 +++
 
 # Explicación formato audiovisual

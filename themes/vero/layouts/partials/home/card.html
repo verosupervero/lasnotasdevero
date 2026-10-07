@@ -1,0 +1,26 @@
+{{ $article := .article }}
+{{ $variant := .variant }}
+{{ $image := $article.Params.image }}
+{{ if ne $variant "primary" }}{{ $image = $image | default "/images/default.jpg" }}{{ end }}
+{{ $terms := $article.GetTerms "categories" }}
+{{ if not $terms }}{{ $terms = $article.GetTerms "tags" }}{{ end }}
+{{ $summary := $article.Params.summary | default $article.Params.description | default $article.Summary | plainify }}
+<article class="home-card home-card--{{ $variant }}">
+  {{ with $image }}
+    <img class="home-card-image" src="{{ . | absURL }}" alt="{{ $article.Title }}" loading="lazy">
+  {{ end }}
+  <div class="home-card-body">
+    {{ range first 1 $terms }}
+      <a class="home-card-topic" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+    {{ end }}
+    <h3 class="home-card-title"><a href="{{ $article.RelPermalink }}">{{ $article.Title }}</a></h3>
+    {{ if and $summary (ne $variant "secondary") }}
+      <p class="home-card-summary">{{ $summary | truncate 220 }}</p>
+    {{ end }}
+    <p class="home-card-meta">
+      <time datetime="{{ $article.Date.Format "2006-01-02" }}">{{ $article.Date.Format "02/01/2006" }}</time>
+      {{ with $article.ReadingTime }}<span> · {{ . }} min de lectura</span>{{ end }}
+    </p>
+    {{ if eq $variant "primary" }}<a class="home-read-link" href="{{ $article.RelPermalink }}">Leer artículo →</a>{{ end }}
+  </div>
+</article>

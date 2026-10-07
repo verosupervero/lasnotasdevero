@@ -5,6 +5,7 @@ author = "Vero"
 tags = ["teologia del reino", "pneumatologia", "estudio-biblico", "hermenéutica", "santificacion","reflexion"]
 date = 2025-09-13
 image = "/images/batallaespiritual.png"
+featured = 2
 +++
 
 # Explicación formato audiovisual

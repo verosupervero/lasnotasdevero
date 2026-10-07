@@ -5,6 +5,7 @@ author = "Vero"
 tags = ["teologia del reino", "pneumatologia", "estudio-biblico", "hermenéutica", "demonologia","seres espirituales"]
 date = 2026-09-13
 image = "/images/genios.png"
+featured = 2
 +++
 
 # Explicación formato audiovisual

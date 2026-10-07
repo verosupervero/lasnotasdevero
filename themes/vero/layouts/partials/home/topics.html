@@ -1,0 +1,26 @@
+{{/* Only real Hugo term pages are linked. Prioritize relevant existing subjects. */}}
+{{ $preferred := slice "nuevo-testamento" "jesús" "evangelios" "evangelio-de-lucas" "pablo" "manuscritos" "iglesia primitiva" "historia" "judaismo" "teología" "teologia-paulina" "exégesis" "hermenéutica" }}
+{{ $topics := slice }}
+{{ $shown := slice }}
+{{ range $preferred }}
+  {{ with index site.Taxonomies.tags . }}
+    {{ if lt (len $topics) 10 }}
+      {{ $topics = $topics | append .Page }}
+      {{ $shown = $shown | append .Page.RelPermalink }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+{{ range site.Taxonomies.tags.ByCount }}
+  {{ if and (lt (len $topics) 10) (not (in $shown .Page.RelPermalink)) }}
+    {{ $topics = $topics | append .Page }}
+    {{ $shown = $shown | append .Page.RelPermalink }}
+  {{ end }}
+{{ end }}
+{{ with $topics }}
+<section class="home-section home-topics" aria-labelledby="home-topics-title">
+  <h2 id="home-topics-title">Explorar por temas</h2>
+  <nav class="home-topic-links" aria-label="Temas de los artículos">
+    {{ range . }}<a href="{{ .RelPermalink }}">{{ .LinkTitle | humanize }}</a>{{ end }}
+  </nav>
+</section>
+{{ end }}

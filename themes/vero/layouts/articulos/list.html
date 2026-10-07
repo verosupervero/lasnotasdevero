@@ -1,0 +1,25 @@
+{{ define "main" }}
+<div class="container">
+  <div class="titulo-principal"><h1>{{ .Title }}</h1></div>
+</div>
+<div id="main-wrapper">
+  <div class="container">
+    <div id="content">
+      {{ $articles := (where site.RegularPages "Section" "in" (slice "posts" "estudios" "devocionales")).ByDate.Reverse }}
+      {{ $paginator := .Paginate $articles }}
+      <ul>
+        {{ range $paginator.Pages }}
+          {{ partial "listitem.html" (dict "item" . "page" $.Page) }}
+        {{ end }}
+      </ul>
+      <nav class="pagination" aria-label="Páginas de artículos">
+        {{ if $paginator.HasPrev }}<a href="{{ $paginator.Prev.URL }}">Anterior</a>{{ end }}
+        {{ range $paginator.Pagers }}
+          <a href="{{ .URL }}"{{ if eq . $paginator }} class="active" aria-current="page"{{ end }}>{{ .PageNumber }}</a>
+        {{ end }}
+        {{ if $paginator.HasNext }}<a href="{{ $paginator.Next.URL }}">Siguiente</a>{{ end }}
+      </nav>
+    </div>
+  </div>
+</div>
+{{ end }}

@@ -1,0 +1,37 @@
+{{/* Date order is retained within each editorial priority; absent featured is 0. */}}
+{{ $articles := (where .RegularPages "Section" "in" (slice "posts" "estudios" "devocionales")).ByDate.Reverse }}
+{{ $priorityTwo := slice }}
+{{ $priorityOne := slice }}
+{{ range $articles }}
+  {{ $featured := .Params.featured | default 0 }}
+  {{ if eq $featured 2 }}
+    {{ $priorityTwo = $priorityTwo | append . }}
+  {{ else if eq $featured 1 }}
+    {{ $priorityOne = $priorityOne | append . }}
+  {{ end }}
+{{ end }}
+{{ $candidates := $priorityOne | append $priorityTwo }}
+{{ $primary := false }}
+{{ if $candidates }}
+  {{ $primary = index $candidates 0 }}
+{{ else if $articles }}
+  {{ $primary = index $articles 0 }}
+{{ end }}
+{{ $secondary := slice }}
+{{ $shown := slice }}
+{{ with $primary }}
+  {{ $shown = $shown | append .RelPermalink }}
+  {{ range ($priorityTwo | append $priorityOne) }}
+    {{ if and (ne .RelPermalink $primary.RelPermalink) (lt (len $secondary) 3) }}
+      {{ $secondary = $secondary | append . }}
+      {{ $shown = $shown | append .RelPermalink }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+{{ $recent := slice }}
+{{ range $articles }}
+  {{ if and (not (in $shown .RelPermalink)) (lt (len $recent) 6) }}
+    {{ $recent = $recent | append . }}
+  {{ end }}
+{{ end }}
+{{ return (dict "primary" $primary "secondary" $secondary "recent" $recent) }}

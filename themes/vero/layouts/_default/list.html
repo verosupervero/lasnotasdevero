@@ -1,4 +1,5 @@
 {{ define "main" }}
+{{ $isPosts := eq .Section "posts" }}
 <!-- Título Principal -->
 <div class="container">
   <div class="titulo-principal">
@@ -7,10 +8,10 @@
 </div>
 
 <!-- Main -->
-<div id="main-wrapper">
+<div id="main-wrapper"{{ if $isPosts }} class="posts-index"{{ end }}>
   <div class="container">
     <div class="row 200%">
-      <div class="8u 12u$(medium) important(small)">
+      <div class="{{ if $isPosts }}10u{{ else }}8u{{ end }} 12u$(medium) important(small)">
         <div id="content">
           <!-- Content -->
           <ul>
@@ -34,7 +35,7 @@
         </div>
       </div>
 
-      <div class="4u 12u$(medium)">
+      <div class="{{ if $isPosts }}2u{{ else }}4u{{ end }} 12u$(medium)">
         <div id="sidebar">
           <!-- Sidebar -->
           {{ if .TableOfContents }}

@@ -65,109 +65,83 @@
         }
 
         .banner-hero {
-        position: relative;
-        min-height: 500px;
-        /* Capas de background: primero la imagen, después el degradado */
-        background:
-            url('/images/casita.jpg') center center/cover no-repeat,
-            linear-gradient(90deg, #1abc9c 0%, #16a085 100%);
-        /* Si la imagen falla, se verá el degradado */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
-        margin-bottom: 0;
-        box-shadow: 0 2px 6px rgba(26, 188, 156, 0.4);
+            position: relative;
+            min-height: 440px;
+            padding: clamp(2.5rem, 5vw, 4rem) 40px;
+            background:
+                linear-gradient(110deg, rgba(28, 48, 64, 0.18), rgba(28, 48, 64, 0.08)),
+                url('/images/casita.jpg') center center/cover no-repeat;
+            background-color: #35645c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0;
         }
 
 
         /* Tarjeta blanca central para el salmo */
         .salmo-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 40px;
-            max-width: 600px;
-            margin: 0 20px;
-            box-shadow: 
-                0 20px 40px rgba(0,0,0,0.1),
-                0 5px 15px rgba(0,0,0,0.05);
-            border: 1px solid rgba(255,255,255,0.8);
+            background: rgba(255, 254, 251, 0.97);
+            border-radius: 16px;
+            padding: clamp(1.75rem, 3.5vw, 2.75rem) clamp(1.5rem, 4vw, 3rem);
+            width: 100%;
+            max-width: 720px;
+            margin: 0;
+            box-shadow: 0 12px 36px rgba(28, 48, 64, 0.14);
+            border: 1px solid rgba(255,255,255,0.85);
             position: relative;
             z-index: 2;
         }
 
         .salmo-content h1 {
-            font-size: 2.2em;
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1.4rem, 2.2vw, 2rem);
             color: #2C3E50;
-            margin-bottom: 10px;
-            font-weight: 300;
-            line-height: 1.2;
+            margin: 0 0 1rem;
+            padding: 0;
+            font-weight: 400;
+            line-height: 1.4;
+            letter-spacing: -0.02em;
+            text-wrap: balance;
             text-align: center;
         }
 
         .salmo-content .autor {
             display: block;
-            font-size: 1.1em;
-            color: #7B68EE;
-            font-weight: 500;
-            margin-bottom: 25px;
+            font-size: 0.9rem;
+            color: #6654c0;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
             text-align: center;
             font-style: italic;
         }
 
         .salmo-content .intro-text {
-            font-size: 1em;
-            line-height: 1.6;
-            color: #555;
+            font-size: 0.95rem;
+            font-weight: 400;
+            line-height: 1.75;
+            color: #4b5560;
             text-align: center;
-            margin: 0;
+            max-width: 55ch;
+            margin: 0 auto;
+            text-wrap: pretty;
         }
 
-        /* Imágenes de café */
-        .cafe-machine {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            z-index: 1;
-        }
-
-        .cafe-machine-placeholder {
-            width: 180px;
-            height: 200px;
-            background: linear-gradient(145deg, #8B4513, #A0522D);
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 0.8em;
-            text-align: center;
-            font-weight: bold;
-        }
-
+        /* Detalle decorativo integrado a la tarjeta */
         .cafe-cup {
             position: absolute;
-            bottom: -30px;
-            left: 20px;
-            z-index: 1;
+            bottom: 24px;
+            right: -30px;
+            pointer-events: none;
         }
-
-        .cafe-cup-placeholder {
-            width: 140px;
-            height: 140px;
-            background: linear-gradient(145deg, #D2691E, #CD853F);
+        .cafe-cup img {
+            display: block;
+            width: 72px;
+            height: 72px;
+            object-fit: cover;
             border-radius: 50%;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-            border: 3px solid rgba(255,255,255,0.8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 0.8em;
-            text-align: center;
-            font-weight: bold;
+            box-shadow: 0 4px 14px rgba(28, 48, 64, 0.16);
+            border: 3px solid #fffefb;
         }
 
         /* Contenido principal */
@@ -177,7 +151,7 @@
         }
 
         .content-section {
-            padding: 80px 20px 60px;
+            padding: 60px 20px 45px;
         }
 
         .about-layout {
@@ -206,7 +180,10 @@
         }
 
         .about-title::after {
-            background-color: #f1c40f;
+            background-color: #087f6a;
+            width: 48px;
+            height: 3px;
+            border-radius: 2px;
         }
 
         .about-copy > p:not(.about-eyebrow) {
@@ -303,8 +280,8 @@
         /* Cita bíblica final */
         .cita-final {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 60px 20px;
-            margin-top: 40px;
+            padding: 35px 20px;
+            margin-top: 25px;
         }
 
         .cita-container {
@@ -315,7 +292,7 @@
 
         .cita-final blockquote {
             background: rgba(255,255,255,0.95);
-            padding: 40px;
+            padding: 25px 30px;
             border-radius: 20px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.1);
             border: none;
@@ -326,7 +303,7 @@
             font-size: 1.1em;
             font-weight: 600;
             color: #7B68EE;
-            margin-bottom: 20px;
+            margin-bottom: 12px;
             display: block;
         }
 
@@ -359,39 +336,16 @@
             }
 
             .banner-hero {
-                min-height: 400px;
-                padding: 20px;
+                min-height: 0;
+                padding: 2.25rem 18px;
             }
             
             .salmo-card {
-                padding: 30px 25px;
-                margin: 0 10px;
+                padding: 1.75rem 1.25rem;
+                margin: 0;
             }
-            
-            .salmo-content h1 {
-                font-size: 1.8em;
-            }
-            
-            .cafe-machine-placeholder {
-                width: 120px;
-                height: 140px;
-                font-size: 0.7em;
-            }
-            
-            .cafe-cup-placeholder {
-                width: 100px;
-                height: 100px;
-                font-size: 0.7em;
-            }
-            
-            .cafe-machine {
-                top: 15px;
-                right: 15px;
-            }
-            
             .cafe-cup {
-                bottom: -20px;
-                left: 15px;
+                display: none;
             }
             
             .content-section {
@@ -410,38 +364,25 @@
             }
             
             .cita-final {
-                padding: 40px 15px;
+                padding: 28px 15px;
             }
             
             .cita-container blockquote {
-                padding: 30px 25px;
+                padding: 22px 20px;
             }
         }
 
         @media (max-width: 480px) {
-            .salmo-content h1 {
-                font-size: 1.5em;
-            }
-            
             .salmo-content .intro-text {
-                font-size: 0.9em;
-            }
-            
-            .cafe-machine-placeholder {
-                width: 100px;
-                height: 120px;
-            }
-            
-            .cafe-cup-placeholder {
-                width: 80px;
-                height: 80px;
+                font-size: 0.9rem;
             }
         }
     </style>
+    {{ partial "home/styles.html" . }}
 	
 	
 	 <!-- Banner Principal -->
-    <div class="banner-hero">
+    <section class="banner-hero" aria-label="Bienvenida a Las Notas de Vero">
         <!-- Área blanca central para el salmo -->
         <div class="salmo-card">
             <div class="salmo-content">
@@ -450,22 +391,44 @@
                 <div class="intro-text">
                     Un espacio de teología bíblica y ciencias bíblicas, entre la investigación, la iglesia y quienes leen la Biblia hoy.
                 </div>
+                <a class="home-hero-cta" href="#articulos">Explorar artículos</a>
+            </div>
+            <div class="cafe-cup" aria-hidden="true">
+                <img src="/images/cafelatte.jpg" alt="" width="72" height="72">
             </div>
         </div>
-        
-        <!-- Placeholder para máquina de café -->
-       <div class="cafe-machine">
-    <img src="/images/maquinacafe.jpg" alt="Máquina de café" style="width:180px;height:200px;object-fit:cover;border-radius:15px;box-shadow:0 10px 25px rgba(0,0,0,0.2);">
-</div>
-
-<div class="cafe-cup">
-    <img src="/images/cafelatte.jpg" alt="Café Latte" style="width:140px;height:140px;object-fit:cover;border-radius:50%;box-shadow:0 15px 30px rgba(0,0,0,0.2);border:3px solid rgba(255,255,255,0.8);">
-</div>
-        </div>
-    </div>
+    </section>
 
     <!-- Contenido principal -->
-    <main class="main-content">
+    <main class="main-content" id="articulos">
+        {{ $selection := partial "home/selection.html" .Site }}
+        {{ with $selection.primary }}
+        <section class="home-section home-featured" aria-labelledby="home-featured-title">
+            <h2 id="home-featured-title">Artículos destacados</h2>
+            <p class="home-section-intro">Lecturas para conocer el proyecto y volver a temas importantes.</p>
+            <div class="home-featured-grid{{ if not $selection.secondary }} home-featured-grid--single{{ end }}">
+                {{ partial "home/card.html" (dict "article" . "variant" "primary") }}
+                {{ with $selection.secondary }}
+                <div class="home-featured-secondary">
+                    {{ range . }}{{ partial "home/card.html" (dict "article" . "variant" "secondary") }}{{ end }}
+                </div>
+                {{ end }}
+            </div>
+        </section>
+        {{ end }}
+
+        <section class="home-section home-recent" aria-labelledby="home-recent-title">
+            <h2 id="home-recent-title">Últimos artículos</h2>
+            <p class="home-section-intro">Lo que se publicó recientemente, del más nuevo al más antiguo.</p>
+            {{ with $selection.recent }}
+            <div class="home-recent-grid">
+                {{ range . }}{{ partial "home/card.html" (dict "article" . "variant" "recent") }}{{ end }}
+            </div>
+            {{ end }}
+            {{ with site.GetPage "/articulos" }}<a class="home-archive-link" href="{{ .RelPermalink }}">Ver todos los artículos →</a>{{ end }}
+        </section>
+
+        {{ partial "home/topics.html" . }}
         <section class="content-section about-section" aria-labelledby="about-title">
             <div class="about-layout">
                 <div class="about-copy">
@@ -516,5 +479,6 @@
             </div>
         </section>
     </main>
+    </div>
 	
 {{ end }}

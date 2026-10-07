@@ -1,0 +1,82 @@
+<style>
+    .salmo-content .autor a { color: inherit; text-decoration: none; }
+    .salmo-content .autor a:hover { text-decoration: underline; text-underline-offset: 0.2em; }
+    .home-hero-cta {
+        display: table;
+        margin: 1.5rem auto 0;
+        padding: 0.75rem 1.25rem;
+        background: #087f6a;
+        border-radius: 8px;
+        color: #fff;
+        font-weight: 600;
+        text-decoration: none;
+        font-size: 0.9rem;
+        line-height: 1.5;
+        transition: background-color 0.2s ease;
+    }
+    .home-hero-cta:hover { background: #066653; color: #fff; }
+    .home-section {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 3rem 20px 0;
+    }
+    .home-section > h2 {
+        color: #2c3e50;
+        font-size: clamp(1.6rem, 2.8vw, 2rem);
+        margin: 0 0 0.6rem;
+        padding-bottom: 0.65rem;
+        font-weight: 600;
+        letter-spacing: -0.025em;
+    }
+    .home-section > h2::after { width: 48px; height: 3px; border-radius: 2px; background: #087f6a; }
+    .main-content .about-title { font-weight: 600; letter-spacing: -0.025em; padding-bottom: 0.65rem; }
+    .home-section-intro { color: #59616b; margin: 0 0 1.4rem; }
+    .home-featured-grid { display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr); gap: 1.5rem; }
+    .home-featured-grid--single { grid-template-columns: minmax(0, 1fr); }
+    .home-featured-secondary { display: grid; gap: 1rem; align-content: start; }
+    .home-recent-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
+    .main-content .home-card {
+        margin: 0;
+        padding: 0;
+        min-width: 0;
+        background: #fff;
+        border: 1px solid rgba(44, 62, 80, 0.13);
+        border-radius: 12px;
+        overflow: hidden;
+    }
+    .home-card--primary { box-shadow: 0 5px 18px rgba(44, 62, 80, 0.06); }
+    .home-card--secondary { display: grid; grid-template-columns: 112px minmax(0, 1fr); }
+    .home-card-image { display: block; width: 100%; height: 200px; object-fit: cover; }
+    .home-card--secondary .home-card-image { height: 100%; min-height: 140px; }
+    .home-card-body { padding: 1.4rem; }
+    .home-card--secondary .home-card-body { padding: 1.1rem; }
+    .home-card--primary .home-card-body { padding: 1.75rem; }
+    .home-card-topic { color: #087f6a; font-size: 0.8rem; font-weight: 600; text-underline-offset: 0.2em; }
+    .home-card .home-card-title { margin: 0.65rem 0 0.85rem; font-size: 1.2rem; font-weight: 600; line-height: 1.4; letter-spacing: -0.02em; overflow-wrap: anywhere; }
+    .home-card--primary .home-card-title { font-size: clamp(1.65rem, 2.8vw, 2.25rem); }
+    .home-card-title a { color: #2c3e50; text-decoration: none; }
+    .home-card-title a:hover { color: #087f6a; text-decoration: underline; text-underline-offset: 0.15em; }
+    .home-card .home-card-summary { color: #4b5560; line-height: 1.7; margin: 0 0 1rem; font-size: 0.94rem; }
+    .home-card .home-card-meta { color: #59616b; font-size: 0.8rem; line-height: 1.6; margin: 0; }
+    .home-read-link, .home-archive-link { color: #087f6a; display: inline-block; font-weight: 600; text-underline-offset: 0.2em; margin-top: 1.2rem; }
+    .home-topic-links { display: flex; flex-wrap: wrap; gap: 0.65rem; margin-top: 1.25rem; }
+    .home-topic-links a { color: #35645c; background: rgba(26, 188, 156, 0.08); border: 1px solid rgba(22, 160, 133, 0.25); border-radius: 10px; padding: 0.6rem 0.9rem; font-size: 0.9rem; text-decoration: none; }
+    .home-topic-links a:hover { background: rgba(26, 188, 156, 0.18); }
+    .main-content a:focus-visible, .banner-hero a:focus-visible { outline: 3px solid #6654c0; outline-offset: 4px; }
+    @media (max-width: 1024px) {
+        .home-recent-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 768px) {
+        .home-section { padding: 2.5rem 15px 0; }
+        .home-featured-grid, .home-recent-grid { grid-template-columns: minmax(0, 1fr); }
+        .home-card-body, .home-card--primary .home-card-body { padding: 1.25rem; }
+        .home-card--secondary { grid-template-columns: 96px minmax(0, 1fr); }
+        .home-card--secondary .home-card-body { padding: 1rem; }
+        .home-card-image { height: 165px; }
+    }
+    @media (max-width: 980px) {
+        .banner-hero,
+        .main-content > section,
+        .main-content .home-card { margin-bottom: 0 !important; }
+    }
+</style>

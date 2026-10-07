@@ -1,0 +1,15 @@
+.agents/skills/debug-hugo-issue/SKILL.md
+.agents/skills/edit-hugo-content/SKILL.md
+.agents/skills/implement-hugo-change/SKILL.md
+.agents/skills/map-hugo-codebase/SKILL.md
+.agents/skills/plan-hugo-change/SKILL.md
+.agents/skills/review-hugo-change/SKILL.md
+.agents/skills/verify-hugo-change/SKILL.md
+.codex/agents/code-mapper.toml
+.codex/agents/docs-researcher.toml
+.codex/agents/implementer.toml
+.codex/agents/reviewer.toml
+.codex/agents/verifier.toml
+.codex/config.toml
+AGENTS.md
+README.md
