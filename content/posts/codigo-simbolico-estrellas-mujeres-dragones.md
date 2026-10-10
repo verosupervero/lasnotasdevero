@@ -1,5 +1,5 @@
 +++
-date = '2025-07-25T12:00:00-03:00'
+date = 2025-07-25
 title = 'El código simbólico de estrellas, mujeres y dragones en la Biblia'
 summary = "Las estrellas, las mujeres y los dragones como símbolos bíblicos, especialmente en Apocalipsis 12."
 tags = ["estudio-biblico", "apocalipsis", "simbolismo-biblico", "teologia-biblica"]
