@@ -3,6 +3,7 @@ title = "Los apóstoles del Espíritu"
 summary = "Conexión entre apariciones de Cristo, envío del Espíritu y plantación de iglesias, mostrando que el patrón bíblico sigue vigente hoy."
 tags = []
 date = 2025-09-08
+status = "draft"
 +++
 
 ## Los apóstoles del Espíritu 

@@ -8,6 +8,7 @@ author = "Vero"
 
 tags = ["mujer-y-ministerio", "discipulado", "evangelio-de-lucas", "hechos", "apostoles", "hermenéutica", "mision", "estudio-biblico"]
 
+featured=2
 date = 2026-09-18
 image = "/images/lucasymujeres.png"
 
