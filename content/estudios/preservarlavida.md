@@ -1,6 +1,5 @@
 +++
 date = '2026-10-10T12:00:00-03:00'
-draft = true
 title = '¿Tenemos derecho a decidir sobre la vida de otro ser humano? Una respuesta cristiana bíblica'
 summary = "Qué dice la Biblia sobre el valor de la vida humana y sobre quién tiene autoridad para quitarla, antes de hablar de aborto o eutanasia."
 tags = ["estudio-biblico", "vida", "imagen-de-dios", "aborto", "eutanasia","reflexion"]
