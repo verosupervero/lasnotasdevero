@@ -1,1 +1,1 @@
-hugo server -DF --noHTTPCache --cleanDestinationDir
+hugo server --noHTTPCache --cleanDestinationDir

@@ -3,6 +3,7 @@ title = "Una mala exégesis de 1 Corintios 14:34-35"
 date = "2025-09-03"
 author = "Vero"
 status = "draft"
+draft = true
 tags = []
 summary = "Una preocupación pastoral sobre evaluar argumentos bíblicos por género y no por su contenido y fidelidad a la Escritura."
 image = "/images/desacreditar.png"
