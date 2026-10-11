@@ -1,0 +1,23 @@
+{{ define "main" }}
+<main id="main-wrapper" class="donation-page">
+  <div class="container">
+    <div class="donation-content">
+      <h1>{{ .Title }}</h1>
+      <div class="donation-options">
+        <div class="donation-card">
+          <h2>Cafecito</h2>
+          <p>Una opción para quienes quieran colaborar desde Argentina.</p>
+          <a class="donation-link" href="https://cafecito.app/lasnotasdevero" target="_blank" rel="noopener noreferrer" aria-describedby="donation-external-notice">Donar con Cafecito</a>
+        </div>
+        <div class="donation-card">
+          <h2>PayPal</h2>
+          <p>Otra alternativa para quienes prefieran este medio, incluyendo a quienes nos acompañan desde otros países.</p>
+          <a class="donation-link" href="https://www.paypal.com/donate/?hosted_button_id=56JWL5N3ZQRU4" target="_blank" rel="noopener noreferrer" aria-describedby="donation-external-notice">Donar con PayPal</a>
+        </div>
+      </div>
+      <p id="donation-external-notice" class="donation-external-notice">Los botones abren la plataforma elegida en una nueva pestaña.</p>
+      <div class="donation-message">{{ .Content }}</div>
+    </div>
+  </div>
+</main>
+{{ end }}

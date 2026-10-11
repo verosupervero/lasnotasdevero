@@ -520,3 +520,88 @@ blockquote:not(.biblia)::after {
 @media screen and (max-width: 480px) {
   #nav ul { width: 100%; max-width: 280px; }
 }
+
+/* Aportes voluntarios */
+#header .header-donate,
+.donation-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0.55rem 1rem;
+  border: 1px solid #c2a360;
+  border-radius: 8px;
+  background: #165c58;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1.5;
+  text-decoration: none;
+}
+
+#header .header-donate {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+#header .header-donate:hover,
+.donation-link:hover {
+  background: #104945;
+  color: #fff;
+}
+
+.donation-link:focus-visible {
+  outline: 3px solid #6654c0;
+  outline-offset: 4px;
+}
+
+.donation-content {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 1.5rem 0 2rem;
+  line-height: 1.75;
+}
+
+.donation-content h1 { color: #165c58; }
+
+.donation-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.donation-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 1.5rem;
+  border: 1px solid #d9cfb5;
+  border-radius: 12px;
+  background: #fffefb;
+}
+
+.donation-card h2 {
+  margin: 0 0 1rem;
+  padding-bottom: 0.65rem;
+  color: #165c58;
+  font-size: 1.35rem;
+  font-weight: 600;
+}
+
+.donation-card h2::after {
+  width: 36px;
+  background: #c2a360;
+}
+
+.donation-card p { flex-grow: 1; margin: 0 0 1.25rem; }
+.donation-link { align-self: flex-start; }
+.donation-external-notice { margin: 1rem 0 1.5rem; color: #59616b; font-size: 0.85rem; }
+.donation-message { padding-top: 1.5rem; border-top: 1px solid #d9cfb5; }
+.donation-message p { margin: 0; }
+
+@media screen and (max-width: 600px) {
+  .donation-options { grid-template-columns: minmax(0, 1fr); }
+  .donation-card { padding: 1.25rem; }
+  .donation-link { align-self: stretch; }
+}
