@@ -333,7 +333,9 @@ Actualmente estoy terminando Ingeniería Electrónica en la Universidad de Bueno
 
 A largo plazo, también me gustaría tener la posibilidad de realizar estudios doctorales y dedicarme a la investigación académica.
 
-En este camino he tenido la oportunidad de conversar con académicos como Michael F. Bird y Lynn H. Cohick sobre mi futura formación teológica. Aprecio mucho su orientación y el tiempo que me han dedicado. Estas conversaciones me han animado a continuar explorando distintas posibilidades de estudio.
+En este camino he tenido la oportunidad de conversar con académicos como Michael F. Bird y Lynn H. Cohick sobre mi futura formación teológica. También ha sido importante el acompañamiento de Luis Jovel, con quien vengo colaborando en estudios bíblicos, entrevistas y conversaciones sobre teología y ciencias bíblicas, y quien cuenta con formación académica en Ridley College.
+
+Aprecio mucho el tiempo que me han dedicado, sus consejos y el ánimo que me han dado para seguir explorando distintas posibilidades de estudio.
 
 ### Becas y oportunidades de formación
 
