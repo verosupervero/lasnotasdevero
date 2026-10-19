@@ -22,6 +22,21 @@ Mi propósito es acercar las investigaciones académicas a la Iglesia y al públ
 
 ---
 
+---
+
+## Misión y visión del proyecto
+
+### 🌿 Misión
+
+Llevar la teología bíblica al día a día, edificar a la Iglesia y animar en Cristo.
+
+### 🎓 Visión
+
+Tender puentes entre la Iglesia, la academia y la vida diaria, con Cristo en el centro.
+
+**👑 Que venga Su Reino.**
+
+
 ## 1. ¿Qué es el proyecto Las Notas de Vero?
 
 Soy Vero. Estudio, investigo, enseño y hago divulgación sobre el Nuevo Testamento y el cristianismo primitivo. Estoy terminando Ingeniería Electrónica en la Universidad de Buenos Aires y planeo continuar mi formación académica en teología.
@@ -246,7 +261,7 @@ Creo que Jesucristo reina actualmente y que esperamos la consumación de su Rein
 
 Daniel 7:13-14 presenta a uno como hijo de hombre recibiendo dominio y un reino. Entiendo que los autores del Nuevo Testamento relacionan este lenguaje con la autoridad y exaltación de Jesús (Lucas 22:69; Mateo 28:18). Pablo presenta también el reinado de Cristo y su consumación futura en 1 Corintios 15:25-28.
 
-Veo en el Nuevo Testamento una tensión entre lo que ya ha comenzado con el reinado de Jesús y aquello que todavía esperamos que se manifieste plenamente. Creo en la resurrección futura y el juicio de Dios.
+Veo en el Nuevo Testamento una tensión entre lo que ya ha comenzado con el reinado de Jesús y aquello que todavía esperamos que se manifieste plenamente. Creo en la resurrección corporal futura y el juicio de Dios.
 
 ---
 
@@ -277,21 +292,7 @@ Colaboraciones ministeriales:
 Estas colaboraciones no significan que comparta necesariamente todas las posiciones teológicas de las organizaciones o de los autores vinculados. Mantengo la independencia de criterio al estudiar y presentar sus materiales.
 
 
----
 
-## 9. Misión y visión del proyecto
-
-### 🌿 Misión
-
-Llevar la teología bíblica al día a día, edificar a la Iglesia y animar en Cristo.
-
-### 🎓 Visión
-
-Tender puentes entre la Iglesia, la academia y la vida diaria, con Cristo en el centro.
-
-**👑 Que venga Su Reino.**
-
-Vero
 ## 10. ¿Cómo se sostiene el proyecto?
 
 Las Notas de Vero es un proyecto personal que requiere tiempo, dedicación y recursos. Detrás de cada estudio, entrevista y publicación hay horas de lectura, investigación, preparación y edición, además de gastos relacionados con bibliografía, herramientas y mantenimiento de las plataformas.
