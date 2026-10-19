@@ -357,3 +357,25 @@ Si alguna institución o programa de becas requiere información adicional, pued
 Si conocés programas de posgrado, becas, instituciones académicas o iniciativas que puedan acompañarme en esta nueva etapa de formación, ¡me encantaría conocerlas!
 
 Podés ponerte en contacto conmigo para compartir información o conversar sobre posibles oportunidades.
+
+
+## 12. Material de autores latinoamericanos y de habla hispana
+
+En Las Notas de Vero también valoro y doy espacio a las contribuciones de biblistas, historiadores y teólogos latinoamericanos y de habla hispana.
+
+Entre ellos se encuentran **Justo L. González**, cuyos trabajos son importantes para el estudio de la historia del cristianismo, y **Samuel Pagán**, biblista puertorriqueño que ha realizado importantes aportes a los estudios bíblicos, la interpretación del Antiguo Testamento y la traducción de las Escrituras.
+
+También he presentado obras colectivas como el **Comentario Bíblico Contemporáneo**, editado por C. René Padilla, Milton Acosta y Rosalee Velloso Ewell, que reúne contribuciones de especialistas y aborda los textos bíblicos prestando atención a las realidades de América Latina.
+
+Podés conocer esta obra en el [video que le dediqué al Comentario Bíblico Contemporáneo](https://www.youtube.com/live/UzmJXIEabcg).
+Además, he tenido la oportunidad de entrevistar a especialistas de habla hispana como **Jesús Zamora **. 
+
+Su tesis doctoral, [*Historia de la alegría en el cristianismo primitivo: desde Pablo a Clemente de Alejandría*](https://dialnet.unirioja.es/servlet/tesis?codigo=241858), estudia el desarrollo histórico de la alegría en las primeras comunidades cristianas a partir de fuentes cristianas, judías y grecorromanas. Esta investigación dio lugar posteriormente al libro [*La alegría en el cristianismo antiguo*](https://www.clie.es/la-alegria-en-el-cristianismo-antiguo-un-estudio-de-la-alegria-en-las-comunidades-apostolicas-y-proto-ortodoxas), publicado por Editorial CLIE.
+
+También tuve la oportunidad de entrevistarlo sobre su trabajo relacionado con la apologética en el cristianismo antiguo, una temática que permite estudiar cómo los primeros cristianos presentaban y defendían sus creencias en el contexto histórico y cultural de su época.
+
+También colaboro con el teólogo **Luis Jovel** en conversaciones y estudios sobre teología, historia del cristianismo e interpretación bíblica.
+
+Considero importante visibilizar la producción académica de nuestra región y facilitar el acceso a investigaciones publicadas originalmente en español. Al mismo tiempo, mi selección bibliográfica no depende exclusivamente del origen, el idioma o la denominación de los autores, sino de la pertinencia de sus trabajos, el tratamiento de las fuentes y la calidad de sus argumentos.
+
+**La investigación bíblica también se desarrolla en América Latina y en el mundo hispanohablante, y quiero que esos aportes tengan un lugar en Las Notas de Vero.** Es parte fundamental del proyecto traer recursos académicos al mundo hispano.
