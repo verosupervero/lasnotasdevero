@@ -160,7 +160,7 @@ He conversado con investigadores como Michael F. Bird, Craig S. Keener, John H. 
 
 Las conversaciones están reunidas en la <a href="https://www.youtube.com/playlist?list=PLsuJlTgBfpKgw6ZuF4XIR_81NF8RJVUP1" target="_blank" rel="noopener noreferrer">playlist de entrevistas con especialistas</a>. Entre ellas, podés ver las entrevistas con <a href="https://www.youtube.com/watch?v=UAQOnYWjWOc" target="_blank" rel="noopener noreferrer">Michael F. Bird</a>, <a href="https://www.youtube.com/watch?v=tvhhxON9dnI" target="_blank" rel="noopener noreferrer">Craig S. Keener</a> y <a href="https://www.youtube.com/watch?v=pSvmvdpUU84" target="_blank" rel="noopener noreferrer">John H. Walton</a>.
 
-También está disponible el <a href="https://www.youtube.com/playlist?list=PLsuJlTgBfpKhx9hVgDRBDdHMhZnV3Yrj7" target="_blank" rel="noopener noreferrer">curso «Siete cosas que todo cristiano debería saber», basado en el libro de Michael F. Bird publicado por CLIE</a>.
+También está disponible el <a href="https://www.youtube.com/playlist?list=PLsuJlTgBfpKhx9hVgDRBDdHMhZnV3Yrj7" target="_blank" rel="noopener noreferrer">curso que explicamos con Luis Jovel de «Siete cosas que todo cristiano debería saber», basado en el libro de Michael F. Bird publicado por CLIE</a>.
 
 **Leer, entrevistar o recomendar a un autor no significa compartir toda su teología.** Una postura puede ser valiosa por sus fuentes y argumentos aunque no coincida con mis conclusiones. Me interesa presentar las diferencias con justicia, no demostrar que una denominación tiene razón en todo.
 
