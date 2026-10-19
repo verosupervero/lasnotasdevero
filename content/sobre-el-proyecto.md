@@ -303,7 +303,7 @@ Los comentarios pueden ser moderados cuando se alejan de ese propósito.
 
 ---
 
-## COLABORACIONES Y PROYECTOS VINCULADOS
+## 8. COLABORACIONES Y PROYECTOS VINCULADOS
 
 Las Notas de Vero colabora con organizaciones y proyectos dedicados al estudio de las Escrituras, la formación teológica y la difusión de recursos cristianos.
 
@@ -333,7 +333,7 @@ Estas colaboraciones contribuyen a nuestro propósito de acercar recursos de for
 
 ---
 
-## 8. NUESTRA MISIÓN Y VISIÓN
+## 9. NUESTRA MISIÓN Y VISIÓN
 
 **Misión**
 
