@@ -1,8 +1,13 @@
 +++
+
 title = 'Sobre el proyecto | Las Notas de Vero'
+
 description = 'Nuevo Testamento, teología bíblica e investigación y divulgación con rigor académico desde una perspectiva cristiana confesional.'
+
 layout = 'sobre-el-proyecto'
+
 draft = false
+
 +++
 
 # Las Notas de Vero
@@ -27,16 +32,19 @@ En el canal y en la web comparto estudios bíblicos, análisis de fuentes, entre
 
 **Dónde encontrar los contenidos:**
 
-- [Canal de YouTube — Las Notas de Vero](https://www.youtube.com/@LasNotasDeVero)
-- [Substack](https://verobustamantedanko.substack.com/)
-- [Canal de WhatsApp](https://whatsapp.com/channel/0029VbBKH41AzNbvgivMUS3p)
-- [Facebook](https://www.facebook.com/verodanko)
+- <a href="https://www.youtube.com/@LasNotasDeVero" target="_blank" rel="noopener noreferrer">Canal de YouTube — Las Notas de Vero</a>
+
+- <a href="https://verobustamantedanko.substack.com/" target="_blank" rel="noopener noreferrer">Substack</a>
+
+- <a href="https://whatsapp.com/channel/0029VbBKH41AzNbvgivMUS3p" target="_blank" rel="noopener noreferrer">Canal de WhatsApp</a>
+
+- <a href="https://www.facebook.com/verodanko" target="_blank" rel="noopener noreferrer">Facebook</a>
 
 ---
 
 ## 2. ¿Qué temas estudio?
 
-**El Nuevo Testamento es el centro del proyecto.** También recurro al Antiguo Testamento, la literatura judía antigua y las fuentes grecorromanas cuando son necesarias para comprenderlo. Para explorar recursos introductorios y herramientas de estudio, está la [playlist de ciencias bíblicas](https://www.youtube.com/playlist?list=PLsuJlTgBfpKgoPJLiF_KFDd5uhfHiaCfn).
+**El Nuevo Testamento es el centro del proyecto.** También recurro al Antiguo Testamento, la literatura judía antigua y las fuentes grecorromanas cuando son necesarias para comprenderlo. Para explorar recursos introductorios y herramientas de estudio, está la <a href="https://www.youtube.com/playlist?list=PLsuJlTgBfpKgoPJLiF_KFDd5uhfHiaCfn" target="_blank" rel="noopener noreferrer">playlist de ciencias bíblicas</a>.
 
 ### El Evangelio de Lucas y la vida de Jesús
 
@@ -45,59 +53,71 @@ Uno de mis proyectos principales es el estudio detallado del Evangelio de Lucas.
 Los temas que vuelven con frecuencia en esta serie incluyen:
 
 - Jesús como Mesías y su relación con las promesas a Israel.
+
 - El Reino de Dios y las expectativas mesiánicas del judaísmo del Segundo Templo.
+
 - Juan el Bautista, los discípulos y el movimiento de Jesús.
+
 - Las mujeres que acompañaron y sostuvieron su ministerio.
+
 - Las parábolas, sanidades, exorcismos y controversias sobre su autoridad.
+
 - El perdón de pecados, las comidas compartidas y los debates sobre el sábado.
+
 - Los pobres, marginados, samaritanos y gentiles en la narración de Lucas.
+
 - La relación de Lucas con los otros Evangelios y con Hechos.
 
 No me limito a resumir comentarios bíblicos: comparo sus argumentos, investigo problemas concretos y formulo preguntas e hipótesis que, cuando corresponde, dejo abiertas.
 
-Los estudios de esta serie están reunidos en la [playlist del Evangelio de Lucas](https://www.youtube.com/playlist?list=PLsuJlTgBfpKh-T8mG4pFQE3-_7QHpuX14). También preparé una [guía de estudio de Lucas 1–4](https://lasnotasdevero.com/estudios/guia-estudio-lucas/), con preguntas para trabajar el texto, su contexto y sus implicaciones teológicas.
+Los estudios de esta serie están reunidos en la <a href="https://www.youtube.com/playlist?list=PLsuJlTgBfpKh-T8mG4pFQE3-_7QHpuX14" target="_blank" rel="noopener noreferrer">playlist del Evangelio de Lucas</a>. También preparé una <a href="https://lasnotasdevero.com/estudios/guia-estudio-lucas/" target="_blank" rel="noopener noreferrer">guía de estudio de Lucas 1–4</a>, con preguntas para trabajar el texto, su contexto y sus implicaciones teológicas.
 
 ### Jesús histórico y cristianismo primitivo
 
-Me interesa qué podemos reconstruir sobre Jesús de Nazaret y sus primeros seguidores: las fuentes, la memoria de los testigos, las expectativas del mundo judío y el surgimiento de las primeras comunidades. Distingo las preguntas históricas de las confesiones teológicas, aunque ambas puedan dialogar. Las preguntas sobre la identidad de Jesús desde la fe cristiana también se abordan en la [playlist de cristología](https://www.youtube.com/playlist?list=PLsuJlTgBfpKiLKXcXQOibEeNFLU4gQPrs). En la web publiqué el estudio [«Jesús: el Salvador de todas las naciones»](https://lasnotasdevero.com/estudios/jesuselsalvadordelmundo/), que recorre las promesas a Israel y su relación con la misión de Jesús hacia los gentiles.
+Me interesa qué podemos reconstruir sobre Jesús de Nazaret y sus primeros seguidores: las fuentes, la memoria de los testigos, las expectativas del mundo judío y el surgimiento de las primeras comunidades. Distingo las preguntas históricas de las confesiones teológicas, aunque ambas puedan dialogar. Las preguntas sobre la identidad de Jesús desde la fe cristiana también se abordan en la <a href="https://www.youtube.com/playlist?list=PLsuJlTgBfpKiLKXcXQOibEeNFLU4gQPrs" target="_blank" rel="noopener noreferrer">playlist de cristología</a>. En la web publiqué el estudio <a href="https://lasnotasdevero.com/estudios/jesuselsalvadordelmundo/" target="_blank" rel="noopener noreferrer">«Jesús: el Salvador de todas las naciones»</a>, que recorre las promesas a Israel y su relación con la misión de Jesús hacia los gentiles.
 
 ### Pablo y las primeras comunidades cristianas
 
-Estudio las cartas del Nuevo Testamento, sus destinatarios y su entorno social: las relaciones entre judíos y gentiles, las iglesias que se reunían en casas, los colaboradores de Pablo, los ministerios y los debates de interpretación. También hay contenidos para profundizar en la [playlist de epístolas paulinas](https://www.youtube.com/playlist?list=PLIiFICuTi2N8).
+Estudio las cartas del Nuevo Testamento, sus destinatarios y su entorno social: las relaciones entre judíos y gentiles, las iglesias que se reunían en casas, los colaboradores de Pablo, los ministerios y los debates de interpretación. También hay contenidos para profundizar en la <a href="https://www.youtube.com/playlist?list=PLIiFICuTi2N8" target="_blank" rel="noopener noreferrer">playlist de epístolas paulinas</a>.
 
 ### Mujeres en el Nuevo Testamento
 
-Investigo la participación de las mujeres en el ministerio de Jesús y en las primeras comunidades. Examino tanto los pasajes que presentan restricciones como los testimonios de mujeres que enseñaban, colaboraban, sostenían o desempeñaban distintas funciones. Me interesa que las conclusiones se fundamenten en los textos y su contexto, no solamente en tradiciones posteriores. Estos debates se pueden explorar en la [playlist de mujeres en el ministerio](https://www.youtube.com/playlist?list=PLsuJlTgBfpKhpnh5wZFnN4VdCZ7saz2jO).
+Investigo la participación de las mujeres en el ministerio de Jesús y en las primeras comunidades. Examino tanto los pasajes que presentan restricciones como los testimonios de mujeres que enseñaban, colaboraban, sostenían o desempeñaban distintas funciones. Me interesa que las conclusiones se fundamenten en los textos y su contexto, no solamente en tradiciones posteriores. Estos debates se pueden explorar en la <a href="https://www.youtube.com/playlist?list=PLsuJlTgBfpKhpnh5wZFnN4VdCZ7saz2jO" target="_blank" rel="noopener noreferrer">playlist de mujeres en el ministerio</a>.
 
 ### Manuscritos y crítica textual
 
-Estudio la transmisión del Nuevo Testamento, las variantes manuscritas y cómo trabajan los especialistas. También analizo casos concretos y las posibles relaciones entre decisiones de los copistas, contexto histórico y convicciones teológicas. Hay materiales relacionados en la [playlist de crítica textual](https://www.youtube.com/playlist?list=PLByiFPUMERXA).
+Estudio la transmisión del Nuevo Testamento, las variantes manuscritas y cómo trabajan los especialistas. También analizo casos concretos y las posibles relaciones entre decisiones de los copistas, contexto histórico y convicciones teológicas. Hay materiales relacionados en la <a href="https://www.youtube.com/playlist?list=PLByiFPUMERXA" target="_blank" rel="noopener noreferrer">playlist de crítica textual</a>.
 
 ### Judaísmo del Segundo Templo y mundo bíblico
 
-Las Escrituras de Israel, la literatura judía antigua y el contexto grecorromano son fundamentales para comprender a Jesús, Pablo y el movimiento cristiano primitivo. La [playlist de diálogo con el judaísmo](https://www.youtube.com/playlist?list=PLah03-3MjfOs) reúne contenidos vinculados con este intercambio de perspectivas.
+Las Escrituras de Israel, la literatura judía antigua y el contexto grecorromano son fundamentales para comprender a Jesús, Pablo y el movimiento cristiano primitivo. La <a href="https://www.youtube.com/playlist?list=PLah03-3MjfOs" target="_blank" rel="noopener noreferrer">playlist de diálogo con el judaísmo</a> reúne contenidos vinculados con este intercambio de perspectivas.
 
 ### Consejo celestial y Reino de Dios
 
-Exploro textos como Daniel 7 y Salmo 82, el lenguaje del tribunal celestial, el juicio y el reinado de Dios. Algunas preguntas sobre la participación de los santos en el juicio o el gobierno celestial son **líneas de investigación e hipótesis abiertas, no doctrinas establecidas del proyecto**. Entre los estudios relacionados con la esperanza y la consumación del Reino está [«El juicio y la redención de los elementos del libro de Génesis en Apocalipsis»](https://lasnotasdevero.com/estudios/ap16y22/), donde comparo motivos presentes en ambos libros.
+Exploro textos como Daniel 7 y Salmo 82, el lenguaje del tribunal celestial, el juicio y el reinado de Dios. Algunas preguntas sobre la participación de los santos en el juicio o el gobierno celestial son **líneas de investigación e hipótesis abiertas, no doctrinas establecidas del proyecto**. Entre los estudios relacionados con la esperanza y la consumación del Reino está <a href="https://lasnotasdevero.com/estudios/ap16y22/" target="_blank" rel="noopener noreferrer">«El juicio y la redención de los elementos del libro de Génesis en Apocalipsis»</a>, donde comparo motivos presentes en ambos libros.
 
 ### Historia de la Iglesia y primeros autores cristianos
 
-Además de los orígenes del cristianismo, también comparto materiales sobre su desarrollo histórico. Estos contenidos se pueden recorrer en las playlists de [historia de la Iglesia](https://www.youtube.com/playlist?list=PLsuJlTgBfpKj4HXPM8VitI3ReAkZRK7Sk) y de los [Padres de la Iglesia](https://www.youtube.com/playlist?list=PLVuCXOQwatVs).
+Además de los orígenes del cristianismo, también comparto materiales sobre su desarrollo histórico. Estos contenidos se pueden recorrer en las playlists de <a href="https://www.youtube.com/playlist?list=PLsuJlTgBfpKj4HXPM8VitI3ReAkZRK7Sk" target="_blank" rel="noopener noreferrer">historia de la Iglesia</a> y de los <a href="https://www.youtube.com/playlist?list=PLVuCXOQwatVs" target="_blank" rel="noopener noreferrer">Padres de la Iglesia</a>.
 
 ### Otros contenidos
 
-También publico análisis de libros, recursos bibliográficos, apologética, reflexiones cristianas, devocionales y música. El [liderazgo cristiano](https://www.youtube.com/playlist?list=PLsuJlTgBfpKgzjtmbfbPtmNpQZ2qBgPHX) es otro de los temas que abordo.
+También publico análisis de libros, recursos bibliográficos, apologética, reflexiones cristianas, devocionales y música. El <a href="https://www.youtube.com/playlist?list=PLsuJlTgBfpKgzjtmbfbPtmNpQZ2qBgPHX" target="_blank" rel="noopener noreferrer">liderazgo cristiano</a> es otro de los temas que abordo.
 
 ---
 
 ## 3. ¿A quiénes puede servirles este contenido?
 
 - **Pastores y líderes** que quieran profundizar en la Biblia y encontrar recursos para sus ministerios.
+
 - **Docentes y maestros de escuela bíblica** que preparan clases y enseñanzas.
+
 - **Estudiantes de teología y seminario** interesados en exégesis, historia y fuentes.
+
 - **Estudiantes universitarios e investigadores** interesados en los textos antiguos y los debates académicos.
+
 - **Cristianos de distintas tradiciones** que quieren estudiar con mayor profundidad.
+
 - **Personas judías, agnósticas, ateas y otras personas interesadas** en el Jesús histórico, los escritos bíblicos o los orígenes del cristianismo.
 
 No hace falta tener formación teológica previa ni compartir mis convicciones para encontrar material de interés.
@@ -111,9 +131,13 @@ Que mi proyecto sea confesional no significa que todas las preguntas históricas
 Al estudiar, procuro distinguir entre:
 
 1. **Lo observable en las fuentes:** lo que un texto o un manuscrito efectivamente dice.
+
 2. **Las reconstrucciones históricas:** lo que podemos proponer a partir de la evidencia disponible.
+
 3. **Las interpretaciones de los especialistas:** sus argumentos y desacuerdos.
+
 4. **Mis conclusiones teológicas:** cómo evalúo esas cuestiones desde mis convicciones cristianas.
+
 5. **Las hipótesis abiertas:** preguntas que todavía necesitan más investigación.
 
 Además de divulgar investigaciones ajenas, hago mis propios estudios y comparaciones. En Lucas, por ejemplo, investigo las relaciones entre los relatos, su contexto y las interpretaciones de la identidad y autoridad de Jesús. También he trabajado sobre variantes textuales del Nuevo Testamento y preguntas en torno a Daniel 7 y el tribunal celestial.
@@ -124,7 +148,7 @@ Tener fe no invalida una investigación histórica, pero tampoco garantiza que s
 
 No quiero que quienes me siguen simplemente repitan mis conclusiones: me interesa que aprendan a examinar fuentes, formular preguntas y evaluar interpretaciones por sí mismos. Sigo formándome y puedo cambiar de opinión ante argumentos mejores.
 
-También compartí una [reflexión sobre metodología en investigación teológica](https://lasnotasdevero.com/posts/metodologiainvestigacion/), en la que explico la importancia de consultar bibliografía variada, contrastar las propias hipótesis y considerar objeciones a nuestras interpretaciones.
+También compartí una <a href="https://lasnotasdevero.com/posts/metodologiainvestigacion/" target="_blank" rel="noopener noreferrer">reflexión sobre metodología en investigación teológica</a>, en la que explico la importancia de consultar bibliografía variada, contrastar las propias hipótesis y considerar objeciones a nuestras interpretaciones.
 
 ---
 
@@ -134,9 +158,9 @@ En mis estudios y entrevistas comparto aportes de autores de distintas tradicion
 
 He conversado con investigadores como Michael F. Bird, Craig S. Keener, John H. Walton, Lynn H. Cohick y Joel B. Green. Además, utilizo trabajos de muchos otros autores, sin presentar a todos como entrevistados.
 
-Las conversaciones están reunidas en la [playlist de entrevistas con especialistas](https://www.youtube.com/playlist?list=PLsuJlTgBfpKgw6ZuF4XIR_81NF8RJVUP1). Entre ellas, podés ver las entrevistas con [Michael F. Bird](https://www.youtube.com/watch?v=UAQOnYWjWOc), [Craig S. Keener](https://www.youtube.com/watch?v=tvhhxON9dnI) y [John H. Walton](https://www.youtube.com/watch?v=pSvmvdpUU84).
+Las conversaciones están reunidas en la <a href="https://www.youtube.com/playlist?list=PLsuJlTgBfpKgw6ZuF4XIR_81NF8RJVUP1" target="_blank" rel="noopener noreferrer">playlist de entrevistas con especialistas</a>. Entre ellas, podés ver las entrevistas con <a href="https://www.youtube.com/watch?v=UAQOnYWjWOc" target="_blank" rel="noopener noreferrer">Michael F. Bird</a>, <a href="https://www.youtube.com/watch?v=tvhhxON9dnI" target="_blank" rel="noopener noreferrer">Craig S. Keener</a> y <a href="https://www.youtube.com/watch?v=pSvmvdpUU84" target="_blank" rel="noopener noreferrer">John H. Walton</a>.
 
-También está disponible el [curso «Siete cosas que todo cristiano debería saber», basado en el libro de Michael F. Bird publicado por CLIE](https://www.youtube.com/playlist?list=PLsuJlTgBfpKhx9hVgDRBDdHMhZnV3Yrj7).
+También está disponible el <a href="https://www.youtube.com/playlist?list=PLsuJlTgBfpKhx9hVgDRBDdHMhZnV3Yrj7" target="_blank" rel="noopener noreferrer">curso «Siete cosas que todo cristiano debería saber», basado en el libro de Michael F. Bird publicado por CLIE</a>.
 
 **Leer, entrevistar o recomendar a un autor no significa compartir toda su teología.** Una postura puede ser valiosa por sus fuentes y argumentos aunque no coincida con mis conclusiones. Me interesa presentar las diferencias con justicia, no demostrar que una denominación tiene razón en todo.
 
@@ -172,17 +196,23 @@ Fueron escritas en contextos y con propósitos concretos. Por eso, considero fun
 
 Estudiar su composición, transmisión e interpretación forma parte de tomarlas seriamente. No reduzco esta convicción a una etiqueta sobre inerrancia sin explicar qué entiendo por ella.
 
-### La salvación y el arrepentimiento
+### La salvación, la fe y el arrepentimiento
 
-Creo que la salvación viene de Dios y es por su gracia, no por nuestros méritos. Dios toma la iniciativa y el Espíritu Santo obra en la regeneración.
+Creo que la salvación viene de Dios y es por su gracia, no por nuestros méritos (Daniel 9:18; Efesios 2:8-9; Tito 3:5). Dios toma la iniciativa y el Espíritu Santo obra en la regeneración.
+
+Jesús dijo: «Porque el Hijo del Hombre vino a buscar y a salvar lo que se había perdido» (Lucas 19:10). También afirmó: «Yo soy el camino, y la verdad, y la vida; nadie viene al Padre sino por mí» (Juan 14:6).
 
 Creo que la fe implica confiar en Dios y responder a su llamado. A lo largo de las Escrituras encontramos personas y comunidades llamadas a decidir si quieren servir a Dios y vivir conforme a su voluntad.
 
-Entiendo el arrepentimiento como algo que no se limita a un momento puntual, sino que forma parte de nuestra relación continua con Dios: reconocer nuestros pecados, confesarlos ante Él y volver a sus caminos. La oración, la práctica de la justicia y la generosidad también son parte de esa vida de fe. **No son medios para ganar la salvación**, sino expresiones de nuestra respuesta a la gracia de Dios.
+Entiendo el arrepentimiento como algo que no se limita a un momento puntual, sino que forma parte de nuestra relación continua con Dios. Implica reconocer nuestros pecados, confesarlos a Dios (1 Juan 1:9) y también, cuando corresponde, ante nuestros hermanos en la comunidad (Santiago 5:16; Hechos 19:18), y volver a sus caminos. Esta dimensión comunitaria también está presente en testimonios del cristianismo primitivo, como la (Didaché 4:14; 14:1), que menciona la confesión de las faltas en el contexto de la vida comunitaria.
 
-Jesús enseña la importancia de buscar la reconciliación con el prójimo (Mateo 5:23-24). En Zaqueo vemos cómo su encuentro con Jesús se expresa en acciones concretas, incluida la restitución del daño causado (Lucas 19:8).
+La oración (Salmo 51:1-4; Daniel 9:3-5; Santiago 5:13-16), la justicia (Isaías 1:16-17; Miqueas 6:8; Santiago 1:27) y la generosidad (Deuteronomio 15:7-11; Isaías 58:6-10; Santiago 2:14-17) también forman parte de esa vida de fe y son expresiones de nuestra respuesta a la gracia de Dios, no medios para merecer la salvación (Efesios 2:8-10).
 
-Creo que podemos resistir la acción del Espíritu Santo. También tomo seriamente las advertencias bíblicas sobre la posibilidad de apartarse de la fe. Me inclino a pensar que pueden referirse a personas que realmente creyeron, pero **no tengo una conclusión definitiva sobre su condición anterior ni sobre su destino final**.
+Jesús también enseña la importancia vital de buscar la reconciliación con el prójimo (Mateo 5:23-24). Asimismo, 1 Juan 4:20-21 nos recuerda que el amor a Dios y el amor al hermano son inseparables. En el caso de Zaqueo vemos cómo su encuentro con Jesús se expresa en acciones concretas, incluida la restitución del daño causado (Lucas 19:8).
+
+Creo que podemos resistir la acción del Espíritu Santo. También tomo seriamente las advertencias de las Escrituras sobre la posibilidad de apartarse de la fe.
+
+Me inclino a pensar que algunas de estas advertencias pueden dirigirse a personas que realmente habían creído. Sin embargo, sigo estudiando si esto implica que una persona puede perder la salvación y cuál es el destino final de quienes se apartan de la fe.
 
 Durante un tiempo fui calvinista, pero actualmente no me identifico plenamente ni con el calvinismo ni con el arminianismo.
 
@@ -200,9 +230,9 @@ Creo que debe caracterizarse por el amor, el respeto, el cuidado y el servicio m
 
 No interpreto la sujeción como inferioridad ni como autorización para dominar al otro. Efesios 5:21-33 es un texto importante en esta discusión: habla de la relación entre los esposos a partir de Cristo y la Iglesia, y debe leerse junto con el llamado al amor y la entrega del marido.
 
-También reconozco que existen distintas interpretaciones de «cabeza» (*kephalē*) en 1 Corintios 11:3. Actualmente comparto la propuesta tentativa de Michael F. Bird, que relaciona el término con la preeminencia, el honor y la representación, más que con una cadena de mando. El pasaje trata el comportamiento de hombres y mujeres en la reunión de la comunidad y las relaciones de honor de aquel contexto.
+También reconozco que existen distintas interpretaciones de «cabeza» (**kephalē**) en 1 Corintios 11:3. Actualmente comparto la propuesta tentativa de Michael F. Bird, que relaciona el término con la preeminencia, el honor y la representación, más que con una cadena de mando. El pasaje trata el comportamiento de hombres y mujeres en la reunión de la comunidad y las relaciones de honor de aquel contexto.
 
-Para profundizar: [Michael F. Bird, *1 Corinthians 11: Hijinks over Headship*](https://michaelfbird.substack.com/p/1-corinthians-11-gender-dilemmas).
+Para profundizar: <a href="https://michaelfbird.substack.com/p/1-corinthians-11-gender-dilemmas" target="_blank" rel="noopener noreferrer">Michael F. Bird, <strong>1 Corinthians 11: Hijinks over Headship</strong></a>.
 
 ### La Iglesia
 
@@ -232,12 +262,13 @@ Valoro las preguntas, los desacuerdos y el examen de argumentos. Dialogar con ot
 
 Las Notas de Vero mantiene colaboraciones con organizaciones y proyectos vinculados a la formación cristiana, el estudio de las Escrituras y la difusión de recursos teológicos.
 
-- **[Editorial CLIE](https://www.clie.es/):** editorial cristiana especializada en investigación y estudio bíblico, comentarios, diccionarios y obras de teología.
-- **[Publicaciones Kerigma](https://www.publicacioneskerigma.org/):** editorial cristiana interdenominacional que promueve literatura académica y publicaciones de autores de habla hispana.
-- **[Alianza Evangélica Ichthys](https://alianza-ichthys.com/):** alianza evangélica que promueve la unidad entre cristianos de distintas denominaciones, la enseñanza bíblica y la colaboración entre ministerios.
+- **<a href="https://www.clie.es/" target="_blank" rel="noopener noreferrer">Editorial CLIE</a>:** editorial cristiana especializada en investigación y estudio bíblico, comentarios, diccionarios y obras de teología.
+
+- **<a href="https://www.publicacioneskerigma.org/" target="_blank" rel="noopener noreferrer">Publicaciones Kerigma</a>:** editorial cristiana interdenominacional que promueve literatura académica y publicaciones de autores de habla hispana.
+
+- **<a href="https://alianza-ichthys.com/" target="_blank" rel="noopener noreferrer">Alianza Evangélica Ichthys</a>:** alianza evangélica que promueve la unidad entre cristianos de distintas denominaciones, la enseñanza bíblica y la colaboración entre ministerios.
 
 Estas colaboraciones no significan que comparta necesariamente todas las posiciones teológicas de las organizaciones o de los autores vinculados. Mantengo la independencia de criterio al estudiar y presentar sus materiales.
-
 
 ---
 
