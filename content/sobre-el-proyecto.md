@@ -241,7 +241,7 @@ Estas colaboraciones no significan que comparta necesariamente todas las posicio
 
 ---
 
-## 9. Nuestra misión y visión
+## 9. Misión y visión del proyecto
 
 ### 🌿 Misión
 
