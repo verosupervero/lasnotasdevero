@@ -185,7 +185,7 @@ Nuestro enfoque principal sigue siendo el estudio del Nuevo Testamento desde una
 
 ## 6. ¿CUÁLES SON MIS CONVICCIONES TEOLÓGICAS?
 
-Soy cristiana evangélica, de tradición pentecostal, y comparto la fe histórica expresada en el Credo de los Apóstoles.
+Soy cristiana evangélica y actualmente congrego en una iglesia pentecostal. Comparto la fe histórica expresada en el Credo de los Apóstoles, aunque mis convicciones teológicas no se limitan a una tradición denominacional.
 
 Estas son algunas de mis convicciones personales. En ciertos temas tengo posiciones definidas y en otros sigo estudiando las distintas interpretaciones.
 
