@@ -303,6 +303,36 @@ Los comentarios pueden ser moderados cuando se alejan de ese propósito.
 
 ---
 
+## COLABORACIONES Y PROYECTOS VINCULADOS
+
+Las Notas de Vero colabora con organizaciones y proyectos dedicados al estudio de las Escrituras, la formación teológica y la difusión de recursos cristianos.
+
+Actualmente colaboramos con:
+
+**Editorial CLIE**
+
+Editorial cristiana especializada en obras de investigación y estudio bíblico, incluyendo comentarios, diccionarios, hermenéutica, historia, teología y filosofía cristiana.
+
+Sitio web: [https://www.clie.es/](https://www.clie.es/)
+
+**Publicaciones Kerigma**
+
+Editorial cristiana interdenominacional que promueve la literatura académica en español y la publicación de obras de autores de habla hispana, especialmente en educación teológica y ministerial.
+
+Sitio web: [https://www.publicacioneskerigma.org/](https://www.publicacioneskerigma.org/)
+
+**Alianza Evangélica Ichthys**
+
+Alianza cristiana evangélica que promueve la unidad entre distintas denominaciones, la enseñanza bíblica, el discipulado y la colaboración entre iglesias y ministerios. Su misión es fortalecer la comunión cristiana y contribuir al avance del Reino de Dios.
+
+Sitio web: [https://alianza-ichthys.com/](https://alianza-ichthys.com/)
+
+Estas colaboraciones contribuyen a nuestro propósito de acercar recursos de formación bíblica y teológica, fortalecer los vínculos entre iniciativas cristianas y promover el estudio de las Escrituras.
+
+**Las colaboraciones no implican necesariamente compartir todas las posiciones teológicas de las organizaciones o de los autores vinculados.** Las Notas de Vero mantiene su compromiso con el rigor académico y la independencia de criterio.
+
+---
+
 ## 8. NUESTRA MISIÓN Y VISIÓN
 
 **Misión**
