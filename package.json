@@ -1,0 +1,21 @@
+{
+  "name": "lasnotasdevero-contacto",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build:contact": "node scripts/build-contact.mjs",
+    "test:contact": "node --test tests/contact.test.mjs",
+    "test:contact:browser": "node tests/contact-browser.mjs"
+  },
+  "dependencies": {
+    "openpgp": "6.3.2"
+  },
+  "devDependencies": {
+    "@fontsource/open-sans": "5.3.0",
+    "@fontsource/poppins": "5.3.0",
+    "esbuild": "0.28.2"
+  }
+}

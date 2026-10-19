@@ -70,7 +70,7 @@ Los temas que vuelven con frecuencia en esta serie incluyen:
 
 No me limito a resumir comentarios bíblicos: comparo sus argumentos, investigo problemas concretos y formulo preguntas e hipótesis que, cuando corresponde, dejo abiertas.
 
-Los estudios de esta serie están reunidos en la <a href="https://www.youtube.com/playlist?list=PLsuJlTgBfpKh-T8mG4pFQE3-_7QHpuX14" target="_blank" rel="noopener noreferrer">playlist del Evangelio de Lucas</a>. También preparé una <a href="https://lasnotasdevero.com/estudios/guia-estudio-lucas/" target="_blank" rel="noopener noreferrer">guía de estudio de Lucas 1–4</a>, con preguntas para trabajar el texto, su contexto y sus implicaciones teológicas.
+Los estudios sobre el Evangelio de Lucas están reunidos en la <a href="https://www.youtube.com/playlist?list=PLsuJlTgBfpKh-T8mG4pFQE3-_7QHpuX14" target="_blank" rel="noopener noreferrer">playlist del Evangelio de Lucas</a>. También preparé una <a href="https://lasnotasdevero.com/estudios/guia-estudio-lucas/" target="_blank" rel="noopener noreferrer">guía de estudio de Lucas 1–4</a>, con preguntas para trabajar el texto, su contexto y sus implicaciones teológicas.
 
 ### Jesús histórico y cristianismo primitivo
 
@@ -192,9 +192,11 @@ La resurrección corporal es una convicción de fe que sostengo. Considero que e
 
 Creo que las Escrituras son inspiradas por Dios y tienen autoridad para la fe y la vida cristiana.
 
-Fueron escritas en contextos y con propósitos concretos. Por eso, considero fundamental interpretarlas atendiendo a sus géneros literarios y a lo que sus autores buscaban comunicar. Creo que **no se equivocan en aquello para lo cual Dios las dio**.
+Fueron escritas en contextos y con propósitos concretos. Por eso, considero fundamental interpretarlas atendiendo a sus géneros literarios y a lo que sus autores buscaban comunicar.
 
-Estudiar su composición, transmisión e interpretación forma parte de tomarlas seriamente. No reduzco esta convicción a una etiqueta sobre inerrancia sin explicar qué entiendo por ella.
+Creo que las Escrituras no se equivocan en aquello para lo cual Dios las dio.
+
+Estudiar su composición, transmisión e interpretación forma parte de tomarlas seriamente.
 
 ### La salvación, la fe y el arrepentimiento
 
@@ -230,7 +232,7 @@ Creo que debe caracterizarse por el amor, el respeto, el cuidado y el servicio m
 
 No interpreto la sujeción como inferioridad ni como autorización para dominar al otro. Efesios 5:21-33 es un texto importante en esta discusión: habla de la relación entre los esposos a partir de Cristo y la Iglesia, y debe leerse junto con el llamado al amor y la entrega del marido.
 
-También reconozco que existen distintas interpretaciones de «cabeza» (**kephalē**) en 1 Corintios 11:3. Actualmente comparto la propuesta tentativa de Michael F. Bird, que relaciona el término con la preeminencia, el honor y la representación, más que con una cadena de mando. El pasaje trata el comportamiento de hombres y mujeres en la reunión de la comunidad y las relaciones de honor de aquel contexto.
+También reconozco que existen distintas interpretaciones de «cabeza» (*kephalē*) en 1 Corintios 11:3. Actualmente comparto la propuesta tentativa de Michael F. Bird, que relaciona el término con la preeminencia, el honor y la representación, más que con una cadena de mando. El pasaje trata el comportamiento de hombres y mujeres en la reunión de la comunidad y las relaciones de honor de aquel contexto.
 
 Para profundizar: <a href="https://michaelfbird.substack.com/p/1-corinthians-11-gender-dilemmas" target="_blank" rel="noopener noreferrer">Michael F. Bird, <strong>1 Corinthians 11: Hijinks over Headship</strong></a>.
 
@@ -260,15 +262,20 @@ Valoro las preguntas, los desacuerdos y el examen de argumentos. Dialogar con ot
 
 ## 8. Colaboraciones y proyectos vinculados
 
-Las Notas de Vero mantiene colaboraciones con organizaciones y proyectos vinculados a la formación cristiana, el estudio de las Escrituras y la difusión de recursos teológicos.
+El proyecto mantiene colaboraciones con organizaciones y proyectos vinculados a la formación cristiana, el estudio de las Escrituras y la difusión de recursos teológicos.
+
+Colaboraciones de libros (reseñas, unboxing, difusión):
 
 - **<a href="https://www.clie.es/" target="_blank" rel="noopener noreferrer">Editorial CLIE</a>:** editorial cristiana especializada en investigación y estudio bíblico, comentarios, diccionarios y obras de teología.
 
 - **<a href="https://www.publicacioneskerigma.org/" target="_blank" rel="noopener noreferrer">Publicaciones Kerigma</a>:** editorial cristiana interdenominacional que promueve literatura académica y publicaciones de autores de habla hispana.
 
+Colaboraciones ministeriales:
+
 - **<a href="https://alianza-ichthys.com/" target="_blank" rel="noopener noreferrer">Alianza Evangélica Ichthys</a>:** alianza evangélica que promueve la unidad entre cristianos de distintas denominaciones, la enseñanza bíblica y la colaboración entre ministerios.
 
 Estas colaboraciones no significan que comparta necesariamente todas las posiciones teológicas de las organizaciones o de los autores vinculados. Mantengo la independencia de criterio al estudiar y presentar sus materiales.
+
 
 ---
 
@@ -285,3 +292,65 @@ Tender puentes entre la Iglesia, la academia y la vida diaria, con Cristo en el 
 **👑 Que venga Su Reino.**
 
 Vero
+## 10. ¿Cómo se sostiene el proyecto?
+
+Las Notas de Vero es un proyecto personal que requiere tiempo, dedicación y recursos. Detrás de cada estudio, entrevista y publicación hay horas de lectura, investigación, preparación y edición, además de gastos relacionados con bibliografía, herramientas y mantenimiento de las plataformas.
+
+El proyecto se sostiene gracias a distintas formas de colaboración:
+
+**Oración y acompañamiento espiritual:** agradezco profundamente a los hermanos y hermanas que interceden por mí y por este ministerio, me animan a continuar y me acompañan en la fe. Creo en la importancia de la oración y de la comunidad cristiana, y valoro mucho este acompañamiento.
+
+**Contribuciones económicas:** quienes desean colaborar pueden hacerlo mediante donaciones voluntarias o membresías del canal de YouTube.
+
+**Recursos materiales y bibliográficos:** algunas editoriales me proporcionan ejemplares de libros para su lectura, estudio, presentación o reseña. Esto facilita el acceso a bibliografía especializada y la preparación de nuevos contenidos.
+
+**Tiempo y servicio:** también es posible colaborar ofreciendo habilidades y parte del tiempo personal para tareas como transcripciones, traducciones, revisión de materiales, edición y organización de recursos.
+
+**Difusión y participación:** compartir publicaciones, recomendar los estudios y participar de las actividades también permite que estos recursos lleguen a más personas.
+
+### Nuestro compromiso
+
+Mi deseo es que los estudios y recursos bíblicos sigan estando al alcance de quienes quieran aprender, independientemente de sus posibilidades económicas. **No es necesario contribuir económicamente para acceder a los contenidos públicos.**
+
+**Recibir libros, donaciones u otras contribuciones no implica comprometerme a realizar valoraciones positivas ni a compartir las posiciones teológicas de quienes colaboran.** Considero fundamental conservar la independencia de criterio, evaluar los materiales por sus argumentos y fuentes, y ser transparente respecto de las colaboraciones que recibo.
+
+Doy gracias a Dios por cada persona que hace posible la continuidad de este proyecto. Cada oración, recurso compartido, contribución y gesto de servicio tiene un valor especial para mí.
+
+### ¿Te gustaría colaborar?
+
+**¡Hay muchas maneras de ser parte de Las Notas de Vero!** Podés acompañarme en oración, compartir los estudios, ofrecer tu tiempo y tus habilidades o realizar una contribución económica.
+
+Si querés colaborar económicamente, podés hacerlo desde la sección [Donar](https://lasnotasdevero.com/donar/).
+
+Si tenés alguna habilidad que te gustaría poner al servicio de este trabajo, ¡también podés escribirme para que conversemos!
+
+**Cada forma de colaboración es valiosa y contribuye a que más personas puedan conocer, estudiar y profundizar en las Escrituras.**
+
+---
+## 11. ¿Cuáles son mis próximos pasos académicos?
+
+Actualmente estoy terminando Ingeniería Electrónica en la Universidad de Buenos Aires. Una vez que me gradúe, mi intención es continuar con estudios teológicos formales en una institución académica acreditada, especialmente en el área de estudios bíblicos y del Nuevo Testamento.
+
+A largo plazo, también me gustaría tener la posibilidad de realizar estudios doctorales y dedicarme a la investigación académica.
+
+En este camino he tenido la oportunidad de conversar con académicos como Michael F. Bird y Lynn H. Cohick sobre mi futura formación teológica. Aprecio mucho su orientación y el tiempo que me han dedicado. Estas conversaciones me han animado a continuar explorando distintas posibilidades de estudio.
+
+### Becas y oportunidades de formación
+
+Actualmente estoy evaluando instituciones, programas y posibles becas, tanto para estudiar a distancia como en el exterior.
+
+Si alguna institución, fundación o persona conoce oportunidades de becas, ayudas para matrícula, bibliografía u otros recursos educativos, agradecería mucho que pudiera ponerse en contacto conmigo.
+
+Por el momento, no cuento con una admisión ni una beca confirmadas. Mi deseo es que esta formación me permita profundizar mis investigaciones, desarrollar nuevos proyectos y contribuir a una mejor enseñanza de las Escrituras.
+
+**Cualquier contribución destinada específicamente a mis estudios se distinguirá de los recursos utilizados para el funcionamiento de Las Notas de Vero.**
+
+### Trayectoria y referencias académicas
+
+Si alguna institución o programa de becas requiere información adicional, puedo presentar muestras de mis trabajos, estudios e investigaciones, así como facilitar referencias académicas o cartas de recomendación, previa consulta y autorización de las personas correspondientes.
+
+### ¿Conocés alguna oportunidad?
+
+Si conocés programas de posgrado, becas, instituciones académicas o iniciativas que puedan acompañarme en esta nueva etapa de formación, ¡me encantaría conocerlas!
+
+Podés ponerte en contacto conmigo para compartir información o conversar sobre posibles oportunidades.

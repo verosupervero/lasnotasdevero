@@ -29,6 +29,9 @@
             {{ else }}
               {{ $page.RenderString (dict "display" "block") $body }}
             {{ end }}
+            {{ if eq $index 0 }}
+              <p><a href="{{ "/contacto/" | relURL }}">Contacto</a></p>
+            {{ end }}
           </div>
         </details>
       {{ end }}

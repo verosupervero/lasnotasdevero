@@ -1,6 +1,25 @@
 [build]
   publish = "public"
-  command = "hugo --minify"
+  command = "npm ci --ignore-scripts --include=dev && npm run build:contact && hugo --minify"
 
 [context.production.environment]
   HUGO_VERSION = "0.124.1"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+[[headers]]
+  for = "/contacto"
+  [headers.values]
+    Content-Security-Policy = "default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; form-action 'none'; base-uri 'none'; frame-ancestors 'none'; object-src 'none'; worker-src 'none'; upgrade-insecure-requests"
+    Referrer-Policy = "no-referrer"
+    Cache-Control = "no-store"
+    X-Content-Type-Options = "nosniff"
+
+[[headers]]
+  for = "/contacto/*"
+  [headers.values]
+    Content-Security-Policy = "default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; form-action 'none'; base-uri 'none'; frame-ancestors 'none'; object-src 'none'; worker-src 'none'; upgrade-insecure-requests"
+    Referrer-Policy = "no-referrer"
+    Cache-Control = "no-store"
+    X-Content-Type-Options = "nosniff"

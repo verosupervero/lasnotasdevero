@@ -3,10 +3,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Estilos -->
+  {{ if eq .Layout "contacto" }}
+  <link rel="icon" type="image/png" href="{{ "logo.png" | relURL }}">
+  <link rel="stylesheet" href="{{ "styles/contact-base.css" | relURL }}">
+  {{ else }}
   <link rel="stylesheet" href="{{ absURL `styles/main.css` }}">
+  {{ end }}
+  {{ if eq .Layout "contacto" }}
+  <link rel="stylesheet" href="{{ "styles/style.css" | relURL }}">
+  <link rel="stylesheet" href="{{ "styles/print.css" | relURL }}" media="print">
+  {{ else }}
   <link rel="stylesheet" href="{{ absURL `styles/style.css` }}">
   <link rel="stylesheet" href="{{ absURL `styles/print.css` }}" media="print">
+  {{ end }}
+  {{ if ne .Layout "contacto" }}
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600;1,700;1,800&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  {{ end }}
   <link rel="canonical" href="{{ .Permalink | replace "https://lasnotasdevero.com" "https://www.lasnotasdevero.com" }}">
 
 
@@ -64,6 +76,7 @@
 
 
   <!-- RefTagger -->
+  {{ if ne .Layout "contacto" }}
   <script>
     var refTagger = {
       settings: {
@@ -79,4 +92,5 @@
       s.parentNode.insertBefore(g, s);
     }(document, "script"));
   </script>
+  {{ end }}
 </head>

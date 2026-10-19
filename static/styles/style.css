@@ -685,6 +685,85 @@ blockquote:not(.biblia)::after {
 
 .project-content a { color: #165c58; }
 
+/* Contacto */
+.contact-content {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 1.5rem 0 2rem;
+  line-height: 1.75;
+  overflow-wrap: anywhere;
+}
+.contact-content h1 { color: #165c58; }
+.contact-intro p { margin-bottom: 1.2em; }
+.contact-content a { color: #165c58; }
+.contact-form {
+  margin-top: 1.75rem;
+  padding: 1.5rem;
+  border: 1px solid #d9cfb5;
+  border-top: 3px solid #c2a360;
+  border-radius: 12px;
+  background: #fffefb;
+}
+.contact-required { margin: 0 0 1.25rem; font-size: 0.9rem; }
+.contact-field { margin-bottom: 1.25rem; }
+.contact-field label {
+  display: block;
+  margin-bottom: 0.4rem;
+  color: #165c58;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+}
+.contact-form .contact-field input,
+.contact-form .contact-field textarea {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 44px;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid #697b79;
+  border-radius: 6px;
+  background: #fff;
+  color: #343a40;
+  font: inherit;
+  line-height: 1.5;
+}
+.contact-field textarea { resize: vertical; }
+.contact-submit {
+  min-height: 44px;
+  padding: 0.75rem 1.25rem;
+  border: 2px solid #165c58;
+  border-radius: 6px;
+  background: #165c58;
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+.contact-submit:hover:not(:disabled) { background: #104642; }
+.contact-submit:disabled { background: #536865; border-color: #536865; cursor: not-allowed; }
+.contact-content a:focus-visible,
+.contact-field input:focus-visible,
+.contact-field textarea:focus-visible,
+.contact-submit:focus-visible,
+.contact-status:focus-visible { outline: 3px solid #6654c0; outline-offset: 3px; }
+.contact-notice { padding: 1rem; border-left: 3px solid #c2a360; background: #f4f1e8; }
+.contact-status { margin: 1rem 0 0; }
+.contact-status:empty { margin: 0; }
+.contact-status[data-state="error"] { color: #9e2924; }
+.contact-status[data-state="success"] { color: #165c58; }
+.contact-honeypot { display: none; }
+@media (prefers-reduced-motion: reduce) {
+  .contact-content input,
+  .contact-content textarea,
+  .contact-content button,
+  .contact-content a { transition: none; }
+}
+@media screen and (max-width: 600px) {
+  .contact-form { padding: 1rem; }
+  .contact-submit { width: 100%; }
+}
+
 @media screen and (max-width: 600px) {
   .project-content summary { padding: 1rem; }
   .project-section-body { padding: 1rem; }

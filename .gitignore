@@ -10,7 +10,7 @@ Thumbs.db
 
 # Node modules (if you use npm/yarn in your Hugo project)
 /node_modules/
-/package-lock.json
+/.contact-test-output/
 /yarn.lock
 
 # Hugo cache and temp

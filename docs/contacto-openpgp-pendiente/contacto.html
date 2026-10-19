@@ -1,0 +1,49 @@
+{{ define "main" }}
+{{ $keyPath := "" }}
+{{ $fingerprint := "" }}
+{{ with site.Data.contact }}
+  {{ with .public_key_path }}{{ $keyPath = trim . " \t\r\n" }}{{ end }}
+  {{ with .public_key_fingerprint }}{{ $fingerprint = trim . " \t\r\n" }}{{ end }}
+{{ end }}
+{{ $enabled := and (ne $keyPath "") (ne $fingerprint "") }}
+<main id="main-wrapper" class="contact-page">
+  <div class="container">
+    <article class="contact-content">
+      <h1 id="contact-heading">{{ .Title }}</h1>
+      <div class="contact-intro">{{ .Content }}</div>
+      <p id="contact-privacy" class="contact-notice">Tu mensaje se cifra en tu navegador antes de enviarse. El contenido se transmite cifrado y solo puede ser descifrado con la clave privada correspondiente. El servicio de alojamiento puede procesar datos técnicos del envío, como la dirección IP.</p>
+      {{ if not $enabled }}
+      <p class="contact-notice">El formulario cifrado todavía no está disponible.</p>
+      {{ end }}
+      <noscript><p class="contact-notice">Para proteger tu mensaje, este formulario necesita JavaScript. No se envió ningún dato.</p></noscript>
+      <div class="contact-form" id="contact-editor" role="form" aria-labelledby="contact-heading" aria-describedby="contact-required contact-privacy" data-enabled="{{ $enabled }}" data-key-url="{{ $keyPath }}" data-key-fingerprint="{{ $fingerprint }}">
+        <p id="contact-required" class="contact-required">Todos los campos son obligatorios.</p>
+        <div class="contact-field">
+          <label for="contact-name">Nombre</label>
+          <input id="contact-name" type="text" autocomplete="off" spellcheck="false" maxlength="120" required>
+        </div>
+        <div class="contact-field">
+          <label for="contact-email">Correo electrónico</label>
+          <input id="contact-email" type="email" autocomplete="off" spellcheck="false" maxlength="254" required>
+        </div>
+        <div class="contact-field">
+          <label for="contact-subject">Asunto</label>
+          <input id="contact-subject" type="text" autocomplete="off" spellcheck="false" maxlength="200" required>
+        </div>
+        <div class="contact-field">
+          <label for="contact-message">Mensaje</label>
+          <textarea id="contact-message" rows="8" autocomplete="off" spellcheck="false" maxlength="10000" required></textarea>
+        </div>
+        <button class="contact-submit" type="button" disabled>Enviar mensaje</button>
+        <p class="contact-status" id="contact-status" role="status" aria-live="polite" aria-atomic="true" tabindex="-1"></p>
+      </div>
+      <form name="contacto-cifrado" method="POST" action="{{ "/contacto/" | relURL }}" data-netlify="true" netlify-honeypot="bot-field" hidden aria-hidden="true" inert>
+        <input type="hidden" name="form-name" value="contacto-cifrado">
+        <input type="text" id="contact-bot-field" name="bot-field" value="" tabindex="-1" autocomplete="off">
+        <textarea name="encrypted_message" tabindex="-1"></textarea>
+      </form>
+    </article>
+  </div>
+</main>
+<script src="{{ "/js/contact.js" | relURL }}" type="module"></script>
+{{ end }}

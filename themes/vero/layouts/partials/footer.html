@@ -10,4 +10,6 @@
           </div>
         </footer>
       </div>
+      {{ if ne .Layout "contacto" }}
       <script src="{{ "js/external-links.js" | relURL }}" data-site-url="{{ site.BaseURL }}" defer></script>
+      {{ end }}
