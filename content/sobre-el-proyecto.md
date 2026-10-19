@@ -284,22 +284,17 @@ Entiendo que existe una tensión entre lo que ya ha comenzado con el reinado de 
 Creo en la resurrección futura y el juicio de Dios.
 
 ---
+## 7. UN ESPACIO CONFESIONAL ABIERTO AL DIÁLOGO
 
-## 7. ¿CÓMO PARTICIPAMOS EN ESTE ESPACIO?
+Las Notas de Vero es un proyecto cristiano confesional, con una identidad teológica definida y un compromiso con el estudio riguroso de las Escrituras.
 
-Las Notas de Vero tiene una identidad cristiana confesional, pero está abierto a quienes quieran estudiar, aprender y conversar respetuosamente.
+Aunque nuestro enfoque parte de la fe cristiana, los contenidos están dirigidos tanto a creyentes de distintas tradiciones como a cualquier persona interesada en el Nuevo Testamento, el Jesús histórico y los orígenes del cristianismo.
 
-Entre quienes nos acompañan hay cristianos de distintas denominaciones, personas judías, agnósticas, ateas y personas interesadas en la Biblia y su historia.
+Entendemos que el diálogo con otras perspectivas puede enriquecer el estudio. Por eso, valoramos las preguntas, el intercambio de argumentos y el análisis de distintas interpretaciones, sin que esto implique renunciar a nuestras convicciones.
 
-No espero que todos compartan mis convicciones.
+Buscamos que las diferencias se aborden con honestidad intelectual, respeto por las personas y atención a las fuentes. No se trata de evitar los desacuerdos, sino de aprender a examinarlos con seriedad.
 
-Podemos discutir interpretaciones, cuestionar argumentos y expresar desacuerdos. De hecho, esas conversaciones pueden ayudarnos a aprender.
-
-Lo que no quiero fomentar son las descalificaciones personales, los ataques hacia otras tradiciones ni las polémicas que no aportan al estudio de los temas.
-
-**No es necesario estar de acuerdo para conversar con respeto.**
-
-Los comentarios pueden ser moderados cuando se alejan de ese propósito.
+**Nuestra identidad cristiana define desde dónde trabajamos; el rigor académico y el respeto orientan cómo dialogamos.**
 
 ---
 
