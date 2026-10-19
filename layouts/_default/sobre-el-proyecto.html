@@ -1,0 +1,38 @@
+{{ define "main" }}
+{{ $page := . }}
+{{ $sections := split (replace .RawContent "\r\n" "\n") "\n## " }}
+<main id="main-wrapper" class="project-page">
+  <div class="container">
+    <article class="project-content">
+      <div class="project-intro">
+        {{ $page.RenderString (dict "display" "block") (index $sections 0) }}
+      </div>
+      {{ range $index, $section := after 1 $sections }}
+        {{ $heading := index (split $section "\n") 0 }}
+        {{ $body := replaceRE `^[^\n]*\n?` "" $section }}
+        <details class="project-section">
+          <summary><h2>{{ $heading }}</h2></summary>
+          <div class="project-section-body">
+            {{ if eq $index 5 }}
+              {{ $convictions := split $body "\n### " }}
+              {{ $page.RenderString (dict "display" "block") (index $convictions 0) }}
+              {{ range after 1 $convictions }}
+                {{ $subheading := index (split . "\n") 0 }}
+                {{ $subbody := replaceRE `^[^\n]*\n?` "" . }}
+                <details class="project-conviction">
+                  <summary><h3>{{ $subheading }}</h3></summary>
+                  <div class="project-conviction-body">
+                    {{ $page.RenderString (dict "display" "block") $subbody }}
+                  </div>
+                </details>
+              {{ end }}
+            {{ else }}
+              {{ $page.RenderString (dict "display" "block") $body }}
+            {{ end }}
+          </div>
+        </details>
+      {{ end }}
+    </article>
+  </div>
+</main>
+{{ end }}
