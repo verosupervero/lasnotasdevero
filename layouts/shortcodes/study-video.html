@@ -1,6 +1,9 @@
 {{- $id := .Get "id" -}}
 {{- $video := .Get "video" -}}
 {{- $kind := .Get "kind" | default "course" -}}
+{{- $bibliography := partial "bibliography-list.html" (dict "ids" .Page.Params.bibliography) -}}
+{{- $support := partial "bibliography-list.html" (dict "ids" .Page.Params.bibliography_support) -}}
+{{- $further := partial "bibliography-list.html" (dict "ids" .Page.Params.bibliography_further_reading) -}}
 <article class="study-lesson" data-study-id="{{ $id }}" data-kind="{{ $kind }}" data-label="{{ .Get "label" }}" data-title="{{ .Get "title" }}" data-passage="{{ .Get "passage" }}">
     {{ with .Get "anchor" }}<span class="study-anchor" id="{{ . }}" aria-hidden="true"></span>{{ end }}
     <h2 id="{{ $id }}"><span class="study-video-label">{{ .Get "label" }}</span><span class="study-video-title">{{ .Get "title" }}</span><span class="study-video-passage">{{ .Get "passage" }}</span></h2>
@@ -14,29 +17,25 @@
     <p><a href="https://www.youtube.com/watch?v={{ . }}">Ver en YouTube</a></p>
     {{- end }}
     {{ .Page.RenderString (dict "display" "block") .Inner }}
+    {{ if or $bibliography $support $further }}
     <details class="study-bibliography">
       <summary>{{ with .Page.Params.bibliography_anchor }}<span class="study-anchor" id="{{ . }}" aria-hidden="true"></span>{{ end }}📚 Bibliografía y fuentes utilizadas</summary>
       <div class="study-resource-body">
         {{ with .Page.Params.bibliography_note }}<p>{{ . }}</p>{{ end }}
-        {{ with .Page.Params.bibliography }}
-          {{ partial "bibliography-list.html" (dict "ids" .) }}
-        {{ else }}
-          <p>Todavía no hay referencias específicas verificadas para esta clase.</p>
+        {{ with $bibliography }}
+          {{ . }}
         {{ end }}
-        {{ with .Page.Params.bibliography_pending }}
-          <h3>Fuentes pendientes de identificación</h3>
-          {{ partial "bibliography-list.html" (dict "ids" .) }}
-        {{ end }}
-        {{ with .Page.Params.bibliography_support }}
+        {{ with $support }}
           <h3>Material de apoyo</h3>
-          {{ partial "bibliography-list.html" (dict "ids" .) }}
+          {{ . }}
         {{ end }}
-        {{ with .Page.Params.bibliography_further_reading }}
-          <h3>Para seguir investigando (uso en el video pendiente de verificación)</h3>
-          {{ partial "bibliography-list.html" (dict "ids" .) }}
+        {{ with $further }}
+          <h3>Para seguir investigando</h3>
+          {{ . }}
         {{ end }}
       </div>
     </details>
+    {{ end }}
   </div>
   <button type="button" data-complete-class hidden>Marcar clase como completada</button>
 </article>

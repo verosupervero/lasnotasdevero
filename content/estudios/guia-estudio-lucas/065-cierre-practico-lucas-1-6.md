@@ -2,7 +2,8 @@
 bibliography = ["walton-keener-vida-2016", "bird-whispers-revolution-2025", "wright-bird-2019"]
 bibliography_pending = ["fee-exegesis-espiritualidad-por-confirmar", "keener-reflexion-milagros-por-identificar"]
 bibliography_support = ["keener-miracles-2011"]
-bibliography_note = "Libros mostrados o mencionados al comienzo. Las fuentes cuya identificación sigue pendiente se detallan por separado."
+bibliography_editorial_note = "Libros mostrados o mencionados al comienzo. Las fuentes cuya identificación sigue pendiente se detallan por separado."
+bibliography_note = "Libros mostrados o mencionados al comienzo."
 +++
 
 {{< study-video id="lucas-1-6-cierre-practico" label="Cierre práctico · Bloque I" title="Lucas 1–6: de estudiar el texto a vivirlo" passage="Lucas 1–6" kind="complement" video="IGksUPG4ebU" >}}

@@ -1,6 +1,6 @@
 +++
 bibliography = ["wright-bird-2019", "keener-ivp-2014", "walton-keener-vida-2016", "keener-mundo-hispano", "glahn-shepherds", "green-up-down", "keener-two-kings", "keener-shepherds", "keener-mary"]
-bibliography_note = "Referencias asociadas en la bibliografía del material de esta clase; no se comprobó de forma independiente la descripción de YouTube."
+bibliography_editorial_note = "Referencias asociadas en la bibliografía del material de esta clase; no se comprobó de forma independiente la descripción de YouTube."
 bibliography_anchor = "-bibliografía-y-fuentes-utilizadas-en-este-video"
 +++
 

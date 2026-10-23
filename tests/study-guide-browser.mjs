@@ -27,13 +27,14 @@ const originalQuestionIds=originalSources.filter(Boolean).flatMap(source=>[...so
 const originalLinks=originalSources.filter(Boolean).flatMap(source=>[...source.matchAll(/\]\((https?:\/\/[^)\s]+)\)/g)].map(match=>match[1]));
 const expectedBibliography={
   'video-1':['wright-bird-2019'],
-  'lucas-1-6-cierre-practico':['walton-keener-vida-2016','bird-whispers-revolution-2025','wright-bird-2019','fee-exegesis-espiritualidad-por-confirmar','keener-reflexion-milagros-por-identificar','keener-miracles-2011'],
+  'video-2':['wright-bird-2019','keener-ivp-2014','walton-keener-vida-2016'],
+  'lucas-1-6-cierre-practico':['walton-keener-vida-2016','bird-whispers-revolution-2025','wright-bird-2019','keener-miracles-2011'],
   'video-6':['imes-portadores-de-su-nombre','keener-ivp-2014','osborne-lucas-2020','walton-keener-vida-2016'],
   'video-5':['bird-early-christian-history','keener-ivp-2014','osborne-lucas-2020','walton-keener-vida-2016'],
   'video-4':['wright-bird-2019','keener-ivp-2014','walton-keener-vida-2016'],
-  'video-3':['wright-bird-2019','keener-ivp-2014','walton-keener-vida-2016','keener-mundo-hispano','glahn-shepherds','green-up-down','keener-two-kings','keener-shepherds','keener-mary'],
-  'censo-lucas-2':['huebner-census-2019','keener-ivp-2014','bird-nativity-2025'],
-  general:Object.entries(bibliography).map(([id])=>id)
+  'video-3':['wright-bird-2019','keener-ivp-2014','walton-keener-vida-2016','glahn-shepherds','green-up-down','keener-two-kings','keener-shepherds','keener-mary'],
+  'censo-lucas-2':['bird-nativity-2025','keener-birth-jesus-2011','huebner-census-2019'],
+  general:Object.entries(bibliography).filter(([,record])=>record.kind!=='pending').map(([id])=>id)
 };
 await mkdir(out,{recursive:true});
 const browserPath=process.env.LUCAS_BROWSER||'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe';
@@ -86,8 +87,11 @@ try{
   const kept=baseline?baseline.questions.filter(q=>nowQ.has(norm(q))):null;
   const abs=x=>new URL(x,origin+route).href,missingLinks=baseline?[...new Set(baseline.links)].filter(h=>!content.links.map(abs).includes(abs(h))):null,missingIds=baseline?[...new Set(baseline.ids)].filter(id=>!content.ids.includes(id)):null;
   if(baseline){assert.equal(content.questions.length,baseline.questions.length,'Keep original question/prose entry count');assert.equal(kept.length,baseline.questions.length,'No original question text removed');assert.deepEqual(missingLinks,[],'Original external/content links retained');assert.deepEqual(missingIds,[],'Old anchors retained');}
-  const retainedOriginalLinks=[...new Set(originalLinks)].filter(href=>content.links.some(link=>abs(link)===abs(href)));
-  assert.equal(retainedOriginalLinks.length,new Set(originalLinks).size,'Retain links from the original Video 3, census, and general bibliography sources');
+  const publishedCatalogLinks=new Set(Object.values(bibliography).filter(record=>record.kind!=='pending').flatMap(record=>(record.links||[]).map(link=>link.url)));
+  const internalLinks=new Set(Object.values(bibliography).filter(record=>record.kind==='pending').flatMap(record=>(record.links||[]).map(link=>link.url)).filter(url=>!publishedCatalogLinks.has(url)));
+  const originalPublicLinks=[...new Set(originalLinks)].filter(href=>!internalLinks.has(href));
+  const retainedOriginalLinks=originalPublicLinks.filter(href=>content.links.some(link=>abs(link)===abs(href)));
+  assert.equal(retainedOriginalLinks.length,originalPublicLinks.length,'Retain original public source links while keeping uncertain bibliography links internal');
   assert.equal(content.ids.length,new Set(content.ids).size,'Unique generated IDs');
 
   const renderedBibliography=await evaluate(`(()=>{const lessons=[...document.querySelectorAll('#study-content article.study-lesson')],panelData=el=>({summary:el.querySelector('summary')?.textContent.trim(),open:el.open,lists:[...el.querySelectorAll('ul.bibliography-list')].map(list=>[...list.querySelectorAll('li[data-bibliography-id]')].map(item=>({id:item.dataset.bibliographyId,text:item.textContent.trim(),links:[...item.querySelectorAll('a[href]')].map(a=>a.href)}))),text:el.textContent});return {classes:lessons.map(lesson=>{const panel=lesson.querySelector('details.study-bibliography'),questions=[...lesson.querySelectorAll('details.study-question')],complete=lesson.querySelector('[data-complete-class]');return {id:lesson.dataset.studyId,panel:panel&&panelData(panel),placement:!!panel&&!!complete&&questions.at(-1).compareDocumentPosition(panel)&Node.DOCUMENT_POSITION_FOLLOWING&&panel.compareDocumentPosition(complete)&Node.DOCUMENT_POSITION_FOLLOWING}}),general:[...document.querySelectorAll('details.study-resource')].filter(el=>!el.closest('article.study-lesson')).map(panelData)}})()`);
@@ -95,41 +99,46 @@ try{
   const panelByClass=Object.fromEntries(renderedBibliography.classes.map(item=>[item.id,item]));
   const generalPanel=renderedBibliography.general.find(panel=>panel.summary?.toLowerCase().includes('bibliograf'));
   assert.ok(generalPanel&&!generalPanel.open,'General bibliography is a closed native disclosure');
-  assert.ok(renderedBibliography.classes.every(item=>item.panel&&!item.panel.open&&item.placement),'Each class bibliography is closed and follows its questions before class completion');
-  const idsInLists=panel=>panel.lists.flatMap(list=>list.map(item=>item.id));
+  assert.ok(renderedBibliography.classes.every(item=>expectedBibliography[item.id]?.length?item.panel&&!item.panel.open&&item.placement:item.panel===null),'Classes with public sources have a closed bibliography after their questions; classes without sources have no empty panel');
+  const idsInLists=panel=>panel?.lists.flatMap(list=>list.map(item=>item.id))||[];
   for(const [id,expected] of Object.entries(expectedBibliography).filter(([id])=>id!=='general'))assert.deepEqual(idsInLists(panelByClass[id].panel),expected,`Exact references for ${id}`);
   const generalIds=idsInLists(generalPanel);
   assert.deepEqual([...generalIds].sort(),[...expectedBibliography.general].sort(),'General bibliography includes every catalog entry exactly once');
   assert.equal(new Set(generalIds).size,generalIds.length,'General bibliography never duplicates a catalog record');
   const generalGroups=await evaluate(`(()=>{const panel=[...document.querySelectorAll('details.study-resource')].find(p=>p.querySelector('summary')?.textContent.toLowerCase().includes('bibliograf'));return [...panel.querySelectorAll('h3')].map(h=>({heading:h.textContent.trim(),ids:[...h.nextElementSibling.querySelectorAll('li[data-bibliography-id]')].map(li=>li.dataset.bibliographyId)}))})()`);
-  assert.deepEqual(generalGroups.map(group=>group.heading),['Libros y comentarios','Artículos y capítulos','Recursos audiovisuales','Fuentes pendientes de identificación']);
-  assert.deepEqual(generalGroups.map(group=>group.ids.length),['book','article','channel','pending'].map(kind=>Object.values(bibliography).filter(record=>record.kind===kind).length));
-  for(const [index,kind] of ['book','article','channel','pending'].entries()){
+  assert.deepEqual(generalGroups.map(group=>group.heading),['Libros y comentarios','Artículos y capítulos','Recursos audiovisuales']);
+  assert.deepEqual(generalGroups.map(group=>group.ids.length),['book','article','channel'].map(kind=>Object.values(bibliography).filter(record=>record.kind===kind).length));
+  for(const [index,kind] of ['book','article','channel'].entries()){
     const sorted=Object.entries(bibliography).filter(([,record])=>record.kind===kind).map(([id,record])=>({id,key:record.authors.toLowerCase()+'|'+record.title.toLowerCase()+'|'+id})).sort((a,b)=>a.key<b.key?-1:a.key>b.key?1:0).map(record=>record.id);
     assert.deepEqual(generalGroups[index].ids,sorted,`General ${kind} entries sort by author and title`);
   }
   assert.ok(!generalPanel.text.includes('<ul')&&!generalPanel.text.includes('<li'),'General bibliography renders HTML lists without escaped markup');
-  assert.equal(panelByClass['censo-lucas-2'].panel.lists.length,2,'Census further reading is labeled and kept separate');
-  assert.equal(panelByClass['video-6'].panel.lists.length,2,'Video 6 support material is kept separate from its used sources');
+  assert.equal(panelByClass['censo-lucas-2'].panel.lists.length,2,'Census indirect chapter is kept separate as support material');
+  assert.deepEqual(panelByClass['censo-lucas-2'].panel.lists[0].map(item=>item.id),['bird-nativity-2025','keener-birth-jesus-2011']);
+  assert.deepEqual(panelByClass['censo-lucas-2'].panel.lists[1].map(item=>item.id),['huebner-census-2019']);
+  assert.equal(panelByClass['video-6'].panel.lists.length,2,'Video 6 separates its three used sources and verified support work');
   assert.deepEqual(panelByClass['video-6'].panel.lists[0].map(item=>item.id),expectedBibliography['video-6'].slice(0,3),'Video 6 lists exactly three used sources');
-  assert.deepEqual(panelByClass['video-6'].panel.lists[1].map(item=>item.id),['walton-keener-vida-2016'],'Video 6 support material contains Walton and Keener');
+  assert.deepEqual(panelByClass['video-6'].panel.lists[1].map(item=>item.id),['walton-keener-vida-2016']);
   assert.match(panelByClass['video-6'].panel.text,/Material de apoyo/);
   const closurePanel=panelByClass['lucas-1-6-cierre-practico'].panel;
-  assert.deepEqual(closurePanel.lists.map(list=>list.length),[3,2,1],'Closure separates three identified books, two pending sources, and one support work');
-  assert.match(closurePanel.text,/Fuentes pendientes de identificación/);
-  assert.match(closurePanel.text,/Título de la edición por confirmar visualmente/);
-  assert.match(closurePanel.text,/Pendiente identificar el artículo y su enlace exactos/);
+  assert.deepEqual(closurePanel.lists.map(list=>list.length),[3,1],'Closure shows three identified books and one support work');
   const closureProgress=await evaluate(`(()=>{const lesson=document.querySelector('article[data-study-id="lucas-1-6-cierre-practico"]');return {kind:lesson.dataset.kind,questions:lesson.querySelectorAll('details.study-question').length,checks:lesson.querySelectorAll('input[data-block-complete]').length,bibliographyChecks:lesson.querySelectorAll('details.study-bibliography input').length,completionButtons:lesson.querySelectorAll('[data-complete-class]').length}})()`);
   assert.deepEqual(closureProgress,{kind:'complement',questions:9,checks:9,bibliographyChecks:0,completionButtons:1},'Closure keeps its own progress without adding a numbered course video or bibliography checks');
   const video6FinalPrompts=await evaluate(`(()=>{const lesson=document.querySelector('article[data-study-id="video-6"]');return [...lesson.querySelectorAll('details.study-question')].map(block=>[...block.querySelectorAll('p')].filter(p=>/^(Para profundizar:|Para reflexionar:|Pregunta final:)/.test(p.textContent.trim())).map(p=>({text:p.textContent.trim(),insideList:!!p.closest('li')})))})()`);
   assert.equal(video6FinalPrompts.length,9);
   assert.ok(video6FinalPrompts.every(prompts=>prompts.length===1&&!prompts[0].insideList),'Each Video 6 closing prompt renders as its own paragraph outside the question list');
-  const normalizedNotes=Object.fromEntries(['censo-lucas-2'].map(id=>[id,panelByClass[id].panel.text.normalize('NFD').replace(/[\u0300-\u036f]/g,'')]));
-  assert.match(normalizedNotes['censo-lucas-2'],/uso en el video pendiente de verificacion/i);
-  assert.ok(panelByClass['video-1'].panel.text.includes('Bibliografía documentada para esta clase.'));
+  assert.match(panelByClass['censo-lucas-2'].panel.text,/Material de apoyo/);
+  assert.match(panelByClass['video-6'].panel.text,/Imes: páginas consultadas 22–23 y 108–110/);
+  assert.ok(renderedBibliography.classes.some(item=>item.panel?.text.includes('2.ª edición (IVP Academic).')));
+  assert.ok(renderedBibliography.classes.some(item=>item.panel?.text.includes('Consultado en Logos.')));
+  const publicBibliographyText=[generalPanel.text,...renderedBibliography.classes.flatMap(item=>item.panel?[item.panel.text]:[])].join('\n');
+  assert.doesNotMatch(publicBibliographyText,/pendiente|por confirmar|no verificad|no comprob|bibliograf[ií]a (?:documentada|confirmada)|bibliografia_por_video|Enlace aportado para/i,'Public bibliographies contain sources and useful reading notes without editorial workflow or uncertain references');
+  for(const [id,record] of Object.entries(bibliography).filter(([,record])=>record.kind==='pending')){
+    assert.ok(!generalIds.includes(id));
+    assert.ok(renderedBibliography.classes.every(item=>!idsInLists(item.panel).includes(id)),`Pending source ${id} stays internal`);
+  }
   assert.ok(panelByClass['video-1'].panel.lists[0][0].links.includes('https://a.co/d/0cG9P7IM'),'Video 1 preserves its documented book link');
-  for(const id of ['video-2'])assert.equal(idsInLists(panelByClass[id].panel).length,0,`${id} must not claim an unverified bibliography`);
-  assert.ok(renderedBibliography.classes.flatMap(item=>item.panel.lists.flat()).every(item=>item.text&&item.links.every(link=>link.startsWith('https://'))),'Rendered citations expose metadata and secure links');
+  assert.ok(renderedBibliography.classes.flatMap(item=>item.panel?.lists.flat()||[]).every(item=>item.text&&item.links.every(link=>link.startsWith('https://'))),'Rendered citations expose metadata and secure links');
 
   // Fresh deep link into class 3, then complete a question and the class explicitly.
   const third=initial.lessons.find(l=>l.title?.includes('Lucas 1–2')&&l.kind==='course');assert.ok(third);
@@ -172,11 +181,13 @@ try{
   const quotaScript=await send('Page.addScriptToEvaluateOnNewDocument',{source:`const set=Storage.prototype.setItem;Storage.prototype.setItem=function(k,v){if(k==='${key}')throw new DOMException('quota','QuotaExceededError');return set.call(this,k,v)};`});await send('Page.navigate',{url:origin+route});await pause(250);await evaluate(`document.querySelector('#study-class-selector').dispatchEvent(new Event('change',{bubbles:true}))`);await evaluate(`document.querySelector('#study-platform input[data-block-complete]').click()`);assert.ok(await evaluate(`document.querySelector('#study-storage-message').textContent.includes('no permite guardar')`));assert.ok(await evaluate(`document.querySelector('#study-platform input[data-block-complete]').checked`));await send('Page.removeScriptToEvaluateOnNewDocument',{identifier:quotaScript.identifier});await evaluate('localStorage.clear();location.reload()');await until(`!!document.querySelector('main#study-platform')&&document.querySelector('#study-class-selector')?.value`);
 
   // Responsive views and review screenshots. Full-page question captures include the progress panel.
-  const responsive=[];
-  for(const width of [360,768,1280]){
+  const responsive=[],responsiveWidths=[360,768,1280,1920,2560];
+  for(const width of responsiveWidths){
     await send('Emulation.setDeviceMetricsOverride',{width,height:1200,deviceScaleFactor:1,mobile:width<500});
-    const m=await evaluate(`(()=>{const app=document.querySelector('#study-platform'),progress=document.querySelector('#study-overall-progress')?.getBoundingClientRect();return {width:innerWidth,scrollWidth:document.documentElement.scrollWidth,bodyWidth:document.body.scrollWidth,iframes:[...app.querySelectorAll('iframe')].map(f=>{const r=f.getBoundingClientRect();return {width:r.width,height:r.height,ratio:r.width/r.height}}),progress:progress?.toJSON()}})()`);
+    const m=await evaluate(`(()=>{const app=document.querySelector('#study-platform'),parent=app.parentElement,parentStyle=getComputedStyle(parent),progress=document.querySelector('#study-overall-progress')?.getBoundingClientRect();return {width:innerWidth,availableWidth:document.documentElement.clientWidth,parentContentWidth:parent.clientWidth-parseFloat(parentStyle.paddingLeft)-parseFloat(parentStyle.paddingRight),mainWidth:app.getBoundingClientRect().width,scrollWidth:document.documentElement.scrollWidth,bodyWidth:document.body.scrollWidth,iframes:[...app.querySelectorAll('iframe')].map(f=>{const r=f.getBoundingClientRect();return {width:r.width,height:r.height,ratio:r.width/r.height}}),progress:progress?.toJSON()}})()`);
     assert.ok(m.scrollWidth<=m.width&&m.bodyWidth<=m.width,`No horizontal overflow at ${width}px`);assert.ok(m.iframes.length<=1);assert.ok(m.iframes.every(f=>Math.abs(f.ratio-16/9)<0.03));responsive.push(m);
+    assert.ok(Math.abs(m.mainWidth-m.parentContentWidth)<=1,`Guide fills its available parent content width at ${width}px`);
+    if(width>=1280)assert.ok(m.mainWidth>=m.availableWidth*0.96&&m.mainWidth<=m.availableWidth+1,`Guide uses the desktop viewport width without overflowing at ${width}px`);
     await evaluate('window.scrollTo(0,0)');await writeFile(resolve(out,`platform${width}-overview.png`),Buffer.from((await send('Page.captureScreenshot',{format:'png',captureBeyondViewport:false})).data,'base64'));
     await evaluate(`(()=>{const d=document.querySelector('#study-platform article.study-lesson:not([hidden]) details.study-question');if(!d.open)d.querySelector('summary').click()})()`);await pause(80);
     const layout=await send('Page.getLayoutMetrics'),height=Math.min(layout.cssContentSize.height,6000);const shot=await send('Page.captureScreenshot',{format:'png',captureBeyondViewport:true,clip:{x:0,y:0,width,height,scale:1}});await writeFile(resolve(out,`platform${width}-question-open-full.png`),Buffer.from(shot.data,'base64'));
@@ -219,6 +230,6 @@ try{
   // Other published output should stay unchanged except homepage title text for this page.
   if(otherBefore)for(const path of ['contacto/index.html','estudios/efesios-1-1-en-efeso/index.html']){const bytes=await readFile(resolve(root,path));assert.equal(createHash('sha256').update(bytes).digest('hex'),otherBefore[path],`Unrelated page output changed: ${path}`);}
   assert.ok(!requests.some(r=>r.method!=='GET'));assert.ok(!requests.some(r=>/supabase|auth0|firebase|mailgun|sendgrid/i.test(r.url)));assert.ok(!misses.includes('/styles/study-guide.css')&&!misses.includes('/js/study-guide.js')&&!misses.includes('/js/study-progress.js'),`Missing platform asset ${misses.join(', ')}`);
-  const report={route,canonical:initial.canonical,planned:initial.planned,lessons:initial.lessons,questionBlockCount:initial.blocks.length,originalQuestionIdsCompared:originalQuestionIds.length,originalHrefCount:new Set(originalLinks).size,baselineComparison:'older full-page archive skipped because it predates the latest Video 3 source update',bibliographyChecks:{catalogRecords:Object.keys(bibliography).length,classes:Object.fromEntries(renderedBibliography.classes.map(item=>[item.id,idsInLists(item.panel)])),general:idsInLists(generalPanel)},bibliographyViews,otherPageSnapshot:otherBefore?'unchanged':'not available in this checkout',actions:{selected:third.id,checked:firstBlock.id,explicitCompletion:true,reload:true,fullBrowserRestart:true,resume:true,undo:true,futureVersionProtected:true,corruptProtected:true,storageDenied:true,quota:true,futureIdsPreserved:true,concurrentStorageMerge:true,explicitRemovalNoResurrection:true},responsive,hashes,accessibility:nodes.filter(n=>['progressbar','checkbox','DisclosureTriangle'].includes(n.role)),noScript:{lessons:noScript.lessons,questions:noScript.questions},blockedExternal:[...new Set(external)],missingAssets:misses,screenshots:[360,768,1280].flatMap(w=>[`platform${w}-overview.png`,`platform${w}-question-open-full.png`]).concat(bibliographyViews.map(view=>view.screenshot))};
+  const report={route,canonical:initial.canonical,planned:initial.planned,lessons:initial.lessons,questionBlockCount:initial.blocks.length,originalQuestionIdsCompared:originalQuestionIds.length,originalHrefCount:new Set(originalLinks).size,baselineComparison:'older full-page archive skipped because it predates the latest Video 3 source update',bibliographyChecks:{catalogRecords:Object.keys(bibliography).length,classes:Object.fromEntries(renderedBibliography.classes.map(item=>[item.id,idsInLists(item.panel)])),general:idsInLists(generalPanel)},bibliographyViews,otherPageSnapshot:otherBefore?'unchanged':'not available in this checkout',actions:{selected:third.id,checked:firstBlock.id,explicitCompletion:true,reload:true,fullBrowserRestart:true,resume:true,undo:true,futureVersionProtected:true,corruptProtected:true,storageDenied:true,quota:true,futureIdsPreserved:true,concurrentStorageMerge:true,explicitRemovalNoResurrection:true},responsive,hashes,accessibility:nodes.filter(n=>['progressbar','checkbox','DisclosureTriangle'].includes(n.role)),noScript:{lessons:noScript.lessons,questions:noScript.questions},blockedExternal:[...new Set(external)],missingAssets:misses,screenshots:responsiveWidths.flatMap(w=>[`platform${w}-overview.png`,`platform${w}-question-open-full.png`]).concat(bibliographyViews.map(view=>view.screenshot))};
   await writeFile(resolve(out,'browser-results.json'),JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));
 }finally{activeSocket?.close();if(activeBrowser?.exitCode===null){activeBrowser.kill();await once(activeBrowser,'exit').catch(()=>{});}}

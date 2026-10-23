@@ -1,6 +1,6 @@
 +++
 bibliography = ["wright-bird-2019"]
-bibliography_note = "Bibliografía documentada para esta clase."
+bibliography_editorial_note = "Bibliografía documentada para esta clase."
 +++
 
 {{< study-video id="video-1" label="Video 1" title="¿Por qué estudiar el Nuevo Testamento?" passage="Introducción al Nuevo Testamento" anchor="-video-1--por-qué-estudiar-el-nuevo-testamento" video="tA5be2YH42A" >}}

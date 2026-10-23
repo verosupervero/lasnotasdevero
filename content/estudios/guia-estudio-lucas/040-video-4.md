@@ -1,6 +1,6 @@
 +++
 bibliography = ["wright-bird-2019", "keener-ivp-2014", "walton-keener-vida-2016"]
-bibliography_note = "Bibliografía confirmada por la autora para este video."
+bibliography_editorial_note = "Bibliografía confirmada por la autora para este video."
 +++
 
 {{< study-video id="video-4" label="Video 4" title="Lucas 3–4: Comienzo del ministerio de Jesús" passage="Lucas 3–4" anchor="-video-4--lucas-34-comienzo-del-ministerio-de-jesús" video="30aMdFgJ52I" >}}

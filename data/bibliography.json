@@ -34,7 +34,7 @@
         "url": "https://www.ivpress.com/the-ivp-bible-background-commentary-new-testament"
       },
       {
-        "label": "Enlace aportado para el Video 5",
+        "label": "Consultar (enlace alternativo)",
         "url": "https://a.co/d/09otXvHI"
       }
     ],
@@ -42,32 +42,38 @@
   },
   "walton-keener-vida-2016": {
     "kind": "book",
-    "authors": "Walton, John H., y Craig S. Keener, eds.",
-    "title": "Biblia de Estudio del Trasfondo Cultural de la Biblia",
-    "place": "Miami, FL",
-    "publisher": "Editorial Vida",
-    "year": 2016,
+    "authors": "Keener, Craig S., y John H. Walton, eds.",
+    "title": "RVR, Biblia de estudio trasfondo cultural: Explora el mundo antiguo de la Escritura",
+    "publisher": "Vida",
+    "year": 2025,
+    "note": "Reina Valera Revisada (RVR). ISBN 9780829772067.",
     "links": [
       {
         "label": "Consultar",
         "url": "https://a.co/d/0aL2JCSV"
+      },
+      {
+        "label": "Catálogo editorial",
+        "url": "https://dhjhkxawhe8q4.cloudfront.net/hcca-wp/wp-content/uploads/2025/01/24143837/WS25-Christian-Titles-Catalogue.pdf#page=36"
       }
     ],
-    "note": "Datos de la edición conservados del material original; edición pendiente de verificación."
+    "editorial_note": "Identificación resuelta: el enlace original https://a.co/d/0aL2JCSV redirige a https://www.amazon.com/dp/0829772065, correspondiente al ISBN 9780829772067. El catálogo editorial oficial, p. 36, confirma RVR, Biblia de estudio trasfondo cultural: Explora el mundo antiguo de la Escritura, Vida, 2 de septiembre de 2025; el título comercial completo agrega Tapa dura, Interior a color, Comfort Print. Fuentes: https://dhjhkxawhe8q4.cloudfront.net/hcca-wp/wp-content/uploads/2025/01/24143837/WS25-Christian-Titles-Catalogue.pdf#page=36 ; https://books.google.com/books?id=Aqz10AEACAAJ . El año anterior 2016 correspondía a la NIV inglesa de Zondervan y se corrige a 2025 para la edición española identificada. Se conserva el ID histórico walton-keener-vida-2016 para mantener las asociaciones existentes; su sufijo no expresa la fecha bibliográfica vigente. La referencia original de 2016 indicaba Miami, FL; no se verificó esa ciudad para la edición de 2025 y se conserva solo como antecedente interno."
   },
   "keener-mundo-hispano": {
-    "kind": "book",
+    "kind": "pending",
     "authors": "Keener, Craig S.",
     "title": "Biblia de estudio trasfondo cultural (Valera Revisada)",
     "publisher": "Mundo Hispano",
     "pages": "1595–1603",
-    "note": "Páginas según la bibliografía documentada para el video 3. Año, edición y enlace pendientes de verificación."
+    "editorial_note": "Título, edición y paginación pendientes de identificar: la referencia original atribuye pp. 1595–1603 a una Biblia de estudio de Mundo Hispano, mientras que el Comentario del contexto cultural de la Biblia: Nuevo Testamento registrado con ISBN 9780311030606 tiene 832 páginas. No se asume que sean la misma obra ni se reemplaza la referencia por el comentario. Fuentes: https://android.logos.com/product/173067/comentario-del-contexto-cultural-de-la-biblia-nuevo-testamento ; https://clclibros.com/product/comentario-contexto-cultural-de-biblia-nuevo-testamento . Se conservan los datos originales para revisión interna. La ficha oficial actual de Mundo Hispano identifica el Comentario del contexto cultural: Nuevo Testamento con ISBN 9780311030606 y 864 páginas: https://www.editorialmh.org/comentario-del-contexto-cultural-nuevo-testamento . El dato anterior de 832 páginas procede de fichas de terceros; ninguna de estas paginaciones acredita la referencia original a pp. 1595–1603. No se sustituye la obra utilizada por el comentario identificado."
   },
   "glahn-shepherds": {
     "kind": "article",
     "authors": "Glahn, Sandra",
     "title": "Did Shepherds in Bethlehem Include Females?",
+    "publisher": "Sandra Glahn’s Substack",
     "year": 2025,
+    "note": "12 de diciembre de 2025.",
     "links": [
       {
         "label": "Leer artículo",
@@ -79,7 +85,9 @@
     "kind": "article",
     "authors": "Green, Joel B.",
     "title": "Up, Down, In, Out: Luke's Gospel Turns the World Upside-Down—1",
+    "publisher": "Joel B. Green",
     "year": 2026,
+    "note": "6 de enero de 2026.",
     "links": [
       {
         "label": "Leer artículo",
@@ -91,6 +99,9 @@
     "kind": "article",
     "authors": "Keener, Craig S.",
     "title": "A Tale of Two Kings (Luke 2:1–20)",
+    "publisher": "Bible Backgrounds",
+    "year": 2017,
+    "note": "25 de diciembre de 2017.",
     "links": [
       {
         "label": "Leer artículo",
@@ -102,6 +113,9 @@
     "kind": "article",
     "authors": "Keener, Craig S.",
     "title": "Jesus and the Shepherds (Luke 2:1–14)",
+    "publisher": "Bible Backgrounds",
+    "year": 2022,
+    "note": "18 de diciembre de 2022.",
     "links": [
       {
         "label": "Leer artículo",
@@ -113,6 +127,9 @@
     "kind": "article",
     "authors": "Keener, Craig S.",
     "title": "Mary Kept All These Things in Her Heart (Luke 2:19) and Prophecies vs. Prophetic Declarations",
+    "publisher": "Bible Backgrounds",
+    "year": 2019,
+    "note": "24 de diciembre de 2019.",
     "links": [
       {
         "label": "Leer artículo",
@@ -124,7 +141,9 @@
     "kind": "article",
     "authors": "Bird, Michael F.",
     "title": "The Nativity, Skepticism, and Two Guys Named “Tom”",
+    "publisher": "Word from the Bird",
     "year": 2025,
+    "note": "23 de diciembre de 2025.",
     "links": [
       {
         "label": "Leer artículo",
@@ -149,12 +168,27 @@
     "title": "Lucas: Versículo a versículo",
     "publisher": "Editorial Tesoro Bíblico",
     "year": 2020,
-    "note": "Consultado en Logos."
+    "note": "Consultado en Logos.",
+    "links": [
+      {
+        "label": "Consultar en Logos",
+        "url": "https://es.logos.com/product/201757/lucas-versiculo-a-versiculo"
+      }
+    ]
   },
   "imes-portadores-de-su-nombre": {
     "kind": "book",
-    "authors": "Imes, Carmen",
-    "title": "Portadores de su nombre"
+    "authors": "Imes, Carmen Joy",
+    "title": "Portadores de su nombre: La importancia del Sinaí",
+    "place": "Salem, OR",
+    "publisher": "Publicaciones Kerigma",
+    "year": 2022,
+    "links": [
+      {
+        "label": "Editorial",
+        "url": "https://www.publicacioneskerigma.org/tienda/producto/portadores-de-su-nombre/"
+      }
+    ]
   },
   "bird-whispers-revolution-2025": {
     "kind": "book",
@@ -166,6 +200,10 @@
       {
         "label": "Consultar",
         "url": "https://books.google.com/books/about/Whispers_of_Revolution.html?id=6RNq0QEACAAJ"
+      },
+      {
+        "label": "Editorial",
+        "url": "https://bakeracademic.com/products/9781540970237_whispers-of-revolution"
       }
     ]
   },
@@ -173,7 +211,7 @@
     "kind": "pending",
     "authors": "Fee, Gordon D.",
     "title": "Libro sobre exégesis y espiritualidad (título por confirmar)",
-    "note": "Libro mostrado en el video. Título de la edición por confirmar visualmente; posiblemente Exégesis y espiritualidad: Escuchando al Espíritu en el texto bíblico.",
+    "editorial_note": "Libro mostrado en el video. Título de la edición por confirmar visualmente; posiblemente Exégesis y espiritualidad: Escuchando al Espíritu en el texto bíblico. Patmos confirma ese título como obra candidata, con ISBN impreso 9781646913152: https://www.editorialpatmos.com/exegesis-y-espiritualidad . La edición electrónica tiene ISBN distinto, 9781646913169, y fecha de lanzamiento 25 de marzo de 2024: https://ebooks.editorialpatmos.com/exegesis-y-espiritualidad . Estos datos identifican ediciones de la posible obra, sin confirmar que sea el ejemplar mostrado o utilizado.",
     "links": [
       {
         "label": "Referencia editorial de la posible obra",
@@ -185,7 +223,7 @@
     "kind": "pending",
     "authors": "Keener, Craig S.",
     "title": "Reflexión sobre milagros, sanidad y sufrimiento",
-    "note": "Fuente leída y comentada desde aproximadamente 42:00. Pendiente identificar el artículo y su enlace exactos a partir de la imagen del video o su descripción original."
+    "editorial_note": "Fuente leída y comentada desde aproximadamente 42:00. Pendiente identificar el artículo y su enlace exactos a partir de la imagen del video o su descripción original. Candidato identificado en la página del autor: When miracles don’t happen, 24 de agosto de 2013, https://craigkeener.com/when-miracles-dont-happen/ . Su temática coincide con las preguntas 8–9, pero esa coincidencia no confirma que sea el artículo leído; no se publica ni se sustituye la referencia sin verificar su uso."
   },
   "keener-miracles-2011": {
     "kind": "book",
@@ -193,7 +231,28 @@
     "title": "Miracles: The Credibility of the New Testament Accounts",
     "publisher": "Baker Academic",
     "year": 2011,
-    "note": "Recurso complementario; no identificado como el artículo leído en el cierre práctico de Lucas 1–6."
+    "note": "2 volúmenes.",
+    "links": [
+      {
+        "label": "Editorial",
+        "url": "https://bakeracademic.com/products/9780801039522_miracles"
+      }
+    ],
+    "editorial_note": "Recurso complementario; no identificado como el artículo leído en el cierre práctico de Lucas 1–6."
+  },
+  "keener-birth-jesus-2011": {
+    "kind": "article",
+    "authors": "Keener, Craig S.",
+    "title": "Historical information about the birth of Jesus — Luke 2:1-14",
+    "publisher": "Bible Backgrounds",
+    "year": 2011,
+    "note": "22 de agosto de 2011.",
+    "links": [
+      {
+        "label": "Leer artículo",
+        "url": "https://craigkeener.com/historical-information-about-the-birth-of-jesus-luke-21-14/"
+      }
+    ]
   },
   "huebner-census-2019": {
     "kind": "article",
@@ -204,6 +263,7 @@
     "year": 2019,
     "pages": "31–50",
     "doi": "10.1017/9781108556453.003",
+    "note": "Obra citada y examinada a través del artículo de Michael Bird.",
     "links": [
       {
         "label": "Capítulo en la editorial",

@@ -1,6 +1,6 @@
 +++
 bibliography = ["bird-early-christian-history", "keener-ivp-2014", "osborne-lucas-2020", "walton-keener-vida-2016"]
-bibliography_note = "Bibliografía confirmada por la autora para este video."
+bibliography_editorial_note = "Bibliografía confirmada por la autora para este video."
 +++
 
 {{< study-video id="video-5" label="Video 5" title="Lucas 5:1–6:11: Autoridad, comunidad y conflicto" passage="Lucas 5:1–6:11" anchor="video-5-lucas-5-1-6-11" video="n0BoSXnUtIc" >}}

@@ -1,7 +1,7 @@
 +++
-bibliography = ["huebner-census-2019", "keener-ivp-2014"]
-bibliography_note = "Fuentes identificadas en las preguntas y referencias del material complementario."
-bibliography_further_reading = ["bird-nativity-2025"]
+bibliography = ["bird-nativity-2025", "keener-birth-jesus-2011"]
+bibliography_editorial_note = "Corrección proporcionada por Vero: el artículo de Keener sobre el nacimiento de Jesús reemplaza la asociación anterior con su comentario IVP únicamente en esta clase. La obra de Huebner fue citada y examinada a través del artículo de Michael Bird."
+bibliography_support = ["huebner-census-2019"]
 +++
 
 {{< study-video id="censo-lucas-2" kind="complement" label="Estudio complementario" title="¿Fue real el censo de Lucas 2?" passage="Lucas 2:1–7" anchor="-estudio-complementario--fue-real-el-censo-de-lucas-2" video="mKwO-td0_NU" >}}

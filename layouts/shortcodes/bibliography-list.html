@@ -1,5 +1,5 @@
 {{- if eq (.Get "mode") "catalog" -}}
-{{- $groups := slice (dict "kind" "book" "title" "Libros y comentarios") (dict "kind" "article" "title" "Artículos y capítulos") (dict "kind" "channel" "title" "Recursos audiovisuales") (dict "kind" "pending" "title" "Fuentes pendientes de identificación") -}}
+{{- $groups := slice (dict "kind" "book" "title" "Libros y comentarios") (dict "kind" "article" "title" "Artículos y capítulos") (dict "kind" "channel" "title" "Recursos audiovisuales") -}}
 {{- $entries := slice -}}
 {{- range $id, $record := site.Data.bibliography -}}
 {{- if not (in (slice "book" "article" "channel" "pending") $record.kind) -}}

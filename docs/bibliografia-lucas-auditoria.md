@@ -63,17 +63,17 @@ Para asociar una referencia existente, agregar su ID al frontmatter del Markdown
 ```toml
 +++
 bibliography = ["keener-ivp-2014"]
-bibliography_note = "Fuente documentada en los materiales de esta clase."
+bibliography_editorial_note = "Fuente documentada en los materiales de esta clase."
 +++
 ```
 
-El texto de `bibliography_note` debe describir la evidencia real: descripción del video, referencia en la guía o transcripción identificable. No debe afirmar que se leyó una descripción de YouTube que no se pudo recuperar.
+El texto de `bibliography_editorial_note` describe la evidencia real y permanece interno: descripción del video, referencia en la guía o transcripción identificable. No debe afirmar que se leyó una descripción de YouTube que no se pudo recuperar. `bibliography_note` es público y se reserva para indicaciones útiles al lector, como las páginas consultadas; no publica estados de verificación ni procedencia del trabajo editorial. En el catálogo, `editorial_note` cumple la misma función interna y `note` conserva información pública como edición o consulta en Logos.
 
-Una recomendación cuyo uso no está confirmado va en `bibliography_further_reading`, como el artículo de Bird en el censo. Si no se identifica una obra, dejar `bibliography = []` y explicar lo pendiente en `bibliography_note`; no crear una referencia ficticia con un autor supuesto. El panel distingue las lecturas adicionales de las referencias documentadas.
+Una recomendación identificada puede publicarse en `bibliography_further_reading`, con el título «Para seguir investigando». El censo utiliza Bird como fuente documentada y Huebner como `bibliography_support`, pues el documento por video explicita la consulta indirecta a través de Bird. Si no se identifica una obra, conservar lo pendiente en `bibliography_editorial_note` o en las fichas internas `kind = "pending"`, sin publicar referencias incompletas ni avisos al lector. `bibliography_pending` permanece interno. Las clases sin fuentes identificadas no muestran un panel bibliográfico vacío.
 
 Para una fuente nueva, crear una ficha con un ID no utilizado y asociarla a la clase correspondiente. No reutilizar el ID de otra edición. El renderizador detiene el build si una clase menciona un ID inexistente, para evitar referencias desaparecidas por errores de escritura.
 
-`930-bibliografia.md` usa `{{< bibliography-list mode="catalog" >}}`: reúne automáticamente todas las fichas del catálogo, agrupadas por tipo y ordenadas por autor y título. No requiere mantener una lista de IDs adicional. Una corrección del catálogo se refleja tanto allí como en todas las clases que usan esa ficha. Las clases mantienen sus listas explícitas de IDs para documentar qué fuentes corresponden a cada estudio; incluir una obra en el catálogo general no implica que se haya utilizado en todas las clases.
+`930-bibliografia.md` usa `{{< bibliography-list mode="catalog" >}}`: reúne automáticamente las fichas identificadas del catálogo (`book`, `article`, `channel`), agrupadas por tipo y ordenadas por autor y título. Excluye `pending`, que sigue disponible internamente. No requiere mantener una lista de IDs adicional. Una corrección del catálogo se refleja tanto allí como en todas las clases que usan esa ficha. Las clases mantienen sus listas explícitas de IDs para documentar qué fuentes corresponden a cada estudio; incluir una obra en el catálogo general no implica que se haya utilizado en todas las clases.
 
 ## Verificación final
 
@@ -141,3 +141,70 @@ La revisión de `public/estudios/bibliografia_por_video_lucas.md` recuperó una 
 Se incorporó `wright-bird-2019` al frontmatter de `010-video-1.md`, retirando su aviso de obra pendiente. El documento recuperado está dentro de `public/`, que contiene salida generada: la asociación se mantiene ahora en el Markdown fuente de la clase y la ficha central, sin depender de conservar ese archivo generado en futuros builds. La tabla inicial permanece como registro histórico anterior a este hallazgo.
 
 En la ficha compartida se corrigió únicamente el orden de autoría a «Wright, N. T., y Michael F. Bird», conforme al documento recuperado y a la [ficha de Zondervan Academic](https://zondervanacademic.com/products/the-new-testament-in-its-world). El ID, los demás metadatos y todos los enlaces se conservaron. La corrección se refleja automáticamente en la bibliografía recomendada y en las clases que usan esa ficha; no modifica sus asociaciones ni atribuye otras obras al Video 1.
+
+## Actualización del 23 de octubre de 2026: información editorial interna
+
+Por indicación de Vero, el sitio público presenta únicamente las referencias identificadas y la información útil para consultarlas. Los avisos de verificación, procedencia y confirmación se conservaron en `bibliography_editorial_note` de las clases y `editorial_note` del catálogo, sin incluirlos en el HTML publicado. Las fichas de Fee y la reflexión de Keener siguen con `kind = "pending"` y conservan sus datos y asociaciones internas, pero no aparecen en las bibliografías públicas.
+
+El catálogo conserva 18 fichas y publica 16 referencias identificadas, en tres grupos: libros y comentarios, artículos y capítulos, recursos audiovisuales. El cierre práctico publica sus tres libros y una obra de apoyo; las clases sin bibliografía identificada no muestran un desplegable vacío. El censo conserva su lectura complementaria bajo «Para seguir investigando». No se modificaron las asociaciones existentes ni las preguntas, videos, anclas o identificadores de progreso.
+
+Se mantienen como notas públicas la segunda edición de Keener, la consulta de Osborne en Logos y las páginas de Imes usadas en la clase 6. El enlace alternativo de Keener conserva exactamente su URL; su rótulo editorial anterior «Enlace aportado para el Video 5» pasó a «Consultar (enlace alternativo)». La introducción de la bibliografía recomendada describe sus recursos sin narrar el proceso de edición.
+
+## Actualización del 23 de octubre de 2026: revisión de cada estudio
+
+Se releyó completo `public/estudios/bibliografia_por_video_lucas.md`, cuya copia de auditoría está en `.contact-test-output/lucas-auditoria-final/bibliografia-por-video-original.md`. Las asociaciones recuperadas quedan en el frontmatter fuente y no dependen del archivo generado de `public/`. El documento acredita asociaciones locales; no se presenta como una nueva consulta a las descripciones de YouTube.
+
+| Estudio | Referencias públicas tras la revisión | Evidencia y tratamiento interno |
+| --- | --- | --- |
+| Video 1 | Wright/Bird, *The New Testament in Its World* | Asociación explícita en el documento por video. |
+| Video 2 | Wright/Bird; Keener, *The IVP Bible Background Commentary* | Se recuperaron sus tres asociaciones explícitas del documento; Walton/Keener queda interno por la edición dudosa. El ID individual de YouTube sigue sin confirmarse. |
+| Video 3 | Wright/Bird; Keener IVP; artículos de Glahn, Green y los tres artículos de Keener | Documento por video y material de clase. Walton/Keener y la referencia Mundo Hispano quedan internas por identificación de edición pendiente. |
+| Censo | Bird, *The Nativity, Skepticism, and Two Guys Named “Tom”*; Keener IVP; Huebner como material de apoyo | El documento indica expresamente que la investigación de Huebner se comenta a partir de Bird; no se atribuye lectura directa del capítulo a ambos presentadores. |
+| Video 4 | Wright/Bird; Keener IVP | Bibliografía proporcionada por Vero y documento por video; Walton/Keener queda interno por edición dudosa. |
+| Video 5 | Canal de Bird; Keener IVP; Osborne | Referencias proporcionadas por Vero. El canal es un recurso audiovisual, sin atribuir un video particular. Walton/Keener queda interno. |
+| Video 6 | Imes; Keener IVP; Osborne | Referencias del adjunto; páginas de Imes específicas de esta clase. El apoyo Walton/Keener sigue asociado internamente, sin publicar una sección vacía. |
+| Cierre práctico | Bird, *Whispers of Revolution*; Wright/Bird; *Miracles* de Keener como apoyo | Referencias del adjunto. Walton/Keener, el posible libro de Fee y la reflexión de Keener no identificada permanecen internos. *Miracles* no se identifica como el artículo leído. |
+| Integración final | Sin panel bibliográfico | No se asignan fuentes adicionales ni referencias de futuros videos. |
+
+La ficha `walton-keener-vida-2016` conserva sus datos, URL e IDs asociados, pero pasa a `pending`: la referencia combina título español y Editorial Vida con 2016, mientras la [edición NIV de Zondervan](https://zondervanacademic.com/products/niv-cultural-backgrounds-study-bible-hardcover-red-letter-edition) corresponde a 2016 y la [muestra editorial española RVR de Vida](https://www.clcchile.com/fichas/9780829772067.9780829772067.pdf) registra 2025. No se sustituye la edición sin identificar el ejemplar utilizado.
+
+La ficha `keener-mundo-hispano` también pasa a `pending`, conservando el título y las páginas 1595–1603 originales: el comentario del Nuevo Testamento ISBN 9780311030606 registrado en [Logos](https://android.logos.com/product/173067/comentario-del-contexto-cultural-de-la-biblia-nuevo-testamento) y [CLC](https://clclibros.com/product/comentario-contexto-cultural-de-biblia-nuevo-testamento) tiene 832 páginas. No se asume que sea la misma obra ni se reemplaza una referencia por otra.
+
+El catálogo mantiene 18 fichas: 14 públicas (seis libros y comentarios, siete artículos y capítulos, un canal) y cuatro pendientes internas, incluidas las dos anteriores de Fee y la reflexión de Keener. Todos los metadatos y enlaces originales se conservaron. Las preguntas, sus 63 IDs, los videos y el progreso no se modificaron.
+
+## Actualización del 23 de octubre de 2026: corrección de fuentes del censo
+
+Vero precisó la bibliografía del censo: Bird, *The Nativity, Skepticism, and Two Guys Named “Tom”* (Word from the Bird, 23 de diciembre de 2025); Huebner, cuyo capítulo se citó y examinó a través de Bird; y el artículo de Keener [*Historical information about the birth of Jesus — Luke 2:1-14*](https://craigkeener.com/historical-information-about-the-birth-of-jesus-luke-21-14/) (Bible Backgrounds, 22 de agosto de 2011).
+
+Se agregó la ficha `keener-birth-jesus-2011` y se reemplazó únicamente la asociación del censo con `keener-ivp-2014`; el libro IVP permanece en el catálogo y en las otras clases que lo utilizan. La ficha de Bird incorpora el nombre de su publicación y la fecha. Huebner conserva sus metadatos, DOI y enlace, junto con la nota pública «Obra citada y examinada a través del artículo de Michael Bird», sin atribuir lectura directa. El catálogo pasa a 19 fichas, con 15 públicas y cuatro pendientes internas. No se modificaron preguntas, videos, anclas ni progreso.
+
+## Actualización del 23 de octubre de 2026: datos bibliográficos verificados
+
+Se completaron fichas existentes conservando sus IDs, asociaciones y enlaces anteriores. La revisión incorporó los siguientes datos de fuentes editoriales o páginas de los autores:
+
+- **Carmen Joy Imes:** título completo *Portadores de su nombre: La importancia del Sinaí*, Publicaciones Kerigma, Salem, OR, 2022, y [enlace editorial](https://www.publicacioneskerigma.org/tienda/producto/portadores-de-su-nombre/). La [biografía de la autora en Biola](https://www.biola.edu/directory/people/carmen-imes) confirma la edición española de 2022. Las páginas consultadas siguen en la clase, sin trasladarse a la ficha general.
+- **Grant R. Osborne:** se agregó el [enlace a la edición de Logos](https://es.logos.com/product/201757/lucas-versiculo-a-versiculo), conservando los datos de Editorial Tesoro Bíblico, 2020, y «Consultado en Logos».
+- **Keener, *Miracles*:** se agregó la [ficha oficial de Baker Academic](https://bakeracademic.com/products/9780801039522_miracles) y la indicación «2 volúmenes». El [extracto editorial](https://cdn-static.supadu.com/baker-academic-us/pdf/Excerpt_9780801039522.pdf) confirma 2011 y su presentación en dos volúmenes. La cautela sobre su diferencia respecto del artículo leído sigue interna.
+- **Bird, *Whispers of Revolution*:** se agregó el [enlace oficial de Baker Academic](https://bakeracademic.com/products/9781540970237_whispers-of-revolution), conservando el enlace de Google Books.
+- **Artículos de Keener en Bible Backgrounds:** [*A Tale of Two Kings*](https://craigkeener.com/a-tale-of-two-kings-luke-21-20-2/), 25 de diciembre de 2017; [*Jesus and the Shepherds*](https://craigkeener.com/jesus-and-the-shepherds-luke-21-14/), 18 de diciembre de 2022; [*Mary Kept All These Things in Her Heart*](https://craigkeener.com/mary-kept-all-these-things-in-her-heart-luke-219-and-prophecies-vs-prophetic-declarations/), 24 de diciembre de 2019. Se agregaron publicación, año y fecha sin alterar títulos ni URLs.
+- **Sandra Glahn:** [*Did Shepherds in Bethlehem Include Females?*](https://sandraglahn.substack.com/p/did-shepherds-in-bethlehem-include), Sandra Glahn’s Substack, 12 de diciembre de 2025.
+- **Joel B. Green:** [*Up, Down, In, Out: Luke's Gospel Turns the World Upside-Down—1*](https://joelbgreen.substack.com/p/up-down-in-and-out-turning-the-world), publicación del autor, 6 de enero de 2026.
+
+Las cuatro fichas pendientes permanecen internas y sin modificaciones en esta actualización. No se cambiaron preguntas, frontmatter, plantillas ni progreso.
+
+### Investigación adicional de las cuatro referencias internas
+
+Se identificaron datos de ediciones o artículos candidatos; ello no acredita por sí solo cuál se utilizó en el video. Las cuatro fichas conservan `kind = "pending"`, sus IDs, títulos, datos y enlaces anteriores. Los nuevos hallazgos se guardan únicamente en `editorial_note`, fuera del HTML público:
+
+- **Walton/Keener:** el [catálogo oficial de títulos cristianos de 2025](https://dhjhkxawhe8q4.cloudfront.net/hcca-wp/wp-content/uploads/2025/01/24143837/WS25-Christian-Titles-Catalogue.pdf), p. 36, confirma la edición española RVR de Vida de 2025, ISBN 9780829772067. Es distinta de la NIV inglesa de Zondervan de 2016. El enlace corto de Amazon no permitió identificar el ejemplar utilizado, de modo que no se reemplazan sus datos por los de otra edición.
+- **Mundo Hispano:** la [ficha oficial actual](https://www.editorialmh.org/comentario-del-contexto-cultural-nuevo-testamento) del comentario del Nuevo Testamento, ISBN 9780311030606, indica 864 páginas. Las 832 páginas registradas en la revisión anterior procedían de terceros; ninguna cifra permite identificar con seguridad la referencia original a pp. 1595–1603. La obra original sigue sin sustituirse.
+- **Gordon D. Fee:** [Patmos](https://www.editorialpatmos.com/exegesis-y-espiritualidad) confirma la obra candidata *Exégesis y espiritualidad: Escuchando al Espíritu en el texto bíblico*, ISBN impreso 9781646913152. La [edición electrónica](https://ebooks.editorialpatmos.com/exegesis-y-espiritualidad) tiene ISBN 9781646913169 y lanzamiento el 25 de marzo de 2024; esa fecha no se atribuye automáticamente al impreso. Falta confirmar que el ejemplar mostrado sea esta obra.
+- **Reflexión de Keener:** se localizó [*When miracles don’t happen*](https://craigkeener.com/when-miracles-dont-happen/), del 24 de agosto de 2013. Su temática coincide con las preguntas 8–9 del cierre práctico; sin identificación visual o documental de su uso, permanece como candidato interno y no reemplaza la referencia desconocida.
+
+### Corrección posterior: edición española de Walton/Keener identificada
+
+La nueva comprobación resolvió el enlace original `https://a.co/d/0aL2JCSV`: redirige a `https://www.amazon.com/dp/0829772065`, cuyo ISBN 9780829772067 corresponde a la edición española RVR de Vida de 2025. El [catálogo editorial oficial, p. 36](https://dhjhkxawhe8q4.cloudfront.net/hcca-wp/wp-content/uploads/2025/01/24143837/WS25-Christian-Titles-Catalogue.pdf#page=36) y [Google Books](https://books.google.com/books?id=Aqz10AEACAAJ) identifican *RVR, Biblia de estudio trasfondo cultural: Explora el mundo antiguo de la Escritura*, de Craig S. Keener y John H. Walton, con publicación el 2 de septiembre de 2025. Los descriptores comerciales «Tapa dura, Interior a color, Comfort Print» quedan en la nota interna.
+
+Se corrigieron autoría, título, editorial y año, se añadió la nota RVR/ISBN y el enlace del catálogo oficial, y la ficha volvió a `book`. El año 2016 de la ficha anterior correspondía a la edición NIV inglesa, no al ejemplar español identificado. Se conserva el ID histórico `walton-keener-vida-2016` y su enlace original para mantener las asociaciones: el sufijo del ID no representa la fecha bibliográfica actual.
+
+La corrección se refleja automáticamente en los videos 2–5, el material de apoyo del Video 6, el cierre práctico y la bibliografía recomendada, sin editar las asociaciones de sus Markdown. Esta comprobación reemplaza la incertidumbre sobre el enlace corto consignada en los apartados anteriores. El catálogo mantiene 19 fichas: 16 públicas y tres pendientes internas (Mundo Hispano, el posible libro de Fee y la reflexión de Keener sin identificar).

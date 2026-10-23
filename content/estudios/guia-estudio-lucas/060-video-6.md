@@ -1,7 +1,8 @@
 +++
 bibliography = ["imes-portadores-de-su-nombre", "keener-ivp-2014", "osborne-lucas-2020"]
 bibliography_support = ["walton-keener-vida-2016"]
-bibliography_note = "Fuentes utilizadas documentadas en el material de esta clase. Imes: páginas consultadas 22–23 y 108–110."
+bibliography_editorial_note = "Fuentes utilizadas documentadas en el material de esta clase. Imes: páginas consultadas 22–23 y 108–110."
+bibliography_note = "Imes: páginas consultadas 22–23 y 108–110."
 +++
 
 {{< study-video id="video-6" label="Video 6" title="Lucas 6:12–49: De oyentes a seguidores de Jesús" passage="Lucas 6:12–49" anchor="video-6-lucas-6-12-49" video="zoxk16AU3uw" >}}
