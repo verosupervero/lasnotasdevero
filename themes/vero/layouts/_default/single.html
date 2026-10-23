@@ -31,7 +31,11 @@
 			{{ if .TableOfContents }}
 			<section>
 			  <h2>Índice</h2>
-			  {{ .TableOfContents }}
+			  {{ if .HasShortcode "study-video" }}
+			    {{ partial "study-toc.html" . }}
+			  {{ else }}
+			    {{ .TableOfContents }}
+			  {{ end }}
 			</section>
 			{{ end }}
 

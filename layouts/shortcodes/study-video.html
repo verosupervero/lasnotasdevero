@@ -1,0 +1,19 @@
+{{- $id := .Get "id" -}}
+{{- $video := .Get "video" -}}
+<details class="study-video">
+  <summary>
+    <span class="study-anchor" id="{{ .Get "anchor" }}" aria-hidden="true"></span>
+    <h2 id="{{ $id }}"><span class="study-video-label">{{ .Get "label" }}</span><span class="study-video-title">{{ .Get "title" }}</span><span class="study-video-passage">{{ .Get "passage" }}</span></h2>
+    <span class="study-video-indicator" aria-hidden="true"></span>
+  </summary>
+  <div class="study-video-body">
+    {{- with $video }}
+    <div class="study-video-player">
+      <template><iframe src="https://www.youtube-nocookie.com/embed/{{ . }}" title="{{ $.Get "title" }}" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></template>
+      <noscript><iframe src="https://www.youtube-nocookie.com/embed/{{ . }}" title="{{ $.Get "title" }}" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></noscript>
+    </div>
+    <p><a href="https://www.youtube.com/watch?v={{ . }}">Ver en YouTube</a></p>
+    {{- end }}
+    {{ .Page.RenderString (dict "display" "block") .Inner }}
+  </div>
+</details>

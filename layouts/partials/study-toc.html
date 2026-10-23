@@ -1,0 +1,9 @@
+{{/* Only section headings: questions remain accessible without a huge sidebar. */}}
+<nav class="study-toc" aria-label="Índice de la guía">
+  <ul>
+    {{ range findRE `<h2 id="[^"]+"[^>]*>.*?</h2>` .Content }}
+      {{ $id := replaceRE `<h2 id="([^"]+)"[^>]*>.*` "$1" . }}
+      <li><a href="#{{ $id }}">{{ . | replaceRE `</span><span` "</span> <span" | plainify | htmlUnescape }}</a></li>
+    {{ end }}
+  </ul>
+</nav>

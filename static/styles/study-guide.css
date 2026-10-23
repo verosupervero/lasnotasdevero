@@ -1,0 +1,58 @@
+/* Study guide: reuse the site's petroleum green, gold and warm panels. */
+.study-video {
+  margin: 1.5rem 0;
+  border: 1px solid #d9cfb5;
+  border-radius: 10px;
+  background: #fffefb;
+  overflow-wrap: anywhere;
+}
+.study-video > summary {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 10px;
+  background: #f4f1e8;
+  color: #165c58;
+  cursor: pointer;
+  list-style: none;
+}
+.study-video > summary::-webkit-details-marker { display: none; }
+.article-content .study-video > summary h2 {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  color: #165c58;
+  font-size: 1.15rem;
+  line-height: 1.5;
+}
+.article-content .study-video > summary h2::after { content: none; }
+.study-video-label, .study-video-title, .study-video-passage { display: block; }
+.study-video-label { font-size: .85rem; font-weight: 700; }
+.study-video-passage { font-size: .9rem; font-weight: 400; }
+.study-video-indicator::before { content: "+"; font-size: 1.75rem; font-weight: 600; }
+.study-video[open] > summary { border-bottom: 2px solid #c2a360; border-radius: 10px 10px 0 0; }
+.study-video[open] > summary .study-video-indicator::before { content: "−"; }
+.study-video > summary:hover { background: #ece7d9; }
+.study-video-body { padding: 1rem; }
+.study-video-body > :last-child { margin-bottom: 0; }
+.study-video-player { position: relative; width: 100%; aspect-ratio: 16 / 9; margin-bottom: 1rem; background: #f4f1e8; }
+.study-video-player iframe { position: absolute; inset: 0; display: block; width: 100%; height: 100%; border: 0; }
+.study-video a { color: #165c58; }
+.study-video summary:focus-visible, .study-video a:focus-visible, .study-toc a:focus-visible {
+  outline: 3px solid #6654c0;
+  outline-offset: 3px;
+}
+.study-video h2, .study-video h3, .study-anchor, #integracion { scroll-margin-top: 1.5rem; }
+.study-video > summary > .study-anchor { position: absolute; top: 0; }
+.study-toc ul { padding-left: 1.25rem; }
+.study-toc a { overflow-wrap: anywhere; }
+@media screen and (min-width: 768px) {
+  .study-video > summary, .study-video-body { padding: 1.25rem; }
+}
+@media print {
+  .study-video > .study-video-body { display: block !important; }
+  .study-video-player, .study-video-indicator { display: none; }
+}
