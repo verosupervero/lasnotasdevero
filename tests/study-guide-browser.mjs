@@ -32,7 +32,7 @@ const expectedBibliography={
   'video-4':['wright-bird-2019','keener-ivp-2014','walton-keener-vida-2016'],
   'video-3':['wright-bird-2019','keener-ivp-2014','walton-keener-vida-2016','keener-mundo-hispano','glahn-shepherds','green-up-down','keener-two-kings','keener-shepherds','keener-mary'],
   'censo-lucas-2':['huebner-census-2019','keener-ivp-2014','bird-nativity-2025'],
-  general:['wright-bird-2019','keener-ivp-2014','walton-keener-vida-2016']
+  general:Object.entries(bibliography).map(([id])=>id)
 };
 await mkdir(out,{recursive:true});
 const browserPath=process.env.LUCAS_BROWSER||'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe';
@@ -90,14 +90,24 @@ try{
   assert.equal(content.ids.length,new Set(content.ids).size,'Unique generated IDs');
 
   const renderedBibliography=await evaluate(`(()=>{const lessons=[...document.querySelectorAll('#study-content article.study-lesson')],panelData=el=>({summary:el.querySelector('summary')?.textContent.trim(),open:el.open,lists:[...el.querySelectorAll('ul.bibliography-list')].map(list=>[...list.querySelectorAll('li[data-bibliography-id]')].map(item=>({id:item.dataset.bibliographyId,text:item.textContent.trim(),links:[...item.querySelectorAll('a[href]')].map(a=>a.href)}))),text:el.textContent});return {classes:lessons.map(lesson=>{const panel=lesson.querySelector('details.study-bibliography'),questions=[...lesson.querySelectorAll('details.study-question')],complete=lesson.querySelector('[data-complete-class]');return {id:lesson.dataset.studyId,panel:panel&&panelData(panel),placement:!!panel&&!!complete&&questions.at(-1).compareDocumentPosition(panel)&Node.DOCUMENT_POSITION_FOLLOWING&&panel.compareDocumentPosition(complete)&Node.DOCUMENT_POSITION_FOLLOWING}}),general:[...document.querySelectorAll('details.study-resource')].filter(el=>!el.closest('article.study-lesson')).map(panelData)}})()`);
-  assert.equal(Object.keys(bibliography).length,18);assert.ok(Object.entries(bibliography).every(([id,item])=>id&&item.authors&&item.title),'Every central catalog item needs stable ID, author and title');
+  assert.ok(Object.keys(bibliography).length>0);assert.ok(Object.entries(bibliography).every(([id,item])=>id&&item.authors&&item.title&&['book','article','channel','pending'].includes(item.kind)),'Every central catalog item needs stable ID, author, title and recognized kind');
   const panelByClass=Object.fromEntries(renderedBibliography.classes.map(item=>[item.id,item]));
   const generalPanel=renderedBibliography.general.find(panel=>panel.summary?.toLowerCase().includes('bibliograf'));
   assert.ok(generalPanel&&!generalPanel.open,'General bibliography is a closed native disclosure');
   assert.ok(renderedBibliography.classes.every(item=>item.panel&&!item.panel.open&&item.placement),'Each class bibliography is closed and follows its questions before class completion');
   const idsInLists=panel=>panel.lists.flatMap(list=>list.map(item=>item.id));
   for(const [id,expected] of Object.entries(expectedBibliography).filter(([id])=>id!=='general'))assert.deepEqual(idsInLists(panelByClass[id].panel),expected,`Exact references for ${id}`);
-  assert.deepEqual(idsInLists(generalPanel),expectedBibliography.general,'General bibliography uses the shared three-record list');
+  const generalIds=idsInLists(generalPanel);
+  assert.deepEqual([...generalIds].sort(),[...expectedBibliography.general].sort(),'General bibliography includes every catalog entry exactly once');
+  assert.equal(new Set(generalIds).size,generalIds.length,'General bibliography never duplicates a catalog record');
+  const generalGroups=await evaluate(`(()=>{const panel=[...document.querySelectorAll('details.study-resource')].find(p=>p.querySelector('summary')?.textContent.toLowerCase().includes('bibliograf'));return [...panel.querySelectorAll('h3')].map(h=>({heading:h.textContent.trim(),ids:[...h.nextElementSibling.querySelectorAll('li[data-bibliography-id]')].map(li=>li.dataset.bibliographyId)}))})()`);
+  assert.deepEqual(generalGroups.map(group=>group.heading),['Libros y comentarios','Artículos y capítulos','Recursos audiovisuales','Fuentes pendientes de identificación']);
+  assert.deepEqual(generalGroups.map(group=>group.ids.length),['book','article','channel','pending'].map(kind=>Object.values(bibliography).filter(record=>record.kind===kind).length));
+  for(const [index,kind] of ['book','article','channel','pending'].entries()){
+    const sorted=Object.entries(bibliography).filter(([,record])=>record.kind===kind).map(([id,record])=>({id,key:record.authors.toLowerCase()+'|'+record.title.toLowerCase()+'|'+id})).sort((a,b)=>a.key<b.key?-1:a.key>b.key?1:0).map(record=>record.id);
+    assert.deepEqual(generalGroups[index].ids,sorted,`General ${kind} entries sort by author and title`);
+  }
+  assert.ok(!generalPanel.text.includes('<ul')&&!generalPanel.text.includes('<li'),'General bibliography renders HTML lists without escaped markup');
   assert.equal(panelByClass['censo-lucas-2'].panel.lists.length,2,'Census further reading is labeled and kept separate');
   assert.equal(panelByClass['video-6'].panel.lists.length,2,'Video 6 support material is kept separate from its used sources');
   assert.deepEqual(panelByClass['video-6'].panel.lists[0].map(item=>item.id),expectedBibliography['video-6'].slice(0,3),'Video 6 lists exactly three used sources');

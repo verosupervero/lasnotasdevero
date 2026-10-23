@@ -1,1 +1,22 @@
+{{- if eq (.Get "mode") "catalog" -}}
+{{- $groups := slice (dict "kind" "book" "title" "Libros y comentarios") (dict "kind" "article" "title" "Artículos y capítulos") (dict "kind" "channel" "title" "Recursos audiovisuales") (dict "kind" "pending" "title" "Fuentes pendientes de identificación") -}}
+{{- $entries := slice -}}
+{{- range $id, $record := site.Data.bibliography -}}
+{{- if not (in (slice "book" "article" "channel" "pending") $record.kind) -}}
+{{- errorf "La referencia bibliográfica %s necesita kind: book, article, channel o pending para incluirse en el catálogo." $id -}}
+{{- end -}}
+{{- $entries = $entries | append (dict "id" $id "kind" $record.kind "sortKey" (printf "%s|%s|%s" (lower $record.authors) (lower $record.title) $id)) -}}
+{{- end -}}
+{{- range $groups -}}
+{{- $ids := slice -}}
+{{- range sort (where $entries "kind" .kind) "sortKey" -}}
+{{- $ids = $ids | append .id -}}
+{{- end -}}
+{{- if $ids }}
+<h3>{{ .title }}</h3>
+{{ partial "bibliography-list.html" (dict "ids" $ids) }}
+{{ end -}}
+{{- end -}}
+{{- else -}}
 {{- partial "bibliography-list.html" (dict "ids" .Page.Params.bibliography) -}}
+{{- end -}}

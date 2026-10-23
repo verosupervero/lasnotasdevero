@@ -1,5 +1,6 @@
 {
   "wright-bird-2019": {
+    "kind": "book",
     "authors": "Bird, Michael F., y N. T. Wright",
     "title": "The New Testament in Its World: An Introduction to the History, Literature, and Theology of the First Christians",
     "place": "Grand Rapids, MI",
@@ -17,6 +18,7 @@
     ]
   },
   "keener-ivp-2014": {
+    "kind": "book",
     "authors": "Keener, Craig S.",
     "title": "The IVP Bible Background Commentary: New Testament",
     "place": "Downers Grove, IL",
@@ -39,6 +41,7 @@
     "note": "2.ª edición (IVP Academic)."
   },
   "walton-keener-vida-2016": {
+    "kind": "book",
     "authors": "Walton, John H., y Craig S. Keener, eds.",
     "title": "Biblia de Estudio del Trasfondo Cultural de la Biblia",
     "place": "Miami, FL",
@@ -53,6 +56,7 @@
     "note": "Datos de la edición conservados del material original; edición pendiente de verificación."
   },
   "keener-mundo-hispano": {
+    "kind": "book",
     "authors": "Keener, Craig S.",
     "title": "Biblia de estudio trasfondo cultural (Valera Revisada)",
     "publisher": "Mundo Hispano",
@@ -60,6 +64,7 @@
     "note": "Páginas según la bibliografía documentada para el video 3. Año, edición y enlace pendientes de verificación."
   },
   "glahn-shepherds": {
+    "kind": "article",
     "authors": "Glahn, Sandra",
     "title": "Did Shepherds in Bethlehem Include Females?",
     "year": 2025,
@@ -71,6 +76,7 @@
     ]
   },
   "green-up-down": {
+    "kind": "article",
     "authors": "Green, Joel B.",
     "title": "Up, Down, In, Out: Luke's Gospel Turns the World Upside-Down—1",
     "year": 2026,
@@ -82,6 +88,7 @@
     ]
   },
   "keener-two-kings": {
+    "kind": "article",
     "authors": "Keener, Craig S.",
     "title": "A Tale of Two Kings (Luke 2:1–20)",
     "links": [
@@ -92,6 +99,7 @@
     ]
   },
   "keener-shepherds": {
+    "kind": "article",
     "authors": "Keener, Craig S.",
     "title": "Jesus and the Shepherds (Luke 2:1–14)",
     "links": [
@@ -102,6 +110,7 @@
     ]
   },
   "keener-mary": {
+    "kind": "article",
     "authors": "Keener, Craig S.",
     "title": "Mary Kept All These Things in Her Heart (Luke 2:19) and Prophecies vs. Prophetic Declarations",
     "links": [
@@ -112,6 +121,7 @@
     ]
   },
   "bird-nativity-2025": {
+    "kind": "article",
     "authors": "Bird, Michael F.",
     "title": "The Nativity, Skepticism, and Two Guys Named “Tom”",
     "year": 2025,
@@ -123,6 +133,7 @@
     ]
   },
   "bird-early-christian-history": {
+    "kind": "channel",
     "authors": "Bird, Michael F.",
     "title": "Canal de YouTube",
     "links": [
@@ -133,6 +144,7 @@
     ]
   },
   "osborne-lucas-2020": {
+    "kind": "book",
     "authors": "Osborne, Grant R.",
     "title": "Lucas: Versículo a versículo",
     "publisher": "Editorial Tesoro Bíblico",
@@ -140,10 +152,12 @@
     "note": "Consultado en Logos."
   },
   "imes-portadores-de-su-nombre": {
+    "kind": "book",
     "authors": "Imes, Carmen",
     "title": "Portadores de su nombre"
   },
   "bird-whispers-revolution-2025": {
+    "kind": "book",
     "authors": "Bird, Michael F.",
     "title": "Whispers of Revolution: Jesus and the Coming of God as King",
     "publisher": "Baker Academic",
@@ -156,6 +170,7 @@
     ]
   },
   "fee-exegesis-espiritualidad-por-confirmar": {
+    "kind": "pending",
     "authors": "Fee, Gordon D.",
     "title": "Libro sobre exégesis y espiritualidad (título por confirmar)",
     "note": "Libro mostrado en el video. Título de la edición por confirmar visualmente; posiblemente Exégesis y espiritualidad: Escuchando al Espíritu en el texto bíblico.",
@@ -167,11 +182,13 @@
     ]
   },
   "keener-reflexion-milagros-por-identificar": {
+    "kind": "pending",
     "authors": "Keener, Craig S.",
     "title": "Reflexión sobre milagros, sanidad y sufrimiento",
     "note": "Fuente leída y comentada desde aproximadamente 42:00. Pendiente identificar el artículo y su enlace exactos a partir de la imagen del video o su descripción original."
   },
   "keener-miracles-2011": {
+    "kind": "book",
     "authors": "Keener, Craig S.",
     "title": "Miracles: The Credibility of the New Testament Accounts",
     "publisher": "Baker Academic",
@@ -179,6 +196,7 @@
     "note": "Recurso complementario; no identificado como el artículo leído en el cierre práctico de Lucas 1–6."
   },
   "huebner-census-2019": {
+    "kind": "article",
     "authors": "Huebner, Sabine R.",
     "title": "“In those days a decree went out…”: The Herodian Kingdom and the Augustan Provincial Census System",
     "container": "Papyri and the Social World of the New Testament",

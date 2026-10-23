@@ -56,7 +56,7 @@ Se informó previamente a Vero del traslado de las tres referencias generales al
 
 ## Mantener y ampliar la bibliografía
 
-Para corregir una obra, editar su ficha en `data/bibliography.json`. Cada ID permanece estable aunque cambien la ortografía del autor, el título, un enlace o un dato editorial. Los campos disponibles son `authors`, `title`, `publisher`, `place`, `year`, `container`, `pages`, `doi`, `links` y `note`. Autor y título son imprescindibles; los demás se completan solo cuando se conocen. `links` es una lista de objetos con `label` y `url`, para conservar tanto enlaces registrados como fichas editoriales.
+Para corregir una obra, editar su ficha en `data/bibliography.json`. Cada ID permanece estable aunque cambien la ortografía del autor, el título, un enlace o un dato editorial. Los campos disponibles son `authors`, `title`, `kind`, `publisher`, `place`, `year`, `container`, `pages`, `doi`, `links` y `note`. Autor, título y tipo (`kind`) son imprescindibles; los demás se completan solo cuando se conocen. `links` es una lista de objetos con `label` y `url`, para conservar tanto enlaces registrados como fichas editoriales. Los tipos son `book` (libro o comentario), `article` (artículo o capítulo), `channel` (recurso audiovisual) y `pending` (fuente pendiente de identificación).
 
 Para asociar una referencia existente, agregar su ID al frontmatter del Markdown de la clase. Por ejemplo, **solo si existe evidencia de uso de esa obra**:
 
@@ -73,7 +73,7 @@ Una recomendación cuyo uso no está confirmado va en `bibliography_further_read
 
 Para una fuente nueva, crear una ficha con un ID no utilizado y asociarla a la clase correspondiente. No reutilizar el ID de otra edición. El renderizador detiene el build si una clase menciona un ID inexistente, para evitar referencias desaparecidas por errores de escritura.
 
-Los IDs de la bibliografía general se mantienen en `930-bibliografia.md`. Una corrección del catálogo se refleja tanto allí como en todas las clases que usan esa ficha. La ficha se escribe una sola vez; las listas de IDs expresan qué obras corresponden a cada apartado.
+`930-bibliografia.md` usa `{{< bibliography-list mode="catalog" >}}`: reúne automáticamente todas las fichas del catálogo, agrupadas por tipo y ordenadas por autor y título. No requiere mantener una lista de IDs adicional. Una corrección del catálogo se refleja tanto allí como en todas las clases que usan esa ficha. Las clases mantienen sus listas explícitas de IDs para documentar qué fuentes corresponden a cada estudio; incluir una obra en el catálogo general no implica que se haya utilizado en todas las clases.
 
 ## Verificación final
 
@@ -125,3 +125,11 @@ La bibliografía conserva tres grupos dentro del desplegable cerrado:
 - **Material de apoyo:** Keener, *Miracles: The Credibility of the New Testament Accounts* (Baker Academic, 2011), en la nueva ficha `keener-miracles-2011`. No se identifica este libro como el artículo leído ni se agrega un enlace no proporcionado.
 
 Los datos nuevos proceden del adjunto de Vero y no se presentan como verificados independientemente. Las 14 fichas anteriores y los IDs de la bibliografía general se conservan. El campo opcional `bibliography_pending` muestra las fuentes pendientes en una sección diferenciada, sin casillas ni participación en el progreso.
+
+## Actualización del 23 de octubre de 2026: bibliografía recomendada completa
+
+La sección «Bibliografía recomendada» reúne ahora las 18 fichas del catálogo: ocho libros y comentarios, siete artículos y capítulos, un recurso audiovisual y dos fuentes pendientes de identificación. Cada ficha aparece una sola vez, agrupada por tipo y ordenada alfabéticamente por autor y título. Se conservaron todos sus datos, enlaces y avisos; únicamente se agregó el campo `kind` para clasificarlas.
+
+La lista general se genera automáticamente desde `data/bibliography.json`, sin repetir 18 IDs en el Markdown. Las futuras fichas aparecen al completar su tipo y sus datos; un tipo ausente o desconocido produce un error de build que identifica la ficha para evitar omisiones silenciosas. El modo habitual del shortcode conserva sus asociaciones explícitas; el modo `catalog` se utiliza solo en la bibliografía recomendada.
+
+Las fuentes pendientes siguen diferenciadas y las notas preservan sus límites de identificación. Las referencias por clase, los materiales de apoyo, las preguntas y el progreso conservan su comportamiento. Reunir el catálogo general no atribuye sus obras a todas las clases.

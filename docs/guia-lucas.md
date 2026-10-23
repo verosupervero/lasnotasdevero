@@ -14,7 +14,7 @@ Para sumar una clase:
 2. Asignar un `id` nuevo, permanente y único, por ejemplo `video-7`, y completar el título, etiqueta y pasaje reales.
 3. Agregar `video` solo cuando se haya confirmado el ID de YouTube. Si falta, dejar un enlace verdadero a la playlist dentro del contenido y un comentario TODO.
 4. Escribir los grupos de preguntas con `study-question`, cada uno con su propio `id` semántico y permanente, `title` real y `anchor` único para su encabezado. Conservar el texto completo, sus listas, enlaces y bibliografía.
-5. Asociar únicamente las referencias documentadas para esa clase mediante sus IDs en `bibliography`; no heredar automáticamente la lista de la clase copiada. Las fichas completas se mantienen en `data/bibliography.json`. Ver [auditoría e instrucciones bibliográficas](bibliografia-lucas-auditoria.md).
+5. Asociar únicamente las referencias documentadas para esa clase mediante sus IDs en `bibliography`; no heredar automáticamente la lista de la clase copiada. Las fichas completas se mantienen en `data/bibliography.json`. Cada ficha necesita `kind` (`book`, `article`, `channel` o `pending`): la bibliografía recomendada reúne automáticamente todo el catálogo por tipo y orden alfabético de autor y título. Agregar una ficha no la asigna a ninguna clase. Ver [auditoría e instrucciones bibliográficas](bibliografia-lucas-auditoria.md).
 6. Ejecutar el build y comprobar el selector, las preguntas y la vista móvil.
 
 Los archivos actuales son:
