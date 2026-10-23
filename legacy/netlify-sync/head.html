@@ -1,0 +1,110 @@
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {{- $privateStudy := and (eq .Layout "study-guide") site.Params.lucas_sync_enabled -}}
+  {{ if $privateStudy }}
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; connect-src 'self'; frame-src https://www.youtube-nocookie.com https://www.youtube.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; object-src 'none'; base-uri 'none'; form-action 'self'; worker-src 'none'; upgrade-insecure-requests">
+  <meta name="referrer" content="no-referrer">
+  {{ end }}
+
+  <!-- Estilos -->
+  {{ if eq .Layout "contacto" }}
+  <link rel="icon" type="image/png" href="{{ "logo.png" | relURL }}">
+  <link rel="stylesheet" href="{{ "styles/contact-base.css" | relURL }}">
+  {{ else if $privateStudy }}
+  <link rel="stylesheet" href="{{ "styles/main.css" | relURL }}">
+  {{ else }}
+  <link rel="stylesheet" href="{{ absURL `styles/main.css` }}">
+  {{ end }}
+  {{ if eq .Layout "contacto" }}
+  <link rel="stylesheet" href="{{ "styles/style.css" | relURL }}">
+  <link rel="stylesheet" href="{{ "styles/print.css" | relURL }}" media="print">
+  {{ else if $privateStudy }}
+  <link rel="stylesheet" href="{{ "styles/style.css" | relURL }}">
+  <link rel="stylesheet" href="{{ "styles/print.css" | relURL }}" media="print">
+  {{ else }}
+  <link rel="stylesheet" href="{{ absURL `styles/style.css` }}">
+  <link rel="stylesheet" href="{{ absURL `styles/print.css` }}" media="print">
+  {{ end }}
+  {{ if or (eq .Layout "study-guide") (.HasShortcode "study-video") }}
+  <link rel="stylesheet" href="{{ "styles/study-guide.css" | relURL }}">
+  <script src="{{ "js/study-guide.js" | relURL }}" type="module"></script>
+  {{ end }}
+  {{ if ne .Layout "contacto" }}
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600;1,700;1,800&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  {{ end }}
+  <link rel="canonical" href="{{ .Permalink | replace "https://lasnotasdevero.com" "https://www.lasnotasdevero.com" }}">
+
+
+  <!-- Título dinámico -->
+  <title>{{ if .Title }}{{ .Title }} | Las Notas de Vero{{ else }}Las Notas de Vero{{ end }}</title>
+
+  
+  {{/* =========================
+     META BÁSICAS + OG + TW
+     ========================= */}}
+
+{{ $isPage := .IsPage }}
+{{ $isHome := .IsHome }}
+{{ $desc   := .Params.description | default "Teología bíblica y ciencias bíblicas, con estudios de exégesis, contexto histórico-cultural y recursos para acercar la investigación bíblica a la iglesia y a quienes leen la Biblia hoy." }}
+{{ $image  := .Params.image | default "/images/default.jpg" }}
+{{ $imgAbs := $image | absURL }}
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Title (Hugo ya suele renderizar <title> aparte; si no, úsalo aquí) -->
+<title>{{ if $isPage }}{{ .Title }} – {{ .Site.Title }}{{ else }}{{ .Site.Title }}{{ with .Site.Params.tagline }} – {{ . }}{{ end }}{{ end }}</title>
+
+<!-- Description -->
+<meta name="description" content="{{ $desc }}">
+
+<!-- Canonical (CRÍTICO: que apunte al post, no a la home) -->
+<link rel="canonical" href="{{ .Permalink }}">
+
+<!-- Open Graph -->
+<meta property="og:site_name" content="{{ .Site.Title }}">
+<meta property="og:locale" content="{{ .Site.Language.Lang | default "es_ES" }}">
+<meta property="og:type" content="{{ if $isPage }}article{{ else }}website{{ end }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:title" content="{{ if $isPage }}{{ .Title }}{{ else }}{{ .Site.Title }}{{ end }}">
+<meta property="og:description" content="{{ $desc }}">
+<meta property="og:image" content="{{ $imgAbs }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+{{ if $isPage }}
+  {{ with .PublishDate }}<meta property="article:published_time" content="{{ .UTC.Format "2006-01-02T15:04:05Z07:00" }}">{{ end }}
+  {{ with .Lastmod }}<meta property="article:modified_time" content="{{ .UTC.Format "2006-01-02T15:04:05Z07:00" }}">{{ end }}
+  {{ with .Params.tags }}
+    {{ range . }}<meta property="article:tag" content="{{ . }}">{{ end }}
+  {{ end }}
+{{ end }}
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ if $isPage }}{{ .Title }}{{ else }}{{ .Site.Title }}{{ end }}">
+<meta name="twitter:description" content="{{ $desc }}">
+<meta name="twitter:image" content="{{ $imgAbs }}">
+<meta name="twitter:url" content="{{ .Permalink }}">
+
+
+  <!-- RefTagger -->
+  {{ if and (ne .Layout "contacto") (not $privateStudy) }}
+  <script>
+    var refTagger = {
+      settings: {
+        bibleVersion: "LBLA95"
+      }
+    };
+    (function(d, t) {
+      var n = d.querySelector("[nonce]");
+      refTagger.settings.nonce = n && (n.nonce || n.getAttribute("nonce"));
+      var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
+      g.src = "https://api.reftagger.com/v2/RefTagger.es.js";
+      g.nonce = refTagger.settings.nonce;
+      s.parentNode.insertBefore(g, s);
+    }(document, "script"));
+  </script>
+  {{ end }}
+</head>

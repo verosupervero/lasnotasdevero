@@ -25,3 +25,22 @@ Thumbs.db
 # Backup files
 *~
 *.bak
+
+# Private Lucas synchronization credentials, encrypted backups and generated manifests
+/.lucas-private/
+/.env
+/.env.*
+!/.env.example
+/netlify/generated/
+
+# Firebase bundles, emulator dependencies and private local runtime state
+/static/js/study-firebase.bundle.js
+/static/js/study-firebase.LICENSE.txt
+/static/js/vendor/html2canvas-1.4.1.min.js
+/static/js/vendor/html2canvas-1.4.1.LICENSE.txt
+/firebase/generated/
+/tools/firebase/node_modules/
+/tools/firebase/.cache/
+/firebase/*-debug.log
+/firebase/.firebase/
+/tools/firebase/*-debug.log

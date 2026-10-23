@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'self'; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'">
+  <title>Mi cuenta · Las Notas de Vero</title>
+  <script src="/js/study-auth-callback.js" defer></script>
+  <link rel="stylesheet" href="/styles/study-account.css">
+</head>
+<body>
+  <main>
+    <h1>Mi cuenta</h1>
+    <p id="account-result" role="status" aria-live="polite">Comprobando el enlace de tu correo…</p>
+    <form id="account-password" hidden>
+      <label for="new-password">Nueva contraseña (mínimo 12 caracteres)</label>
+      <input id="new-password" name="password" type="password" autocomplete="new-password" minlength="12" maxlength="128" required>
+      <button type="submit">Guardar contraseña</button>
+    </form>
+    <p><a href="/estudios/guia-estudio-lucas/">Volver a la Guía de Lucas</a></p>
+    <noscript>Activá JavaScript para confirmar tu cuenta. Este enlace no se comparte con otros servicios.</noscript>
+  </main>
+</body>
+</html>

@@ -3,19 +3,32 @@
   "private": true,
   "type": "module",
   "engines": {
-    "node": ">=22"
+    "node": ">=22.12.0"
   },
   "scripts": {
+    "build:lucas": "node scripts/build-lucas-catalog.mjs",
+    "test:lucas-sync": "npm run build:lucas && node --import ./tests/helpers/forbid-network.mjs --test tests/lucas-no-network.test.mjs tests/lucas-sync-server.test.mjs tests/lucas-sync-client.test.mjs tests/lucas-backup.test.mjs",
     "build:contact": "node scripts/build-contact.mjs",
     "test:contact": "node --test tests/contact.test.mjs",
-    "test:contact:browser": "node tests/contact-browser.mjs"
+    "test:contact:browser": "node tests/contact-browser.mjs",
+    "build:firebase": "node scripts/build-firebase.mjs",
+    "test:firebase": "npm run build:firebase && npm --prefix tools/firebase test",
+    "test:firebase:client": "node --import ./tests/helpers/forbid-network.mjs --test tests/firebase-sync-client.test.mjs",
+    "test:firebase:provider": "npm --prefix tools/firebase run test:provider"
   },
   "dependencies": {
+    "@netlify/blobs": "11.1.6",
+    "@netlify/identity": "2.0.0",
+    "firebase": "13.1.0",
+    "html2canvas": "1.4.1",
     "openpgp": "6.3.2"
   },
   "devDependencies": {
     "@fontsource/open-sans": "5.3.0",
     "@fontsource/poppins": "5.3.0",
     "esbuild": "0.28.2"
+  },
+  "overrides": {
+    "@grpc/grpc-js": "1.14.6"
   }
 }

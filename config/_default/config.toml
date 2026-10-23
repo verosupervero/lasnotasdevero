@@ -3,6 +3,14 @@ languageCode = 'es'
 title = 'Las Notas de Vero'
 theme = 'vero'
 
+[params]
+  # Keep account controls and all background synchronization disabled.
+  lucas_sync_enabled = false
+  study_sync_enabled = false
+  study_sync_provider = "firebase"
+  # Enable before the first account rollout; then keep true even while sync is paused.
+  study_private_storage = false
+
 [markup]
   defaultMarkdownHandler = "goldmark"
 

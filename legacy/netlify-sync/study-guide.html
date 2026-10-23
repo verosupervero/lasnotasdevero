@@ -1,0 +1,79 @@
+{{ define "main" }}
+<div id="main-wrapper">
+  <main id="study-platform" class="study-platform" data-course-id="lucas" data-sync-enabled="{{ if site.Params.lucas_sync_enabled }}true{{ else }}false{{ end }}" data-planned-videos="{{ .Params.planned_videos | default 13 }}">
+    <header class="study-platform-header">
+      <h1>{{ .Title }}</h1>
+      <p>Estudiá Lucas clase a clase y continuá a tu ritmo.</p>
+    </header>
+    <section id="study-tools" class="study-tools" aria-label="Tu estudio y progreso" hidden>
+      <div class="study-progress-summary">
+        <label class="study-sr-only" for="study-overall-progress">Tu progreso en las clases publicadas</label>
+        <progress id="study-overall-progress" max="1" value="0"></progress>
+        <p id="study-overall-text"></p>
+        <p class="study-course-meta"><span id="study-plan-text"></span><span id="study-extra-progress"></span></p>
+      </div>
+      <button type="button" id="study-resume" hidden>Continuar donde quedé</button>
+      <div class="study-class-picker">
+        <label for="study-class-selector">Elegí una clase</label>
+        <select id="study-class-selector"></select>
+      </div>
+      <p id="study-storage-message" role="status"></p>
+    </section>
+    <p id="study-selection-status" class="study-sr-only" role="status" aria-live="polite"></p>
+    <noscript><p>Podés estudiar todo el material sin iniciar sesión. Para seleccionar clases y guardar tu progreso, activá JavaScript en el navegador.</p></noscript>
+    <div class="study-layout">
+      <nav id="study-sidebar" class="study-sidebar" aria-label="Clases de la guía" hidden>
+        <h2>Tu recorrido</h2>
+        <ul id="study-class-list"></ul>
+      </nav>
+      <div id="study-content" class="study-content article-content">
+        {{ .Content }}
+        <nav id="study-pagination" class="study-pagination" aria-label="Navegación entre clases" hidden>
+          <button type="button" id="study-prev">Clase anterior</button>
+          <button type="button" id="study-next">Clase siguiente</button>
+          <a id="study-integration" href="#integracion">Cierre de Lucas 1–4</a>
+        </nav>
+      </div>
+    </div>
+    <details id="study-account" class="study-account" hidden>
+      <summary>Mi avance: copias y otros dispositivos</summary>
+      <div class="study-account-body">
+        <p>Podés exportar una copia de tu avance e importarla en otro navegador. El archivo contiene solamente el progreso.</p>
+        <div class="study-account-actions">
+          <button type="button" data-progress-export>Exportar mi avance</button>
+          <label>Importar avance <input type="file" accept="application/json,.json" data-progress-import></label>
+          <button type="button" data-progress-reset>Borrar avance local</button>
+        </div>
+        {{ if site.Params.lucas_sync_enabled }}
+        <div data-account-auth hidden>
+          <h2>Guardar en otros dispositivos</h2>
+          <p>La cuenta es opcional. Podés seguir estudiando y guardar tu avance en este navegador sin conexión.</p>
+          <form>
+            <label>Correo <input type="email" name="email" autocomplete="username" required maxlength="254"></label>
+            <label>Contraseña (mínimo 12 caracteres) <input type="password" name="password" autocomplete="current-password" required minlength="12" maxlength="128"></label>
+            <button type="submit" value="login">Ingresar</button>
+            <button type="submit" value="signup">Crear cuenta</button>
+            <button type="button" data-account-recover>Recuperar acceso</button>
+          </form>
+        </div>
+        <div data-account-choose hidden>
+          <p>El avance de este navegador se conserva por separado. Elegí si querés incorporarlo a tu cuenta.</p>
+          <button type="button" data-account-choice="local">Usar mi avance de este navegador</button>
+          <button type="button" data-account-choice="remote">Usar avance de la cuenta</button>
+          <button type="button" data-account-logout>Cerrar sesión</button>
+        </div>
+        <div data-account-connected hidden>
+          <button type="button" data-account-logout>Cerrar sesión y retirar avance de este navegador</button>
+          <button type="button" data-account-delete>Eliminar progreso de mi cuenta</button>
+        </div>
+        {{ end }}
+        <p data-account-status role="status" aria-live="polite">Guardado en este navegador</p>
+      </div>
+    </details>
+    <footer class="study-study-notes">
+      <p id="study-last-activity"></p>
+      <aside class="study-privacy">Tu progreso se guarda en este navegador, sin registro. {{ if site.Params.lucas_sync_enabled }}La sincronización con una cuenta es opcional.{{ else }}Exportá una copia para conservarlo o llevarlo a otro dispositivo.{{ end }} Si borrás los datos del navegador, se pierde el avance local.</aside>
+    </footer>
+  </main>
+</div>
+{{ end }}

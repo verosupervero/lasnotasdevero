@@ -1,15 +1,28 @@
 <head>
+  {{- if and site.Params.study_sync_enabled (ne site.Params.study_private_storage true) -}}
+    {{- errorf "Para habilitar la sincronización, configurá study_private_storage = true antes del primer acceso con Firebase. Mantenelo en true aunque después pauses la sincronización, para proteger las sesiones y copias privadas existentes." -}}
+  {{- end -}}
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  {{- $privateStudy := and (eq .Layout "study-guide") (and site.Params.study_sync_enabled (eq site.Params.study_sync_provider "firebase")) -}}
+  {{ if $privateStudy }}
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://apis.google.com; connect-src 'self' https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://firestore.googleapis.com https://*.firebaseapp.com; frame-src https://www.youtube-nocookie.com https://www.youtube.com https://*.firebaseapp.com https://accounts.google.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; object-src 'none'; base-uri 'none'; form-action 'self'; worker-src 'none'; upgrade-insecure-requests">
+  <meta name="referrer" content="no-referrer">
+  {{ end }}
 
   <!-- Estilos -->
   {{ if eq .Layout "contacto" }}
   <link rel="icon" type="image/png" href="{{ "logo.png" | relURL }}">
   <link rel="stylesheet" href="{{ "styles/contact-base.css" | relURL }}">
+  {{ else if $privateStudy }}
+  <link rel="stylesheet" href="{{ "styles/main.css" | relURL }}">
   {{ else }}
   <link rel="stylesheet" href="{{ absURL `styles/main.css` }}">
   {{ end }}
   {{ if eq .Layout "contacto" }}
+  <link rel="stylesheet" href="{{ "styles/style.css" | relURL }}">
+  <link rel="stylesheet" href="{{ "styles/print.css" | relURL }}" media="print">
+  {{ else if $privateStudy }}
   <link rel="stylesheet" href="{{ "styles/style.css" | relURL }}">
   <link rel="stylesheet" href="{{ "styles/print.css" | relURL }}" media="print">
   {{ else }}
@@ -80,7 +93,7 @@
 
 
   <!-- RefTagger -->
-  {{ if ne .Layout "contacto" }}
+  {{ if and (ne .Layout "contacto") (not $privateStudy) (not site.Params.study_private_storage) }}
   <script>
     var refTagger = {
       settings: {

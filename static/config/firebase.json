@@ -1,0 +1,10 @@
+{
+  "enabled": false,
+  "firebase": {
+    "apiKey": "AIzaSyBoA6duWmcS3_ZxwMvzHYRyiEWrh8Qa4Ds",
+    "authDomain": "lnv-data.firebaseapp.com",
+    "projectId": "lnv-data",
+    "appId": "1:303954316495:web:f9f2f911e42b367709fbba",
+    "messagingSenderId": "303954316495"
+  }
+}

@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { generateKey, decrypt, readMessage, revokeKey } from 'openpgp';
 import { validateRecipientKey, encryptContact, validateValues, LIMITS } from '../assets/js/contact-crypto.js';
-import retiredContactEndpoint from '../netlify/functions/contact.mjs';
+import retiredContactEndpoint from '../netlify/disabled-functions/contact.mjs';
 
 // Synthetic test keys exist only in memory, for a reserved non-deliverable address.
 // They are never installed as the site's recipient key or written to disk.

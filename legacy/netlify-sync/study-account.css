@@ -1,0 +1,10 @@
+* { box-sizing: border-box; }
+body { margin: 0; padding: 24px; color: #263a38; background: #f5f6f0; font: 18px/1.6 system-ui, sans-serif; }
+main { max-width: 600px; margin: 8vh auto; padding: 24px; background: #fffefb; border: 1px solid #d6e1d9; border-top: 3px solid #c2a360; border-radius: 9px; }
+h1 { color: #165c58; font-size: 28px; line-height: 1.3; }
+a { color: #165c58; overflow-wrap: anywhere; }
+label, input { display: block; width: 100%; }
+input, button { font: inherit; min-height: 44px; padding: 10px; margin: 12px 0; border: 1px solid #165c58; border-radius: 6px; max-width: 100%; }
+button { background: #165c58; color: #fff; cursor: pointer; }
+[hidden] { display: none !important; }
+:focus-visible { outline: 3px solid #6654c0; outline-offset: 3px; }

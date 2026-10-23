@@ -1,4 +1,5 @@
-// Retired plaintext endpoint. Do not read, log, store or forward request bodies.
+// Archived retired plaintext endpoint. Not deployed as part of static hosting.
+// Do not read, log, store or forward request bodies.
 // The encrypted contact page submits directly to Netlify Forms.
 export default function retiredContactEndpoint() {
   return Response.json(

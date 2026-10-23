@@ -1,12 +1,43 @@
 [build]
   publish = "public"
-  command = "npm ci --ignore-scripts --include=dev && npm run build:contact && hugo --minify"
+  command = "npm ci --ignore-scripts --include=dev && npm run build:contact && npm run build:firebase && hugo --minify"
 
 [context.production.environment]
   HUGO_VERSION = "0.124.1"
+  # Build-time intent only; netlify.toml variables do not configure Functions runtime.
+  # The deployment block is the parked entrypoint outside netlify/functions.
+  LUCAS_SYNC_ENABLED = "false"
 
 [build.environment]
   NODE_VERSION = "22"
+
+[functions]
+  # Static hosting: this directory has no deployable function entrypoints.
+  # Previous implementations remain outside it in netlify/disabled-functions.
+  directory = "netlify/functions"
+
+[[headers]]
+  for = "/cuenta"
+  [headers.values]
+    Content-Security-Policy = "default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'self'; form-action 'self'; frame-src 'none'; frame-ancestors 'none'; object-src 'none'; base-uri 'none'"
+    Cache-Control = "no-store"
+    Referrer-Policy = "no-referrer"
+    X-Content-Type-Options = "nosniff"
+
+[[headers]]
+  for = "/cuenta/*"
+  [headers.values]
+    Content-Security-Policy = "default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'self'; form-action 'self'; frame-src 'none'; frame-ancestors 'none'; object-src 'none'; base-uri 'none'"
+    Cache-Control = "no-store"
+    Referrer-Policy = "no-referrer"
+    X-Content-Type-Options = "nosniff"
+
+[[headers]]
+  for = "/api/lucas/*"
+  [headers.values]
+    Cache-Control = "no-store, private"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "no-referrer"
 
 [[headers]]
   for = "/contacto"

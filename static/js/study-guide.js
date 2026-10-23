@@ -1,6 +1,7 @@
-﻿import { STORAGE_KEY, emptyProgress, parseProgress, mergeProgress, updateProgress, progressCounts } from './study-progress.js';
+﻿import { emptyProgress, parseProgress, mergeProgress, updateProgress, progressCounts } from './study-progress.js';
 
 import { serializeProgress } from './study-progress.js';
+import { initializeSync, progressStorageKey } from './study-sync.js';
 
 const platform = document.querySelector('#study-platform');
 if (platform) initialize(platform);
@@ -11,10 +12,13 @@ function initialize(root) {
   const tools = root.querySelector('#study-tools');
   if (!lessons.length || !selector || !tools) return;
   const catalog = lessons.map((lesson) => ({ id: lesson.dataset.studyId, kind: lesson.dataset.kind }));
+  const navButtons = new Map();
   const programmaticOpen = new WeakSet();
+  let activeStorageKey = progressStorageKey(root.dataset.courseId || 'lucas');
+  const subscribers = new Set();
   let state = emptyProgress(), storageStatus = 'ready', current, clock = Date.now(), restoring = false;
   try {
-    const loaded = parseProgress(localStorage.getItem(STORAGE_KEY));
+    const loaded = parseProgress(localStorage.getItem(activeStorageKey));
     state = loaded.state; storageStatus = loaded.status;
   } catch { storageStatus = 'denied'; }
   const savedPoint = (id) => state.classes[id]?.lastPoint?.value;
@@ -33,7 +37,7 @@ function initialize(root) {
     if (restoring) return;
     if (storageStatus === 'ready') {
       try {
-        const latest = parseProgress(localStorage.getItem(STORAGE_KEY));
+        const latest = parseProgress(localStorage.getItem(activeStorageKey));
         if (latest.status === 'ready') state = mergeProgress(state, latest.state);
         else storageStatus = latest.status;
       } catch { storageStatus = 'denied'; }
@@ -42,16 +46,20 @@ function initialize(root) {
     state = updateProgress(state, id, field, value, clock, question);
     if (field !== 'selected') state = updateProgress(state, id, 'selected', undefined, clock);
     if (storageStatus === 'ready') {
-      try { localStorage.setItem(STORAGE_KEY, serializeProgress(state)); } catch { storageStatus = 'denied'; }
+      try { localStorage.setItem(activeStorageKey, serializeProgress(state)); } catch { storageStatus = 'denied'; }
     }
     renderProgress();
+    subscribers.forEach((callback) => callback());
   }
   function renderProgress() {
     const counts = progressCounts(state, catalog), planned = root.dataset.plannedVideos || '13';
     const overall = root.querySelector('#study-overall-progress');
     if (overall) { overall.max = counts.course.total || 1; overall.value = counts.course.complete; }
     const text = root.querySelector('#study-overall-text');
-    if (text) text.textContent = `${counts.course.complete} de ${counts.course.total} clases publicadas completadas · ${planned} videos previstos. Complementario: ${counts.complement.complete}/${counts.complement.total}. Integración: ${counts.integration.complete}/${counts.integration.total}.`;
+    if (text) text.textContent = `${counts.course.complete} de ${counts.course.total} clases publicadas completadas`;
+    const plan = root.querySelector('#study-plan-text'), extras = root.querySelector('#study-extra-progress');
+    if (plan) plan.textContent = `${planned} videos previstos`;
+    if (extras) extras.textContent = `Complementos: ${counts.complement.complete}/${counts.complement.total} · Integración: ${counts.integration.complete}/${counts.integration.total}`;
     for (const lesson of lessons) {
       const data = state.classes[lesson.dataset.studyId], blocks = [...lesson.querySelectorAll('.study-question')];
       let completed = 0;
@@ -68,6 +76,13 @@ function initialize(root) {
         const done = data?.complete?.value === true;
         button.textContent = done ? 'Clase completada · Desmarcar' : 'Marcar clase como completada';
         button.setAttribute('aria-pressed', String(done));
+      }
+      const navigation = navButtons.get(lesson.dataset.studyId);
+      if (navigation) {
+        const done = data?.complete?.value === true;
+        const started = completed > 0 || !!data?.lastActivity?.value;
+        navigation.querySelector('.study-nav-status').textContent = done ? 'Completada' : started ? 'En curso' : 'Sin comenzar';
+        navigation.dataset.status = done ? 'complete' : started ? 'started' : 'new';
       }
     }
     const activity = root.querySelector('#study-last-activity');
@@ -98,6 +113,10 @@ function initialize(root) {
       if (template) player.append(template.content.cloneNode(true));
     }
     selector.value = lesson.dataset.studyId;
+    navButtons.forEach((button, id) => {
+      if (id === lesson.dataset.studyId) button.setAttribute('aria-current', 'true');
+      else button.removeAttribute('aria-current');
+    });
     const index = lessons.indexOf(lesson);
     const previous = root.querySelector('#study-prev'), next = root.querySelector('#study-next');
     if (previous) previous.disabled = index === 0;
@@ -119,12 +138,56 @@ function initialize(root) {
     if (persist && lesson) save(lesson.dataset.studyId, 'lastPoint', target.id);
     return true;
   }
+  const list = root.querySelector('#study-class-list');
+  const shortTitles = {
+    'video-1': '¿Por qué estudiar el Nuevo Testamento?',
+    'video-2': '¿Por qué leer Lucas?',
+    'video-3': 'El anuncio y nacimiento de Jesús',
+    'censo-lucas-2': 'El censo de Lucas 2',
+    'video-4': 'Comienzo del ministerio de Jesús',
+    integracion: 'Integración de Lucas 1–4',
+    'video-5': 'Autoridad, comunidad y conflicto',
+    'video-6': 'De oyentes a seguidores de Jesús',
+    'lucas-1-6-cierre-practico': 'Lucas 1–6: de estudiar el texto a vivirlo'
+  };
+  const pickerTitles = {
+    'video-1': 'Video 1 · Introducción al NT',
+    'video-2': 'Video 2 · Introducción a Lucas',
+    'censo-lucas-2': 'Complemento · Censo de Lucas 2',
+    integracion: 'Cierre · Lucas 1–4',
+    'lucas-1-6-cierre-practico': 'Cierre práctico · Lucas 1–6'
+  };
   selector.replaceChildren(...lessons.map((lesson) => {
     const option = document.createElement('option');
     option.value = lesson.dataset.studyId;
-    option.textContent = [lesson.dataset.label, lesson.dataset.title, lesson.dataset.passage].filter(Boolean).join(' · ');
+    option.textContent = pickerTitles[lesson.dataset.studyId] || [lesson.dataset.label, lesson.dataset.passage || shortTitles[lesson.dataset.studyId] || lesson.dataset.title].filter(Boolean).join(' · ');
     return option;
   }));
+  if (list) {
+    list.replaceChildren(...lessons.map((lesson) => {
+      const item = document.createElement('li'), button = document.createElement('button');
+      button.type = 'button';
+      button.dataset.studyNav = lesson.dataset.studyId;
+      for (const [className, text] of [
+        ['study-nav-label', lesson.dataset.label],
+        ['study-nav-title', shortTitles[lesson.dataset.studyId] || lesson.dataset.title],
+        ['study-nav-status', 'Sin comenzar']
+      ]) {
+        const span = document.createElement('span');
+        span.className = className;
+        span.textContent = text || '';
+        button.append(span);
+      }
+      button.addEventListener('click', () => {
+        selectLesson(lesson, { persist: true, focus: true });
+        history.replaceState(null, '', `#${encodeURIComponent(lesson.dataset.studyId)}`);
+      });
+      navButtons.set(lesson.dataset.studyId, button);
+      item.append(button);
+      return item;
+    }));
+    root.querySelector('#study-sidebar').hidden = false;
+  }
   selector.addEventListener('change', () => {
     const lesson = findLesson(selector.value);
     selectLesson(lesson, { persist: true });
@@ -175,7 +238,7 @@ function initialize(root) {
     if (link && link.hash === location.hash) { event.preventDefault(); revealHash(true); }
   });
   window.addEventListener('storage', (event) => {
-    if (event.key !== STORAGE_KEY && event.key !== null) return;
+    if (event.key !== activeStorageKey && event.key !== null) return;
     // Explicit removal/clear is intentional: do not resurrect a deleted profile.
     if (event.newValue === null) {
       state = emptyProgress();
@@ -188,12 +251,12 @@ function initialize(root) {
     else storageStatus = incoming.status;
     if (storageStatus === 'ready') {
       try {
-        const disk = parseProgress(localStorage.getItem(STORAGE_KEY));
+        const disk = parseProgress(localStorage.getItem(activeStorageKey));
         if (disk.status !== 'ready') storageStatus = disk.status;
         else {
           state = mergeProgress(state, disk.state);
           const merged = serializeProgress(state);
-          if (merged !== serializeProgress(disk.state)) localStorage.setItem(STORAGE_KEY, merged);
+          if (merged !== serializeProgress(disk.state)) localStorage.setItem(activeStorageKey, merged);
         }
       } catch { storageStatus = 'denied'; }
     }
@@ -227,4 +290,30 @@ function initialize(root) {
     if (point) focusPoint(point);
   }
   root.classList.add('study-enhanced');
+  const controller = {
+    snapshot: () => structuredClone(state),
+    canPersist: () => storageStatus === 'ready',
+    subscribe: (callback) => subscribers.add(callback),
+    activate(key, next) {
+      activeStorageKey = key;
+      state = next;
+      storageStatus = 'ready';
+      try {
+        storageStatus = parseProgress(localStorage.getItem(activeStorageKey)).status;
+        if (storageStatus === 'ready') localStorage.setItem(activeStorageKey, serializeProgress(state));
+      } catch { storageStatus = 'denied'; }
+      renderProgress();
+      selectLesson(findLesson(state.selected?.value) || lessons[0]);
+    },
+    replace(next, reset = false) {
+      if (reset) { try { localStorage.removeItem(activeStorageKey); } catch { /* Memory-only reset. */ } }
+      this.activate(activeStorageKey, next);
+      subscribers.forEach((callback) => callback());
+    }
+  };
+  initializeSync(root, controller, lessons.map((lesson) => ({
+    id: lesson.dataset.studyId,
+    questions: [...lesson.querySelectorAll('.study-question')].map((question) => question.dataset.questionId),
+    points: [lesson.dataset.studyId, ...[...lesson.querySelectorAll('[id]')].map((element) => element.id)]
+  })));
 }

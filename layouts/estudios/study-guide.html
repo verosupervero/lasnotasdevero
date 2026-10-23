@@ -1,16 +1,17 @@
 {{ define "main" }}
+{{ $syncEnabled := and site.Params.study_sync_enabled (eq site.Params.study_sync_provider "firebase") }}
 <div id="main-wrapper">
-  <main id="study-platform" class="study-platform container" data-course-id="lucas" data-planned-videos="{{ .Params.planned_videos | default 13 }}">
+  <main id="study-platform" class="study-platform" data-course-id="{{ .Params.course_id | default "lucas" }}" data-sync-provider="{{ site.Params.study_sync_provider | default "firebase" }}" data-sync-enabled="{{ if $syncEnabled }}true{{ else }}false{{ end }}" data-planned-videos="{{ .Params.planned_videos | default 13 }}">
     <header class="study-platform-header">
       <h1>{{ .Title }}</h1>
-      <p>Elegí una clase, mirá el video y trabajá las preguntas; podés marcar tu avance para continuar después.</p>
+      <p>Estudiá Lucas clase a clase y continuá a tu ritmo.</p>
     </header>
     <section id="study-tools" class="study-tools" aria-label="Tu estudio y progreso" hidden>
       <div class="study-progress-summary">
-        <label for="study-overall-progress">Tu progreso en las clases publicadas</label>
+        <label class="study-sr-only" for="study-overall-progress">Tu progreso en las clases publicadas</label>
         <progress id="study-overall-progress" max="1" value="0"></progress>
         <p id="study-overall-text"></p>
-        <p id="study-last-activity"></p>
+        <p class="study-course-meta"><span id="study-plan-text"></span><span id="study-extra-progress"></span></p>
       </div>
       <button type="button" id="study-resume" hidden>Continuar donde quedé</button>
       <div class="study-class-picker">
@@ -19,17 +20,59 @@
       </div>
       <p id="study-storage-message" role="status"></p>
     </section>
-    <aside class="study-privacy">Tu progreso se guarda en este navegador, sin registro. No se sincroniza entre dispositivos y se pierde si borrás los datos del navegador.</aside>
     <p id="study-selection-status" class="study-sr-only" role="status" aria-live="polite"></p>
     <noscript><p>Podés estudiar todo el material sin iniciar sesión. Para seleccionar clases y guardar tu progreso, activá JavaScript en el navegador.</p></noscript>
-    <div id="study-content" class="study-content article-content">
-      {{ .Content }}
+    <div class="study-layout">
+      <nav id="study-sidebar" class="study-sidebar" aria-label="Clases de la guía" hidden>
+        <h2>Tu recorrido</h2>
+        <ul id="study-class-list"></ul>
+      </nav>
+      <div id="study-content" class="study-content article-content">
+        {{ .Content }}
+        <nav id="study-pagination" class="study-pagination" aria-label="Navegación entre clases" hidden>
+          <button type="button" id="study-prev">Clase anterior</button>
+          <button type="button" id="study-next">Clase siguiente</button>
+          <a id="study-integration" href="#integracion">Cierre de Lucas 1–4</a>
+        </nav>
+      </div>
     </div>
-    <nav id="study-pagination" class="study-pagination" aria-label="Navegación entre clases" hidden>
-      <button type="button" id="study-prev">Clase anterior</button>
-      <button type="button" id="study-next">Clase siguiente</button>
-      <a id="study-integration" href="#integracion">Cierre de Lucas 1–4</a>
-    </nav>
+    <details id="study-account" class="study-account" hidden>
+      <summary>Mi avance: copias y otros dispositivos</summary>
+      <div class="study-account-body">
+        <p>Podés exportar una copia de tu avance e importarla en otro navegador. El archivo contiene solamente el progreso.</p>
+        <div class="study-account-actions">
+          <button type="button" data-progress-export>Exportar mi avance</button>
+          <label>Importar avance <input type="file" accept="application/json,.json" data-progress-import></label>
+          <button type="button" data-progress-reset>Borrar avance local</button>
+        </div>
+        {{ if $syncEnabled }}
+        <div data-account-auth hidden>
+          <h2>Guardar en otros dispositivos</h2>
+          <p>La cuenta es opcional. Podés seguir estudiando y guardar tu avance en este navegador sin conexión.</p>
+          <button type="button" data-account-google>Continuar con Google</button>
+        </div>
+        <div data-account-choose hidden>
+          <p>El avance de este navegador se conserva por separado. Elegí si querés incorporarlo a tu cuenta.</p>
+          <button type="button" data-account-choice="local">Usar mi avance de este navegador</button>
+          <button type="button" data-account-choice="remote">Usar avance de la cuenta</button>
+          <button type="button" data-account-delete-user>Eliminar mi cuenta o completar una eliminación anterior</button>
+          <button type="button" data-account-logout>Cerrar sesión</button>
+        </div>
+        <div data-account-connected hidden>
+          <button type="button" data-account-reconnect>Reconectar y comprobar avance remoto</button>
+          <button type="button" data-account-logout>Cerrar sesión y retirar avance de este navegador</button>
+          <button type="button" data-account-delete>Eliminar progreso de esta guía</button>
+          <button type="button" data-account-delete-user>Eliminar mi cuenta y todos mis avances</button>
+          <p>Guardamos solo identificadores y fechas del avance. Google y Firebase gestionan el acceso. Al eliminar el progreso o la cuenta queda un marcador técnico sin preguntas ni avance para bloquear sesiones antiguas.</p>
+        </div>
+        {{ end }}
+        <p data-account-status role="status" aria-live="polite">Guardado en este navegador</p>
+      </div>
+    </details>
+    <footer class="study-study-notes">
+      <p id="study-last-activity"></p>
+      <aside class="study-privacy">Tu progreso se guarda en este navegador, sin registro. {{ if $syncEnabled }}La sincronización con una cuenta es opcional.{{ else }}Exportá una copia para conservarlo o llevarlo a otro dispositivo.{{ end }} Si borrás los datos del navegador, se pierde el avance local.</aside>
+    </footer>
   </main>
 </div>
 {{ end }}

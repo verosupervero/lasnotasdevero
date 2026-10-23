@@ -1,0 +1,19 @@
+{
+  "name": "lasnotasdevero-firebase-emulators",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "pretest": "node ../../scripts/build-firebase.mjs",
+    "test": "firebase emulators:exec --project demo-lasnotasdevero --config ../../firebase/firebase.json --only auth,firestore \"node --test rules.test.mjs\"",
+    "pretest:provider": "node ../../scripts/build-firebase.mjs",
+    "test:provider": "firebase emulators:exec --project demo-lasnotasdevero --config ../../firebase/firebase.json --only auth,firestore \"node provider-browser.mjs\""
+  },
+  "devDependencies": {
+    "@firebase/rules-unit-testing": "6.0.0",
+    "firebase": "13.1.0",
+    "firebase-tools": "15.34.1"
+  },
+  "overrides": {
+    "@grpc/grpc-js": "1.14.6"
+  }
+}
