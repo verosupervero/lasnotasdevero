@@ -1,0 +1,4 @@
+<details class="study-resource">
+  <summary>{{ .Get "title" }}</summary>
+  <div class="study-resource-body">{{ .Page.RenderString (dict "display" "block") .Inner }}</div>
+</details>

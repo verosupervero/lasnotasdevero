@@ -1,0 +1,35 @@
+{{ define "main" }}
+<div id="main-wrapper">
+  <main id="study-platform" class="study-platform container" data-course-id="lucas" data-planned-videos="{{ .Params.planned_videos | default 13 }}">
+    <header class="study-platform-header">
+      <h1>{{ .Title }}</h1>
+      <p>Elegí una clase, mirá el video y trabajá las preguntas; podés marcar tu avance para continuar después.</p>
+    </header>
+    <section id="study-tools" class="study-tools" aria-label="Tu estudio y progreso" hidden>
+      <div class="study-progress-summary">
+        <label for="study-overall-progress">Tu progreso en las clases publicadas</label>
+        <progress id="study-overall-progress" max="1" value="0"></progress>
+        <p id="study-overall-text"></p>
+        <p id="study-last-activity"></p>
+      </div>
+      <button type="button" id="study-resume" hidden>Continuar donde quedé</button>
+      <div class="study-class-picker">
+        <label for="study-class-selector">Elegí una clase</label>
+        <select id="study-class-selector"></select>
+      </div>
+      <p id="study-storage-message" role="status"></p>
+    </section>
+    <aside class="study-privacy">Tu progreso se guarda en este navegador, sin registro. No se sincroniza entre dispositivos y se pierde si borrás los datos del navegador.</aside>
+    <p id="study-selection-status" class="study-sr-only" role="status" aria-live="polite"></p>
+    <noscript><p>Podés estudiar todo el material sin iniciar sesión. Para seleccionar clases y guardar tu progreso, activá JavaScript en el navegador.</p></noscript>
+    <div id="study-content" class="study-content article-content">
+      {{ .Content }}
+    </div>
+    <nav id="study-pagination" class="study-pagination" aria-label="Navegación entre clases" hidden>
+      <button type="button" id="study-prev">Clase anterior</button>
+      <button type="button" id="study-next">Clase siguiente</button>
+      <a id="study-integration" href="#integracion">Integración final</a>
+    </nav>
+  </main>
+</div>
+{{ end }}

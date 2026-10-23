@@ -1,0 +1,7 @@
+<details class="study-question" data-question-id="{{ .Get "id" }}">
+  <summary><h3 id="{{ .Get "anchor" }}">{{ .Get "title" }}</h3></summary>
+  <div class="study-question-body">
+    {{ .Page.RenderString (dict "display" "block") .Inner }}
+<label class="study-block-control" hidden><input type="checkbox" data-block-complete> Marcar este bloque como trabajado</label>
+  </div>
+</details>
