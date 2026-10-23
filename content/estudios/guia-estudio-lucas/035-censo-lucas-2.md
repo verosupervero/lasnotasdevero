@@ -1,4 +1,7 @@
 +++
+bibliography = ["huebner-census-2019", "keener-ivp-2014"]
+bibliography_note = "Fuentes identificadas en las preguntas y referencias del material complementario."
+bibliography_further_reading = ["bird-nativity-2025"]
 +++
 
 {{< study-video id="censo-lucas-2" kind="complement" label="Estudio complementario" title="¿Fue real el censo de Lucas 2?" passage="Lucas 2:1–7" anchor="-estudio-complementario--fue-real-el-censo-de-lucas-2" video="mKwO-td0_NU" >}}
@@ -53,12 +56,6 @@ Leé Miqueas 5:2, Mateo 2:1–12 y Lucas 2:1–20.
 **¿Cómo estudiarías una dificultad histórica de la Biblia sin negar las preguntas legítimas ni presentar tus propias hipótesis como verdades demostradas?**
 
 Para responder, diferenciá el relato bíblico, las fuentes antiguas disponibles, las propuestas de los investigadores y las cuestiones que permanecen abiertas.
-
-**Para seguir investigando:**
-
-- Michael F. Bird, [*The Nativity, Skepticism, and Two Guys Named “Tom”* (2025)](https://michaelfbird.substack.com/p/the-nativity-skepticism-and-two-guys).
-- Sabine R. Huebner, “In those days a decree went out…”: The Herodian Kingdom and the Augustan Provincial Census System, en *Papyri and the Social World of the New Testament* (2019), pp. 31–50.
-- Craig S. Keener, *The IVP Bible Background Commentary: New Testament* (2014).
 
 ---
 {{< /study-question >}}

@@ -1,4 +1,6 @@
 +++
+bibliography = []
+bibliography_note = "La integración no declara fuentes específicas adicionales."
 +++
 
 {{< study-video id="integracion" kind="integration" label="Parte final" title="🧩 Parte final – Integración" passage="Lucas 1–4" anchor="-parte-final--integración" >}}

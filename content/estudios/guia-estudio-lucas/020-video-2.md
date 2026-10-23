@@ -1,4 +1,6 @@
 +++
+bibliography = []
+bibliography_note = "Pendiente de verificar las fuentes específicas con la descripción del video o el material del autor."
 +++
 
 {{< study-video id="video-2" label="Video 2" title="¿Por qué leer el Evangelio de Lucas?" passage="Introducción al Evangelio de Lucas" anchor="-video-2--por-qué-leer-el-evangelio-de-lucas" >}}

@@ -14,6 +14,29 @@
     <p><a href="https://www.youtube.com/watch?v={{ . }}">Ver en YouTube</a></p>
     {{- end }}
     {{ .Page.RenderString (dict "display" "block") .Inner }}
+    <details class="study-bibliography">
+      <summary>{{ with .Page.Params.bibliography_anchor }}<span class="study-anchor" id="{{ . }}" aria-hidden="true"></span>{{ end }}📚 Bibliografía y fuentes utilizadas</summary>
+      <div class="study-resource-body">
+        {{ with .Page.Params.bibliography_note }}<p>{{ . }}</p>{{ end }}
+        {{ with .Page.Params.bibliography }}
+          {{ partial "bibliography-list.html" (dict "ids" .) }}
+        {{ else }}
+          <p>Todavía no hay referencias específicas verificadas para esta clase.</p>
+        {{ end }}
+        {{ with .Page.Params.bibliography_pending }}
+          <h3>Fuentes pendientes de identificación</h3>
+          {{ partial "bibliography-list.html" (dict "ids" .) }}
+        {{ end }}
+        {{ with .Page.Params.bibliography_support }}
+          <h3>Material de apoyo</h3>
+          {{ partial "bibliography-list.html" (dict "ids" .) }}
+        {{ end }}
+        {{ with .Page.Params.bibliography_further_reading }}
+          <h3>Para seguir investigando (uso en el video pendiente de verificación)</h3>
+          {{ partial "bibliography-list.html" (dict "ids" .) }}
+        {{ end }}
+      </div>
+    </details>
   </div>
   <button type="button" data-complete-class hidden>Marcar clase como completada</button>
 </article>

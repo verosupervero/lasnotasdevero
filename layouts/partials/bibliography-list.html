@@ -1,0 +1,11 @@
+{{/* Keep citations unindented: an enclosing RenderString must not read them as Markdown code blocks. */}}
+<ul class="bibliography-list">
+{{- range .ids }}
+{{- $id := . -}}
+{{- with index site.Data.bibliography $id }}
+<li data-bibliography-id="{{ $id }}">{{ replaceRE `[.]$` "" .authors }}. <cite>{{ .title }}</cite>{{ if not (findRE `[.!?]$` .title) }}.{{ end }}{{ with .container }} En <cite>{{ . }}</cite>.{{ end }}{{ with .place }} {{ . }}:{{ end }}{{ with .publisher }} {{ . }}{{ end }}{{ with .year }} ({{ . }}){{ end }}{{ if or .publisher .year }}.{{ end }}{{ with .pages }} pp. {{ . }}.{{ end }}{{ with .doi }} DOI: {{ . }}.{{ end }}{{ range .links }} <a href="{{ .url }}">{{ .label }}</a>.{{ end }}{{ with .note }} <span class="bibliography-note">{{ . }}</span>{{ end }}</li>
+{{- else }}
+{{- errorf "Referencia bibliográfica desconocida: %s" $id -}}
+{{- end }}
+{{- end }}
+</ul>
