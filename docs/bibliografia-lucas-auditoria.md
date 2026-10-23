@@ -133,3 +133,11 @@ La sección «Bibliografía recomendada» reúne ahora las 18 fichas del catálo
 La lista general se genera automáticamente desde `data/bibliography.json`, sin repetir 18 IDs en el Markdown. Las futuras fichas aparecen al completar su tipo y sus datos; un tipo ausente o desconocido produce un error de build que identifica la ficha para evitar omisiones silenciosas. El modo habitual del shortcode conserva sus asociaciones explícitas; el modo `catalog` se utiliza solo en la bibliografía recomendada.
 
 Las fuentes pendientes siguen diferenciadas y las notas preservan sus límites de identificación. Las referencias por clase, los materiales de apoyo, las preguntas y el progreso conservan su comportamiento. Reunir el catálogo general no atribuye sus obras a todas las clases.
+
+## Actualización del 23 de octubre de 2026: fuente documentada del Video 1
+
+La revisión de `public/estudios/bibliografia_por_video_lucas.md` recuperó una asociación explícita para el Video 1: N. T. Wright y Michael F. Bird, *The New Testament in Its World: An Introduction to the History, Literature, and Theology of the First Christians* (Zondervan Academic, 2019), con el enlace `https://a.co/d/0cG9P7IM`. El archivo de bibliografía por video se leyó completo. Esta evidencia procede del documento local; no se afirma haber verificado la descripción de YouTube.
+
+Se incorporó `wright-bird-2019` al frontmatter de `010-video-1.md`, retirando su aviso de obra pendiente. El documento recuperado está dentro de `public/`, que contiene salida generada: la asociación se mantiene ahora en el Markdown fuente de la clase y la ficha central, sin depender de conservar ese archivo generado en futuros builds. La tabla inicial permanece como registro histórico anterior a este hallazgo.
+
+En la ficha compartida se corrigió únicamente el orden de autoría a «Wright, N. T., y Michael F. Bird», conforme al documento recuperado y a la [ficha de Zondervan Academic](https://zondervanacademic.com/products/the-new-testament-in-its-world). El ID, los demás metadatos y todos los enlaces se conservaron. La corrección se refleja automáticamente en la bibliografía recomendada y en las clases que usan esa ficha; no modifica sus asociaciones ni atribuye otras obras al Video 1.

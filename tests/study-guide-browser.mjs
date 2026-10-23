@@ -26,6 +26,7 @@ const originalSources=await Promise.all(originalFiles.map(async name=>readFile(r
 const originalQuestionIds=originalSources.filter(Boolean).flatMap(source=>[...source.matchAll(/\{\{<\s*study-question\s+id="([^"]+)"/g)].map(match=>match[1]));
 const originalLinks=originalSources.filter(Boolean).flatMap(source=>[...source.matchAll(/\]\((https?:\/\/[^)\s]+)\)/g)].map(match=>match[1]));
 const expectedBibliography={
+  'video-1':['wright-bird-2019'],
   'lucas-1-6-cierre-practico':['walton-keener-vida-2016','bird-whispers-revolution-2025','wright-bird-2019','fee-exegesis-espiritualidad-por-confirmar','keener-reflexion-milagros-por-identificar','keener-miracles-2011'],
   'video-6':['imes-portadores-de-su-nombre','keener-ivp-2014','osborne-lucas-2020','walton-keener-vida-2016'],
   'video-5':['bird-early-christian-history','keener-ivp-2014','osborne-lucas-2020','walton-keener-vida-2016'],
@@ -123,10 +124,11 @@ try{
   const video6FinalPrompts=await evaluate(`(()=>{const lesson=document.querySelector('article[data-study-id="video-6"]');return [...lesson.querySelectorAll('details.study-question')].map(block=>[...block.querySelectorAll('p')].filter(p=>/^(Para profundizar:|Para reflexionar:|Pregunta final:)/.test(p.textContent.trim())).map(p=>({text:p.textContent.trim(),insideList:!!p.closest('li')})))})()`);
   assert.equal(video6FinalPrompts.length,9);
   assert.ok(video6FinalPrompts.every(prompts=>prompts.length===1&&!prompts[0].insideList),'Each Video 6 closing prompt renders as its own paragraph outside the question list');
-  const normalizedNotes=Object.fromEntries(['censo-lucas-2','video-1'].map(id=>[id,panelByClass[id].panel.text.normalize('NFD').replace(/[\u0300-\u036f]/g,'')]));
+  const normalizedNotes=Object.fromEntries(['censo-lucas-2'].map(id=>[id,panelByClass[id].panel.text.normalize('NFD').replace(/[\u0300-\u036f]/g,'')]));
   assert.match(normalizedNotes['censo-lucas-2'],/uso en el video pendiente de verificacion/i);
-  assert.match(normalizedNotes['video-1'],/obra concreta utilizada esta pendiente de verificacion/i);
-  for(const id of ['video-1','video-2'])assert.equal(idsInLists(panelByClass[id].panel).length,0,`${id} must not claim an unverified bibliography`);
+  assert.ok(panelByClass['video-1'].panel.text.includes('Bibliografía documentada para esta clase.'));
+  assert.ok(panelByClass['video-1'].panel.lists[0][0].links.includes('https://a.co/d/0cG9P7IM'),'Video 1 preserves its documented book link');
+  for(const id of ['video-2'])assert.equal(idsInLists(panelByClass[id].panel).length,0,`${id} must not claim an unverified bibliography`);
   assert.ok(renderedBibliography.classes.flatMap(item=>item.panel.lists.flat()).every(item=>item.text&&item.links.every(link=>link.startsWith('https://'))),'Rendered citations expose metadata and secure links');
 
   // Fresh deep link into class 3, then complete a question and the class explicitly.
