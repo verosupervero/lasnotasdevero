@@ -1,0 +1,17 @@
+Google sign-in button assets, downloaded 2026-10-23.
+
+Font: Google Sans, normal, weight 500, Latin subset (includes Spanish accents).
+License: SIL Open Font License 1.1; see OFL.txt in this directory.
+Official license source:
+https://raw.githubusercontent.com/google/fonts/main/ofl/googlesans/OFL.txt
+Official Google Fonts stylesheet:
+https://fonts.googleapis.com/css2?family=Google+Sans:wght@500&display=swap
+Unmodified WOFF2 source (Latin subset returned to modern browsers):
+https://fonts.gstatic.com/s/googlesans/v71/4Ua_rENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iqcsih3SAyH6cAwhX9RFD48TE63OOYKtrw2IJllpyk.woff2
+
+Google G image: /images/google-g.png
+Unmodified official branding asset:
+https://developers.google.com/static/identity/images/g-logo.png
+Use only as permitted by Google's identity branding guidelines:
+https://developers.google.com/identity/branding-guidelines
+The font OFL license does not apply to the Google trademark image.

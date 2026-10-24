@@ -3,6 +3,16 @@ import assert from 'node:assert/strict';
 import { emptyProgress, parseProgress, updateProgress, mergeProgress, progressCounts } from '../static/js/study-progress.js';
 
 const update = (state, id, field, value, time, block) => updateProgress(state, id, field, value, time, block);
+
+test('equal-clock conflict resolution is independent of record property order', () => {
+  const record = (value, reverse) => reverse ? { updatedAt: 10, value } : { value, updatedAt: 10 };
+  const state = leaf => ({ version: 1, classes: { 'video-1': { blocks: { birth: leaf } } } });
+  for (const orderA of [false, true]) for (const orderB of [false, true]) {
+    const a = state(record(false, orderA)), b = state(record(true, orderB));
+    assert.equal(mergeProgress(a, b).classes['video-1'].blocks.birth.value, true);
+    assert.equal(mergeProgress(b, a).classes['video-1'].blocks.birth.value, true);
+  }
+});
 test('canonical serialization avoids reordering-only multi-tab echoes', async () => {
   const { serializeProgress } = await import('../static/js/study-progress.js');
   const a = update(emptyProgress(), 'video-1', 'block', true, 10, 'birth');

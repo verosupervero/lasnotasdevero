@@ -101,3 +101,16 @@
 .study-platform .study-account input:not([type=checkbox]) { display: block; width: 100%; max-width: 100%; min-height: 44px; font: inherit; border: 1px solid #8ba6a0; border-radius: 5px; padding: .5rem; }
 .study-platform .study-account button { font-size: 16px; min-height: 44px; margin-top: .5rem; }
 @media print { .study-platform .study-account { display: none !important; } }
+
+/* Google sign-in stays alongside progress, with all advanced tools below. */
+@font-face { font-family: "Study Google Sans"; font-style: normal; font-weight: 500; font-display: swap; src: url('/fonts/google-sans/google-sans-latin-500-normal.woff2') format('woff2'); }
+.study-platform .study-progress-account { display: flex; flex-wrap: wrap; align-items: center; gap: .35rem .75rem; margin-bottom: .6rem; }
+.study-platform .study-progress-account > span, .study-platform .study-account-status { font-size: 13px; line-height: 1.5; color: #4d605a; margin: .35rem 0 0; }
+.study-platform .study-google-button { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: #fff; color: #1f1f1f; border: 1px solid #747775; border-radius: 20px; width: auto; height: 40px; min-height: 40px; padding: 0 12px !important; font: 500 14px/20px "Study Google Sans", Arial, sans-serif; font-size: 14px !important; letter-spacing: .25px; white-space: nowrap; }
+.study-platform .study-google-button:hover { background: #f2f2f2; }
+.study-platform .study-google-button img { width: 20px; height: 20px; object-fit: contain; flex: 0 0 20px; margin: 0; }
+.study-platform .study-account-choice { padding-top: .75rem; margin-top: .65rem; border-top: 1px solid #d6e1d9; }
+.study-platform .study-account-choice h2 { font-size: 18px; margin: 0 0 .35rem; }
+.study-platform .study-account-choice p { font-size: 15px; line-height: 1.5; margin: 0 0 .65rem; }
+.study-platform .study-account-choice-actions { display: flex; flex-wrap: wrap; gap: .5rem; }
+.study-platform .study-account-choice button, .study-platform .study-account-retry { font-size: 14px; min-height: 44px; padding: .5rem .75rem; }

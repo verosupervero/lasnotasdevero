@@ -29,7 +29,7 @@ export function parseProgress(raw) {
     return { state, status: 'ready' };
   } catch { return { state: emptyProgress(), status: 'corrupt' }; }
 }
-const newer = (a, b) => !a ? b : !b ? a : b.updatedAt > a.updatedAt ? b : b.updatedAt < a.updatedAt ? a : JSON.stringify(a) > JSON.stringify(b) ? a : b;
+const newer = (a, b) => !a ? b : !b ? a : b.updatedAt > a.updatedAt ? b : b.updatedAt < a.updatedAt ? a : serializeProgress(a) > serializeProgress(b) ? a : b;
 export function mergeProgress(a, b) {
   const result = { ...a, ...b, version: 1, classes: {} };
   for (const field of ['selected', 'lastActivity']) {

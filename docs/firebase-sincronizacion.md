@@ -1,6 +1,8 @@
 # Firebase Spark: sincronización opcional del progreso
 
-Estado: implementación local preparada y verificada con emuladores, sin publicar. La titular proporcionó la configuración pública de `lnv-data`; se guardó con `enabled: false` y Hugo mantiene `study_sync_enabled = false`. El 23 de octubre de 2026 confirmó que el proyecto está en **Spark y sin cuenta de facturación vinculada**. Esa confirmación proviene de la titular, no de una consulta administrativa autenticada al proyecto. No se creó ni se modificó un proyecto remoto desde esta implementación, no se vinculó facturación y no se activó Blaze, Identity Platform, Cloud Functions, Storage ni extensiones.
+Actualización del 24 de octubre: producción está activada en `lnv-data` mediante el despliegue `6adc3e9fa00c0635b0b49e56`, confirmado listo y publicado. HTTP verificó configuración, rutas, encabezados y ocho recursos JavaScript por hash. App Check obtuvo un token válido con la configuración publicada, sin login ni acceso a progreso. El sitio completo conserva 311 rutas HTML; no desplegó Functions, Edge Functions ni build remoto. La revisión previa pasó 107 pruebas Node, 13 de reglas, proveedor emulado y navegador con cuatro pestañas; la titular confirmó dos cuentas entre PC y teléfono en el ensayo. Falta comprobar un guardado autenticado en el dominio principal. Los detalles y límites están en [implementación multipestaña](progreso-multipestana-implementacion.md) y [revisión de preparación](production-readiness.md). Las descripciones históricas posteriores se conservan como evidencia.
+
+Estado al 24 de octubre de 2026: Sync, App Check del cliente y `study_private_storage` están habilitados. El rechazo anterior de App Check se conserva como historial; el diagnóstico posterior a la publicación obtuvo HTTP 200. No se modificó la exigencia remota de App Check. El borrador sigue conectado a `lnv-test`. La titular confirmó **Spark sin facturación vinculada** y configuración de Google Authentication, dominios, App Check y reglas de producción; no hubo una inspección administrativa independiente. No se vinculó facturación ni se activaron Blaze, Identity Platform, Cloud Functions, Storage o extensiones desde esta implementación. Sigue pendiente un respaldo central privado.
 
 ## Auditoría y trabajo conservado
 
@@ -24,7 +26,9 @@ Protección para la futura activación: antes del primer acceso con Firebase, es
 
 El generador de imágenes también cargaba JavaScript externo desde un CDN. Se conserva exactamente html2canvas 1.4.1, ahora servido localmente con su licencia MIT. Solo cambió la dirección del script; no se reescribió su lógica ni su interfaz y no se espera un cambio visible. Con la protección futura habilitada, un build limpio no incluye scripts de terceros con acceso al almacenamiento, salvo Google GAPI cuando se utilice la autenticación preparada. En la configuración actual se conserva RefTagger por la razón indicada arriba.
 
-El progreso anónimo no se sube automáticamente al ingresar. Se ofrece incorporar ese avance o usar el de la cuenta. Cada cuenta tiene un espacio local separado; al cerrar sesión se retira la copia de esa cuenta y se recupera el espacio anónimo. Lucas conserva su clave previa; las otras guías utilizan su propio identificador.
+El progreso anónimo no se sube automáticamente al ingresar. Las opciones son «Combinar ambos avances» y «Usar progreso de mi cuenta Google». La segunda conserva el avance sin cuenta por separado: no lo elimina ni lo incorpora. Si se eligió esa opción por error, desde la cuenta conectada se puede pulsar «Incorporar avance guardado sin cuenta»; se combinan las marcas locales y remotas con las fechas de cada campo, sin reemplazar todo el perfil. Cada cuenta tiene un espacio local separado. La salida intenta confirmar los pendientes antes de retirar su copia; si el envío falla, conserva los pendientes por UID y recupera el espacio anónimo. Lucas conserva su clave previa; las otras guías utilizan su propio identificador.
+
+Después de recargar con F5, el cliente intenta recuperar la conexión anterior únicamente si el SDK reconoce el mismo UID y existen una copia privada válida y su marcador de generación. Consulta el avance remoto antes de combinar esa copia; no reincorpora automáticamente el avance sin cuenta. Si la generación cambió o se borró el avance remoto, no restaura las marcas de la generación anterior. Ante una caída de red, solo abre la copia privada del propietario verificado y deja la sincronización pausada, como se describe abajo. Sin una conexión anterior válida vuelve a ofrecer las dos opciones.
 
 Si la web está disponible pero Firestore falla después de una recarga, al elegir el avance de la cuenta se puede abrir su copia local existente. El cliente comprueba otra vez que el SDK reconoce el mismo UID; nunca busca o adivina otra cuenta. Esta alternativa solo se ofrece ante errores de red, servidor o cuota, no ante errores de autenticación, permisos o borrado. Permite estudiar, editar y exportar, sin inventar una revisión remota: las escrituras y el borrado de progreso remoto quedan bloqueados hasta pulsar reconectar y comprobar la generación. Con la misma generación se combinan los cambios locales; con una nueva se descarta la subida automática del estado anterior. Si se había elegido incorporar avance anónimo, durante esa caída permanece separado y el mensaje lo aclara.
 
@@ -67,7 +71,7 @@ Authentication y Firestore no tienen una transacción conjunta. Si se interrumpe
 7. No habilitar Functions, Firebase Hosting/App Hosting, Cloud Storage, extensiones, copias administradas, PITR, TTL ni servicios que pidan facturación.
 8. Separar la prueba real del proyecto de producción. Para los emuladores no se crea ningún proyecto en la nube: se usa `demo-lasnotasdevero`. Para el ensayo con dos cuentas Google reales y dos dispositivos, usar un proyecto Spark de prueba separado antes de configurar el de producción.
 
-No se publican reglas, índices ni la web desde esta entrega. La prueba real necesitará una autorización posterior y configuración del proyecto de pruebas; preparar el código no autoriza ejecutar `firebase deploy`.
+La titular publicó manualmente las reglas en `lnv-test`; no se desplegaron reglas ni índices mediante Firebase CLI. La publicación autorizada de la vista de prueba se describe abajo y no habilita la integración de producción. Preparar el código no autoriza ejecutar `firebase deploy` ni modificar `lnv-data`.
 
 ### Datos públicos que hacen falta
 
@@ -95,7 +99,86 @@ El archivo `static/config/firebase.json` conserva este envoltorio y sigue deshab
 
 Mantener `enabled: false` y `study_sync_enabled = false` hasta completar las pruebas y autorizar la publicación. No se utilizaron `storageBucket` ni `measurementId` del objeto recibido y no se inicializaron Storage ni Analytics. El SDK cliente no puede certificar el plan de facturación: la titular debe comprobar Spark y ausencia de una cuenta de facturación en la consola. Nunca automatizar un cambio de plan para superar una cuota.
 
+### Vista local con Firebase de pruebas
+
+La producción conserva ambos interruptores apagados. Para ensayar Google y Firestore sin editar esa configuración, crear **otro proyecto Spark sin facturación** siguiendo los pasos anteriores, habilitar Google, autorizar `localhost` y revisar/aplicar en ese proyecto las reglas de `firebase/firestore.rules`. La herramienta siguiente no publica reglas ni comprueba el plan: verificar Spark y ausencia de facturación en la consola antes de ejecutarla.
+
+Guardar su configuración pública como JSON en `.lucas-private/firebase-test.json` (directorio ignorado por Git), sin `const`, comentarios, claves privadas ni cuentas de servicio:
+
+```json
+{
+  "apiKey": "API_KEY_WEB_PUBLICA_DEL_PROYECTO_DE_PRUEBAS",
+  "authDomain": "tu-proyecto-pruebas.firebaseapp.com",
+  "projectId": "tu-proyecto-pruebas",
+  "appId": "APP_ID_WEB_DEL_PROYECTO_DE_PRUEBAS"
+}
+```
+
+También se admite el envoltorio `{ "enabled": false, "firebase": { ... } }` y el campo público opcional `messagingSenderId`. No incluir `storageBucket` ni `measurementId`; esta integración no usa Storage ni Analytics.
+
+```powershell
+npm run preview:firebase -- --config .lucas-private/firebase-test.json --project tu-proyecto-pruebas --serve
+```
+
+El comando valida el proyecto separado, construye el SDK y Hugo, y crea una carpeta única dentro de `.contact-test-output/firebase-preview/`. Solo esa copia tiene sincronización y protección de almacenamiento activadas, con la configuración pública de pruebas. No cambia `config/_default/config.toml`, `static/config/firebase.json` ni `public/`; no hace commit, push ni despliegue. Sin `--config` y `--project` no construye ni activa nada. La construcción del SDK regenera sus artefactos locales habituales y las reglas derivadas del catálogo, sin subirlos a Firebase.
+
+Con `--serve` abre un servidor restringido a `127.0.0.1`, accesible en `http://localhost:1314/estudios/guia-estudio-lucas/`; detenerlo con Ctrl+C. Se puede elegir otro puerto con `--port 1315`. No hay túnel, acceso por red local ni publicación. Sin `--serve`, solo genera la carpeta de salida. No servir el repositorio entero ni utilizar `hugo server` sobre la configuración de producción para esta prueba, porque reconstruiría otra versión.
+
+La generación y sus pruebas unitarias no consultan Firebase. **Abrir la vista y entrar con Google sí utiliza el proyecto de pruebas real**, sus cuentas y cuotas. Usar cuentas controladas por la titular, nunca datos de estudiantes. La prueba de una computadora no reemplaza el ensayo posterior con dos dispositivos; para eso se preparó el borrador HTTPS siguiente. No usar `lnv-data` para ensayar.
+
+### Borrador HTTPS para probar desde PC y celular
+
+El 23 de octubre de 2026 se publicó, con autorización, [la guía de prueba](https://lucas-firebase-test-20261023--lasnotasdevero.netlify.app/estudios/guia-estudio-lucas/) como borrador estático de Netlify, conectado solo a `lnv-test`. El borrador inicial fue `6adc002424298f7b1fdba1b1`; el corregido, disponible en la misma URL, es `6adc042093861c7fda1c54a2`. La respuesta de Netlify confirmó estado `ready`, contexto `deploy-preview`, sin build remoto (`build_id: null`) y sin Functions. El despliegue de producción permaneció en `6adbee64eba0b597da8ae1bf`. Las comprobaciones HTTP públicas devolvieron 200, mostraron las nuevas etiquetas y el botón de incorporación, y confirmaron el código de recuperación tras recarga. El SDK publicado coincide por SHA con el SDK real de 626.756 bytes; la configuración del borrador activa solo `lnv-test` y la de producción sigue apagada.
+
+La titular debe autorizar **`lucas-firebase-test-20261023--lasnotasdevero.netlify.app`**, sin protocolo ni ruta, en Authentication → Settings → Authorized domains de **`lnv-test`**. Este paso sigue pendiente de confirmación. No agregarlo a `lnv-data`.
+
+La titular informó que dos cuentas Google en dos perfiles de la misma PC funcionaron sin problemas en la vista local. Eso es una prueba manual inicial; no demuestra sincronización entre dispositivos ni sustituye ataques HTTP o pruebas de aislamiento con identidades reales.
+
+Para continuar, entrar con la misma cuenta en PC y celular, marcar preguntas distintas y comprobar ambos sentidos mediante reconexión, esperas de guardado y recarga. Después probar cierre de sesión y otra cuenta, desconexión y recuperación, exportación/importación y, al final, eliminación de progreso y cuenta con cuentas propias de prueba. No hay actualización instantánea garantizada ni listeners permanentes; usar el botón de reconectar para consultar el avance del otro dispositivo. Registrar los resultados antes de activar producción.
+
+En el primer ensayo PC/celular la titular informó una marca creada con cuenta en el teléfono y otra creada sin cuenta en la PC; en la PC eligió usar solo el avance de la cuenta y observó que las marcas desaparecían de la vista al recargar, pese al mensaje «Sincronizado». No se considera aprobada esa prueba. Se corrigieron la recuperación de la conexión tras F5 y las etiquetas de elección, y se agregó la opción de incorporar después el avance sin cuenta. Las 31 pruebas unitarias del cliente, la revisión y la comprobación F5 en Chromium con proveedor simulado fueron aprobadas; el build normal generó 320 páginas con Firebase apagado y el borrador corregido ya fue publicado. Sigue pendiente repetir la prueba real PC/celular. No cambiaron las preguntas, las reglas de Firestore ni el contenido de las clases.
+
+La titular detectó después que completar «Lucas 1–6: de estudiar el texto a vivirlo» dejaba la barra en 0/6. La barra contaba solo las seis clases principales y excluía esa actividad, registrada como complemento. La corrección local suma todas las actividades publicadas: actualmente nueve (seis clases, dos complementos y una integración), con desglose por categoría; los 13 videos previstos de la serie principal se mencionan por separado. El total se calcula a partir del catálogo, sin cambiar los tipos, IDs, modelo de progreso ni reglas de Firestore. El encabezado aclara si muestra «Avance de tu cuenta» o «Avance de este navegador»; durante la recuperación muestra un indicador indeterminado en lugar de un cero transitorio. El arranque tiene un límite de espera de 12 segundos y recupera el modo local ante un fallo.
+
+Esta última corrección pasó 32 pruebas del cliente y seis del modelo (38 en total). En Chromium con proveedor simulado y conexiones externas bloqueadas se verificaron cierre 1/9, censo 2/9, integración 3/9 y clase principal 4/9; al desmarcar volvió a 3/9, y completar 9/9 se conservó tras F5. La corrección de barra ya está publicada en la misma URL de pruebas, despliegue `6adc095814194e833573329b`, que reemplaza el borrador anterior. Netlify confirmó `ready`, contexto `deploy-preview`, sin Functions, Edge Functions ni build remoto; el despliegue de producción no cambió. La verificación HTTP comprobó la barra global, la etiqueta de origen, la recuperación de sesión y la coincidencia SHA del controlador y SDK reales con el payload. El borrador sigue usando `lnv-test` habilitado; `lnv-data` permanece apagado. Sigue pendiente la repetición por la titular con PC/celular: las pruebas simuladas no equivalen a un ensayo real aprobado.
+
+El borrador actual contiene 23 archivos, 1.563.927 bytes (aproximadamente 1,5 MiB), sin páginas de contacto, formularios ni archivos privados. Incluye `noindex`, `no-store` y bloqueo de robots; estas medidas no equivalen a control de acceso. Comparte las cuotas de transferencia y solicitudes del mismo sitio Netlify: no publicar en producción reduce el alcance del cambio, pero no garantiza la disponibilidad del hosting ante abuso. Google y Firestore consumen únicamente las cuotas del proyecto Spark de pruebas. No se contrató un servicio adicional ni se ejecutó un build remoto.
+
 ## Spark y consumo
+
+### Acceso Google junto al progreso
+
+La descripción funcional y el inventario para auditar están en [Sistema de estudiantes y sincronización Firebase](sistema-estudiantes-auditoria.md). Incluyen las limitaciones de privacidad, respaldo y disponibilidad.
+
+El botón «Iniciar sesión con Google» aparece junto a la barra de progreso cuando la sincronización está habilitada. El icono oficial y Google Sans se sirven desde el propio sitio; sus fuentes y licencia están en `static/fonts/google-sans/`. No se incorpora otro servicio de autenticación ni Analytics.
+
+Después de un ingreso explícito, si existe avance en este navegador, se consulta primero el estado de la cuenta sin modificar ninguna copia. El aviso distingue entre cuenta con progreso y cuenta vacía, y ofrece «Combinar ambos avances» o «Usar progreso de mi cuenta Google». La combinación requiere una elección explícita; usar la cuenta conserva aparte el avance anónimo. Si no existe avance local, se abre directamente el de la cuenta. La recuperación de una sesión al recargar conserva el comportamiento anterior y no vuelve a pedir la elección.
+
+La comparación agrega una consulta remota de progreso cuando existe avance local; al elegir se consulta nuevamente para evitar aplicar una decisión sobre datos desactualizados. Estas consultas consumen lecturas de Firestore según el catálogo y las reglas, aunque no escriben. No se incorpora sondeo periódico. Las 37 pruebas del cliente y seis del modelo se ejecutaron con red bloqueada, proveedor simulado y datos sintéticos: 43 aprobadas.
+
+Actualizado el mismo borrador HTTPS en el despliegue `6adc0e23d718b48a58b2bfc1`: Netlify confirmó `ready`, sin Functions, Edge Functions ni build remoto, y sin cambiar la publicación principal. La comprobación HTTP verificó las etiquetas nuevas, los archivos reales del SDK y del controlador, el icono y la fuente por igualdad de bytes. `lnv-test` permanece habilitado en el borrador y `lnv-data` apagado en producción.
+
+En Chromium aislado se comprobaron la comparación antes de escribir, la elección remota sin alterar el avance anónimo, cuenta vacía, combinación explícita, recuperación con F5, cancelación y reintento de lectura. Un ensayo separado con perfil vacío confirmó la conexión directa sin avance local y sin escrituras. El botón midió 14 px/20 px en 390 y 1366 px, sin desbordamiento horizontal. La carga efectiva de Google Sans no quedó confirmada por `document.fonts.check`; existe fuente alternativa. El ensayo encadenado de logout/reset/login tuvo un fallo de temporización no resuelto en el harness y no se declara aprobado. No se utilizaron cuentas ni datos reales de estudiantes; falta repetir los flujos con Google real en los dos dispositivos.
+
+### Salida segura y recuperación de pendientes
+
+La titular eligió que cerrar sesión intente sincronizar inmediatamente y que un fallo conserve los pendientes localmente. «Guardar y cerrar sesión» espera el envío en curso y puede hacer un segundo envío para incluir cambios llegados durante el primero. Solo retira una copia privada confirmada; en caso de fallo conserva copia, generación y marcador `:pending` por UID. No se envía esa copia después de salir: se recupera al ingresar con el mismo UID y comprobar el estado remoto. El avance anónimo sigue separado.
+
+Con la sesión activa, un evento `online` puede recuperar automáticamente una caída de red, verificando primero identidad y generación. Los eventos simultáneos se agrupan y existe un mínimo de 60 segundos entre recuperaciones automáticas. No se utiliza para saltar pausas por autenticación, permisos, cuota, validación o borrado. Si tampoco puede confirmarse el guardado local, se conserva la copia en memoria y se pide exportar o reintentar antes de salir; no se da un mensaje falso de respaldo.
+
+La revisión corrigió tres casos adicionales: limpieza del UID capturado al eliminar cuenta aunque Auth notifique primero la salida; operaciones concurrentes durante logout sin cierre aparente falso; y pendientes de la generación inicial `null` cuando otro dispositivo creó la primera copia. Este último utiliza la clasificación transaccional existente `409`/`410`, conservando la protección contra restaurar generaciones borradas. No cambiaron reglas, proveedor Firebase, modelo ni configuración de producción. Las 52 pruebas del cliente con red bloqueada están aprobadas; el build Hugo generó 320 páginas.
+
+La verificación focal en Chromium aislado también pasó: guardado inmediato al salir con conexión; recuperación automática con lectura previa; salida sin conexión conserva cache/generación/pendientes; volver la red sin Auth no escribe; el mismo UID recupera y envía, y otro UID no ve ni sube el pendiente anterior. El borrador se actualizó en la misma URL, despliegue `6adc16985d6ad9555dabc710`, confirmado `ready` sin Functions, Edge Functions ni build remoto. La publicación principal no cambió y conserva Firebase apagado. HTTP confirmó el controlador nuevo por igualdad de bytes y los recursos reales. Falta el ensayo manual del flujo actualizado con Google real; las pruebas usaron únicamente datos sintéticos.
+
+### Importaciones reforzadas y protección contra incrustación
+
+La importación ahora rechaza fechas que no sean enteros seguros no negativos o estén adelantadas más de cinco minutos respecto del reloj local, campos extra y claves reservadas de mapas. Mantiene el límite de 64 KiB en bytes UTF-8, IDs retirados válidos y marcas desactivadas. Valida antes de modificar el avance; no normaliza fechas ni sobrescribe el archivo rechazado.
+
+También se corrigió una carrera de lectura asíncrona: el controlador expone una versión de activación del perfil y la importación cancela si cambió durante la lectura. Obtiene la instantánea actual después de leer y validar, de modo que las nuevas marcas del mismo perfil se conservan y un cambio de cuenta o restablecimiento no recibe datos del perfil anterior. No cambió el modelo JSON ni el proveedor Firebase.
+
+`netlify.toml` añade `Content-Security-Policy: frame-ancestors 'none'` y `X-Frame-Options: DENY` a las rutas de la guía. El borrador estático lleva los mismos encabezados en su `_headers` aislado. La revisión pasó; 61 pruebas del cliente aprobaron con red bloqueada; Hugo generó 320 páginas. Chromium sintético confirmó rechazo atómico de un archivo futuro, combinación de uno válido y exportación de ambas marcas sin llamadas al proveedor. La carga directa funcionó; el ensayo local con iframe del mismo origen fue consistente con el bloqueo.
+
+Publicado únicamente en el borrador autorizado `6adc199e7578568cb791c6af`, en la misma URL. Netlify confirmó `ready`, sin Functions, Edge Functions ni build remoto y sin cambiar la publicación principal. HTTP comprobó los controladores reales por igualdad de bytes y CSP/XFO para la guía con barra, sin barra e `index.html`; `lnv-data` permanece desactivado. App Check no se habilitó: sigue pendiente la elección de la titular sobre prepararlo en pruebas con Spark sin facturación y su cuota gratuita limitada, o continuar únicamente con optimizaciones de consumo.
 
 Firestore Standard incluye una base gratuita, 1 GiB, 50.000 lecturas/día, 20.000 escrituras/día, 20.000 eliminaciones/día y 10 GiB/mes de transferencia saliente. Las cuotas de operaciones se reinician aproximadamente a medianoche del Pacífico. Spark no factura excesos sin pasar a un plan de pago, pero puede rechazar operaciones o suspender el producto cuando se exceden sus límites. No se promete sincronización ininterrumpida ni un momento exacto de recuperación basándose solo en una cuota diaria.
 
@@ -150,7 +233,7 @@ Las pruebas unitarias del cliente usan un proveedor falso y bloqueo de conexione
 
 Las pruebas de edición y exportación/importación local siguen siendo independientes de Identity, Blobs y Firebase; el nuevo fallback cubre además la copia privada reconocida por el SDK cuando Firestore falla. No se modificaron el contenido de clases, bibliografía, modelo de progreso ni la cabecera global. La eliminación global de RefTagger queda aplazada hasta la futura activación de cuentas: el comportamiento visible actual de las citas de otros artículos se conserva. El reemplazo local de html2canvas mantiene la versión y la interfaz existentes.
 
-Los errores de permisos en los registros del emulador son esperados en las pruebas negativas y en la carrera que se corrigió. Los avisos de Edge headless y los recursos antiguos ausentes del tema no impidieron los resultados. No se probaron el popup Google de `lnv-data`, dos cuentas Google reales ni dos dispositivos físicos. Las pruebas locales aprobadas no reemplazan esa condición de publicación.
+Los errores de permisos en los registros del emulador son esperados en las pruebas negativas y en la carrera que se corrigió. Los avisos de Edge headless y los recursos antiguos ausentes del tema no impidieron los resultados. La titular probó después dos cuentas Google reales en perfiles distintos de la misma PC con `lnv-test`, sin problemas informados. Siguen pendientes dos dispositivos físicos y las comprobaciones completas del borrador HTTPS; no se probó el popup Google de `lnv-data`. Las pruebas locales aprobadas no reemplazan las condiciones de activación de producción.
 
 ### Dependencias y avisos conocidos
 
@@ -164,14 +247,15 @@ Referencias de los avisos de herramientas: [OpenTelemetry](https://github.com/ad
 
 Para agregar otra guía: asignar un `course_id` estable en su página, usar los shortcodes con IDs estables, registrar su directorio en `firebase/courses.json`, regenerar reglas y bundle, ejecutar las pruebas y revisar las reglas antes de cualquier despliegue autorizado. Agregar clases o preguntas también requiere regenerar y, con autorización, actualizar las reglas del proyecto correspondiente: sin ese paso, los nuevos IDs seguirán funcionando localmente y serán rechazados por el catálogo remoto anterior. No se duplica información de estudiantes en archivos del proyecto.
 
-## Condiciones para publicar, aún pendientes
+## Condiciones para activar producción
 
-- Configuración pública recibida y Spark sin facturación confirmado por la titular; falta comprobar en consola la configuración de Google, dominios y Firestore Standard y mantener el plan sin cambios.
-- Reglas e índices revisados y pruebas de emulador aprobadas.
-- Popup Google, dominios autorizados y CSP comprobados con el proyecto real de pruebas.
-- Dos cuentas reales en dos dispositivos: separación, combinación de cambios, cierre de sesión, cuotas/desconexión, exportación/importación y borrados.
-- Confirmación de que el despliegue estático no incorpora funciones por configuración o extensiones de Netlify.
-- Autorización explícita de publicación después de presentar los resultados. No se hizo ninguna publicación durante esta implementación.
+La titular confirmó Spark sin facturación, Google Authentication, dominios autorizados, App Check y reglas publicadas para `lnv-data`. Son confirmaciones de la titular, no una inspección administrativa independiente de Firebase. La clave pública de App Check está guardada en el archivo versionado `static/config/firebase.json`; la configuración de aplicación mantiene `enabled: false`, `appCheck.enabled: false` y los valores por defecto de flags Hugo desactivados.
+
+- Las suites finales pasaron: 107/107 pruebas Node sin red, 13/13 Rules demo, provider real con emuladores y navegador de cuatro pestañas/cinco casos.
+- La titular confirmó que el flujo actualizado funciona con dos cuentas entre PC y teléfono.
+- La revisión autorizada de producción se prepara con flags desactivados hasta cerrar la comprobación del artefacto final y configuración de Netlify.
+- No existe un respaldo central privado de Firebase. Documentar esta limitación y no presentar el sistema como recuperable ante pérdida del proyecto.
+- Registrar cuotas y métricas después de publicar. App Check se puede iniciar en modo de monitoreo sin enforcement; no tratarlo como protección efectiva contra solicitudes sin token.
 
 ## Fuentes oficiales revisadas
 
@@ -186,3 +270,25 @@ Para agregar otra guía: asignar un `course_id` estable en su página, usar los 
 - [Eliminación de usuarios](https://firebase.google.com/docs/auth/web/manage-users).
 - [Duración y revocación de sesiones](https://firebase.google.com/docs/auth/admin/manage-sessions).
 - [Claves públicas de configuración Firebase](https://firebase.google.com/docs/projects/api-keys).
+
+
+## Optimización de lecturas y preparación de App Check — 24 de octubre de 2026
+
+Se conserva en memoria una copia de los documentos remotos confirmados por Firebase, separada del avance editable local. Cada operación sigue leyendo el marcador y el resumen. Si coinciden UID, revisión, generación y demás campos de control, reutiliza los documentos de clase confirmados. Un guardado habitual pasa de **11 a 2 lecturas base**; sigue escribiendo resumen y clase modificada. Sin copia válida, con cambios remotos, conflicto, inspección de permisos o borrado vuelve a la lectura completa. El caché se invalida al cambiar cuenta, salir o destruir el proveedor; las entradas y salidas se clonan. Las reglas y el esquema no cambiaron. Ediciones administrativas que eludan las reglas pueden requerir recargar.
+
+Medición con Auth/Firestore Emulator y Chromium, usando identidades sintéticas: 11 llamadas de lectura en carga completa y fallback; 2 en consulta reutilizable y guardado de una clase; 2 escrituras en ese guardado. Son llamadas instrumentadas a la transacción, no un contador de facturación: reglas, conflictos y reintentos pueden agregar consumo. Como presupuesto conservador, siguen siendo aplicables los escenarios anteriores de lectura completa; el ahorro habitual no garantiza disponibilidad bajo abuso.
+
+Se añadió `assets/js/study-app-check.js` y su conexión al proveedor. App Check permanece desactivado hasta recibir una clave pública real de reCAPTCHA Enterprise de **lnv-test**. La herramienta de preview valida el proyecto, crea configuración aislada y permite la CSP adicional solo en esa variante. El SDK se carga al acceder a datos autenticados, reutiliza tokens y no activa renovación automática periódica. Los errores de cuota y permiso conservan su clasificaci?n, sin tratarlos como caídas de red para reintentar. No se aceptan tokens de depuración.
+
+Resultados históricos de esa etapa: **78** unitarias de cliente/App Check/preview aprobadas; **13** de reglas aprobadas y suite del proveedor real con emuladores aprobada, incluyendo aislamiento A/B, conflictos, reset, mutación de copias y medición de lecturas. Hugo generó **320 páginas**. No hubo operaciones contra datos reales. La atestación real, las métricas de evaluaciones y el ensayo con exigencia de App Check seguían pendientes en ese momento. Los resultados finales están resumidos al inicio de este documento y en [implementación multipestaña](progreso-multipestana-implementacion.md).
+
+Pasos de consola, configuración pública requerida, pruebas y reversión: [App Check en lnv-test](firebase-app-check-pruebas.md). Producción continúa apagada; no se contrató nada ni se vinculó facturación.
+
+Publicado exclusivamente en el borrador autorizado `6adc21824a5557572cadd0fa` (misma URL): Netlify confirmó `ready`, sin build remoto, Functions ni Edge Functions y con producción intacta. HTTP verificó bytes de los recursos reales y producción apagada. La configuración publicada de `lnv-test` no incluye App Check habilitado: aún falta la clave pública. Payload estático: 23 archivos, 1.586.732 bytes.
+
+
+## App Check publicado en el ensayo — 24 de octubre de 2026
+
+Resultado posterior: tras reemplazar la clave que pertenecía a otro proyecto y confirmar su actualización en Firebase App Check, un ensayo desde el navegador temporal obtuvo un token real; `exchangeRecaptchaEnterpriseToken` respondió HTTP 200. Un intento inmediato anterior aún había recibido HTTP 400. No se inició sesión, no se consultó ni modificó Firestore y no se registró el token. No se alteraron permisos IAM, reglas, exigencia de App Check, planes ni la publicación principal. El borrador continúa siendo `6adc28d99a488f646fae86a7`; falta repetir el ensayo autenticado de progreso. Los párrafos siguientes conservan el historial anterior a esta corrección.
+
+La titular confirmó los requisitos del proyecto y canceló la ventana para exigir App Check en Firestore. Se publicó el borrador `6adc2401e92863b31c3aa4c2` con App Check habilitado exclusivamente para `lnv-test`: 23 archivos, 1.587.097 bytes, sin build remoto, Functions ni Edge Functions y sin modificar la publicación principal. HTTP confirmó configuración, clave pública coincidente, CSP, bundle real y producción apagada. La verificación obligatoria no se modificó; su estado remoto se basa en la confirmación de la titular, no en acceso administrativo a Firebase. Falta probar la emisión y aceptación del token real con una sesión de prueba en navegador y revisar métricas; no se declara esa prueba superada.

@@ -12,9 +12,12 @@
     "test:contact": "node --test tests/contact.test.mjs",
     "test:contact:browser": "node tests/contact-browser.mjs",
     "build:firebase": "node scripts/build-firebase.mjs",
+    "preview:firebase": "node scripts/preview-firebase.mjs",
+    "test:firebase:preview": "node --import ./tests/helpers/forbid-network.mjs --test tests/firebase-preview.test.mjs",
     "test:firebase": "npm run build:firebase && npm --prefix tools/firebase test",
     "test:firebase:client": "node --import ./tests/helpers/forbid-network.mjs --test tests/firebase-sync-client.test.mjs",
-    "test:firebase:provider": "npm --prefix tools/firebase run test:provider"
+    "test:firebase:provider": "npm --prefix tools/firebase run test:provider",
+    "test:firebase:multitab": "node tests/study-guide-multitab-browser.mjs"
   },
   "dependencies": {
     "@netlify/blobs": "11.1.6",

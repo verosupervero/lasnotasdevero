@@ -16,6 +16,20 @@
   # Previous implementations remain outside it in netlify/disabled-functions.
   directory = "netlify/functions"
 
+# Prevent the guide from being embedded in a deceptive parent page.
+# These response headers complement the guide's existing meta CSP.
+[[headers]]
+  for = "/estudios/guia-estudio-lucas"
+  [headers.values]
+    Content-Security-Policy = "frame-ancestors 'none'"
+    X-Frame-Options = "DENY"
+
+[[headers]]
+  for = "/estudios/guia-estudio-lucas/*"
+  [headers.values]
+    Content-Security-Policy = "frame-ancestors 'none'"
+    X-Frame-Options = "DENY"
+
 [[headers]]
   for = "/cuenta"
   [headers.values]

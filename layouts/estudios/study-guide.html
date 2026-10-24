@@ -8,10 +8,29 @@
     </header>
     <section id="study-tools" class="study-tools" aria-label="Tu estudio y progreso" hidden>
       <div class="study-progress-summary">
-        <label class="study-sr-only" for="study-overall-progress">Tu progreso en las clases publicadas</label>
+        {{ if $syncEnabled }}
+        <div class="study-progress-account" data-account-auth hidden>
+          <button type="button" class="study-google-button" data-account-google><img src="/images/google-g.png" width="20" height="20" alt="">Iniciar sesión con Google</button>
+          <span>Opcional: guardá tu avance en otros dispositivos.</span>
+        </div>
+        {{ end }}
+        <label class="study-sr-only" for="study-overall-progress">Tu progreso en las actividades publicadas</label>
         <progress id="study-overall-progress" max="1" value="0"></progress>
         <p id="study-overall-text"></p>
+        <p id="study-progress-source" class="study-course-meta"></p>
         <p class="study-course-meta"><span id="study-plan-text"></span><span id="study-extra-progress"></span></p>
+        <p class="study-account-status" data-account-status role="status" aria-live="polite">Guardado en este navegador</p>
+        {{ if $syncEnabled }}
+        <section class="study-account-choice" data-account-choose aria-labelledby="study-account-choice-title" hidden>
+          <h2 id="study-account-choice-title" tabindex="-1">¿Qué avance querés usar?</h2>
+          <p data-account-comparison></p>
+          <div class="study-account-choice-actions">
+            <button type="button" data-account-choice="local">Combinar ambos avances</button>
+            <button type="button" data-account-choice="remote">Usar progreso de mi cuenta Google</button>
+          </div>
+        </section>
+        <button type="button" class="study-account-retry" data-account-compare-retry hidden>Reintentar comprobar el avance de mi cuenta</button>
+        {{ end }}
       </div>
       <button type="button" id="study-resume" hidden>Continuar donde quedé</button>
       <div class="study-class-picker">
@@ -46,27 +65,21 @@
           <button type="button" data-progress-reset>Borrar avance local</button>
         </div>
         {{ if $syncEnabled }}
-        <div data-account-auth hidden>
-          <h2>Guardar en otros dispositivos</h2>
-          <p>La cuenta es opcional. Podés seguir estudiando y guardar tu avance en este navegador sin conexión.</p>
-          <button type="button" data-account-google>Continuar con Google</button>
-        </div>
-        <div data-account-choose hidden>
-          <p>El avance de este navegador se conserva por separado. Elegí si querés incorporarlo a tu cuenta.</p>
-          <button type="button" data-account-choice="local">Usar mi avance de este navegador</button>
-          <button type="button" data-account-choice="remote">Usar avance de la cuenta</button>
+        <div data-account-recovery hidden>
           <button type="button" data-account-delete-user>Eliminar mi cuenta o completar una eliminación anterior</button>
           <button type="button" data-account-logout>Cerrar sesión</button>
         </div>
         <div data-account-connected hidden>
           <button type="button" data-account-reconnect>Reconectar y comprobar avance remoto</button>
-          <button type="button" data-account-logout>Cerrar sesión y retirar avance de este navegador</button>
+          <p>¿Estudiaste en este navegador antes de iniciar sesión? Podés incorporar ese avance al de tu cuenta, aunque antes hayas elegido usar solo el avance de la cuenta.</p>
+          <button type="button" data-account-merge-local>Incorporar avance guardado sin cuenta</button>
+          <button type="button" data-account-logout>Guardar y cerrar sesión</button>
+          <p>Intentamos sincronizar antes de salir. Si no hay conexión, el avance pendiente queda en este dispositivo y se recupera al volver a ingresar con la misma cuenta Google.</p>
           <button type="button" data-account-delete>Eliminar progreso de esta guía</button>
           <button type="button" data-account-delete-user>Eliminar mi cuenta y todos mis avances</button>
           <p>Guardamos solo identificadores y fechas del avance. Google y Firebase gestionan el acceso. Al eliminar el progreso o la cuenta queda un marcador técnico sin preguntas ni avance para bloquear sesiones antiguas.</p>
         </div>
         {{ end }}
-        <p data-account-status role="status" aria-live="polite">Guardado en este navegador</p>
       </div>
     </details>
     <footer class="study-study-notes">

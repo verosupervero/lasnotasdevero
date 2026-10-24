@@ -14,7 +14,11 @@ function initialize(root) {
   const catalog = lessons.map((lesson) => ({ id: lesson.dataset.studyId, kind: lesson.dataset.kind }));
   const navButtons = new Map();
   const programmaticOpen = new WeakSet();
-  let activeStorageKey = progressStorageKey(root.dataset.courseId || 'lucas');
+  const baseStorageKey = progressStorageKey(root.dataset.courseId || 'lucas');
+  let activeStorageKey = baseStorageKey;
+  let privateProfile = false;
+  let profileVersion = 0;
+  let progressPending = root.dataset.syncEnabled === 'true' && root.dataset.syncProvider === 'firebase';
   const subscribers = new Set();
   let state = emptyProgress(), storageStatus = 'ready', current, clock = Date.now(), restoring = false;
   try {
@@ -35,7 +39,8 @@ function initialize(root) {
   }
   function save(id, field, value, question) {
     if (restoring) return;
-    if (storageStatus === 'ready') {
+    const before = structuredClone(state);
+    if (!privateProfile && storageStatus === 'ready') {
       try {
         const latest = parseProgress(localStorage.getItem(activeStorageKey));
         if (latest.status === 'ready') state = mergeProgress(state, latest.state);
@@ -45,21 +50,30 @@ function initialize(root) {
     clock = Math.max(Date.now(), clock + 1, (state.lastActivity?.updatedAt || 0) + 1);
     state = updateProgress(state, id, field, value, clock, question);
     if (field !== 'selected') state = updateProgress(state, id, 'selected', undefined, clock);
-    if (storageStatus === 'ready') {
+    if (!privateProfile && storageStatus === 'ready') {
       try { localStorage.setItem(activeStorageKey, serializeProgress(state)); } catch { storageStatus = 'denied'; }
     }
     renderProgress();
-    subscribers.forEach((callback) => callback());
+    subscribers.forEach((callback) => callback(before));
   }
   function renderProgress() {
     const counts = progressCounts(state, catalog), planned = root.dataset.plannedVideos || '13';
+    const total = counts.course.total + counts.complement.total + counts.integration.total;
+    const complete = counts.course.complete + counts.complement.complete + counts.integration.complete;
     const overall = root.querySelector('#study-overall-progress');
-    if (overall) { overall.max = counts.course.total || 1; overall.value = counts.course.complete; }
+    if (overall) {
+      overall.max = total || 1;
+      overall.setAttribute('aria-busy', String(progressPending));
+      if (progressPending) overall.removeAttribute('value');
+      else overall.value = complete;
+    }
     const text = root.querySelector('#study-overall-text');
-    if (text) text.textContent = `${counts.course.complete} de ${counts.course.total} clases publicadas completadas`;
+    if (text) text.textContent = progressPending ? 'Recuperando tu avance…' : `${complete} de ${total} actividades publicadas completadas`;
+    const source = root.querySelector('#study-progress-source');
+    if (source) source.textContent = progressPending ? 'Comprobando tu cuenta…' : activeStorageKey === baseStorageKey ? 'Avance de este navegador' : 'Avance de tu cuenta';
     const plan = root.querySelector('#study-plan-text'), extras = root.querySelector('#study-extra-progress');
-    if (plan) plan.textContent = `${planned} videos previstos`;
-    if (extras) extras.textContent = `Complementos: ${counts.complement.complete}/${counts.complement.total} · Integración: ${counts.integration.complete}/${counts.integration.total}`;
+    if (plan) plan.textContent = `Serie principal: ${planned} videos previstos`;
+    if (extras) extras.textContent = progressPending ? '' : `Clases: ${counts.course.complete}/${counts.course.total} · Complementos: ${counts.complement.complete}/${counts.complement.total} · Integración: ${counts.integration.complete}/${counts.integration.total}`;
     for (const lesson of lessons) {
       const data = state.classes[lesson.dataset.studyId], blocks = [...lesson.querySelectorAll('.study-question')];
       let completed = 0;
@@ -238,9 +252,13 @@ function initialize(root) {
     if (link && link.hash === location.hash) { event.preventDefault(); revealHash(true); }
   });
   window.addEventListener('storage', (event) => {
+    // Private records have an atomic UID/epoch and a single writer per page.
+    // Their notifications are handled by the coordinator, never as anonymous v1.
+    if (privateProfile) return;
     if (event.key !== activeStorageKey && event.key !== null) return;
     // Explicit removal/clear is intentional: do not resurrect a deleted profile.
     if (event.newValue === null) {
+      profileVersion++;
       state = emptyProgress();
       storageStatus = 'ready';
       renderProgress();
@@ -292,23 +310,33 @@ function initialize(root) {
   root.classList.add('study-enhanced');
   const controller = {
     snapshot: () => structuredClone(state),
+    get profileVersion() { return profileVersion; },
     canPersist: () => storageStatus === 'ready',
     subscribe: (callback) => subscribers.add(callback),
-    activate(key, next) {
+    setProgressPending(value) { progressPending = value; renderProgress(); },
+    setPrivatePersisted(value) { storageStatus = value ? 'ready' : 'denied'; storageMessage(); },
+    activate(key, next, options = {}) {
+      if (key !== activeStorageKey || options.boundary) profileVersion++;
+      progressPending = false;
       activeStorageKey = key;
+      privateProfile = options.private === true;
       state = next;
       storageStatus = 'ready';
       try {
+        if (!privateProfile) {
         storageStatus = parseProgress(localStorage.getItem(activeStorageKey)).status;
         if (storageStatus === 'ready') localStorage.setItem(activeStorageKey, serializeProgress(state));
+        }
       } catch { storageStatus = 'denied'; }
       renderProgress();
       selectLesson(findLesson(state.selected?.value) || lessons[0]);
     },
     replace(next, reset = false) {
-      if (reset) { try { localStorage.removeItem(activeStorageKey); } catch { /* Memory-only reset. */ } }
-      this.activate(activeStorageKey, next);
-      subscribers.forEach((callback) => callback());
+      const before = structuredClone(state);
+      if (reset && !privateProfile) { try { localStorage.removeItem(activeStorageKey); } catch { /* Memory-only reset. */ } }
+      if (reset) profileVersion++;
+      this.activate(activeStorageKey, next, { private: privateProfile });
+      subscribers.forEach((callback) => callback(before));
     }
   };
   initializeSync(root, controller, lessons.map((lesson) => ({
