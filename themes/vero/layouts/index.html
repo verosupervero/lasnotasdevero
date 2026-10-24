@@ -406,6 +406,7 @@
         <section class="home-section home-featured" aria-labelledby="home-featured-title">
             <h2 id="home-featured-title">Artículos destacados</h2>
             <p class="home-section-intro">Lecturas para conocer el proyecto y volver a temas importantes.</p>
+            {{ partial "home/lucas-study.html" . }}
             <div class="home-featured-grid{{ if not $selection.secondary }} home-featured-grid--single{{ end }}">
                 {{ partial "home/card.html" (dict "article" . "variant" "primary") }}
                 {{ with $selection.secondary }}
@@ -420,6 +421,7 @@
         <section class="home-section home-recent" aria-labelledby="home-recent-title">
             <h2 id="home-recent-title">Últimos artículos</h2>
             <p class="home-section-intro">Lo que se publicó recientemente, del más nuevo al más antiguo.</p>
+            {{ if not $selection.primary }}{{ partial "home/lucas-study.html" . }}{{ end }}
             {{ with $selection.recent }}
             <div class="home-recent-grid">
                 {{ range . }}{{ partial "home/card.html" (dict "article" . "variant" "recent") }}{{ end }}
