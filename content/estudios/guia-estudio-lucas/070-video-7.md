@@ -1,12 +1,12 @@
 +++
-bibliography = ["stronstad-teologia-carismatica-lucas-2020", "bird-whispers-revolution-2025", "walton-keener-vida-2016", "osborne-lucas-2020"]
-bibliography_note = "Bird: páginas 207–215 recomendadas y página 219 citada. Walton y Keener: páginas 1607–1608 y 1615–1619 mencionadas. También se menciona un artículo de Marg Mowczko sobre las mujeres benefactoras, pero el título y el enlace utilizados en el directo están pendientes de confirmar."
+bibliography = ["stronstad-teologia-carismatica-lucas-2020", "bird-whispers-revolution-2025", "walton-keener-vida-2016", "osborne-lucas-2020", "mowczko-wealthy-women-2017"]
+bibliography_note = "Bird: *Whispers of Revolution*, páginas 207–215 recomendadas y página 219 citada. Walton y Keener: páginas 1607–1608 y 1615–1619 mencionadas. Mowczko ofrece contexto general sobre mujeres con recursos e influencia en el mundo romano y la iglesia; su artículo no trata específicamente Lucas 7."
 bibliography_editorial_note = "La ficha de Walton y Keener se reutiliza desde el catálogo general, donde la edición identificada con el enlace aportado está registrada como 2025."
 +++
 
-{{< study-video id="lucas-7-encuentros-con-jesus" label="Lucas 7" title="Encuentros con Jesús: fe, compasión e identidad" passage="Lucas 7:1–35" video="-Jd05Lnrz9A" >}}
+{{< study-video id="lucas-7-encuentros-con-jesus" label="Bloque II" title="Encuentros con Jesús: fe, compasión e identidad" passage="Lucas 7:1–35" video="-Jd05Lnrz9A" >}}
 
-Este estudio inicia el bloque «Encuentros con Jesús» y se centra en tres relatos: el centurión de Capernaúm, la viuda de Naín y los mensajeros de Juan el Bautista. Leé Lucas 7:1–35 y trabajá las preguntas a tu ritmo.
+Este video abre el Bloque II, «Encuentros con Jesús». Se centra en tres relatos: el centurión de Capernaúm, la viuda de Naín y los mensajeros de Juan el Bautista. Leé Lucas 7:1–35 y trabajá las preguntas a tu ritmo.
 
 {{< study-question id="jesus-profeta-y-siervo" anchor="jesus-profeta-y-siervo" title="1. La identidad de Jesús y su ministerio profético" >}}
 Antes de comenzar Lucas 7, repasá Lucas 3:21–22, 4:16–21 y 6:12–16.
