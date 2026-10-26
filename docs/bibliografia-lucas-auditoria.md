@@ -208,3 +208,9 @@ La nueva comprobación resolvió el enlace original `https://a.co/d/0aL2JCSV`: r
 Se corrigieron autoría, título, editorial y año, se añadió la nota RVR/ISBN y el enlace del catálogo oficial, y la ficha volvió a `book`. El año 2016 de la ficha anterior correspondía a la edición NIV inglesa, no al ejemplar español identificado. Se conserva el ID histórico `walton-keener-vida-2016` y su enlace original para mantener las asociaciones: el sufijo del ID no representa la fecha bibliográfica actual.
 
 La corrección se refleja automáticamente en los videos 2–5, el material de apoyo del Video 6, el cierre práctico y la bibliografía recomendada, sin editar las asociaciones de sus Markdown. Esta comprobación reemplaza la incertidumbre sobre el enlace corto consignada en los apartados anteriores. El catálogo mantiene 19 fichas: 16 públicas y tres pendientes internas (Mundo Hispano, el posible libro de Fee y la reflexión de Keener sin identificar).
+
+## Actualización del 26 de octubre de 2026: Lucas 7
+
+El material `public/lucas_7_guia_hugo.md` se integró como la clase `070-video-7.md` de la guía. Se conservaron las nueve preguntas, el video `-Jd05Lnrz9A` y el orden de los materiales; la bibliografía de la clase reutiliza las fichas de Bird, Walton/Keener y Osborne.
+
+Se agregó al catálogo la ficha `stronstad-teologia-carismatica-lucas-2020` con los datos y el enlace incluidos en el material. La referencia de Walton y Keener se conecta con la ficha general ya identificada como edición española de 2025, no con la fecha 2016 indicada en el archivo fuente. La nota de la clase conserva las páginas atribuidas a las referencias y aclara que el artículo de Marg Mowczko sobre mujeres benefactoras sigue sin título ni enlace confirmados; no se inventó ni se incorporó como referencia pública. El catálogo queda con 20 fichas: 17 públicas y tres pendientes internas.

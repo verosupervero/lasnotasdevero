@@ -240,6 +240,19 @@
     ],
     "editorial_note": "Recurso complementario; no identificado como el artículo leído en el cierre práctico de Lucas 1–6."
   },
+  "stronstad-teologia-carismatica-lucas-2020": {
+    "kind": "book",
+    "authors": "Stronstad, Roger",
+    "title": "La teología carismática de Lucas",
+    "publisher": "Editorial Patmos",
+    "year": 2020,
+    "links": [
+      {
+        "label": "Consultar la edición de Patmos",
+        "url": "https://www.editorialpatmos.com/la-teologia-carismatica-de-lucas"
+      }
+    ]
+  },
   "keener-birth-jesus-2011": {
     "kind": "article",
     "authors": "Keener, Craig S.",
