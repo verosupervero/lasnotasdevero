@@ -267,6 +267,39 @@
       }
     ]
   },
+  "bird-women-luke-logos-2024": {
+    "kind": "article",
+    "authors": "Bird, Michael F.",
+    "title": "Women in Luke’s Gospel: Christianity’s Elevation & Concern for Women",
+    "publisher": "Logos",
+    "year": 2024,
+    "links": [
+      {
+        "label": "Leer artículo",
+        "url": "https://www.logos.com/grow/hall-women-luke-gospel/"
+      }
+    ]
+  },
+  "mowczko-male-female-pairs-luke-2014": {
+    "kind": "article",
+    "authors": "Mowczko, Marg",
+    "title": "Male-Female Pairs and Parallelism in Luke’s Gospel",
+    "publisher": "Marg Mowczko",
+    "year": 2014,
+    "note": "8 de abril de 2014.",
+    "links": [
+      {
+        "label": "Leer artículo",
+        "url": "https://margmowczko.com/gendered-pairs-and-parallelism-in-lukes-gospel/"
+      }
+    ]
+  },
+  "jerusalem-bible-notes-lucas-7-8": {
+    "kind": "pending",
+    "authors": "Biblia de Jerusalén",
+    "title": "Notas de estudio de Lucas 7–8",
+    "editorial_note": "El material de Lucas 7:36–8:3 la incluye entre sus fuentes, pero no especifica edición, editorial ni año. No asignar metadatos de una edición sin confirmación."
+  },
   "keener-birth-jesus-2011": {
     "kind": "article",
     "authors": "Keener, Craig S.",
