@@ -3,7 +3,7 @@ bibliography = []
 bibliography_editorial_note = "La integración no declara fuentes específicas adicionales."
 +++
 
-{{< study-video id="integracion" kind="integration" label="Cierre de Lucas 1–4" title="🧩 Integración de Lucas 1–4" passage="Lucas 1–4" anchor="-parte-final--integración" >}}
+{{< study-video id="integracion" kind="integration" block="Bloque I" label="Cierre de Lucas 1–4" title="🧩 Integración de Lucas 1–4" passage="Lucas 1–4" anchor="-parte-final--integración" >}}
 
 
 ---

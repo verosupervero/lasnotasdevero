@@ -3,7 +3,7 @@ bibliography = ["wright-bird-2019", "keener-ivp-2014", "walton-keener-vida-2016"
 bibliography_editorial_note = "Bibliografía confirmada por la autora para este video."
 +++
 
-{{< study-video id="video-4" label="Video 4" title="Lucas 3–4: Comienzo del ministerio de Jesús" passage="Lucas 3–4" anchor="-video-4--lucas-34-comienzo-del-ministerio-de-jesús" video="30aMdFgJ52I" >}}
+{{< study-video id="video-4" block="Bloque I" label="Video 4" title="Lucas 3–4: Comienzo del ministerio de Jesús" passage="Lucas 3–4" anchor="-video-4--lucas-34-comienzo-del-ministerio-de-jesús" video="30aMdFgJ52I" >}}
 En estos capítulos, Lucas presenta la preparación, la identidad y el comienzo del ministerio público de Jesús. El relato nos lleva desde la predicación de Juan el Bautista hasta las primeras manifestaciones de la autoridad de Jesús en Galilea.
 
 ---

@@ -300,6 +300,34 @@
     "title": "Notas de estudio de Lucas 7–8",
     "editorial_note": "El material de Lucas 7:36–8:3 la incluye entre sus fuentes, pero no especifica edición, editorial ni año. No asignar metadatos de una edición sin confirmación."
   },
+  "green-gospel-luke-1997": {
+    "kind": "book",
+    "authors": "Green, Joel B.",
+    "title": "The Gospel of Luke",
+    "container": "New International Commentary on the New Testament",
+    "publisher": "Eerdmans",
+    "year": 1997,
+    "links": [
+      {
+        "label": "Editorial",
+        "url": "https://www.eerdmans.com/9780802823151/the-gospel-of-luke/"
+      }
+    ]
+  },
+  "garland-luke-2011": {
+    "kind": "book",
+    "authors": "Garland, David E.",
+    "title": "Luke",
+    "container": "Zondervan Exegetical Commentary on the New Testament",
+    "publisher": "Zondervan",
+    "year": 2011,
+    "links": [
+      {
+        "label": "Editorial",
+        "url": "https://zondervanacademic.com/products/luke"
+      }
+    ]
+  },
   "keener-birth-jesus-2011": {
     "kind": "article",
     "authors": "Keener, Craig S.",

@@ -5,7 +5,7 @@ bibliography_editorial_note = "Fuentes utilizadas documentadas en el material de
 bibliography_note = "Imes: páginas consultadas 22–23 y 108–110."
 +++
 
-{{< study-video id="video-6" label="Video 6" title="Lucas 6:12–49: De oyentes a seguidores de Jesús" passage="Lucas 6:12–49" anchor="video-6-lucas-6-12-49" video="zoxk16AU3uw" >}}
+{{< study-video id="video-6" block="Bloque I" label="Video 6" title="Lucas 6:12–49: De oyentes a seguidores de Jesús" passage="Lucas 6:12–49" anchor="video-6-lucas-6-12-49" video="zoxk16AU3uw" >}}
 
 {{< study-question id="lucas6-eleccion-de-los-doce" anchor="eleccion-de-los-doce" title="1. La elección de los doce (Lucas 6:12–16)" >}}
 Antes de elegir a los doce, Jesús pasa la noche orando.

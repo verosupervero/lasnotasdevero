@@ -4,17 +4,18 @@
 {{- $bibliography := partial "bibliography-list.html" (dict "ids" .Page.Params.bibliography) -}}
 {{- $support := partial "bibliography-list.html" (dict "ids" .Page.Params.bibliography_support) -}}
 {{- $further := partial "bibliography-list.html" (dict "ids" .Page.Params.bibliography_further_reading) -}}
-<article class="study-lesson" data-study-id="{{ $id }}" data-kind="{{ $kind }}" data-label="{{ .Get "label" }}" data-title="{{ .Get "title" }}" data-passage="{{ .Get "passage" }}">
+<article class="study-lesson" data-study-id="{{ $id }}" data-kind="{{ $kind }}" data-block="{{ .Get "block" | default "Sin bloque" }}" data-label="{{ .Get "label" }}" data-title="{{ .Get "title" }}" data-passage="{{ .Get "passage" }}">
     {{ with .Get "anchor" }}<span class="study-anchor" id="{{ . }}" aria-hidden="true"></span>{{ end }}
     <h2 id="{{ $id }}"><span class="study-video-label">{{ .Get "label" }}</span><span class="study-video-title">{{ .Get "title" }}</span><span class="study-video-passage">{{ .Get "passage" }}</span></h2>
   <p class="study-class-progress" data-class-progress hidden></p>
   <div class="study-video-body">
     {{- with $video }}
     <div class="study-video-player">
-      <template><iframe src="https://www.youtube-nocookie.com/embed/{{ . }}" title="{{ $.Get "title" }}" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></template>
-      <noscript><iframe src="https://www.youtube-nocookie.com/embed/{{ . }}" title="{{ $.Get "title" }}" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></noscript>
+      <a class="study-video-preview" href="https://www.youtube.com/watch?v={{ . }}" target="_blank" rel="noopener noreferrer" aria-label="Abrir {{ $.Get "title" }} en YouTube">
+        <img src="https://img.youtube.com/vi/{{ . }}/hqdefault.jpg" alt="" loading="lazy">
+        <span aria-hidden="true">▶ Ver en YouTube</span>
+      </a>
     </div>
-    <p><a href="https://www.youtube.com/watch?v={{ . }}">Ver en YouTube</a></p>
     {{- end }}
     {{ .Page.RenderString (dict "display" "block") .Inner }}
     {{ if or $bibliography $support $further }}

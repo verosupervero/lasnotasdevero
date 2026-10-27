@@ -5,7 +5,7 @@ bibliography_note = "La Biblia de Jerusalén se menciona como fuente de notas pa
 bibliography_editorial_note = "La referencia de Walton y Keener reutiliza la ficha general de la edición española identificada, publicada en 2025."
 +++
 
-{{< study-video id="lucas-7-36-8-3-mujeres" label="Bloque II" title="La mujer pecadora y las mujeres que seguían a Jesús" passage="Lucas 7:36–8:3" video="cftQyxbfBiQ" >}}
+{{< study-video id="lucas-7-36-8-3-mujeres" block="Bloque II" label="Bloque II" title="La mujer pecadora y las mujeres que seguían a Jesús" passage="Lucas 7:36–8:3" video="cftQyxbfBiQ" >}}
 
 En esta clase estudiamos cómo Lucas presenta a la mujer de Lucas 7 y a las mujeres que acompañaban a Jesús en Lucas 8. Las preguntas permiten trabajar el texto, su contexto histórico y las diferencias entre los relatos bíblicos y las tradiciones posteriores.
 

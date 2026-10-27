@@ -13,6 +13,13 @@ function initialize(root) {
   if (!lessons.length || !selector || !tools) return;
   const catalog = lessons.map((lesson) => ({ id: lesson.dataset.studyId, kind: lesson.dataset.kind }));
   const navButtons = new Map();
+  const navGroups = new Map();
+  const lessonGroups = new Map();
+  lessons.forEach((lesson) => {
+    const block = lesson.dataset.block || 'Otros';
+    if (!lessonGroups.has(block)) lessonGroups.set(block, []);
+    lessonGroups.get(block).push(lesson);
+  });
   const programmaticOpen = new WeakSet();
   const baseStorageKey = progressStorageKey(root.dataset.courseId || 'lucas');
   let activeStorageKey = baseStorageKey;
@@ -119,18 +126,14 @@ function initialize(root) {
     current = lesson;
     lessons.forEach((item) => {
       item.hidden = item !== lesson;
-      if (item !== lesson) item.querySelectorAll('.study-video-player iframe').forEach((iframe) => iframe.remove());
     });
-    const player = lesson.querySelector('.study-video-player');
-    if (player && !player.querySelector('iframe')) {
-      const template = player.querySelector('template');
-      if (template) player.append(template.content.cloneNode(true));
-    }
     selector.value = lesson.dataset.studyId;
     navButtons.forEach((button, id) => {
       if (id === lesson.dataset.studyId) button.setAttribute('aria-current', 'true');
       else button.removeAttribute('aria-current');
     });
+    const navGroup = navGroups.get(lesson.dataset.block);
+    if (navGroup) navGroup.open = true;
     const index = lessons.indexOf(lesson);
     const previous = root.querySelector('#study-prev'), next = root.querySelector('#study-next');
     if (previous) previous.disabled = index === 0;
@@ -171,33 +174,51 @@ function initialize(root) {
     integracion: 'Cierre · Lucas 1–4',
     'lucas-1-6-cierre-practico': 'Cierre práctico · Lucas 1–6'
   };
-  selector.replaceChildren(...lessons.map((lesson) => {
-    const option = document.createElement('option');
-    option.value = lesson.dataset.studyId;
-    option.textContent = pickerTitles[lesson.dataset.studyId] || [lesson.dataset.label, lesson.dataset.passage || shortTitles[lesson.dataset.studyId] || lesson.dataset.title].filter(Boolean).join(' · ');
-    return option;
+  selector.replaceChildren(...[...lessonGroups].map(([block, groupedLessons]) => {
+    const group = document.createElement('optgroup');
+    group.label = block;
+    group.append(...groupedLessons.map((lesson) => {
+      const option = document.createElement('option');
+      option.value = lesson.dataset.studyId;
+      option.textContent = pickerTitles[lesson.dataset.studyId] || [lesson.dataset.label, lesson.dataset.passage || shortTitles[lesson.dataset.studyId] || lesson.dataset.title].filter(Boolean).join(' · ');
+      return option;
+    }));
+    return group;
   }));
   if (list) {
-    list.replaceChildren(...lessons.map((lesson) => {
-      const item = document.createElement('li'), button = document.createElement('button');
-      button.type = 'button';
-      button.dataset.studyNav = lesson.dataset.studyId;
-      for (const [className, text] of [
-        ['study-nav-label', lesson.dataset.label],
-        ['study-nav-title', shortTitles[lesson.dataset.studyId] || lesson.dataset.title],
-        ['study-nav-status', 'Sin comenzar']
-      ]) {
-        const span = document.createElement('span');
-        span.className = className;
-        span.textContent = text || '';
-        button.append(span);
-      }
-      button.addEventListener('click', () => {
-        selectLesson(lesson, { persist: true, focus: true });
-        history.replaceState(null, '', `#${encodeURIComponent(lesson.dataset.studyId)}`);
+    list.replaceChildren(...[...lessonGroups].map(([block, groupedLessons]) => {
+      const item = document.createElement('li');
+      const group = document.createElement('details');
+      const summary = document.createElement('summary');
+      const groupList = document.createElement('ul');
+      group.className = 'study-nav-group';
+      group.open = false;
+      summary.textContent = `${block} · ${groupedLessons.length} clases`;
+      groupedLessons.forEach((lesson) => {
+        const lessonItem = document.createElement('li'), button = document.createElement('button');
+        button.type = 'button';
+        button.dataset.studyNav = lesson.dataset.studyId;
+        for (const [className, text] of [
+          ['study-nav-label', lesson.dataset.label],
+          ['study-nav-title', shortTitles[lesson.dataset.studyId] || lesson.dataset.title],
+          ['study-nav-status', 'Sin comenzar']
+        ]) {
+          const span = document.createElement('span');
+          span.className = className;
+          span.textContent = text || '';
+          button.append(span);
+        }
+        button.addEventListener('click', () => {
+          selectLesson(lesson, { persist: true, focus: true });
+          history.replaceState(null, '', `#${encodeURIComponent(lesson.dataset.studyId)}`);
+        });
+        navButtons.set(lesson.dataset.studyId, button);
+        lessonItem.append(button);
+        groupList.append(lessonItem);
       });
-      navButtons.set(lesson.dataset.studyId, button);
-      item.append(button);
+      navGroups.set(block, group);
+      group.append(summary, groupList);
+      item.append(group);
       return item;
     }));
     root.querySelector('#study-sidebar').hidden = false;

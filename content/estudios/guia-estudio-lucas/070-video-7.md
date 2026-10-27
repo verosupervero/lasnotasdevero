@@ -4,7 +4,7 @@ bibliography_note = "Bird: *Whispers of Revolution*, páginas 207–215 recomend
 bibliography_editorial_note = "La ficha de Walton y Keener se reutiliza desde el catálogo general, donde la edición identificada con el enlace aportado está registrada como 2025."
 +++
 
-{{< study-video id="lucas-7-encuentros-con-jesus" label="Bloque II" title="Encuentros con Jesús: fe, compasión e identidad" passage="Lucas 7:1–35" video="-Jd05Lnrz9A" >}}
+{{< study-video id="lucas-7-encuentros-con-jesus" block="Bloque II" label="Bloque II" title="Encuentros con Jesús: fe, compasión e identidad" passage="Lucas 7:1–35" video="-Jd05Lnrz9A" >}}
 
 Este video abre el Bloque II, «Encuentros con Jesús». Se centra en tres relatos: el centurión de Capernaúm, la viuda de Naín y los mensajeros de Juan el Bautista. Leé Lucas 7:1–35 y trabajá las preguntas a tu ritmo.
 

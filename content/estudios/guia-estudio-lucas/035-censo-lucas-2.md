@@ -4,7 +4,7 @@ bibliography_editorial_note = "Corrección proporcionada por Vero: el artículo 
 bibliography_support = ["huebner-census-2019"]
 +++
 
-{{< study-video id="censo-lucas-2" kind="complement" label="Estudio complementario" title="¿Fue real el censo de Lucas 2?" passage="Lucas 2:1–7" anchor="-estudio-complementario--fue-real-el-censo-de-lucas-2" video="mKwO-td0_NU" >}}
+{{< study-video id="censo-lucas-2" kind="complement" block="Bloque I" label="Estudio complementario" title="¿Fue real el censo de Lucas 2?" passage="Lucas 2:1–7" anchor="-estudio-complementario--fue-real-el-censo-de-lucas-2" video="mKwO-td0_NU" >}}
 **Pasaje de referencia:** Lucas 2:1–7 · Historia del nacimiento de Jesús, Quirinio y el contexto romano.
 
 

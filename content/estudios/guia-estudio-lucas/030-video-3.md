@@ -4,7 +4,7 @@ bibliography_editorial_note = "Referencias asociadas en la bibliografía del mat
 bibliography_anchor = "-bibliografía-y-fuentes-utilizadas-en-este-video"
 +++
 
-{{< study-video id="video-3" label="Video 3" title="Lucas 1–2: El anuncio y nacimiento de Jesús" passage="Lucas 1–2" anchor="-video-3--lucas-12-el-anuncio-y-nacimiento-de-jesús" video="16zxJ8iV_-o" >}}
+{{< study-video id="video-3" block="Bloque I" label="Video 3" title="Lucas 1–2: El anuncio y nacimiento de Jesús" passage="Lucas 1–2" anchor="-video-3--lucas-12-el-anuncio-y-nacimiento-de-jesús" video="16zxJ8iV_-o" >}}
 
 
 [Ver este estudio directamente en YouTube](https://www.youtube.com/watch?v=16zxJ8iV_-o)

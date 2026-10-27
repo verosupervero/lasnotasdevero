@@ -220,3 +220,13 @@ Se agregó al catálogo la ficha `stronstad-teologia-carismatica-lucas-2020` con
 El material `public/mujeres_lucas_7_8_guia_hugo.md` se integró como `075-mujeres-lucas-7-8.md`, a continuación del video 7 y dentro del Bloque II. Se conservaron las nueve preguntas y el video `cftQyxbfBiQ`, utilizando el reproductor y el sistema de progreso existentes.
 
 La clase reutiliza las fichas existentes de Keener, Walton/Keener y Osborne. Se añadieron al catálogo las referencias de Michael F. Bird, “Women in Luke’s Gospel: Christianity’s Elevation & Concern for Women” (Logos, 2024), y Marg Mowczko, “Male-Female Pairs and Parallelism in Luke’s Gospel” (2014). La ficha de la Biblia de Jerusalén queda como pendiente porque el material no especifica la edición, editorial ni año; la nota de la clase informa esa limitación sin inventar datos. El catálogo queda con 24 fichas: 20 públicas y cuatro pendientes internas.
+
+## Actualización del 26 de octubre de 2026: Lucas 8:1–9:36
+
+El material compartido se integró como `080-video-8-9.md`, después de las clases de Lucas 7 y Lucas 7:36–8:3, dentro del Bloque II. Se conservaron las doce preguntas y el video `gh-rl6wavws`. La clase reutiliza la ficha general de Walton/Keener y agrega Joel B. Green, *The Gospel of Luke* (Eerdmans, 1997), y David E. Garland, *Luke* (Zondervan, 2011), con las URLs editoriales del material.
+
+## Actualización del 26 de octubre de 2026: oración y misión en Lucas 9 y 11
+
+El material compartido se integró como `085-oracion-y-mision.md`, después de la clase de Lucas 8–9 y dentro del Bloque II. Se conservaron las diez preguntas y el video `UHOgDKF41cc`, usando la miniatura enlazada a YouTube. Se incluyen los pasajes bíblicos relacionados que enumera la fuente. Como no se identifican comentarios ni libros contemporáneos por nombre, no se agregaron fichas bibliográficas ni se atribuyeron obras.
+
+Para que la navegación lateral no crezca como una lista extensa, las lecciones llevan metadatos explícitos de bloque. El menú las agrupa en secciones plegables «Bloque I» y «Bloque II»; el selector de clases usa grupos equivalentes. Al elegir o restaurar una clase se abre automáticamente su bloque. El Bloque I reúne las clases y complementos hasta Lucas 1–6; el Bloque II comienza con Lucas 7.

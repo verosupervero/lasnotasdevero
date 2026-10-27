@@ -6,7 +6,7 @@ bibliography_editorial_note = "Libros mostrados o mencionados al comienzo. Las f
 bibliography_note = "Libros mostrados o mencionados al comienzo."
 +++
 
-{{< study-video id="lucas-1-6-cierre-practico" label="Cierre práctico · Bloque I" title="Lucas 1–6: de estudiar el texto a vivirlo" passage="Lucas 1–6" kind="complement" video="IGksUPG4ebU" >}}
+{{< study-video id="lucas-1-6-cierre-practico" block="Bloque I" label="Cierre práctico · Bloque I" title="Lucas 1–6: de estudiar el texto a vivirlo" passage="Lucas 1–6" kind="complement" video="IGksUPG4ebU" >}}
 
 [Ver este estudio directamente en YouTube](https://youtube.com/live/IGksUPG4ebU)
 

@@ -3,7 +3,7 @@ bibliography = ["bird-early-christian-history", "keener-ivp-2014", "osborne-luca
 bibliography_editorial_note = "Bibliografía confirmada por la autora para este video."
 +++
 
-{{< study-video id="video-5" label="Video 5" title="Lucas 5:1–6:11: Autoridad, comunidad y conflicto" passage="Lucas 5:1–6:11" anchor="video-5-lucas-5-1-6-11" video="n0BoSXnUtIc" >}}
+{{< study-video id="video-5" block="Bloque I" label="Video 5" title="Lucas 5:1–6:11: Autoridad, comunidad y conflicto" passage="Lucas 5:1–6:11" anchor="video-5-lucas-5-1-6-11" video="n0BoSXnUtIc" >}}
 
 {{< study-question id="jesus-historico-y-memoria-de-los-evangelios" anchor="jesus-historico-y-memoria-de-los-evangelios" title="1. El Jesús histórico y la memoria de los Evangelios" >}}
 Antes de recorrer Lucas 5, el estudio plantea algunas preguntas sobre las fuentes que tenemos para conocer a Jesús.
