@@ -112,6 +112,4 @@ Reuní los pasajes estudiados: Lucas 9:1–17, 9:18–36 y 11:1–13.
 - **Lucas 11:1–13:** Padre Nuestro, amigo a medianoche y don del Espíritu Santo.
 - **Hechos de los Apóstoles:** referencias a la obra del Espíritu Santo y la misión.
 
-La exposición se apoya en pasajes bíblicos; en los subtítulos de este encuentro no se identifican por nombre comentarios académicos o libros contemporáneos utilizados. No se atribuyen obras no documentadas.
-
 {{< /study-video >}}
