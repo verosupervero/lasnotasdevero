@@ -5,7 +5,7 @@
 
 Este encuentro retoma relatos de Lucas 9 y avanza a Lucas 11 con un enfoque pastoral y aplicativo. No pretende comentar de forma consecutiva todo el contenido intermedio. Mirá el video y trabajá las preguntas a tu ritmo.
 
-{{< study-question id="mision-de-los-doce-y-provision" title="1. La misión de los Doce y la confianza en el Padre (Lucas 9:1–6)" >}}
+{{< study-question id="mision-de-los-doce-y-provision" anchor="mision-de-los-doce-y-provision" title="1. La misión de los Doce y la confianza en el Padre (Lucas 9:1–6)" >}}
 Leé Lucas 9:1–6 y distinguí las órdenes de Jesús de las conclusiones que extraemos para hoy.
 
 - ¿Qué autoridad les concede Jesús a los Doce y para qué los envía?
@@ -14,7 +14,7 @@ Leé Lucas 9:1–6 y distinguí las órdenes de Jesús de las conclusiones que e
 **Para reflexionar:** ¿De qué manera la oración y la confianza en Dios pueden acompañar una misión sin reemplazar nuestra responsabilidad de actuar?
 {{< /study-question >}}
 
-{{< study-question id="alimentacion-y-eliseo" title="2. Jesús alimenta a la multitud y el paralelo con Eliseo (Lucas 9:10–17)" >}}
+{{< study-question id="alimentacion-y-eliseo" anchor="alimentacion-y-eliseo" title="2. Jesús alimenta a la multitud y el paralelo con Eliseo (Lucas 9:10–17)" >}}
 Compará Lucas 9:10–17 con 2 Reyes 4:42–44.
 
 - ¿Qué necesidad enfrenta la multitud y qué les dice Jesús a sus discípulos?
@@ -24,7 +24,7 @@ Compará Lucas 9:10–17 con 2 Reyes 4:42–44.
 **Para profundizar:** ¿Qué detalles observás sobre la participación de los discípulos en la distribución de los alimentos?
 {{< /study-question >}}
 
-{{< study-question id="oracion-y-padre" title="3. Jesús ora y se relaciona con el Padre (Lucas 9:18–22)" >}}
+{{< study-question id="oracion-y-padre" anchor="oracion-y-padre" title="3. Jesús ora y se relaciona con el Padre (Lucas 9:18–22)" >}}
 Lucas menciona que Jesús está orando cuando pregunta quién dice la gente que es él.
 
 - ¿En qué momento del relato aparece la oración de Jesús?
@@ -33,7 +33,7 @@ Lucas menciona que Jesús está orando cuando pregunta quién dice la gente que 
 **Para reflexionar:** ¿Qué diferencia existe entre observar que Lucas menciona la oración y explicar teológicamente por qué el autor la sitúa en ese momento?
 {{< /study-question >}}
 
-{{< study-question id="transfiguracion-y-padre" title="4. La transfiguración y la voz del Padre (Lucas 9:28–36)" >}}
+{{< study-question id="transfiguracion-y-padre" anchor="transfiguracion-y-padre" title="4. La transfiguración y la voz del Padre (Lucas 9:28–36)" >}}
 Leé Lucas 9:28–36.
 
 - ¿Con qué propósito sube Jesús al monte? ¿Qué ocurre mientras ora?
@@ -43,7 +43,7 @@ Leé Lucas 9:28–36.
 **Para profundizar:** En Lucas 9:27 algunos no morirán antes de ver el Reino. ¿Cómo podría vincularse esa afirmación con la transfiguración? Presentá esa lectura como una propuesta de interpretación y explicá sus argumentos, sin confundirla con una afirmación explícita del pasaje.
 {{< /study-question >}}
 
-{{< study-question id="discipulos-dormidos-getsemani" title="5. Los discípulos dormidos: de la transfiguración a Getsemaní" >}}
+{{< study-question id="discipulos-dormidos-getsemani" anchor="discipulos-dormidos-getsemani" title="5. Los discípulos dormidos: de la transfiguración a Getsemaní" >}}
 Compará Lucas 9:32 con Lucas 22:39–46.
 
 - ¿En qué circunstancias están dormidos los discípulos en cada episodio?
@@ -53,7 +53,7 @@ Compará Lucas 9:32 con Lucas 22:39–46.
 **Aplicación:** ¿Qué hábitos concretos pueden ayudarnos a cultivar la oración cuando estamos cansados, angustiados o distraídos?
 {{< /study-question >}}
 
-{{< study-question id="emaus-y-partir-pan" title="6. Emaús y el partir del pan (Lucas 24:13–35)" >}}
+{{< study-question id="emaus-y-partir-pan" anchor="emaus-y-partir-pan" title="6. Emaús y el partir del pan (Lucas 24:13–35)" >}}
 El video menciona brevemente el reconocimiento de Jesús en Emaús.
 
 - ¿Qué hace Jesús con los caminantes antes de compartir la mesa?
@@ -62,7 +62,7 @@ El video menciona brevemente el reconocimiento de Jesús en Emaús.
 **Para pensar:** ¿Qué diferencias hay entre una relación literaria sugerente y una relación que el texto establece explícitamente?
 {{< /study-question >}}
 
-{{< study-question id="padre-nuestro" title="7. «Señor, enséñanos a orar» (Lucas 11:1–4)" >}}
+{{< study-question id="padre-nuestro" anchor="padre-nuestro" title="7. «Señor, enséñanos a orar» (Lucas 11:1–4)" >}}
 Leé Lucas 11:1–4 y prestá atención a las peticiones de la oración que Jesús enseña.
 
 - ¿Qué hace Jesús inmediatamente antes de que uno de sus discípulos le pida que les enseñe a orar?
@@ -72,7 +72,7 @@ Leé Lucas 11:1–4 y prestá atención a las peticiones de la oración que Jes�
 **Para profundizar:** Compará Lucas 11:2–4 con Mateo 6:9–13. ¿Qué semejanzas y diferencias observás en la forma de la oración? Considerá también que existen distintas tradiciones textuales y traducciones.
 {{< /study-question >}}
 
-{{< study-question id="amigo-medianoche" title="8. El amigo a medianoche: oración y hospitalidad (Lucas 11:5–8)" >}}
+{{< study-question id="amigo-medianoche" anchor="amigo-medianoche" title="8. El amigo a medianoche: oración y hospitalidad (Lucas 11:5–8)" >}}
 En este relato, una persona recibe a un visitante, pero no tiene pan para ofrecerle.
 
 - ¿Quiénes participan en la historia y qué necesita cada uno?
@@ -82,7 +82,7 @@ En este relato, una persona recibe a un visitante, pero no tiene pan para ofrece
 **Aplicación:** Si no contamos con lo necesario para ayudar a alguien, ¿qué formas responsables de colaboración podríamos buscar?
 {{< /study-question >}}
 
-{{< study-question id="pedid-buscad-llamad" title="9. Pedir, buscar y llamar: el Padre y el Espíritu Santo (Lucas 11:9–13)" >}}
+{{< study-question id="pedid-buscad-llamad" anchor="pedid-buscad-llamad" title="9. Pedir, buscar y llamar: el Padre y el Espíritu Santo (Lucas 11:9–13)" >}}
 Jesús utiliza ejemplos de la relación entre padres e hijos al hablar de la oración.
 
 - ¿Qué verbos utiliza Jesús en Lucas 11:9–10 y qué muestran acerca de la actitud de quien ora?
@@ -92,7 +92,7 @@ Jesús utiliza ejemplos de la relación entre padres e hijos al hablar de la ora
 **Para reflexionar:** ¿Por qué no debemos reducir el pasaje a la idea de que cualquier petición humana tendrá exactamente la respuesta que esperamos?
 {{< /study-question >}}
 
-{{< study-question id="integracion-practica-oracion-mision" title="10. Integración: oración, confianza y misión" >}}
+{{< study-question id="integracion-practica-oracion-mision" anchor="integracion-practica-oracion-mision" title="10. Integración: oración, confianza y misión" >}}
 Reuní los pasajes estudiados: Lucas 9:1–17, 9:18–36 y 11:1–13.
 
 - ¿Qué imagen del Padre y de la relación de Jesús con él se construye a lo largo de estas escenas?
